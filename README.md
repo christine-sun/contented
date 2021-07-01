@@ -92,7 +92,10 @@ Nice to have
     => None
 
 ## Wireframes
-coming soon :)
+
+![](https://i.imgur.com/V8z86B4.jpg)
+
+![](https://i.imgur.com/UxQqQeG.jpg)
 
 ### [BONUS] Digital Wireframes & Mockups
 coming soon :)
