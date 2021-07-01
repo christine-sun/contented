@@ -93,6 +93,9 @@ Nice to have
 
 ## Wireframes
 
+For best viewing quality see:
+https://imgur.com/a/dbl3uCM
+
 ![](https://i.imgur.com/V8z86B4.jpg)
 
 ![](https://i.imgur.com/UxQqQeG.jpg)
