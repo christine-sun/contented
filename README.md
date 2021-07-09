@@ -115,6 +115,7 @@ Creation
 ![](https://i.imgur.com/hoAglZt.png)
 
 Analytics
+
 ![](https://i.imgur.com/76whKAk.png)
 
 
@@ -129,8 +130,22 @@ Task
 | title  |  String | the title of the task  |  
 | description  | String  | the description/ideas for the task  | 
 | dateDue | DateTime | the due date for the task |
-| platforms | Array | the platforms the task is to be released on. Another idea is creating a Boolean for each platform and turning it true or false based on whether the box was checked |
-| type | Number | the type of the task, with 0 = story, 1 = short, and 2 = long. Perhaps this could also be a String |
+| platforms | Dictionary | Key is the platform String. Value is Boolean. If it's not in the dictionary at all, it was not assigned for this task |
+| type | Number | the type of the task, with 0 = story, 1 = short, and 2 = long. We should make this a defined enum https://riptutorial.com/objective-c/example/15598/defining-an-enum |
+| status | Boolean | determine whether task is completed or not. After user edits the task, check whether all channels have been marked as completed. If true, then this status is true. Or create a method like "getStatus" that will check through the Dictionary so we do not have to keep status in sync with Dictionary |
+|User|Object|the user that created these tasks |
+
+User
+| Property | Type  | Description  |  
+|---|---|---|
+| objectId  | String  | unique id for the task (default field) |
+| initialSubs | Number | the amount of subscribers the User has when they first connect to the app |
+|YouTube ID| Number| user's youtube account
+etc for other channels| | |
+| Tasks | Array| this user's tasks
+| username |String||
+| password |String||
+|profile picture|image|
 
 ### Networking
 **List of network requests by screen**
@@ -170,7 +185,7 @@ Milestone 3 - Create task stream (4 days)
 - Set up table view cells
 - Set up table view cell headers
 - Set up sections within table view and group based on date due/database
-- Create UI for table view cells that show social media platforms associated with task
+- Create UI for table view cells that show social media platforms associated with task (set image views to nil if platform is NOT in the dictionary)
 - Create segue to details view
 - Connect API that generates inspirational quotes
 - Handle double tap gesture for quick task completion
@@ -196,4 +211,7 @@ Milestone 7 - UI (2 days)
 - Create a dark mode
 - Create an introduction guide for when users are new to the app
 
-Remaining time: Top videos commenting feature
+Remaining time: 
+-Top videos commenting feature
+-Show a list of completed tasks and allow users to un-complete the task
+-Filter by platform on task stream
