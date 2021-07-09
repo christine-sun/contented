@@ -55,14 +55,16 @@ contented is a content creation management application that incorporates intenti
 * Creation
     * User can add a new content task
     * User can categorize content based on social media platform
-* Calendar
-    * User can view upcoming tasks in the week and month
+* Analytics
+    * User can view how their recent posts have been performing
 
 Nice to have
 * Profile
     * User can view content performance metrics
     * Incorporate gamification elements where completing tasks lets users gain points in the app
 
+* Calendar
+    * User can view upcoming tasks in the week and month
 
 * Settings
     * User can enable dark mode
@@ -100,6 +102,8 @@ https://imgur.com/a/dbl3uCM
 
 ![](https://i.imgur.com/UxQqQeG.jpg)
 
+![](https://i.imgur.com/346MdAN.png)
+
 ### [BONUS] Digital Wireframes & Mockups
 Content Stream 
 ![](https://i.imgur.com/ChgWcwK.png)
@@ -110,13 +114,86 @@ Calendar
 Creation
 ![](https://i.imgur.com/hoAglZt.png)
 
+Analytics
+![](https://i.imgur.com/76whKAk.png)
+
+
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+Task
+| Property | Type  | Description  |  
+|---|---|---|
+| objectId  | String  | unique id for the task (default field) |  
+| title  |  String | the title of the task  |  
+| description  | String  | the description/ideas for the task  | 
+| dateDue | DateTime | the due date for the task |
+| platforms | Array | the platforms the task is to be released on. Another idea is creating a Boolean for each platform and turning it true or false based on whether the box was checked |
+| type | Number | the type of the task, with 0 = story, 1 = short, and 2 = long. Perhaps this could also be a String |
+
 ### Networking
-- [Add list of network requests by screen ]
+**List of network requests by screen**
+* Stream
+   * (Read/GET) Fetch all upcoming tasks
+* Detail
+    * (Update/PUT) Change title/description of task
+    * (Update/PUT) Change whether task for a platform has been checked off
+    * (Delete/DELETE) Task has been completed
+* Creation
+    * (Update/PUT) Create new task with title, description, and pushes
+* Analytics
+    * (Read/GET) Get information about user's post statistics
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+### Milestones
+
+There are a total of 20 days to work on this personal project.
+
+Milestone 1 - Implement account creation (sign up, log in, log out) (<1 day)
+- Set up Parse database
+- Parse code
+- Screen navigation
+
+Milestone 2 - Creation mode for tasks (3 days)
+- Create Task data model
+- Configure Task class on Parse
+- Create views
+- Save user input 
+- Segue to story, short, or long view based on type
+- Upload to parse
+- Notification for setting a task
+- Connect camera?
+
+Milestone 3 - Create task stream (4 days)
+- Set up table view cells
+- Set up table view cell headers
+- Set up sections within table view and group based on date due/database
+- Create UI for table view cells that show social media platforms associated with task
+- Create segue to details view
+- Connect API that generates inspirational quotes
+- Handle double tap gesture for quick task completion
+
+Milestone 4 - Details View of task (3 days)
+- Build view
+- Handle updating the title/description/platforms when user chooses to edit
+- Handle completing pushes
+- Handle deleting the task when completed
+- Notification for completing task
+
+Milestone 5 - Analytics Tab (4 days)
+- Obtain YouTube API authorization credentials
+- Fetch current subscriber count when first logged in
+- Display analytics with API and graph library
+
+Milestone 6 - Notification (1 day)
+- Send weekly notifications on Sunday evenings to be intentional for one's tasks
+
+Milestone 7 - UI (2 days)
+- Add animations for when tasks are created and completed
+- Add phone vibration modes for when tasks are completed
+- Create a dark mode
+- Create an introduction guide for when users are new to the app
+
+Remaining time: Top videos commenting feature
