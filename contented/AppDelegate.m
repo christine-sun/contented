@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "Task.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +27,10 @@
     }];
 
     [Parse initializeWithConfiguration:config];
+    
+    // Test that task model works
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@(TRUE), @"youtube", @(FALSE), @"instagram", nil];
+    [Task postTask:@"test title" withDescription:@"I am testing to see if the task model works" withImage:nil withPlatforms:dict ofType:@"long" withCompletion:nil];
     
     return YES;
 }

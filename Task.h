@@ -21,6 +21,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) PFFileObject *image;
 
++ (void) postTask: (NSString*) title
+    withDescription: (NSString* _Nullable) ideaDump
+    withImage: (UIImage* _Nullable) image
+    withPlatforms: (NSDictionary*) platforms
+    ofType: (NSString*) type
+    withCompletion: (PFBooleanResultBlock _Nullable) completion;
+
 @end
 
 NS_ASSUME_NONNULL_END
