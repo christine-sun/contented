@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		5FE7ECCA269CAB140040154E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC9269CAB140040154E /* main.m */; };
 		5FE7ECD4269CAB150040154E /* contentedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECD3269CAB150040154E /* contentedTests.m */; };
 		5FE7ECDF269CAB150040154E /* contentedUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECDE269CAB150040154E /* contentedUITests.m */; };
+		5FE7ECF0269CC78E0040154E /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECEF269CC78E0040154E /* Task.m */; };
 		6288572FF73EE8A17ECCC1F7 /* libPods-contented.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C27E15E3D007C9D2F3816017 /* libPods-contented.a */; };
 		CD19255A5C897F973FEEE29D /* libPods-contented-contentedUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E796C78EFA751CFA4C4176 /* libPods-contented-contentedUITests.a */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,8 @@
 		5FE7ECDA269CAB150040154E /* contentedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contentedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECDE269CAB150040154E /* contentedUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = contentedUITests.m; sourceTree = "<group>"; };
 		5FE7ECE0269CAB150040154E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FE7ECEE269CC78E0040154E /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = SOURCE_ROOT; };
+		5FE7ECEF269CC78E0040154E /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = SOURCE_ROOT; };
 		81C7BB9B553845147F68A0BB /* Pods-contented.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contented.release.xcconfig"; path = "Target Support Files/Pods-contented/Pods-contented.release.xcconfig"; sourceTree = "<group>"; };
 		95E796C78EFA751CFA4C4176 /* libPods-contented-contentedUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-contented-contentedUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8D84AF807D8C493D51D35F /* Pods-contented.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contented.debug.xcconfig"; path = "Target Support Files/Pods-contented/Pods-contented.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +124,8 @@
 		5FE7ECB6269CAB130040154E /* contented */ = {
 			isa = PBXGroup;
 			children = (
+				5FE7ECED269CC73F0040154E /* Models */,
+				5FE7ECEC269CC7370040154E /* View Controllers */,
 				5FE7ECB7269CAB130040154E /* AppDelegate.h */,
 				5FE7ECB8269CAB130040154E /* AppDelegate.m */,
 				5FE7ECBA269CAB130040154E /* SceneDelegate.h */,
@@ -154,6 +159,22 @@
 			path = contentedUITests;
 			sourceTree = "<group>";
 		};
+		5FE7ECEC269CC7370040154E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5FE7ECED269CC73F0040154E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5FE7ECEE269CC78E0040154E /* Task.h */,
+				5FE7ECEF269CC78E0040154E /* Task.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		6049A9445812FF427895EB5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,7 +195,6 @@
 				B878952C1A8FAFA66B0B6D85 /* Pods-contentedTests.debug.xcconfig */,
 				4C3E844BF73C2B7DD0AC5DA1 /* Pods-contentedTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -415,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FE7ECF0269CC78E0040154E /* Task.m in Sources */,
 				5FE7ECBF269CAB130040154E /* ViewController.m in Sources */,
 				5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */,
 				5FE7ECCA269CAB140040154E /* main.m in Sources */,

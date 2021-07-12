@@ -7,6 +7,7 @@ target 'contented' do
 
   # Pods for contented
   pod 'Parse'
+  pod 'Parse/UI'
 
   target 'contentedTests' do
     inherit! :search_paths
