@@ -6,6 +6,7 @@
 //
 
 #import "AnalyticsViewController.h"
+#import <Parse/Parse.h>
 
 @interface AnalyticsViewController ()
 
@@ -16,6 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)onTapLogOut:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        self.view.window.rootViewController = loginVC;
+    }];
 }
 
 /*
