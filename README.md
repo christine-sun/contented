@@ -141,7 +141,7 @@ User
 |---|---|---|
 | objectId  | String  | unique id for the task (default field) |
 | initialSubs | Number | the amount of subscribers the User has when they first connect to the app |
-|YouTube ID| Number| user's youtube account
+|YouTube ID| String | user's youtube account
 etc for other channels| | |
 | Tasks | Array| this user's tasks
 | username |String||

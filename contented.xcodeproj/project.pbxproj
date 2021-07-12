@@ -10,7 +10,6 @@
 		0CA7C1D718E51002B071823E /* libPods-contentedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2EBB57534F42E2C2E07F60F /* libPods-contentedTests.a */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
-		5FE7ECBF269CAB130040154E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBE269CAB130040154E /* ViewController.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
 		5FE7ECC4269CAB140040154E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC3269CAB140040154E /* Assets.xcassets */; };
 		5FE7ECC7269CAB140040154E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC5269CAB140040154E /* LaunchScreen.storyboard */; };
@@ -18,6 +17,11 @@
 		5FE7ECD4269CAB150040154E /* contentedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECD3269CAB150040154E /* contentedTests.m */; };
 		5FE7ECDF269CAB150040154E /* contentedUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECDE269CAB150040154E /* contentedUITests.m */; };
 		5FE7ECF0269CC78E0040154E /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECEF269CC78E0040154E /* Task.m */; };
+		5FE7ECF6269CDC470040154E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECF5269CDC470040154E /* LoginViewController.m */; };
+		5FE7ECF9269CDC6B0040154E /* StreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECF8269CDC6B0040154E /* StreamViewController.m */; };
+		5FE7ECFC269CDC7B0040154E /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECFB269CDC7B0040154E /* DetailsViewController.m */; };
+		5FE7ECFF269CDC9F0040154E /* CreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECFE269CDC9F0040154E /* CreationViewController.m */; };
+		5FE7ED02269CDCAE0040154E /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ED01269CDCAE0040154E /* AnalyticsViewController.m */; };
 		6288572FF73EE8A17ECCC1F7 /* libPods-contented.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C27E15E3D007C9D2F3816017 /* libPods-contented.a */; };
 		CD19255A5C897F973FEEE29D /* libPods-contented-contentedUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E796C78EFA751CFA4C4176 /* libPods-contented-contentedUITests.a */; };
 /* End PBXBuildFile section */
@@ -47,8 +51,6 @@
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5FE7ECBA269CAB130040154E /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		5FE7ECBB269CAB130040154E /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		5FE7ECBD269CAB130040154E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5FE7ECBE269CAB130040154E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5FE7ECC1269CAB130040154E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FE7ECC3269CAB140040154E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FE7ECC6269CAB140040154E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,16 @@
 		5FE7ECE0269CAB150040154E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FE7ECEE269CC78E0040154E /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = SOURCE_ROOT; };
 		5FE7ECEF269CC78E0040154E /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = SOURCE_ROOT; };
+		5FE7ECF4269CDC470040154E /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		5FE7ECF5269CDC470040154E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		5FE7ECF7269CDC6B0040154E /* StreamViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreamViewController.h; sourceTree = "<group>"; };
+		5FE7ECF8269CDC6B0040154E /* StreamViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreamViewController.m; sourceTree = "<group>"; };
+		5FE7ECFA269CDC7B0040154E /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		5FE7ECFB269CDC7B0040154E /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		5FE7ECFD269CDC9F0040154E /* CreationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreationViewController.h; sourceTree = "<group>"; };
+		5FE7ECFE269CDC9F0040154E /* CreationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreationViewController.m; sourceTree = "<group>"; };
+		5FE7ED00269CDCAE0040154E /* AnalyticsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnalyticsViewController.h; sourceTree = "<group>"; };
+		5FE7ED01269CDCAE0040154E /* AnalyticsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnalyticsViewController.m; sourceTree = "<group>"; };
 		81C7BB9B553845147F68A0BB /* Pods-contented.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contented.release.xcconfig"; path = "Target Support Files/Pods-contented/Pods-contented.release.xcconfig"; sourceTree = "<group>"; };
 		95E796C78EFA751CFA4C4176 /* libPods-contented-contentedUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-contented-contentedUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8D84AF807D8C493D51D35F /* Pods-contented.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contented.debug.xcconfig"; path = "Target Support Files/Pods-contented/Pods-contented.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,8 +142,6 @@
 				5FE7ECB8269CAB130040154E /* AppDelegate.m */,
 				5FE7ECBA269CAB130040154E /* SceneDelegate.h */,
 				5FE7ECBB269CAB130040154E /* SceneDelegate.m */,
-				5FE7ECBD269CAB130040154E /* ViewController.h */,
-				5FE7ECBE269CAB130040154E /* ViewController.m */,
 				5FE7ECC0269CAB130040154E /* Main.storyboard */,
 				5FE7ECC3269CAB140040154E /* Assets.xcassets */,
 				5FE7ECC5269CAB140040154E /* LaunchScreen.storyboard */,
@@ -162,6 +172,16 @@
 		5FE7ECEC269CC7370040154E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5FE7ECF4269CDC470040154E /* LoginViewController.h */,
+				5FE7ECF5269CDC470040154E /* LoginViewController.m */,
+				5FE7ECF7269CDC6B0040154E /* StreamViewController.h */,
+				5FE7ECF8269CDC6B0040154E /* StreamViewController.m */,
+				5FE7ECFA269CDC7B0040154E /* DetailsViewController.h */,
+				5FE7ECFB269CDC7B0040154E /* DetailsViewController.m */,
+				5FE7ECFD269CDC9F0040154E /* CreationViewController.h */,
+				5FE7ECFE269CDC9F0040154E /* CreationViewController.m */,
+				5FE7ED00269CDCAE0040154E /* AnalyticsViewController.h */,
+				5FE7ED01269CDCAE0040154E /* AnalyticsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -436,10 +456,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FE7ECF0269CC78E0040154E /* Task.m in Sources */,
-				5FE7ECBF269CAB130040154E /* ViewController.m in Sources */,
+				5FE7ECF6269CDC470040154E /* LoginViewController.m in Sources */,
 				5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */,
 				5FE7ECCA269CAB140040154E /* main.m in Sources */,
+				5FE7ECFC269CDC7B0040154E /* DetailsViewController.m in Sources */,
+				5FE7ECF9269CDC6B0040154E /* StreamViewController.m in Sources */,
+				5FE7ED02269CDCAE0040154E /* AnalyticsViewController.m in Sources */,
 				5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */,
+				5FE7ECFF269CDC9F0040154E /* CreationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
