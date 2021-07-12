@@ -23,18 +23,32 @@
 }
 
 - (IBAction)onTapSignUp:(id)sender {
-    // Create a new user 
     PFUser *newUser = [PFUser user];
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError* error) {
-        if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+        if (succeeded) {
+            [self configureRoot];
         }
     }];
+}
+
+- (IBAction)onTapLogin:(id)sender {
+    NSString *username = self.usernameField.text;
+    NSString *password = self.passwordField.text;
+            
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        if (user) {
+            [self configureRoot];
+        }
+    }];
+}
+
+-(void)configureRoot {
+    [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *rootVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    self.view.window.rootViewController = rootVC;
 }
 
 /*

@@ -47,6 +47,9 @@
                                 <rect key="frame" x="235" y="452" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="onTapLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="csy-Vk-Lcc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -187,7 +190,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="3Hh-ZI-zC2">
             <objects>
-                <tabBarController id="afg-Ck-62e" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="afg-Ck-62e" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WTv-SZ-RGK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
