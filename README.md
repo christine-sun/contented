@@ -140,13 +140,18 @@ User
 | Property | Type  | Description  |  
 |---|---|---|
 | objectId  | String  | unique id for the task (default field) |
-| initialSubs | Number | the amount of subscribers the User has when they first connect to the app |
-|YouTube ID| String | user's youtube account
 etc for other channels| | |
 | Tasks | Array| this user's tasks
 | username |String||
 | password |String||
 |profile picture|image|
+| platforms | Array | the array of social media platforms |
+
+Platform
+| initialFollowing | Number | following when user first connects to app |
+| userID | String | the ID to identify the user |
+| name | String | name of user on platform |
+| type | String | type of social media platform |
 
 ### Networking
 **List of network requests by screen**
