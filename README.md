@@ -157,6 +157,11 @@ etc for other channels| | |
     * (Delete/DELETE) Task has been completed
 * Creation
     * (Update/PUT) Create new task with title, description, and pushes
+```
+PFObject *task = [PFObject objectWithClassName:@"Task"];
+gameScore[@"title"] = self.titleText.text;
+gameScore[@"description"] = self.descriptionText.text;
+```
 * Analytics
     * (Read/GET) Get information about user's post statistics
 - [Create basic snippets for each Parse network request]
