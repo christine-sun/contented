@@ -118,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="2000.0000000000002" y="820.3125"/>
         </scene>
-        <!--View Controller-->
+        <!--Pushes View Controller-->
         <scene sceneID="A8d-P5-G7V">
             <objects>
-                <viewController id="7mu-3U-HxL" sceneMemberID="viewController">
+                <viewController id="7mu-3U-HxL" customClass="PushesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F20-Ef-1fC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,6 +148,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hPG-xZ-nri">
                                 <rect key="frame" x="139" y="325" width="110" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="pushes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBR-aR-iVm">
                                 <rect key="frame" x="35" y="243" width="319" height="74"/>
@@ -160,6 +161,10 @@
                         <viewLayoutGuide key="safeArea" id="mw7-SM-DAo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="d1F-K6-QZd"/>
+                    <connections>
+                        <outlet property="buttonsStack" destination="hPG-xZ-nri" id="v5v-dj-zaA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVE-JP-V89" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -201,16 +206,25 @@
                                 <rect key="frame" x="76" y="668" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="story"/>
+                                <connections>
+                                    <action selector="onTapStory:" destination="2Eq-TW-wGl" eventType="touchUpInside" id="2t5-RK-9yX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh8-Ga-0gl">
                                 <rect key="frame" x="173" y="668" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="short"/>
+                                <connections>
+                                    <action selector="onTapShort:" destination="2Eq-TW-wGl" eventType="touchUpInside" id="Qhq-YX-zKd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHh-xK-xQr">
                                 <rect key="frame" x="276" y="667" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="long"/>
+                                <connections>
+                                    <action selector="onTapLong:" destination="2Eq-TW-wGl" eventType="touchUpInside" id="zRf-a1-CQz"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="P2k-vD-bCm" customClass="PFImageView">
                                 <rect key="frame" x="35" y="505" width="117" height="120"/>
@@ -241,6 +255,7 @@
                         <outlet property="ideaDumpField" destination="0XW-rM-D3n" id="Bka-2G-FrJ"/>
                         <outlet property="taskImageView" destination="P2k-vD-bCm" id="tRd-Zc-4do"/>
                         <outlet property="titleField" destination="Lke-rz-7i5" id="aAQ-pT-Fhb"/>
+                        <segue destination="7mu-3U-HxL" kind="show" identifier="pushesSegue" id="ctv-I0-jSi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fhb-AB-8nP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -374,6 +389,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

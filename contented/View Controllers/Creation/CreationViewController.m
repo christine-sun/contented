@@ -6,6 +6,8 @@
 //
 
 #import "CreationViewController.h"
+#import "PushesViewController.h"
+#import "Task.h"
 
 @interface CreationViewController ()
 
@@ -56,8 +58,7 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
-    
-    // Get the image captured by the UIImagePickerController
+
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     // Resize image before uploading
@@ -84,14 +85,32 @@
     return newImage;
 }
 
-/*
+- (IBAction)onTapLong:(id)sender {
+    [self performSegueWithIdentifier:@"pushesSegue" sender:@"long"];
+}
+
+- (IBAction)onTapShort:(id)sender {
+    [self performSegueWithIdentifier:@"pushesSegue" sender:@"short"];
+}
+
+- (IBAction)onTapStory:(id)sender {
+    [self performSegueWithIdentifier:@"pushesSegue" sender:@"story"];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqual:@"pushesSegue"]) {
+        PushesViewController *pushesVC = [segue destinationViewController];
+        pushesVC.type = sender;
+        pushesVC.taskTitle = self.titleField.text;
+        pushesVC.ideaDump = self.ideaDumpField.text;
+        pushesVC.taskImage = self.taskImage;
+    }
 }
-*/
 
 @end
