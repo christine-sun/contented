@@ -148,6 +148,8 @@ etc for other channels| | |
 | platforms | Array | the array of social media platforms |
 
 Platform
+| Property | Type  | Description  |  
+|---|---|---|
 | initialFollowing | Number | following when user first connects to app |
 | userID | String | the ID to identify the user |
 | name | String | name of user on platform |
