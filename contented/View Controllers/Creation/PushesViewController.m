@@ -6,6 +6,7 @@
 //
 
 #import "PushesViewController.h"
+#import "CreationViewController.h"
 #import "Platform.h"
 #import "Task.h"
 #import <QuartzCore/QuartzCore.h>
@@ -13,12 +14,13 @@
 @interface PushesViewController ()
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
 @property (strong, nonatomic) NSArray *platforms;
-@property (strong, nonatomic) NSMutableDictionary *selectedPlatforms;
+@property (nonatomic) CGFloat *selectedCount;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ideaDumpLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *taskImageView;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
+//@property (strong, nonatomic) UIViewController *creationVC;
 
 @end
 
@@ -57,25 +59,29 @@
         [self.buttonsStack addArrangedSubview:button];
     }
     
-    self.selectedPlatforms = [[NSMutableDictionary alloc] init];
-    
+    self.selectedCount = 0;
+//    self.creationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CreationViewController"];
 }
 
 // Configure platform button style and selected state
 - (void)onTapButton:(UIButton*)sender {
+    // Platform becomes selected
     if(!sender.selected) {
         sender.backgroundColor = [UIColor systemTealColor];
         [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.selectedCount++;
+    // Platform becomes unselected
     } else {
         sender.backgroundColor = [UIColor whiteColor];
         [sender setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
+        self.selectedCount--;
     }
     sender.selected = !sender.selected;
 }
 
 - (IBAction)onPost:(id)sender {
     // User must select at least one platform before proceeding
-    if (self.selectedPlatforms.count == 0) {
+    if (self.selectedCount == 0) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Platform Required"
             message:@"you must select at least one platform to push this task onto😊"
             preferredStyle:(UIAlertControllerStyleAlert)];
@@ -87,17 +93,41 @@
     } else {
         // Populate selectedPlatforms based on platform selected states
         NSArray *buttons = self.buttonsStack.arrangedSubviews;
+        NSMutableDictionary *selectedPlatforms = [[NSMutableDictionary alloc] init];
         for (int i = 0; i < buttons.count; i++) {
             UIButton *thisButton = (UIButton*)buttons[i];
-            NSLog(@"%d", thisButton.selected);
-            NSLog(@"%@", thisButton.titleLabel.text);
-            [self.selectedPlatforms setObject:@(thisButton.selected) forKey:thisButton.titleLabel.text];
-            NSLog(@"%d", [[self.selectedPlatforms objectForKey:thisButton.titleLabel.text] intValue]);
+            [selectedPlatforms setObject:@(thisButton.selected) forKey:thisButton.titleLabel.text];
         }
         
-        [Task postTask:self.taskTitle withDescription:self.ideaDump withImage:self.taskImage withPlatforms:self.selectedPlatforms ofType:self.type withCompletion:nil];
+        [Task postTask:self.taskTitle withDescription:self.ideaDump withImage:self.taskImage withPlatforms:selectedPlatforms ofType:self.type withCompletion:nil];
         
-        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+        // Provide tips for user after posting
+        if ([self.type isEqualToString:@"long"]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Successfully started task!💪"
+                message:@"TIP: add story tasks to build up hype for this long!🔥"
+                preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // Go to creation if user wants to add another task
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok!"
+                style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
+                    // maybe make a reset creation method - some delegate thing? ask TAs
+                    //[self presentViewController:self.creationVC animated:YES completion:nil];
+                    [self.navigationController popViewControllerAnimated:YES];
+
+                }];
+            [alert addAction:okAction];
+            
+            // Go to stream if user doesn't want to add another task
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"later"
+                style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+                }];
+            [alert addAction:cancelAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        
     }
 }
 

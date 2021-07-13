@@ -228,3 +228,5 @@ Remaining time:
 -Top videos commenting feature
 -Show a list of completed tasks and allow users to un-complete the task
 -Filter by platform on task stream
+-Show platform button image and title, transition from black and white to color
+-collection view possibly for platform buttons
