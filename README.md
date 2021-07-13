@@ -230,3 +230,4 @@ Remaining time:
 -Filter by platform on task stream
 -Show platform button image and title, transition from black and white to color
 -collection view possibly for platform buttons
+-have initial walkthrough screen on first sign up that shows importance of intention-setting and concept of pushes for platforms

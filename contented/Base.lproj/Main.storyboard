@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -326,11 +327,13 @@
             </objects>
             <point key="canvasLocation" x="5721.538461538461" y="63.270142180094787"/>
         </scene>
-        <!--Stream-->
+        <!--Navigation Controller-->
         <scene sceneID="l1A-OA-FE6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Hj-rx-o2B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stream" image="list.dash" catalog="system" id="2ma-Wx-baM"/>
+                    <tabBarItem key="tabBarItem" title="" id="2ma-Wx-baM">
+                        <imageReference key="image" image="list.dash" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EC9-Zv-oX8">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -364,11 +367,13 @@
             </objects>
             <point key="canvasLocation" x="2935" y="-838"/>
         </scene>
-        <!--New-->
+        <!--Navigation Controller-->
         <scene sceneID="4WJ-7C-3UU">
             <objects>
                 <navigationController storyboardIdentifier="CreationViewController" automaticallyAdjustsScrollViewInsets="NO" id="f4c-Uf-5FH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="New" image="plus.circle.fill" catalog="system" id="LSL-fl-s7j"/>
+                    <tabBarItem key="tabBarItem" title="" id="LSL-fl-s7j">
+                        <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lzq-xf-cJk">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -383,11 +388,13 @@
             </objects>
             <point key="canvasLocation" x="2935" y="64"/>
         </scene>
-        <!--Analytics-->
+        <!--Navigation Controller-->
         <scene sceneID="6I5-ha-w6H">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="exY-4M-xnF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Analytics" image="chart.bar.fill" catalog="system" id="Tef-QE-vb2"/>
+                    <tabBarItem key="tabBarItem" title="" id="Tef-QE-vb2">
+                        <imageReference key="image" image="chart.bar.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="afZ-jg-vvG">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -404,7 +411,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DU9-Co-n6T"/>
+        <segue reference="ZEX-oe-bCA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>

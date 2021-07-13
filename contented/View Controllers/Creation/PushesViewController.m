@@ -103,32 +103,62 @@
         
         // Provide tips for user after posting
         if ([self.type isEqualToString:@"long"]) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Successfully started task!💪"
-                message:@"TIP: add story tasks to build up hype for this long!🔥"
-                preferredStyle:(UIAlertControllerStyleAlert)];
-            
-            // Go to creation if user wants to add another task
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok!"
-                style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
-                    // maybe make a reset creation method - some delegate thing? ask TAs
-                    //[self presentViewController:self.creationVC animated:YES completion:nil];
-                    [self.navigationController popViewControllerAnimated:YES];
-
-                }];
-            [alert addAction:okAction];
-            
-            // Go to stream if user doesn't want to add another task
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"later"
-                style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
-                }];
-            [alert addAction:cancelAction];
-            
-            [self presentViewController:alert animated:YES completion:nil];
+            [self showLongTip];
+        } else if ([self.type isEqualToString:@"short"]) {
+            [self showShortTip];
+        } else {
+            [self showStoryTip];
         }
         
+        // TODO: make a reset creation method - some delegate thing
     }
+}
+
+- (void)showLongTip {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Successfully started task!💪"
+        message:@"TIP: add story tasks to build up hype for this long!🔥"
+        preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    // Go to creation if user wants to add another task
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok!"
+        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            //[self presentViewController:self.creationVC animated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    [alert addAction:okAction];
+    
+    // Go to stream if user doesn't want to add another task
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"later"
+        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+        }];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showShortTip {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Successfully started task!💪"
+        message:@"TIP: put the trending tags from the discover page on your shorts😎"
+        preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"got it!"
+        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+        }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showStoryTip {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Successfully started task!💪"
+        message:@"TIP: use polls and Q&As to engage your followers!🤩"
+        preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"got it!"
+        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+        }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)onTapEdit:(id)sender {
