@@ -13,7 +13,7 @@
 @interface PushesViewController ()
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
 @property (strong, nonatomic) NSArray *platforms;
-@property (strong, nonatomic) NSDictionary *selectedPlatforms;
+@property (strong, nonatomic) NSMutableDictionary *selectedPlatforms;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ideaDumpLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *taskImageView;
@@ -26,13 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    self.type = @"long"; //fortesting
-//    if ([self.type isEqualToString:@"long"]) {
-//        NSMutableArray *platforms = [NSMutableArray array];
-//        [platforms addObject:[[Platform alloc] init]];
-//        // NEED HELP: how should we handle the array of platformshttps://www.youtube.com/watch?v=cVBrbpJdgyg
-//    }
+
     self.titleLabel.text = self.taskTitle;
     self.ideaDumpLabel.text = self.ideaDump;
     [self.taskImageView setImage:self.taskImage];
@@ -40,18 +34,15 @@
     typeString = [typeString stringByAppendingString:self.type];
     self.typeLabel.text = typeString;
     
+    // Configure available platforms based on task type
     if ([self.type isEqualToString:@"long"]) {
-        //platforms will contain YouTube and IGTV
         self.platforms = @[@"YouTube", @"Instagram"];
     } else if ([self.type isEqualToString:@"short"]) {
-        //platforms will contain YouTube, IG Reel, and TikTok
         self.platforms = @[@"YouTube", @"Instagram", @"TikTok"];
     } else {
-        // it is a story. platforms will contain YouTube, IG, Snapchat, and Twitter
         self.platforms = @[@"YouTube", @"Instagram", @"Snapchat", @"Twitter"];
     }
     
-    // based on platforms, display an array of buttons that right now, shows the text. next level: display image on button
     // Display buttons in stack view for all platforms
     for (int i = 0; i < self.platforms.count; i++) {
         UIButton *button = [[UIButton alloc] init];
@@ -66,8 +57,11 @@
         [self.buttonsStack addArrangedSubview:button];
     }
     
+    self.selectedPlatforms = [[NSMutableDictionary alloc] init];
+    
 }
 
+// Configure platform button style and selected state
 - (void)onTapButton:(UIButton*)sender {
     if(!sender.selected) {
         sender.backgroundColor = [UIColor systemTealColor];
@@ -80,10 +74,21 @@
 }
 
 - (IBAction)onPost:(id)sender {
-    // If selectedPlatforms is empty, display an error message: Error - you must select at least one platform to push this task onto
-    
+    if (self.selectedPlatforms.count == 0) {
+        // Error - you must select at least one platform to push this task onto
+    }
     
     // The NSDictionary selectedPlatforms depends on which buttons are selected in the scrollview. This dictionary will have 1 if it is selected and 0 if it is not
+    
+    NSArray *buttons = self.buttonsStack.arrangedSubviews;
+    for (int i = 0; i < buttons.count; i++) {
+        UIButton *thisButton = (UIButton*)buttons[i];
+        NSLog(@"%d", thisButton.selected);
+        NSLog(@"%@", thisButton.titleLabel.text);
+        [self.selectedPlatforms setObject:@(thisButton.selected) forKey:thisButton.titleLabel.text];
+        NSLog(@"%d", [[self.selectedPlatforms objectForKey:thisButton.titleLabel.text] intValue]);
+    }
+    
     
     [Task postTask:self.taskTitle withDescription:self.ideaDump withImage:self.taskImage withPlatforms:self.selectedPlatforms ofType:self.type withCompletion:nil];
     
