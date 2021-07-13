@@ -29,7 +29,7 @@
         self.window.rootViewController = homeNavigationController;
     } else {
         // If not logged in, set login VC as root VC
-        UIViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
+        UIViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         self.window.rootViewController = loginVC;
     }
 }
