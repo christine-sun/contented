@@ -9,13 +9,32 @@
 
 @interface CreationViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *titleField;
+@property (weak, nonatomic) IBOutlet UITextView *ideaDumpField;
+
+
 @end
 
 @implementation CreationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.titleField.layer.borderWidth = 0.5;
+    [self.titleField.layer setCornerRadius:10];
+    self.ideaDumpField.layer.borderWidth = 0.5;
+    [self.ideaDumpField.layer setCornerRadius:10];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+    
+    
+    
+}
+
+-(void)dismissKeyboard {
+    [self.titleField resignFirstResponder];
+    [self.ideaDumpField resignFirstResponder];
 }
 
 /*

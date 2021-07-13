@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="92.753623188405811" y="63.616071428571423"/>
         </scene>
-        <!--Stream View Controller-->
+        <!--Stream-->
         <scene sceneID="yzI-CB-hCw">
             <objects>
                 <viewController id="LfZ-HV-Dcs" customClass="StreamViewController" sceneMemberID="viewController">
@@ -84,7 +84,7 @@
                         <viewLayoutGuide key="safeArea" id="d9z-2T-o1Y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LJD-tx-Kfr"/>
+                    <navigationItem key="navigationItem" title="Stream" id="LJD-tx-Kfr"/>
                     <connections>
                         <segue destination="9Dy-wz-Tyn" kind="show" identifier="detailsSegue" id="4hj-LO-Wpx"/>
                     </connections>
@@ -126,22 +126,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="creation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF3-hi-dOp">
-                                <rect key="frame" x="186" y="379" width="62" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="new content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF3-hi-dOp">
+                                <rect key="frame" x="35" y="113" width="196" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lke-rz-7i5">
+                                <rect key="frame" x="35" y="200" width="311" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="titleField:" destination="knh-ej-1eE" eventType="editingDidEnd" id="Psu-uM-5JP"/>
+                                </connections>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Put your idea dump here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0XW-rM-D3n">
+                                <rect key="frame" x="35" y="263" width="311" height="202"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdH-5o-Yuj">
+                                <rect key="frame" x="76" y="524" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="story"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh8-Ga-0gl">
+                                <rect key="frame" x="173" y="524" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="short"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHh-xK-xQr">
+                                <rect key="frame" x="276" y="523" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="long"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WNP-Em-0Ea"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="k7W-B5-e0g"/>
+                    <connections>
+                        <outlet property="ideaDumpField" destination="0XW-rM-D3n" id="Bka-2G-FrJ"/>
+                        <outlet property="titleField" destination="Lke-rz-7i5" id="aAQ-pT-Fhb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fhb-AB-8nP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="knh-ej-1eE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3844.9275362318845" y="63.616071428571423"/>
+            <point key="canvasLocation" x="3844.6153846153843" y="63.270142180094787"/>
         </scene>
         <!--Analytics View Controller-->
         <scene sceneID="0vd-qq-c4Z">
@@ -220,7 +257,7 @@
         <!--New-->
         <scene sceneID="4WJ-7C-3UU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f4c-Uf-5FH" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CreationViewController" automaticallyAdjustsScrollViewInsets="NO" id="f4c-Uf-5FH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="New" image="plus.circle.fill" catalog="system" id="LSL-fl-s7j"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lzq-xf-cJk">
@@ -263,6 +300,9 @@
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
