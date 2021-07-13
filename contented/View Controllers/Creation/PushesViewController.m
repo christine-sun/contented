@@ -74,25 +74,31 @@
 }
 
 - (IBAction)onPost:(id)sender {
+    // User must select at least one platform before proceeding
     if (self.selectedPlatforms.count == 0) {
-        // Error - you must select at least one platform to push this task onto
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Platform Required"
+            message:@"you must select at least one platform to push this task onto😊"
+            preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"got it!"
+            style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    } else {
+        // Populate selectedPlatforms based on platform selected states
+        NSArray *buttons = self.buttonsStack.arrangedSubviews;
+        for (int i = 0; i < buttons.count; i++) {
+            UIButton *thisButton = (UIButton*)buttons[i];
+            NSLog(@"%d", thisButton.selected);
+            NSLog(@"%@", thisButton.titleLabel.text);
+            [self.selectedPlatforms setObject:@(thisButton.selected) forKey:thisButton.titleLabel.text];
+            NSLog(@"%d", [[self.selectedPlatforms objectForKey:thisButton.titleLabel.text] intValue]);
+        }
+        
+        [Task postTask:self.taskTitle withDescription:self.ideaDump withImage:self.taskImage withPlatforms:self.selectedPlatforms ofType:self.type withCompletion:nil];
+        
+        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
     }
-    
-    // The NSDictionary selectedPlatforms depends on which buttons are selected in the scrollview. This dictionary will have 1 if it is selected and 0 if it is not
-    
-    NSArray *buttons = self.buttonsStack.arrangedSubviews;
-    for (int i = 0; i < buttons.count; i++) {
-        UIButton *thisButton = (UIButton*)buttons[i];
-        NSLog(@"%d", thisButton.selected);
-        NSLog(@"%@", thisButton.titleLabel.text);
-        [self.selectedPlatforms setObject:@(thisButton.selected) forKey:thisButton.titleLabel.text];
-        NSLog(@"%d", [[self.selectedPlatforms objectForKey:thisButton.titleLabel.text] intValue]);
-    }
-    
-    
-    [Task postTask:self.taskTitle withDescription:self.ideaDump withImage:self.taskImage withPlatforms:self.selectedPlatforms ofType:self.type withCompletion:nil];
-    
-    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
 }
 
 /*
