@@ -16,7 +16,7 @@
 @property (strong, nonatomic) UIImage *taskImage;
 @property (weak, nonatomic) IBOutlet UIImageView *taskImageView;
 @property (strong, nonatomic) UIImagePickerController *imagePickerVC;
-
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
 
@@ -42,7 +42,8 @@
     
     self.ideaDumpField.delegate = self;
     self.ideaDumpField.text = @"toss your idea dump here! let those creative juices flow🎨";
-    self.ideaDumpField.textColor = [UIColor lightGrayColor];    
+    self.ideaDumpField.textColor = [UIColor lightGrayColor];
+    self.datePicker.minimumDate = [NSDate date];
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
@@ -126,9 +127,11 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqual:@"pushesSegue"]) {
         PushesViewController *pushesVC = [segue destinationViewController];
+        NSLog(@"%@", self.datePicker.date);
         pushesVC.type = sender;
         pushesVC.taskTitle = self.titleField.text;
         pushesVC.ideaDump = self.ideaDumpField.text;
+        pushesVC.date = self.datePicker.date;
         pushesVC.taskImage = self.taskImage;
     }
 }

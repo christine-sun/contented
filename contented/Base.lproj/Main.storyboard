@@ -213,8 +213,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lke-rz-7i5">
+                                <rect key="frame" x="35" y="208" width="311" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="titleField:" destination="knh-ej-1eE" eventType="editingDidEnd" id="Psu-uM-5JP"/>
+                                </connections>
+                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="toss your idea dump here! let those creative juices flow🎨" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0XW-rM-D3n">
-                                <rect key="frame" x="35" y="263" width="311" height="202"/>
+                                <rect key="frame" x="35" y="263" width="311" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -265,21 +274,17 @@
                                     <action selector="onTapPhotoAlbum:" destination="2Eq-TW-wGl" eventType="touchUpInside" id="oh7-86-sMG"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lke-rz-7i5">
-                                <rect key="frame" x="35" y="208" width="311" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <action selector="titleField:" destination="knh-ej-1eE" eventType="editingDidEnd" id="Psu-uM-5JP"/>
-                                </connections>
-                            </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="kmj-2c-GnJ">
+                                <rect key="frame" x="24" y="348" width="350" height="147"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WNP-Em-0Ea"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="k7W-B5-e0g"/>
                     <connections>
+                        <outlet property="datePicker" destination="kmj-2c-GnJ" id="Wnx-zP-KjN"/>
                         <outlet property="ideaDumpField" destination="0XW-rM-D3n" id="Bka-2G-FrJ"/>
                         <outlet property="taskImageView" destination="P2k-vD-bCm" id="tRd-Zc-4do"/>
                         <outlet property="titleField" destination="Lke-rz-7i5" id="aAQ-pT-Fhb"/>

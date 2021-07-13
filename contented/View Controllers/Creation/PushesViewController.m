@@ -97,8 +97,7 @@
             UIButton *thisButton = (UIButton*)buttons[i];
             [selectedPlatforms setObject:@(thisButton.selected) forKey:thisButton.titleLabel.text];
         }
-        
-        [Task postTask:self.taskTitle withDescription:self.ideaDump withImage:self.taskImage withPlatforms:selectedPlatforms ofType:self.type withCompletion:nil];
+        [Task postTask:self.taskTitle withDescription:self.ideaDump withDate:self.date withImage:self.taskImage withPlatforms:selectedPlatforms ofType:self.type withCompletion:nil];
         
         // Provide tips for user after posting
         if ([self.type isEqualToString:@"long"]) {

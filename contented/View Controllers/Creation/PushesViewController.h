@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSString *taskTitle;
 @property (strong, nonatomic) NSString *ideaDump;
+@property (strong, nonatomic) NSDate *date;
 @property (strong, nonatomic) UIImage *taskImage;
 
 @end

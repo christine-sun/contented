@@ -23,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) postTask: (NSString*) title
     withDescription: (NSString* _Nullable) ideaDump
-    withImage: (UIImage* _Nullable) image
+    withDate: (NSDate*) date
+    withImage:  (UIImage* _Nullable) image
     withPlatforms: (NSDictionary*) platforms
     ofType: (NSString*) type
     withCompletion: (PFBooleanResultBlock _Nullable) completion;

@@ -23,6 +23,7 @@
 
 + (void) postTask: (NSString*) title
     withDescription: (NSString* _Nullable) ideaDump
+    withDate: (NSDate*) date
     withImage: (UIImage* _Nullable) image
     withPlatforms: (NSDictionary*) platforms
     ofType: (NSString*) type
@@ -31,6 +32,7 @@
     Task *task = [Task new];
     task.title = title;
     task.ideaDump = ideaDump;
+    task.dueDate = date; // TODO: Display error message if this or title is null
     task.image = [self getPFFileFromImage:image];
     task.user = [PFUser currentUser];
     task.platforms = platforms;
