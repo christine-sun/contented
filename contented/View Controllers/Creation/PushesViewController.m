@@ -35,6 +35,8 @@
     NSString *typeString = @"New ";
     typeString = [typeString stringByAppendingString:self.type];
     self.typeLabel.text = typeString;
+    self.selectedCount = 0;
+    [self.taskImageView.layer setCornerRadius:15];
     
     // Configure available platforms based on task type
     if ([self.type isEqualToString:@"long"]) {
@@ -58,9 +60,6 @@
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
     }
-    
-    self.selectedCount = 0;
-//    self.creationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CreationViewController"];
 }
 
 // Configure platform button style and selected state

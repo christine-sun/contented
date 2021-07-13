@@ -32,6 +32,7 @@
     task.title = title;
     task.ideaDump = ideaDump;
     task.image = [self getPFFileFromImage:image];
+    task.user = [PFUser currentUser];
     task.platforms = platforms;
     task.type = type;
 
