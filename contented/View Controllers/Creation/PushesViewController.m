@@ -11,6 +11,10 @@
 @interface PushesViewController ()
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
 @property (strong, nonatomic) NSArray *platforms;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ideaDumpLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *taskImageView;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 
 @end
 
@@ -26,7 +30,13 @@
 //        // NEED HELP: how should we handle the array of paltformshttps://www.youtube.com/watch?v=cVBrbpJdgyg
 //    }
     // test to see if info from before was sent over correctly
-    NSLog(@"type is %@, title is %@, ideaDump is %@, image is %@", self.type, self.taskTitle, self.ideaDump, self.taskImage);
+//    NSLog(@"type is %@, title is %@, ideaDump is %@, image is %@", self.type, self.taskTitle, self.ideaDump, self.taskImage);
+    self.titleLabel.text = self.taskTitle;
+    self.ideaDumpLabel.text = self.ideaDump;
+    [self.taskImageView setImage:self.taskImage];
+    NSString *typeString = @"New ";
+    typeString = [typeString stringByAppendingString:self.type];
+    self.typeLabel.text = typeString;
 }
 
 /*
