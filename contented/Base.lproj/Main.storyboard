@@ -213,16 +213,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lke-rz-7i5">
-                                <rect key="frame" x="35" y="200" width="311" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="titleField:" destination="knh-ej-1eE" eventType="editingDidEnd" id="Psu-uM-5JP"/>
-                                </connections>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Put your idea dump here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0XW-rM-D3n">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="toss your idea dump here! let those creative juices flow🎨" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0XW-rM-D3n">
                                 <rect key="frame" x="35" y="263" width="311" height="202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -274,6 +265,15 @@
                                     <action selector="onTapPhotoAlbum:" destination="2Eq-TW-wGl" eventType="touchUpInside" id="oh7-86-sMG"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lke-rz-7i5">
+                                <rect key="frame" x="35" y="208" width="311" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="titleField:" destination="knh-ej-1eE" eventType="editingDidEnd" id="Psu-uM-5JP"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WNP-Em-0Ea"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

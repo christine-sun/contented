@@ -9,7 +9,7 @@
 #import "PushesViewController.h"
 #import "Task.h"
 
-@interface CreationViewController ()
+@interface CreationViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *ideaDumpField;
@@ -40,6 +40,16 @@
     self.imagePickerVC.delegate = self;
     self.imagePickerVC.allowsEditing = YES;
     
+    self.ideaDumpField.delegate = self;
+    self.ideaDumpField.text = @"toss your idea dump here! let those creative juices flow🎨";
+    self.ideaDumpField.textColor = [UIColor lightGrayColor];    
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    if (textView.textColor == [UIColor lightGrayColor]) {
+        textView.text = nil;
+        textView.textColor = [UIColor blackColor];
+    }
 }
 
 -(void)dismissKeyboard {
