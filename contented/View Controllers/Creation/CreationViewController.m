@@ -97,6 +97,16 @@
     [self performSegueWithIdentifier:@"pushesSegue" sender:@"story"];
 }
 
+/* NOTE: AFTER IMPLEMENTING MODAL VIEW, WE WILL PROB WANT A clearAndGoHome method
+ based off of
+ - (void)clearAndGoHome {
+     self.captionText.text = @"";
+     self.imageView.image = nil;
+     
+     self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+ }
+
+ */
 
 #pragma mark - Navigation
 
