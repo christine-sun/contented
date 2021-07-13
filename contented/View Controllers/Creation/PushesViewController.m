@@ -55,7 +55,7 @@
         button.layer.borderWidth = 2.0f;
         button.layer.borderColor = [UIColor systemTealColor].CGColor;
 
-        [button addTarget:self action: @selector(onTapButton:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
     }
     
@@ -64,7 +64,7 @@
 }
 
 // Configure platform button style and selected state
-- (void)onTapButton:(UIButton*)sender {
+- (void)onTapPlatformButton:(UIButton*)sender {
     // Platform becomes selected
     if(!sender.selected) {
         sender.backgroundColor = [UIColor systemTealColor];
@@ -129,6 +129,10 @@
         }
         
     }
+}
+
+- (IBAction)onTapEdit:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*
