@@ -12,7 +12,7 @@
 @interface PushesViewController ()
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
 @property (strong, nonatomic) NSArray *platforms;
-@property (strong, nonatomic) NSMutableArray *selectedPlatforms;
+@property (strong, nonatomic) NSDictionary *selectedPlatforms;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ideaDumpLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *taskImageView;
@@ -41,17 +41,38 @@
     
     if ([self.type isEqualToString:@"long"]) {
         //platforms will contain YouTube and IGTV
+        self.platforms = @[@"YouTube", @"Instagram"];
     } else if ([self.type isEqualToString:@"short"]) {
         //platforms will contain YouTube, IG Reel, and TikTok
+        self.platforms = @[@"YouTube", @"Instagram", @"TikTok"];
     } else {
         // it is a story. platforms will contain YouTube, IG, Snapchat, and Twitter
+        self.platforms = @[@"YouTube", @"Instagram", @"Snapchat", @"Twitter"];
     }
     
-// The NSMutableArray selectedPlatforms depends on which buttons are selected in the scrollview. This array is passed over when user posts
+    // based on platforms, display an array of buttons that right now, shows the text. next level: display image on button
+    // Display buttons in stack view for all platforms
+    for (int i = 0; i < self.platforms.count; i++) {
+        UIButton *button = [[UIButton alloc] init];
+        [button setTitle:self.platforms[i] forState:UIControlStateNormal];
+        [button addTarget:self action: @selector(onTapButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self.buttonsStack addArrangedSubview:button];
+    }
+    
+}
+
+- (void)onTapButton:(UIButton*)sender {
+    // change the background color of the button
+    sender.backgroundColor = [UIColor blueColor];
+    // set selected to true
+    
 }
 
 - (IBAction)onPost:(id)sender {
     // If selectedPlatforms is empty, display an error message: Error - you must select at least one platform to push this task onto
+    
+    
+    // The NSDictionary selectedPlatforms depends on which buttons are selected in the scrollview. This dictionary will have 1 if it is selected and 0 if it is not
     
     [Task postTask:self.taskTitle withDescription:self.ideaDump withImage:self.taskImage withPlatforms:self.selectedPlatforms ofType:self.type withCompletion:nil];
     
