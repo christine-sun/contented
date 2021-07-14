@@ -46,6 +46,12 @@
     self.datePicker.minimumDate = [NSDate date];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.titleField.text = @"";
+    self.ideaDumpField.text = @"";
+    self.taskImageView.image = nil;
+}
+
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     if (textView.textColor == [UIColor lightGrayColor]) {
         textView.text = nil;

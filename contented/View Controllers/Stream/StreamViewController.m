@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *arrayOfTasks;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) NSMutableDictionary *uniqueDates;
 
 @end
 
@@ -57,24 +58,50 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.arrayOfTasks.count;
+    // number of tasks with THIS section's date
+    // get the first task from this section
+    // get the date from this task
+    // figure out how many tasks have this same date
+    // we can reuse the NSdictionary by makign the key the date and the value the number of tasks that ahve this date
 }
 
 #pragma mark - section headers
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UILabel *label = [[UILabel alloc] init];
+    label.text = [NSString stringWithFormat:@"section %ld",(long)section];;
+    // label.backgroundColor make it a transparent white
+    return label;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self getNumOfUniqueDates];
 }
 
 - (int)getNumOfUniqueDates {
-    NSMutableDictionary *uniqueDates = [[NSMutableDictionary alloc] init];
+    self.uniqueDates = [[NSMutableDictionary alloc] init];
+  
     for (int i = 0; i < self.arrayOfTasks.count; i++) {
         Task *task = self.arrayOfTasks[i];
-        NSDate *date = task.dueDate;
+        NSDate *dueDate = task.dueDate;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"MM/dd/YY";
+        NSString *date = [formatter stringFromDate:dueDate];
+   
         // Date has NOT been seen before
-        if ([uniqueDates objectForKey:date] == nil) {
-            [uniqueDates setObject:date forKey:date];
+        if ([self.uniqueDates objectForKey:date] == nil) {
+            [self.uniqueDates setObject:[NSNumber numberWithInt:1] forKey:date];
+        }
+        // Date has been seen - update the count
+        else {
+            NSString *currentCount = [self.uniqueDates objectForKey:date];
+            int count = [currentCount integerValue];
+            count++;
+            currentCount = [NSString stringWithFormat:@"%d", count];
+            [self.uniqueDates setObject:currentCount forKey:date];
         }
     }
-    return uniqueDates.count;
+    return self.uniqueDates.count;
 }
 
 /*
