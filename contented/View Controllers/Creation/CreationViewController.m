@@ -9,7 +9,7 @@
 #import "PushesViewController.h"
 #import "Task.h"
 
-@interface CreationViewController () <UITextViewDelegate>
+@interface CreationViewController () <UITextViewDelegate, PushesViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *ideaDumpField;
@@ -46,11 +46,11 @@
     self.datePicker.minimumDate = [NSDate date];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    self.titleField.text = @"";
-    self.ideaDumpField.text = @"";
-    self.taskImageView.image = nil;
-}
+//- (void)viewDidAppear:(BOOL)animated {
+//    self.titleField.text = @"";
+//    self.ideaDumpField.text = @"";
+//    self.taskImageView.image = nil;
+//}
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     if (textView.textColor == [UIColor lightGrayColor]) {
@@ -112,6 +112,12 @@
 
 - (IBAction)onTapStory:(id)sender {
     [self performSegueWithIdentifier:@"pushesSegue" sender:@"story"];
+}
+
+- (void)didEdit:(NSString *)taskTitle :(NSString *)taskIdeas :(UIImage *)taskImage {
+    self.titleField.text = taskTitle;
+    self.ideaDumpField.text = taskIdeas;
+    [self.taskImageView setImage:taskImage];
 }
 
 /* NOTE: AFTER IMPLEMENTING MODAL VIEW, WE WILL PROB WANT A clearAndGoHome method

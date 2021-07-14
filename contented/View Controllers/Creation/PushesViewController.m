@@ -108,9 +108,29 @@
             [self showStoryTip];
         }
         
-        // TODO: make a reset creation method - some delegate thing
+        // Reset the root view controller of this tab
+       // [self resetViews];
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        UITabBarController *rootVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+//        UIViewController *createVC = [storyboard instantiateViewControllerWithIdentifier:@"CreationViewController"];
+//        rootVC.selectedViewController = [rootVC.viewControllers objectAtIndex:1];
+//        rootVC.selectedViewController.view.window.rootViewController = createVC;
+        // TODO: set the rootViewController of the second tab to be rootVC
+        //rootVC.sele
+        //self.view.window.rootViewController = rootVC;
+        //[self.delegate didEdit:@"" :@"" :[UIImage imageNamed:@"appicon"]];
     }
 }
+
+//- (void)resetViews {
+//    UITabBarController *tabBarController = (UITabBarController *)self.view.window.rootViewController;
+//    for(UIViewController *foo in tabBarController.viewControllers) {
+//        if([foo isKindOfClass:[UINavigationController class]]) {
+//            UINavigationController *bar = (UINavigationController*)foo;
+//            [bar popToRootViewControllerAnimated:YES];
+//        }
+//    }
+//}
 
 - (void)showLongTip {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Successfully started task!💪"
@@ -161,6 +181,7 @@
 
 - (IBAction)onTapEdit:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+    //[self.delegate didEdit:self.titleLabel.text:self.ideaDumpLabel.text :self.taskImage];
 }
 
 /*

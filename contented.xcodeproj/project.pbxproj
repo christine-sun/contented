@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0CA7C1D718E51002B071823E /* libPods-contentedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2EBB57534F42E2C2E07F60F /* libPods-contentedTests.a */; };
+		5F3D0E9C269F4A2B007BDDAD /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E9B269F4A2B007BDDAD /* TabBarController.m */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
@@ -49,6 +50,8 @@
 /* Begin PBXFileReference section */
 		4C3E844BF73C2B7DD0AC5DA1 /* Pods-contentedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contentedTests.release.xcconfig"; path = "Target Support Files/Pods-contentedTests/Pods-contentedTests.release.xcconfig"; sourceTree = "<group>"; };
 		56E4324586275146CCBD5E9E /* Pods-contented-contentedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contented-contentedUITests.debug.xcconfig"; path = "Target Support Files/Pods-contented-contentedUITests/Pods-contented-contentedUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5F3D0E9A269F4A2B007BDDAD /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		5F3D0E9B269F4A2B007BDDAD /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		5FE7ECB4269CAB130040154E /* contented.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contented.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECB7269CAB130040154E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 				5FE7ECC5269CAB140040154E /* LaunchScreen.storyboard */,
 				5FE7ECC8269CAB140040154E /* Info.plist */,
 				5FE7ECC9269CAB140040154E /* main.m */,
+				5F3D0E9A269F4A2B007BDDAD /* TabBarController.h */,
+				5F3D0E9B269F4A2B007BDDAD /* TabBarController.m */,
 			);
 			path = contented;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 			files = (
 				5FE7ED11269E4D730040154E /* TaskCell.m in Sources */,
 				5FE7ECF0269CC78E0040154E /* Task.m in Sources */,
+				5F3D0E9C269F4A2B007BDDAD /* TabBarController.m in Sources */,
 				5FE7ECF6269CDC470040154E /* LoginViewController.m in Sources */,
 				5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */,
 				5FE7ECCA269CAB140040154E /* main.m in Sources */,

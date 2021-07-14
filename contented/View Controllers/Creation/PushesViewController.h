@@ -9,8 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol PushesViewControllerDelegate
+
+- (void) didEdit:(NSString*) taskTitle: (NSString*) taskIdeas: (UIImage*) taskImage;
+
+@end
+
 @interface PushesViewController : UIViewController
 
+@property (weak, nonatomic) id <PushesViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSString *taskTitle;
 @property (strong, nonatomic) NSString *ideaDump;

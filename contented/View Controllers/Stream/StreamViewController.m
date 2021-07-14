@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSArray *arrayOfTasks;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSMutableDictionary *uniqueDates;
+@property (strong, nonatomic) NSMutableArray *groupedTasks;
 
 @end
 
@@ -37,7 +38,7 @@
     // construct PFQuery
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query orderByAscending:@"dueDate"];
-
+    // TODO: query tasks only by THIS user PFUser currentUser
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
         if (tasks) {
@@ -54,6 +55,8 @@
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     cell.task = self.arrayOfTasks[indexPath.row];
     return cell;
+    
+    // create an array of arrays. to populate, traverse arrayoftasks and fill by order of date.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -62,6 +65,8 @@
     // get the first task from this section
     // get the date from this task
     // figure out how many tasks have this same date
+    //NSString *currentCount = [self.uniqueDates objectForKey:date];
+    //int count = [currentCount integerValue];
     // we can reuse the NSdictionary by makign the key the date and the value the number of tasks that ahve this date
 }
 
@@ -80,17 +85,40 @@
 
 - (int)getNumOfUniqueDates {
     self.uniqueDates = [[NSMutableDictionary alloc] init];
+    NSMutableArray *tasksWithSameDate = [[NSMutableArray alloc] init];
+    self.groupedTasks = [[NSMutableArray alloc] init];
+    [self.groupedTasks addObject:tasksWithSameDate];
+    int index = 0;
   
     for (int i = 0; i < self.arrayOfTasks.count; i++) {
         Task *task = self.arrayOfTasks[i];
-        NSDate *dueDate = task.dueDate;
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"MM/dd/YY";
-        NSString *date = [formatter stringFromDate:dueDate];
+        NSString *date = [self dateToString:task.dueDate];
+        // attempt start
+        NSArray *firstDate = [self.groupedTasks objectAtIndex:0];
+        if (firstDate.count != 0) {
+            Task *prevDateTask = [[self.groupedTasks objectAtIndex:index] objectAtIndex:0];
+            // this is not the first item int he array
+            NSString *prevDate = [self dateToString:prevDateTask.dueDate];
+            if ([date isEqualToString:prevDate]) {
+                [tasksWithSameDate addObject:task];
+            } else {
+                // different date - add this array, make a new array at next slot, and add task
+                [self.groupedTasks addObject:tasksWithSameDate];
+                index++;
+                tasksWithSameDate = [[NSMutableArray alloc] init];
+                [tasksWithSameDate addObject:task];
+            }
+        } else {
+            // this is the first item in the array
+            [tasksWithSameDate addObject:task];
+        }
+        
+        // attempt end
    
         // Date has NOT been seen before
         if ([self.uniqueDates objectForKey:date] == nil) {
-            [self.uniqueDates setObject:[NSNumber numberWithInt:1] forKey:date];
+            [self.uniqueDates setObject:[NSString stringWithFormat:@"%d", 1] forKey:date];
+//            [self.uniqueDates setObject:[NSNumber numberWithInt:1] forKey:date];
         }
         // Date has been seen - update the count
         else {
@@ -101,7 +129,15 @@
             [self.uniqueDates setObject:currentCount forKey:date];
         }
     }
+    NSLog(@"%@", self.groupedTasks);
+   // NSLog(@"%@", [self.uniqueDates objectForKey:@"07/14/21"]);
     return self.uniqueDates.count;
+}
+
+- (NSString*)dateToString:(NSDate*)date{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MM/dd/YY";
+    return [formatter stringFromDate:date];
 }
 
 /*
