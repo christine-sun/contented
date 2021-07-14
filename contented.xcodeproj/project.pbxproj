@@ -24,6 +24,7 @@
 		5FE7ED02269CDCAE0040154E /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ED01269CDCAE0040154E /* AnalyticsViewController.m */; };
 		5FE7ED06269DDC3E0040154E /* PushesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ED05269DDC3E0040154E /* PushesViewController.m */; };
 		5FE7ED0C269DDE6A0040154E /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ED0B269DDE6A0040154E /* Platform.m */; };
+		5FE7ED11269E4D730040154E /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ED10269E4D730040154E /* TaskCell.m */; };
 		6288572FF73EE8A17ECCC1F7 /* libPods-contented.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C27E15E3D007C9D2F3816017 /* libPods-contented.a */; };
 		CD19255A5C897F973FEEE29D /* libPods-contented-contentedUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E796C78EFA751CFA4C4176 /* libPods-contented-contentedUITests.a */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,8 @@
 		5FE7ED05269DDC3E0040154E /* PushesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushesViewController.m; sourceTree = "<group>"; };
 		5FE7ED0A269DDE6A0040154E /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		5FE7ED0B269DDE6A0040154E /* Platform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Platform.m; sourceTree = "<group>"; };
+		5FE7ED0F269E4D730040154E /* TaskCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
+		5FE7ED10269E4D730040154E /* TaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		81C7BB9B553845147F68A0BB /* Pods-contented.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contented.release.xcconfig"; path = "Target Support Files/Pods-contented/Pods-contented.release.xcconfig"; sourceTree = "<group>"; };
 		95E796C78EFA751CFA4C4176 /* libPods-contented-contentedUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-contented-contentedUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8D84AF807D8C493D51D35F /* Pods-contented.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contented.debug.xcconfig"; path = "Target Support Files/Pods-contented/Pods-contented.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 		5FE7ECB6269CAB130040154E /* contented */ = {
 			isa = PBXGroup;
 			children = (
+				5FE7ED0E269E4D560040154E /* Views */,
+				5FE7ED0D269E49CA0040154E /* API */,
 				5FE7ECED269CC73F0040154E /* Models */,
 				5FE7ECEC269CC7370040154E /* View Controllers */,
 				5FE7ECB7269CAB130040154E /* AppDelegate.h */,
@@ -211,6 +216,22 @@
 				5FE7ED05269DDC3E0040154E /* PushesViewController.m */,
 			);
 			path = Creation;
+			sourceTree = "<group>";
+		};
+		5FE7ED0D269E49CA0040154E /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5FE7ED0E269E4D560040154E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5FE7ED0F269E4D730040154E /* TaskCell.h */,
+				5FE7ED10269E4D730040154E /* TaskCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6049A9445812FF427895EB5A /* Frameworks */ = {
@@ -473,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FE7ED11269E4D730040154E /* TaskCell.m in Sources */,
 				5FE7ECF0269CC78E0040154E /* Task.m in Sources */,
 				5FE7ECF6269CDC470040154E /* LoginViewController.m in Sources */,
 				5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */,

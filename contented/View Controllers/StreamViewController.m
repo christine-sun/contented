@@ -6,8 +6,14 @@
 //
 
 #import "StreamViewController.h"
+#import "TaskCell.h"
+#import <Parse/Parse.h>
 
-@interface StreamViewController ()
+@interface StreamViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *arrayOfTasks;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -15,8 +21,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self fetchTasks];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchTasks) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
    
+}
+
+- (void)fetchTasks {
+    // construct PFQuery
+    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    [query orderByAscending:@"dueDate"];
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
+        if (tasks) {
+            self.arrayOfTasks = tasks;
+            [self.tableView reloadData];
+        }
+        [self.refreshControl endRefreshing];
+    }];
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    cell.task = self.arrayOfTasks[indexPath.row];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayOfTasks.count;
 }
 
 
