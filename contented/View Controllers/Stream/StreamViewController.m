@@ -75,6 +75,11 @@
         thisDatesTasks = self.groupedTasks[self.section];
         self.section++;
     }
+    
+    // Reset section count for future reuse
+    if (self.section == self.groupedTasks.count - 1) {
+        self.section = 0;
+    }
     return thisDatesTasks.count;
 }
 
@@ -90,8 +95,6 @@
     [weekday setDateFormat: @"EEEE MM/dd"];
     label.text = [weekday stringFromDate:dueDate];
     return label;
-    
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
