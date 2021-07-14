@@ -6,6 +6,7 @@
 //
 
 #import "StreamViewController.h"
+#import "DetailsViewController.h"
 #import "TaskCell.h"
 #import <Parse/Parse.h>
 
@@ -153,14 +154,22 @@
     return [formatter stringFromDate:date];
 }
 
-/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Task *task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"detailsSegue" sender:task];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqual:@"detailsSegue"]) {
+        DetailsViewController *detailsVC = [segue destinationViewController];
+        detailsVC.task = (Task*)sender;
+    }
 }
-*/
 
 @end
