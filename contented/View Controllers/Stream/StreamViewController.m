@@ -91,9 +91,18 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *label = [[UILabel alloc] init];
-    label.text = [NSString stringWithFormat:@"section %ld",(long)section];;
+    //label.text = [NSString stringWithFormat:@"section %ld",(long)section];;
     // label.backgroundColor make it a transparent white
+    
+    //TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    Task *task = [[self.groupedTasks objectAtIndex:section] objectAtIndex:0];
+    NSDate *dueDate = task.dueDate;
+    NSDateFormatter *weekday = [[NSDateFormatter alloc] init];
+    [weekday setDateFormat: @"EEEE MM/dd"];
+    label.text = [weekday stringFromDate:dueDate];
     return label;
+    
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
