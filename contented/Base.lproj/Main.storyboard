@@ -156,12 +156,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Spf-Qa-4NK">
+                                <rect key="frame" x="185" y="412" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" systemColor="systemTealColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d9z-2T-o1Y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Stream" id="LJD-tx-Kfr"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Spf-Qa-4NK" id="qQs-qP-FlV"/>
                         <outlet property="tableView" destination="KuB-cw-2rj" id="7Ql-yN-Zlq"/>
                         <segue destination="9Dy-wz-Tyn" kind="show" identifier="detailsSegue" id="4hj-LO-Wpx"/>
                     </connections>

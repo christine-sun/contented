@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableDictionary *uniqueDates;
 @property (strong, nonatomic) NSMutableArray *groupedTasks;
 @property (nonatomic) int section;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -27,7 +28,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.section = 0;
-    
+
     [self fetchTasks];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -37,6 +38,8 @@
 }
 
 - (void)fetchTasks {
+    [self.activityIndicator startAnimating];
+    
     // construct PFQuery
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query orderByAscending:@"dueDate"];
@@ -49,6 +52,7 @@
             [self.tableView reloadData];
         }
         [self.refreshControl endRefreshing];
+        [self.activityIndicator stopAnimating];
     }];
     
 }
@@ -63,11 +67,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-   // NSArray *tasksWithSameDate = self.groupedTasks[section];
-  //  Task *task = [tasksWithSameDate objectAtIndex:0];
-  //  NSLog(@"%@", task.dueDate);
-    
     NSArray *thisDatesTasks;
     int lastIndex = self.groupedTasks.count - 1;
     if (section == lastIndex) {
@@ -77,14 +76,6 @@
         self.section++;
     }
     return thisDatesTasks.count;
-  
-    // number of tasks with THIS section's date
-    // get the first task from this section
-    // get the date from this task
-    // figure out how many tasks have this same date
-    //NSString *currentCount = [self.uniqueDates objectForKey:date];
-    //int count = [currentCount integerValue];
-    // we can reuse the NSdictionary by makign the key the date and the value the number of tasks that ahve this date
 }
 
 #pragma mark - section headers
@@ -93,8 +84,6 @@
     UILabel *label = [[UILabel alloc] init];
     //label.text = [NSString stringWithFormat:@"section %ld",(long)section];;
     // label.backgroundColor make it a transparent white
-    
-    //TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     Task *task = [[self.groupedTasks objectAtIndex:section] objectAtIndex:0];
     NSDate *dueDate = task.dueDate;
     NSDateFormatter *weekday = [[NSDateFormatter alloc] init];
@@ -119,11 +108,10 @@
     for (int i = 0; i < self.arrayOfTasks.count; i++) {
         Task *task = self.arrayOfTasks[i];
         NSString *date = [self dateToString:task.dueDate];
-        // attempt start
         NSArray *firstDate = [self.groupedTasks objectAtIndex:0];
         if (firstDate.count != 0) {
+            // This is not hte first item in the array
             Task *prevDateTask = [[self.groupedTasks objectAtIndex:index] objectAtIndex:0];
-            // this is not the first item int he array
             NSString *prevDate = [self dateToString:prevDateTask.dueDate];
             if ([date isEqualToString:prevDate]) {
                 [tasksWithSameDate addObject:task];
@@ -131,7 +119,6 @@
                 // different date - add this array, make a new array at next slot, and add task
                 [self.groupedTasks setObject:tasksWithSameDate atIndexedSubscript:index];
                 index++;
-                //if (index == 1) index++;
                 tasksWithSameDate = [[NSMutableArray alloc] init];
                 [tasksWithSameDate addObject:task];
                 [self.groupedTasks setObject:tasksWithSameDate atIndexedSubscript:index];
@@ -140,13 +127,10 @@
             // this is the first item in the array
             [tasksWithSameDate addObject:task];
         }
-        
-        // attempt end
    
         // Date has NOT been seen before
         if ([self.uniqueDates objectForKey:date] == nil) {
             [self.uniqueDates setObject:[NSString stringWithFormat:@"%d", 1] forKey:date];
-//            [self.uniqueDates setObject:[NSNumber numberWithInt:1] forKey:date];
         }
         // Date has been seen - update the count
         else {
@@ -157,8 +141,6 @@
             [self.uniqueDates setObject:currentCount forKey:date];
         }
     }
-    NSLog(@"%@", self.groupedTasks);
-   // NSLog(@"%@", [self.uniqueDates objectForKey:@"07/14/21"]);
     return self.uniqueDates.count;
 }
 
@@ -178,6 +160,4 @@
 }
 */
 
-- (IBAction)titleField:(id)sender {
-}
 @end
