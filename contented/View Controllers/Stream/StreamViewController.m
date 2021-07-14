@@ -40,7 +40,8 @@
     // construct PFQuery
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query orderByAscending:@"dueDate"];
-    // TODO: query tasks only by THIS user PFUser currentUser
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
         if (tasks) {
