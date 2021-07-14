@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSMutableDictionary *uniqueDates;
 @property (strong, nonatomic) NSMutableArray *groupedTasks;
+@property (nonatomic) int section;
 
 @end
 
@@ -25,6 +26,7 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.section = 0;
     
     [self fetchTasks];
     
@@ -53,14 +55,28 @@
 #pragma mark - table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
-    cell.task = self.arrayOfTasks[indexPath.row];
+    cell.task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     return cell;
     
     // create an array of arrays. to populate, traverse arrayoftasks and fill by order of date.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.arrayOfTasks.count;
+    
+   // NSArray *tasksWithSameDate = self.groupedTasks[section];
+  //  Task *task = [tasksWithSameDate objectAtIndex:0];
+  //  NSLog(@"%@", task.dueDate);
+    
+    NSArray *thisDatesTasks;
+    int lastIndex = self.groupedTasks.count - 1;
+    if (section == lastIndex) {
+        thisDatesTasks = self.groupedTasks[lastIndex];
+    } else {
+        thisDatesTasks = self.groupedTasks[self.section];
+        self.section++;
+    }
+    return thisDatesTasks.count;
+  
     // number of tasks with THIS section's date
     // get the first task from this section
     // get the date from this task
@@ -103,10 +119,12 @@
                 [tasksWithSameDate addObject:task];
             } else {
                 // different date - add this array, make a new array at next slot, and add task
-                [self.groupedTasks addObject:tasksWithSameDate];
+                [self.groupedTasks setObject:tasksWithSameDate atIndexedSubscript:index];
                 index++;
+                //if (index == 1) index++;
                 tasksWithSameDate = [[NSMutableArray alloc] init];
                 [tasksWithSameDate addObject:task];
+                [self.groupedTasks setObject:tasksWithSameDate atIndexedSubscript:index];
             }
         } else {
             // this is the first item in the array
