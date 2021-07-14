@@ -120,6 +120,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F3D0E99269F28AE007BDDAD /* Stream */ = {
+			isa = PBXGroup;
+			children = (
+				5FE7ECF7269CDC6B0040154E /* StreamViewController.h */,
+				5FE7ECF8269CDC6B0040154E /* StreamViewController.m */,
+				5FE7ECFA269CDC7B0040154E /* DetailsViewController.h */,
+				5FE7ECFB269CDC7B0040154E /* DetailsViewController.m */,
+			);
+			path = Stream;
+			sourceTree = "<group>";
+		};
 		5FE7ECAB269CAB130040154E = {
 			isa = PBXGroup;
 			children = (
@@ -183,13 +194,10 @@
 		5FE7ECEC269CC7370040154E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5F3D0E99269F28AE007BDDAD /* Stream */,
 				5FE7ED03269DD6440040154E /* Creation */,
 				5FE7ECF4269CDC470040154E /* LoginViewController.h */,
 				5FE7ECF5269CDC470040154E /* LoginViewController.m */,
-				5FE7ECF7269CDC6B0040154E /* StreamViewController.h */,
-				5FE7ECF8269CDC6B0040154E /* StreamViewController.m */,
-				5FE7ECFA269CDC7B0040154E /* DetailsViewController.h */,
-				5FE7ECFB269CDC7B0040154E /* DetailsViewController.m */,
 				5FE7ED00269CDCAE0040154E /* AnalyticsViewController.h */,
 				5FE7ED01269CDCAE0040154E /* AnalyticsViewController.m */,
 			);

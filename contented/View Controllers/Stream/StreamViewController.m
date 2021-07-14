@@ -48,6 +48,7 @@
     
 }
 
+#pragma mark - table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     cell.task = self.arrayOfTasks[indexPath.row];
@@ -58,6 +59,23 @@
     return self.arrayOfTasks.count;
 }
 
+#pragma mark - section headers
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self getNumOfUniqueDates];
+}
+
+- (int)getNumOfUniqueDates {
+    NSMutableDictionary *uniqueDates = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i < self.arrayOfTasks.count; i++) {
+        Task *task = self.arrayOfTasks[i];
+        NSDate *date = task.dueDate;
+        // Date has NOT been seen before
+        if ([uniqueDates objectForKey:date] == nil) {
+            [uniqueDates setObject:date forKey:date];
+        }
+    }
+    return uniqueDates.count;
+}
 
 /*
 #pragma mark - Navigation
