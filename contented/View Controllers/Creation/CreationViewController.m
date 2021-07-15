@@ -40,17 +40,26 @@
     self.imagePickerVC.delegate = self;
     self.imagePickerVC.allowsEditing = YES;
     
+    self.titleField.text = @"";
     self.ideaDumpField.delegate = self;
     self.ideaDumpField.text = @"toss your idea dump here! let those creative juices flow🎨";
     self.ideaDumpField.textColor = [UIColor lightGrayColor];
     self.datePicker.minimumDate = [NSDate date];
+    self.datePicker.date = [NSDate date];
 }
 
-//- (void)viewDidAppear:(BOOL)animated {
-//    self.titleField.text = @"";
-//    self.ideaDumpField.text = @"";
-//    self.taskImageView.image = nil;
-//}
+- (void)viewDidAppear:(BOOL)animated {
+    // If this task already exists, clear the text fields
+    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    [query whereKey:@"title" equalTo:self.titleField.text];
+    [query whereKey:@"ideaDump" equalTo:self.ideaDumpField.text];
+    [query whereKey:@"dueDate" equalTo:self.datePicker.date];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+      if (objects.count > 0) {
+        [self viewDidLoad];
+      }
+    }];
+}
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     if (textView.textColor == [UIColor lightGrayColor]) {
