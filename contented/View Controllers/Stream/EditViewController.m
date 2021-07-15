@@ -31,6 +31,11 @@
     [self.taskImageView loadInBackground];
     [self.taskImageView.layer setCornerRadius:15];
     self.updatedPlatforms = self.task.platforms;
+    
+    // Dismiss keyboard outside of text fields
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+    
     // Configure available platforms based on task type
     NSArray *platforms = [PlatformUtilities getPlatformsForType:self.task.type];
     
@@ -72,6 +77,17 @@
 }
 
 - (IBAction)onTapUpdate:(id)sender {
+    // Update this task's dictionary to reflect updated platform statuses
+    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    [query getObjectInBackgroundWithId:self.task.objectId
+        block:^(PFObject *task, NSError *error) {
+            task[@"title"] = self.titleField.text;
+            task[@"ideaDump"] = self.ideaDumpField.text;
+            task[@"image"] = self.taskImageView.file;
+            task[@"dueDate"] = self.datePicker.date;
+            task[@"platforms"] = self.updatedPlatforms;
+            [task saveInBackground];
+    }];
 }
 
 /*
