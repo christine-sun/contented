@@ -10,6 +10,7 @@
 		0CA7C1D718E51002B071823E /* libPods-contentedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2EBB57534F42E2C2E07F60F /* libPods-contentedTests.a */; };
 		5F3D0E9C269F4A2B007BDDAD /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E9B269F4A2B007BDDAD /* TabBarController.m */; };
 		5F3D0EA526A0AD21007BDDAD /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0EA426A0AD21007BDDAD /* EditViewController.m */; };
+		5F3D0EAE26A0B2CE007BDDAD /* PlatformUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0EAD26A0B2CE007BDDAD /* PlatformUtilities.m */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
@@ -55,6 +56,8 @@
 		5F3D0E9B269F4A2B007BDDAD /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		5F3D0EA326A0AD21007BDDAD /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		5F3D0EA426A0AD21007BDDAD /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		5F3D0EAC26A0B2CE007BDDAD /* PlatformUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformUtilities.h; sourceTree = "<group>"; };
+		5F3D0EAD26A0B2CE007BDDAD /* PlatformUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformUtilities.m; sourceTree = "<group>"; };
 		5FE7ECB4269CAB130040154E /* contented.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contented.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECB7269CAB130040154E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -139,6 +142,15 @@
 			path = Stream;
 			sourceTree = "<group>";
 		};
+		5F3D0EA626A0B0F4007BDDAD /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5F3D0EAC26A0B2CE007BDDAD /* PlatformUtilities.h */,
+				5F3D0EAD26A0B2CE007BDDAD /* PlatformUtilities.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		5FE7ECAB269CAB130040154E = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +176,7 @@
 		5FE7ECB6269CAB130040154E /* contented */ = {
 			isa = PBXGroup;
 			children = (
+				5F3D0EA626A0B0F4007BDDAD /* Util */,
 				5FE7ED0E269E4D560040154E /* Views */,
 				5FE7ED0D269E49CA0040154E /* API */,
 				5FE7ECED269CC73F0040154E /* Models */,
@@ -517,6 +530,7 @@
 				5F3D0E9C269F4A2B007BDDAD /* TabBarController.m in Sources */,
 				5FE7ECF6269CDC470040154E /* LoginViewController.m in Sources */,
 				5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */,
+				5F3D0EAE26A0B2CE007BDDAD /* PlatformUtilities.m in Sources */,
 				5FE7ECCA269CAB140040154E /* main.m in Sources */,
 				5FE7ED0C269DDE6A0040154E /* Platform.m in Sources */,
 				5FE7ED06269DDC3E0040154E /* PushesViewController.m in Sources */,

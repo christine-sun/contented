@@ -9,6 +9,7 @@
 #import "CreationViewController.h"
 #import "Platform.h"
 #import "Task.h"
+#import "PlatformUtilities.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface PushesViewController ()
@@ -38,13 +39,7 @@
     [self.taskImageView.layer setCornerRadius:15];
     
     // Configure available platforms based on task type
-    if ([self.type isEqualToString:@"long"]) {
-        self.platforms = @[@"YouTube", @"Instagram"];
-    } else if ([self.type isEqualToString:@"short"]) {
-        self.platforms = @[@"YouTube", @"Instagram", @"TikTok"];
-    } else {
-        self.platforms = @[@"YouTube", @"Instagram", @"Snapchat", @"Twitter"];
-    }
+    self.platforms = [PlatformUtilities getPlatformsForType:self.type];
     
     // Display buttons in stack view for all platforms
     for (int i = 0; i < self.platforms.count; i++) {
