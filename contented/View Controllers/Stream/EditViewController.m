@@ -6,8 +6,14 @@
 //
 
 #import "EditViewController.h"
+#import <Parse/PFImageView.h>
 
 @interface EditViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *titleField;
+@property (weak, nonatomic) IBOutlet UITextView *ideaDumpField;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet PFImageView *taskImageView;
+@property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
 
 @end
 
@@ -15,7 +21,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.titleField.text = self.task.title;
+    self.ideaDumpField.text = self.task.ideaDump;
+    self.datePicker.date = self.task.dueDate;
+    self.taskImageView.file = self.task[@"image"];
+    [self.taskImageView loadInBackground];
+}
+
+- (IBAction)onTapXButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

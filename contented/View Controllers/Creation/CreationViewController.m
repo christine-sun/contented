@@ -139,7 +139,6 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqual:@"pushesSegue"]) {
         PushesViewController *pushesVC = [segue destinationViewController];
-        NSLog(@"%@", self.datePicker.date);
         pushesVC.type = sender;
         pushesVC.taskTitle = self.titleField.text;
         pushesVC.ideaDump = self.ideaDumpField.text;

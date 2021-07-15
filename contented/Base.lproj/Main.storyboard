@@ -276,7 +276,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VI0-zk-bCi">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="VI0-zk-bCi" customClass="PFImageView">
                                 <rect key="frame" x="16" y="91" width="77" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -293,21 +293,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6cp-Rc-Zca">
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6cp-Rc-Zca">
                                 <rect key="frame" x="16" y="259" width="358" height="247"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yq-Gm-156">
-                                <rect key="frame" x="0.0" y="6" width="30" height="30"/>
+                                <rect key="frame" x="3" y="4" width="30" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="onTapXButton:" destination="CaF-hu-crN" eventType="touchUpInside" id="zqx-2I-myE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aaf-7h-fCy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="3Wi-FW-MJY"/>
+                    <connections>
+                        <outlet property="buttonsStack" destination="6cp-Rc-Zca" id="O5J-ZI-Xs9"/>
+                        <outlet property="datePicker" destination="asw-bd-Qtx" id="ey2-8G-L5d"/>
+                        <outlet property="ideaDumpField" destination="RP2-bV-De6" id="GJE-iK-eOm"/>
+                        <outlet property="taskImageView" destination="VI0-zk-bCi" id="sX5-LW-GcL"/>
+                        <outlet property="titleField" destination="Xfr-NO-hLS" id="rv2-dy-fvA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="942-9x-bHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -629,6 +640,7 @@
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="placeholder" width="360" height="360"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
