@@ -92,6 +92,8 @@
             task[@"dueDate"] = self.datePicker.date;
             task[@"platforms"] = self.updatedPlatforms;
             [task saveInBackground];
+        
+            [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
