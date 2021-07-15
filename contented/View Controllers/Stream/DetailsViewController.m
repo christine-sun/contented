@@ -6,6 +6,7 @@
 //
 
 #import "DetailsViewController.h"
+#import "PlatformButton.h"
 
 @interface DetailsViewController ()
 
@@ -36,22 +37,24 @@
  
     [platforms enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
         // key is social media platform, obj is TRUE or FALSE
-        UIButton *button = [[UIButton alloc] init];
-        [button setTitle:key forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont boldSystemFontOfSize:20];
-        [button.heightAnchor constraintEqualToConstant:60].active = YES;
+        PlatformButton *button = [[PlatformButton alloc] init];
         
-        if ([obj integerValue] == 0) {
+        [button setupWithTitleAndState:key :(int)[obj integerValue]];
+//        [button setTitle:key forState:UIControlStateNormal];
+//        button.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+//        [button.heightAnchor constraintEqualToConstant:60].active = YES;
+        
+//        if ([obj integerValue] == 0) {
             // The task has not been completed yet
-            [button setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
-            [button.layer setCornerRadius:10];
-            button.layer.borderWidth = 2.0f;
-            button.layer.borderColor = [UIColor systemTealColor].CGColor;
-        } else {
+//            [button setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
+//            [button.layer setCornerRadius:10];
+//            button.layer.borderWidth = 2.0f;
+//            button.layer.borderColor = [UIColor systemTealColor].CGColor;
+//        } else {
             // The task has been completed
-            button.backgroundColor = [UIColor systemTealColor];
-            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        }
+//            button.backgroundColor = [UIColor systemTealColor];
+//            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        }
             
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
@@ -75,7 +78,7 @@
         [platforms setValue:@NO forKey:title];
     }
     sender.selected = !sender.selected;
-    
+    NSLog(@"%@", platforms);
     // Update this task's dictionary to reflect updated platform statuses
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query getObjectInBackgroundWithId:self.task.objectId

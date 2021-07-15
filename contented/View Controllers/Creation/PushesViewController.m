@@ -11,6 +11,7 @@
 #import "Task.h"
 #import "PlatformUtilities.h"
 #import <QuartzCore/QuartzCore.h>
+#import "PlatformButton.h"
 
 @interface PushesViewController ()
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
@@ -43,13 +44,14 @@
     
     // Display buttons in stack view for all platforms
     for (int i = 0; i < self.platforms.count; i++) {
-        UIButton *button = [[UIButton alloc] init];
-        [button setTitle:self.platforms[i] forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont boldSystemFontOfSize:20];
-        [button setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
-        [button.layer setCornerRadius:10];
-        button.layer.borderWidth = 2.0f;
-        button.layer.borderColor = [UIColor systemTealColor].CGColor;
+        PlatformButton *button = [[PlatformButton alloc] init];
+        [button setupWithTitleAndState:self.platforms[i]:0];
+//        [button setTitle:self.platforms[i] forState:UIControlStateNormal];
+//        button.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+//        [button setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
+//        [button.layer setCornerRadius:10];
+//        button.layer.borderWidth = 2.0f;
+//        button.layer.borderColor = [UIColor systemTealColor].CGColor;
 
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
