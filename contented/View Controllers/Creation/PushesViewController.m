@@ -97,7 +97,12 @@
             UIButton *thisButton = (UIButton*)buttons[i];
             [selectedPlatforms setObject:@(thisButton.selected) forKey:thisButton.titleLabel.text];
         }
+        
         [Task postTask:self.taskTitle withDescription:self.ideaDump withDate:self.date withImage:self.taskImage withPlatforms:selectedPlatforms ofType:self.type withCompletion:nil];
+        
+       // [self.navigationController popViewControllerAnimated:NO];
+        
+        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
         
         // Provide tips for user after posting
         if ([self.type isEqualToString:@"long"]) {
@@ -107,8 +112,11 @@
         } else {
             [self showStoryTip];
         }
+        [self.navigationController popToRootViewControllerAnimated:NO];
         
         // Reset the root view controller of this tab
+        //[self.navigationController popToRootViewControllerAnimated:YES];
+        //self.tabBarController.selectedIndex = 0;
        // [self resetViews];
 //        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //        UITabBarController *rootVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
@@ -116,6 +124,7 @@
 //        rootVC.selectedViewController = [rootVC.viewControllers objectAtIndex:1];
 //        rootVC.selectedViewController.view.window.rootViewController = createVC;
         // TODO: set the rootViewController of the second tab to be rootVC
+        
         //rootVC.sele
         //self.view.window.rootViewController = rootVC;
         //[self.delegate didEdit:@"" :@"" :[UIImage imageNamed:@"appicon"]];
@@ -141,14 +150,18 @@
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok!"
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             //[self presentViewController:self.creationVC animated:YES completion:nil];
-            [self.navigationController popViewControllerAnimated:YES];
+//            [self.navigationController popViewControllerAnimated:YES];
+       // [self.navigationController popToRootViewControllerAnimated:NO];
+        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
+        [self.navigationController popToRootViewControllerAnimated:NO];
         }];
     [alert addAction:okAction];
     
     // Go to stream if user doesn't want to add another task
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"later"
         style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+            //TODO: self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+        [self.navigationController popToRootViewControllerAnimated:NO];
         }];
     [alert addAction:cancelAction];
     
@@ -161,7 +174,8 @@
         preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"got it!"
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+            //TODO: self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+        [self.navigationController popToRootViewControllerAnimated:NO];
         }];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
@@ -173,7 +187,8 @@
         preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"got it!"
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+            //TODO:self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+        [self.navigationController popToRootViewControllerAnimated:NO];
         }];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
