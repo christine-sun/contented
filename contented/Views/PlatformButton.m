@@ -25,12 +25,10 @@
     self.layer.borderWidth = 2.0f;
     self.layer.borderColor = [UIColor systemTealColor].CGColor;
     if (state == 0) {
-        // Task has not been completed yet
+        // Blue title white background
         [self setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
-        
-        
     } else {
-        // Task has been completed
+        // White title blue background
         self.backgroundColor = [UIColor systemTealColor];
         [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }

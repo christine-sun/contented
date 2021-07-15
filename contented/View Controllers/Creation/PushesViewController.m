@@ -15,7 +15,6 @@
 
 @interface PushesViewController ()
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
-@property (strong, nonatomic) NSArray *platforms;
 @property (nonatomic) CGFloat *selectedCount;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ideaDumpLabel;
@@ -40,12 +39,12 @@
     [self.taskImageView.layer setCornerRadius:15];
     
     // Configure available platforms based on task type
-    self.platforms = [PlatformUtilities getPlatformsForType:self.type];
+    NSArray *platforms = [PlatformUtilities getPlatformsForType:self.type];
     
     // Display buttons in stack view for all platforms
-    for (int i = 0; i < self.platforms.count; i++) {
+    for (int i = 0; i < platforms.count; i++) {
         PlatformButton *button = [[PlatformButton alloc] init];
-        [button setupWithTitleAndState:self.platforms[i]:0];
+        [button setupWithTitleAndState:platforms[i]:0];
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
     }
