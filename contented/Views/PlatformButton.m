@@ -34,23 +34,6 @@
         self.backgroundColor = [UIColor systemTealColor];
         [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
-//    [self addTarget:self action: @selector(onTap) forControlEvents:UIControlEventTouchUpInside];
 }
-
-//-(void)onTap{
-//    // Platform becomes selected
-//    if(!self.selected) {
-//        self.backgroundColor = [UIColor systemTealColor];
-//        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//
-//    // Platform becomes unselected
-//    } else {
-//        self.backgroundColor = [UIColor whiteColor];
-//        [self setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
-//    }
-//
-//    self.selected = !self.selected;
-//
-//}
 
 @end

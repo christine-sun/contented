@@ -32,30 +32,11 @@
     self.dateLabel.text = [preText stringByAppendingString:[weekday stringFromDate:dueDate]];
     
     // Display buttons in stack view for corresponding platforms
-    //[self.buttonsStack.heightAnchor constraintEqualToConstant:80].active = YES;
     NSDictionary *platforms = self.task.platforms;
- 
     [platforms enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
         // key is social media platform, obj is TRUE or FALSE
         PlatformButton *button = [[PlatformButton alloc] init];
-        
         [button setupWithTitleAndState:key :(int)[obj integerValue]];
-//        [button setTitle:key forState:UIControlStateNormal];
-//        button.titleLabel.font = [UIFont boldSystemFontOfSize:20];
-//        [button.heightAnchor constraintEqualToConstant:60].active = YES;
-        
-//        if ([obj integerValue] == 0) {
-            // The task has not been completed yet
-//            [button setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
-//            [button.layer setCornerRadius:10];
-//            button.layer.borderWidth = 2.0f;
-//            button.layer.borderColor = [UIColor systemTealColor].CGColor;
-//        } else {
-            // The task has been completed
-//            button.backgroundColor = [UIColor systemTealColor];
-//            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        }
-            
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
     }];
