@@ -52,6 +52,11 @@
     
 }
 
+-(void)dismissKeyboard {
+    [self.titleField resignFirstResponder];
+    [self.ideaDumpField resignFirstResponder];
+}
+
 - (void)onTapPlatformButton:(UIButton*)sender {
     NSString *title = sender.titleLabel.text;
     
