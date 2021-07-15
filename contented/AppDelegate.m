@@ -51,11 +51,6 @@
     
     return YES;
 }
-//
-//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-//    //if (viewController.)
-//    return true;
-//}
 
 #pragma mark - UISceneSession lifecycle
 

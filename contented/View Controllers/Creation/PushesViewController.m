@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *taskImageView;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
-//@property (strong, nonatomic) UIViewController *creationVC;
 
 @end
 
@@ -100,8 +99,6 @@
         
         [Task postTask:self.taskTitle withDescription:self.ideaDump withDate:self.date withImage:self.taskImage withPlatforms:selectedPlatforms ofType:self.type withCompletion:nil];
         
-       // [self.navigationController popViewControllerAnimated:NO];
-        
         self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
         
         // Provide tips for user after posting
@@ -113,33 +110,8 @@
             [self showStoryTip];
         }
         [self.navigationController popToRootViewControllerAnimated:NO];
-        
-        // Reset the root view controller of this tab
-        //[self.navigationController popToRootViewControllerAnimated:YES];
-        //self.tabBarController.selectedIndex = 0;
-       // [self resetViews];
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        UITabBarController *rootVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-//        UIViewController *createVC = [storyboard instantiateViewControllerWithIdentifier:@"CreationViewController"];
-//        rootVC.selectedViewController = [rootVC.viewControllers objectAtIndex:1];
-//        rootVC.selectedViewController.view.window.rootViewController = createVC;
-        // TODO: set the rootViewController of the second tab to be rootVC
-        
-        //rootVC.sele
-        //self.view.window.rootViewController = rootVC;
-        //[self.delegate didEdit:@"" :@"" :[UIImage imageNamed:@"appicon"]];
     }
 }
-
-//- (void)resetViews {
-//    UITabBarController *tabBarController = (UITabBarController *)self.view.window.rootViewController;
-//    for(UIViewController *foo in tabBarController.viewControllers) {
-//        if([foo isKindOfClass:[UINavigationController class]]) {
-//            UINavigationController *bar = (UINavigationController*)foo;
-//            [bar popToRootViewControllerAnimated:YES];
-//        }
-//    }
-//}
 
 - (void)showLongTip {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Successfully started task!💪"
@@ -149,19 +121,15 @@
     // Go to creation if user wants to add another task
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok!"
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            //[self presentViewController:self.creationVC animated:YES completion:nil];
-//            [self.navigationController popViewControllerAnimated:YES];
-       // [self.navigationController popToRootViewControllerAnimated:NO];
-        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
-        [self.navigationController popToRootViewControllerAnimated:NO];
+            self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }];
     [alert addAction:okAction];
     
     // Go to stream if user doesn't want to add another task
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"later"
         style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //TODO: self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
-        [self.navigationController popToRootViewControllerAnimated:NO];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }];
     [alert addAction:cancelAction];
     
@@ -174,8 +142,7 @@
         preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"got it!"
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            //TODO: self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
-        [self.navigationController popToRootViewControllerAnimated:NO];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
@@ -187,8 +154,7 @@
         preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"got it!"
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            //TODO:self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
-        [self.navigationController popToRootViewControllerAnimated:NO];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
@@ -196,7 +162,6 @@
 
 - (IBAction)onTapEdit:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-    //[self.delegate didEdit:self.titleLabel.text:self.ideaDumpLabel.text :self.taskImage];
 }
 
 /*

@@ -9,7 +9,7 @@
 #import "PushesViewController.h"
 #import "Task.h"
 
-@interface CreationViewController () <UITextViewDelegate, PushesViewControllerDelegate>
+@interface CreationViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *ideaDumpField;
@@ -40,12 +40,14 @@
     self.imagePickerVC.delegate = self;
     self.imagePickerVC.allowsEditing = YES;
     
+    // Default values
     self.titleField.text = @"";
     self.ideaDumpField.delegate = self;
     self.ideaDumpField.text = @"toss your idea dump here! let those creative juices flow🎨";
     self.ideaDumpField.textColor = [UIColor lightGrayColor];
     self.datePicker.minimumDate = [NSDate date];
     self.datePicker.date = [NSDate date];
+    [self.taskImageView setImage:[UIImage imageNamed:@"placeholder"]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -128,17 +130,6 @@
     self.ideaDumpField.text = taskIdeas;
     [self.taskImageView setImage:taskImage];
 }
-
-/* NOTE: AFTER IMPLEMENTING MODAL VIEW, WE WILL PROB WANT A clearAndGoHome method
- based off of
- - (void)clearAndGoHome {
-     self.captionText.text = @"";
-     self.imageView.image = nil;
-     
-     self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
- }
-
- */
 
 #pragma mark - Navigation
 
