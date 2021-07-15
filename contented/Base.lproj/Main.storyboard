@@ -215,6 +215,9 @@
                                 <rect key="frame" x="35" y="224" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="edit"/>
+                                <connections>
+                                    <action selector="onTapEdit:" destination="9Dy-wz-Tyn" eventType="touchUpInside" id="G11-jA-hDh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S8I-wb-Q4A"/>
@@ -244,11 +247,28 @@
                         <outlet property="dateLabel" destination="jJd-77-y2C" id="vmf-9l-rou"/>
                         <outlet property="ideaDumpLabel" destination="edt-BT-pzL" id="RrQ-Sc-jbw"/>
                         <outlet property="titleLabel" destination="dTg-fS-5qb" id="JUw-cV-iju"/>
+                        <segue destination="CaF-hu-crN" kind="presentation" identifier="editSegue" modalPresentationStyle="automatic" id="8ux-Qg-50b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUK-Ts-Oya" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2000" y="819.66824644549763"/>
+            <point key="canvasLocation" x="2000" y="781"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="gw6-wD-wAx">
+            <objects>
+                <viewController id="CaF-hu-crN" customClass="EditViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B8M-cW-AVX">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="aaf-7h-fCy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3Wi-FW-MJY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="942-9x-bHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2000" y="1484"/>
         </scene>
         <!--Pushes View Controller-->
         <scene sceneID="A8d-P5-G7V">

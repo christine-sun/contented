@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
+
 @end
 
 @implementation DetailsViewController
@@ -83,6 +84,12 @@
             [task saveInBackground];
     }];
 }
+
+- (IBAction)onTapEdit:(id)sender {
+    [self performSegueWithIdentifier:@"editSegue" sender:nil];
+}
+
+
 /*
 #pragma mark - Navigation
 
