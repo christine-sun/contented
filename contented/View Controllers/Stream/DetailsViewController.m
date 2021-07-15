@@ -67,6 +67,13 @@
     NSString *title = sender.titleLabel.text;
     
     // Platform becomes selected - user has completed this push
+    NSLog(@"1 %d", sender.selected);
+    NSLog(@"2 %@", [platforms objectForKey:title]);
+    NSString *state = [platforms objectForKey:title];
+    int prevState = [state intValue];
+    if (prevState == 1 && !sender.selected) {
+        sender.selected = !sender.selected;
+    }
     if(!sender.selected) {
         sender.backgroundColor = [UIColor systemTealColor];
         [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
