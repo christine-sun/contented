@@ -59,16 +59,30 @@
 }
 
 - (void)onTapPlatformButton:(UIButton*)sender {
-    // Platform becomes selected
+    NSDictionary *platforms = self.task.platforms;
+    NSString *title = sender.titleLabel.text;
+    
+    // Platform becomes selected - user has completed this push
     if(!sender.selected) {
         sender.backgroundColor = [UIColor systemTealColor];
         [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    // Platform becomes unselected
+        [platforms setValue:@YES forKey:title];
+    // Platform becomes unselected - user uncompleted this push
     } else {
         sender.backgroundColor = [UIColor whiteColor];
         [sender setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
+        [platforms setValue:@NO forKey:title];
     }
+    
     sender.selected = !sender.selected;
+    NSLog(@"%@", platforms);
+    // Update this task's dictionary to reflect updated platform statuses
+    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    [query getObjectInBackgroundWithId:self.task.objectId
+        block:^(PFObject *task, NSError *error) {
+            task[@"platforms"] = platforms;
+            [task saveInBackground];
+    }];
 }
 /*
 #pragma mark - Navigation
