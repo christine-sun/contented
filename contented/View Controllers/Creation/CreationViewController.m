@@ -121,8 +121,8 @@
     [self performSegueWithIdentifier:@"pushesSegue" sender:@"short"];
 }
 
-- (IBAction)onTapStory:(id)sender {
-    [self performSegueWithIdentifier:@"pushesSegue" sender:@"story"];
+- (IBAction)onTapPost:(id)sender {
+    [self performSegueWithIdentifier:@"pushesSegue" sender:@"post"];
 }
 
 - (void)didEdit:(NSString *)taskTitle :(NSString *)taskIdeas :(UIImage *)taskImage {

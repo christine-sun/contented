@@ -89,13 +89,6 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     } else {
-        // Populate selectedPlatforms based on platform selected states
-//        NSArray *buttons = self.buttonsStack.arrangedSubviews;
-//        NSMutableDictionary *selectedPlatforms = [[NSMutableDictionary alloc] init];
-//        for (int i = 0; i < buttons.count; i++) {
-//            UIButton *thisButton = (UIButton*)buttons[i];
-//            [selectedPlatforms setObject:@(thisButton.selected) forKey:thisButton.titleLabel.text];
-//        }
         
         // Populate selectedPlatforms with the selected platforms
         // All platforms have value of FALSE because they are not completed yet

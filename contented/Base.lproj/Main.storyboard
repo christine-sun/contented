@@ -313,11 +313,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdH-5o-Yuj">
-                                <rect key="frame" x="76" y="668" width="35" height="30"/>
+                                <rect key="frame" x="78" y="668" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="story"/>
+                                <state key="normal" title="post"/>
                                 <connections>
-                                    <action selector="onTapStory:" destination="2Eq-TW-wGl" eventType="touchUpInside" id="2t5-RK-9yX"/>
+                                    <action selector="onTapPost:" destination="2Eq-TW-wGl" eventType="touchUpInside" id="2t5-RK-9yX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh8-Ga-0gl">
