@@ -90,11 +90,22 @@
         
     } else {
         // Populate selectedPlatforms based on platform selected states
+//        NSArray *buttons = self.buttonsStack.arrangedSubviews;
+//        NSMutableDictionary *selectedPlatforms = [[NSMutableDictionary alloc] init];
+//        for (int i = 0; i < buttons.count; i++) {
+//            UIButton *thisButton = (UIButton*)buttons[i];
+//            [selectedPlatforms setObject:@(thisButton.selected) forKey:thisButton.titleLabel.text];
+//        }
+        
+        // Populate selectedPlatforms with the selected platforms
+        // All platforms have value of FALSE because they are not completed yet
         NSArray *buttons = self.buttonsStack.arrangedSubviews;
         NSMutableDictionary *selectedPlatforms = [[NSMutableDictionary alloc] init];
         for (int i = 0; i < buttons.count; i++) {
             UIButton *thisButton = (UIButton*)buttons[i];
-            [selectedPlatforms setObject:@(thisButton.selected) forKey:thisButton.titleLabel.text];
+            if (thisButton.selected) {
+                [selectedPlatforms setObject:@NO forKey:thisButton.titleLabel.text];
+            }
         }
         
         [Task postTask:self.taskTitle withDescription:self.ideaDump withDate:self.date withImage:self.taskImage withPlatforms:selectedPlatforms ofType:self.type withCompletion:nil];

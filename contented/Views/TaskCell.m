@@ -37,7 +37,7 @@
         // key is social media platform, obj is TRUE or FALSE
         NSString *thisValue = obj;
         NSInteger valueInt = [thisValue integerValue];
-        if (valueInt == 1) {
+        if (valueInt == 0) {
             UIImage *image = [self findImage:key];
             UIImageView *currentView = [imageViews objectAtIndex:index];
             [currentView setImage:image];

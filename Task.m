@@ -32,7 +32,7 @@
     Task *task = [Task new];
     task.title = title;
     task.ideaDump = ideaDump;
-    task.dueDate = date; // TODO: Display error message if this or title is null
+    task.dueDate = date; 
     task.image = [self getPFFileFromImage:image];
     task.user = [PFUser currentUser];
     task.platforms = platforms;
