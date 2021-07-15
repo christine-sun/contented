@@ -197,7 +197,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pushes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5x-az-IPA">
-                                <rect key="frame" x="34.999999999999993" y="229" width="112.33333333333331" height="43"/>
+                                <rect key="frame" x="34.999999999999993" y="250" width="112.33333333333331" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -211,6 +211,11 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTu-NQ-uAb">
+                                <rect key="frame" x="35" y="224" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="edit"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S8I-wb-Q4A"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -219,15 +224,18 @@
                             <constraint firstItem="jJd-77-y2C" firstAttribute="leading" secondItem="edt-BT-pzL" secondAttribute="leading" id="8At-aU-LpH"/>
                             <constraint firstItem="jJd-77-y2C" firstAttribute="top" secondItem="edt-BT-pzL" secondAttribute="bottom" constant="13" id="BKG-qG-a0m"/>
                             <constraint firstItem="dTg-fS-5qb" firstAttribute="leading" secondItem="S8I-wb-Q4A" secondAttribute="leading" constant="35" id="DkX-Ir-x64"/>
+                            <constraint firstItem="w5x-az-IPA" firstAttribute="leading" secondItem="qTu-NQ-uAb" secondAttribute="leading" id="FB7-8A-QfW"/>
                             <constraint firstItem="w5x-az-IPA" firstAttribute="leading" secondItem="dTg-fS-5qb" secondAttribute="leading" id="Lc4-7v-Bu5"/>
                             <constraint firstItem="D98-ud-MCd" firstAttribute="leading" secondItem="w5x-az-IPA" secondAttribute="leading" id="U4F-FL-UbV"/>
                             <constraint firstItem="D98-ud-MCd" firstAttribute="top" secondItem="w5x-az-IPA" secondAttribute="bottom" constant="16" id="WxD-dL-ugO"/>
                             <constraint firstItem="edt-BT-pzL" firstAttribute="leading" secondItem="dTg-fS-5qb" secondAttribute="leading" id="cds-48-t3w"/>
                             <constraint firstItem="S8I-wb-Q4A" firstAttribute="trailing" secondItem="dTg-fS-5qb" secondAttribute="trailing" constant="35" id="cxg-7L-CnR"/>
                             <constraint firstAttribute="trailing" secondItem="D98-ud-MCd" secondAttribute="trailing" constant="35" id="e6T-Hn-lG9"/>
-                            <constraint firstItem="w5x-az-IPA" firstAttribute="top" secondItem="jJd-77-y2C" secondAttribute="bottom" constant="8" symbolic="YES" id="fSl-co-l0P"/>
+                            <constraint firstItem="w5x-az-IPA" firstAttribute="top" secondItem="jJd-77-y2C" secondAttribute="bottom" constant="29" id="fGp-bR-utb"/>
                             <constraint firstItem="edt-BT-pzL" firstAttribute="top" secondItem="dTg-fS-5qb" secondAttribute="bottom" constant="16" id="lf4-sz-0pi"/>
+                            <constraint firstItem="qTu-NQ-uAb" firstAttribute="top" secondItem="jJd-77-y2C" secondAttribute="bottom" constant="3" id="rnY-P7-Ke4"/>
                             <constraint firstAttribute="trailing" secondItem="edt-BT-pzL" secondAttribute="trailing" constant="35" id="s6o-9X-eCr"/>
+                            <constraint firstItem="qTu-NQ-uAb" firstAttribute="leading" secondItem="jJd-77-y2C" secondAttribute="leading" id="vb8-Ql-yDp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TYa-Ho-o3J"/>

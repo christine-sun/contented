@@ -73,9 +73,8 @@
         [sender setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
         [platforms setValue:@NO forKey:title];
     }
-    
     sender.selected = !sender.selected;
-    NSLog(@"%@", platforms);
+    
     // Update this task's dictionary to reflect updated platform statuses
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query getObjectInBackgroundWithId:self.task.objectId
