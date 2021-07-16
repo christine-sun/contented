@@ -81,7 +81,6 @@
                 task[@"completed"] = @(1);
                 [task saveInBackground];
         }];
-        [self fetchTasks];
         
     }];
     [alert addAction:yesAction];

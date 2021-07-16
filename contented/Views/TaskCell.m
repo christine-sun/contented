@@ -13,8 +13,8 @@
     [super awakeFromNib];
     
     // Attach gesture recognizer to icon image view
-    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapCheckButton:)];
-    [self.checkButton addGestureRecognizer:profileTapGestureRecognizer];
+    UITapGestureRecognizer *checkButtonTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapCheckButton:)];
+    [self.checkButton addGestureRecognizer:checkButtonTapGesture];
     [self.checkButton setUserInteractionEnabled:YES];
 }
 

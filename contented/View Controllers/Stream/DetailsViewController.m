@@ -30,8 +30,13 @@
     [super viewDidLoad];
     [self setInfo];
     
-    self.scrollView.userInteractionEnabled = YES;
-    self.scrollView.scrollEnabled = YES;
+//    self.scrollView.userInteractionEnabled = YES;
+//    self.scrollView.scrollEnabled = YES;
+    
+    UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTap:)];
+    doubleTapGesture.numberOfTapsRequired = 2;
+    [self.scrollView addGestureRecognizer:doubleTapGesture];
+    // doubleTapGesture release]
 //    self.totalToDoCount = [PlatformUtilities getPlatformsForType:self.task.type].count;
     
     //
@@ -137,6 +142,29 @@
         }];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)handleDoubleTap:(UITapGestureRecognizer*) sender {
+    if (sender.state == UIGestureRecognizerStateRecognized)
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"complete task?"
+            message:@"have you completed all pushes for this task?"
+            preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // YES - task is completed
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"you know it 😎"
+            style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self showCompletedMessage];
+            
+        }];
+        [alert addAction:yesAction];
+        
+        // NO - dismiss
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"oop lemme do that rn!" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:noAction];
+
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (IBAction)onTapEdit:(id)sender {
