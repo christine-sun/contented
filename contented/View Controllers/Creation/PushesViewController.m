@@ -18,6 +18,7 @@
 @property (nonatomic) CGFloat *selectedCount;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ideaDumpLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *taskImageView;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
@@ -31,6 +32,12 @@
 
     self.titleLabel.text = self.taskTitle;
     self.ideaDumpLabel.text = self.ideaDump;
+    NSDate *dueDate = self.date;
+    NSDateFormatter *weekday = [[NSDateFormatter alloc] init];
+    [weekday setDateFormat: @"MM/dd"];
+    NSString *preText = @"Release on ";
+    self.dateLabel.text = [preText stringByAppendingString:[weekday stringFromDate:dueDate]];
+    
     [self.taskImageView setImage:self.taskImage];
     NSString *typeString = @"New ";
     typeString = [typeString stringByAppendingString:self.type];
