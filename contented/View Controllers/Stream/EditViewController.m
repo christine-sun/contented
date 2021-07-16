@@ -29,11 +29,14 @@
     [super viewDidLoad];
     self.titleField.text = self.task.title;
     self.ideaDumpField.text = self.task.ideaDump;
+//    self.ideaDumpField.layer.borderWidth = 0.5;
+    [self.ideaDumpField.layer setCornerRadius:10];
     self.datePicker.date = self.task.dueDate;
     self.taskImageView.file = self.task[@"image"];
     [self.taskImageView loadInBackground];
     [self.taskImageView.layer setCornerRadius:15];
     self.updatedPlatforms = self.task.platforms;
+    
     
     self.updatedImage = nil;
     self.imagePickerVC = [UIImagePickerController new];
