@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
     ofType: (NSString*) type
     withCompletion: (PFBooleanResultBlock _Nullable) completion;
 
++ (PFFileObject*) getPFFileFromImage: (UIImage* _Nullable) image;
+
 @end
 
 NS_ASSUME_NONNULL_END

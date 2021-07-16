@@ -9,6 +9,7 @@
 #import <Parse/PFImageView.h>
 #import "PlatformUtilities.h"
 #import "PlatformButton.h"
+#import "Task.h"
 
 @interface EditViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
@@ -16,7 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet PFImageView *taskImageView;
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
+@property (strong, nonatomic) UIImagePickerController *imagePickerVC;
 @property (strong, nonatomic) NSMutableDictionary *updatedPlatforms;
+@property (strong, nonatomic) UIImage *updatedImage;
 
 @end
 
@@ -31,6 +34,11 @@
     [self.taskImageView loadInBackground];
     [self.taskImageView.layer setCornerRadius:15];
     self.updatedPlatforms = self.task.platforms;
+    
+    self.updatedImage = nil;
+    self.imagePickerVC = [UIImagePickerController new];
+    self.imagePickerVC.delegate = self;
+    self.imagePickerVC.allowsEditing = YES;
     
     // Dismiss keyboard outside of text fields
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
@@ -49,7 +57,6 @@
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
     }
-    
 }
 
 -(void)dismissKeyboard {
@@ -77,7 +84,36 @@
     
 }
 - (IBAction)onTapChangeImage:(id)sender {
+    if (self.imagePickerVC.allowsEditing) {
+        self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:self.imagePickerVC animated:YES completion:nil];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
+
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
+    // Resize image before uploading
+    CGSize imageDimensions = CGSizeMake(1000, 1000);
+    UIImage *resizedImage = [self resizeImage:editedImage withSize:imageDimensions];
+    self.updatedImage = resizedImage;
+    [self.taskImageView setImage:resizedImage];
+        
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 - (IBAction)onTapXButton:(id)sender {
@@ -94,6 +130,8 @@
             task[@"image"] = self.taskImageView.file;
             task[@"dueDate"] = self.datePicker.date;
             task[@"platforms"] = self.updatedPlatforms;
+            if (self.updatedImage != nil)
+                task[@"image"] = [Task getPFFileFromImage:self.updatedImage];
             [task saveInBackground];
         
             [self dismissViewControllerAnimated:YES completion:nil];
