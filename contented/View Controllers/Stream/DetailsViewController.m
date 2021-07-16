@@ -30,17 +30,17 @@
     self.scrollView.userInteractionEnabled = YES;
     self.scrollView.scrollEnabled = YES;
     //
-    self.scrollView.backgroundColor = [UIColor whiteColor];
-        self.scrollView.contentSize = CGSizeMake(500, 1000);
+//    self.scrollView.backgroundColor = [UIColor systemRedColor];
+//    self.scrollView.contentSize = CGSizeMake(500, 1000);
     //
-    self.refreshControl = [[UIRefreshControl alloc] init];
-        [self.refreshControl addTarget:self action:@selector(updateTask) forControlEvents:UIControlEventValueChanged];
-    [self.scrollView addSubview:self.refreshControl];
-
-    [self.view addSubview:self.scrollView];
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    [self.refreshControl addTarget:self action:@selector(setInfo) forControlEvents:UIControlEventValueChanged];
+//    [self.scrollView addSubview:self.refreshControl];
+//
+//    [self.view addSubview:self.scrollView];
+//    self.view.backgroundColor = [UIColor blueColor];
 }
 
-// state is 0 if we are setting up the stackview for the first time. state is 1 if we are updating it after a change
 - (void)setInfo {
     self.titleLabel.text = self.task.title;
     self.ideaDumpLabel.text = self.task.ideaDump;
@@ -50,40 +50,24 @@
     NSString *preText = @"Release on ";
     self.dateLabel.text = [preText stringByAppendingString:[weekday stringFromDate:dueDate]];
     
-    // Display buttons in stack view for corresponding platforms
-    NSDictionary *platforms = self.task.platforms;
-    // reset the butonsStack
-//    self.buttonsStack = [[UIStackView alloc] init];
+    // Reset the buttonsStack
     for (UIView* view in self.buttonsStack.arrangedSubviews) {
-//        NSLog(@"%@", view);
-//        [self.buttonsStack removeArrangedSubview:view];
         [view removeFromSuperview];
     }
-    NSLog(@"should be empty %@", self.buttonsStack);
     
+    // Display buttons in stack view for corresponding platforms
+    NSDictionary *platforms = self.task.platforms;
     [platforms enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
         // key is social media platform, obj is TRUE or FALSE
         PlatformButton *button = [[PlatformButton alloc] init];
         [button setupWithTitleAndState:key :(int)[obj integerValue]];
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
-        // Only add button to stack if this is the first time you're loading it or it's not there already
-//        if (state == 0 || (state == 1 && !([self.originalPlatforms containsObject:key]))) {
             [self.buttonsStack addArrangedSubview:button];
-//        }
     }];
 }
 
-- (void)updateTask {
-    
-//    self.originalPlatforms = [[NSMutableArray alloc] init];
-    // HOW TO ITERATE THROUGH A STACKVIEW??
-    //for (UIButton *button in self.buttonsStack)
-    //{
-       // UIButton *button = UIButton in view;
-//        [self.originalPlatforms addObject:button.titleLabel.text];
-//    }
+- (IBAction)onTapRefresh:(id)sender {
     [self setInfo];
-    [self.refreshControl endRefreshing];
 }
 
 - (void)onTapPlatformButton:(UIButton*)sender {

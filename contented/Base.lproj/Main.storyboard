@@ -248,7 +248,18 @@
                         <viewLayoutGuide key="safeArea" id="S8I-wb-Q4A"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TYa-Ho-o3J"/>
+                    <navigationItem key="navigationItem" id="TYa-Ho-o3J">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="iPb-Ch-zfb">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ysf-Xn-mVu">
+                                <rect key="frame" x="302" y="11" width="72" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow.clockwise" catalog="system"/>
+                                <connections>
+                                    <action selector="onTapRefresh:" destination="9Dy-wz-Tyn" eventType="touchUpInside" id="TWJ-hY-2dc"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonsStack" destination="D98-ud-MCd" id="LX8-Z4-nLy"/>
                         <outlet property="dateLabel" destination="jJd-77-y2C" id="vmf-9l-rou"/>
@@ -651,6 +662,7 @@
         <image name="3.square" catalog="system" width="128" height="114"/>
         <image name="4.square" catalog="system" width="128" height="114"/>
         <image name="appicon" width="1000" height="1000"/>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
