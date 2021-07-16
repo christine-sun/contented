@@ -295,12 +295,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="VI0-zk-bCi" customClass="PFImageView">
-                                <rect key="frame" x="16" y="91" width="77" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="asw-bd-Qtx">
-                                <rect key="frame" x="20" y="176" width="77" height="30"/>
+                                <rect key="frame" x="21" y="91" width="77" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="77" id="ctD-4Y-nzo"/>
                                 </constraints>
@@ -341,6 +337,18 @@
                                     <action selector="onTapDelete:" destination="CaF-hu-crN" eventType="touchUpInside" id="aCt-fv-vX5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blY-tn-ZUy">
+                                <rect key="frame" x="29" y="194" width="51" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="change"/>
+                                <connections>
+                                    <action selector="onTapChangeImage:" destination="CaF-hu-crN" eventType="touchUpInside" id="YVX-Cc-5Wg"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="VI0-zk-bCi" customClass="PFImageView">
+                                <rect key="frame" x="16" y="119" width="77" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aaf-7h-fCy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -352,7 +360,7 @@
                         <outlet property="ideaDumpField" destination="RP2-bV-De6" id="GJE-iK-eOm"/>
                         <outlet property="taskImageView" destination="VI0-zk-bCi" id="sX5-LW-GcL"/>
                         <outlet property="titleField" destination="Xfr-NO-hLS" id="rv2-dy-fvA"/>
-                        <segue destination="2Hj-rx-o2B" kind="presentation" identifier="returnStreamSegue" modalPresentationStyle="fullScreen" id="3RD-3N-UR8"/>
+                        <segue destination="afg-Ck-62e" kind="presentation" identifier="returnStreamSegue" modalPresentationStyle="fullScreen" id="Smz-Mm-vrJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="942-9x-bHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -604,6 +612,7 @@
         <scene sceneID="3Hh-ZI-zC2">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="afg-Ck-62e" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CAt-EG-VPx"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WTv-SZ-RGK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -663,7 +672,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3RD-3N-UR8"/>
+        <segue reference="Smz-Mm-vrJ"/>
+        <segue reference="ZEX-oe-bCA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1.square" catalog="system" width="128" height="114"/>

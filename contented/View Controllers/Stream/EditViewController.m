@@ -76,6 +76,9 @@
     }
     
 }
+- (IBAction)onTapChangeImage:(id)sender {
+    
+}
 
 - (IBAction)onTapXButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
