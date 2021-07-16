@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) PFFileObject *image;
+@property (nonatomic) int archived;
 
 + (void) postTask: (NSString*) title
     withDescription: (NSString* _Nullable) ideaDump

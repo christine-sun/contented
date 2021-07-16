@@ -282,7 +282,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="title goes here" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xfr-NO-hLS">
-                                <rect key="frame" x="16" y="44" width="358" height="34"/>
+                                <rect key="frame" x="44" y="44" width="330" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -333,6 +333,14 @@
                                     <action selector="onTapUpdate:" destination="CaF-hu-crN" eventType="touchUpInside" id="VYc-Jf-Ykh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwE-UJ-BoB">
+                                <rect key="frame" x="16" y="50" width="23" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="trash" catalog="system"/>
+                                <connections>
+                                    <action selector="onTapDelete:" destination="CaF-hu-crN" eventType="touchUpInside" id="aCt-fv-vX5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aaf-7h-fCy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -344,6 +352,7 @@
                         <outlet property="ideaDumpField" destination="RP2-bV-De6" id="GJE-iK-eOm"/>
                         <outlet property="taskImageView" destination="VI0-zk-bCi" id="sX5-LW-GcL"/>
                         <outlet property="titleField" destination="Xfr-NO-hLS" id="rv2-dy-fvA"/>
+                        <segue destination="2Hj-rx-o2B" kind="presentation" identifier="returnStreamSegue" modalPresentationStyle="fullScreen" id="3RD-3N-UR8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="942-9x-bHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -654,7 +663,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZEX-oe-bCA"/>
+        <segue reference="3RD-3N-UR8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1.square" catalog="system" width="128" height="114"/>
@@ -669,6 +678,7 @@
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="placeholder" width="360" height="360"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

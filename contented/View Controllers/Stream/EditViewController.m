@@ -97,6 +97,27 @@
     }];
 }
 
+- (IBAction)onTapDelete:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"delete task"
+        message:@"are you sure you want to delete this task?"
+        preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    // NO - Dismiss alert
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"no"
+        style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:okAction];
+    
+    // YES - Delete Task from backend and return to Stream
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"yes"
+        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [PFObject deleteAll:@[self.task]];
+            [self performSegueWithIdentifier:@"returnStreamSegue" sender:nil];
+        }];
+    [alert addAction:cancelAction];
+
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 /*
 #pragma mark - Navigation
 

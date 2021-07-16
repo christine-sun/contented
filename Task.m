@@ -37,6 +37,7 @@
     task.user = [PFUser currentUser];
     task.platforms = platforms;
     task.type = type;
+    task.archived = 0;
 
     [task saveInBackgroundWithBlock:completion];
     

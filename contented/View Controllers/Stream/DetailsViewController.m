@@ -64,6 +64,7 @@
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
             [self.buttonsStack addArrangedSubview:button];
     }];
+    
 }
 
 - (IBAction)onTapRefresh:(id)sender {
@@ -75,8 +76,6 @@
     NSString *title = sender.titleLabel.text;
     
     // Platform becomes selected - user has completed this push
-    NSLog(@"1 %d", sender.selected);
-    NSLog(@"2 %@", [platforms objectForKey:title]);
     NSString *state = [platforms objectForKey:title];
     int prevState = [state intValue];
     if (prevState == 1 && !sender.selected) {
@@ -93,7 +92,6 @@
         [platforms setValue:@NO forKey:title];
     }
     sender.selected = !sender.selected;
-    NSLog(@"%@", platforms);
     // Update this task's dictionary to reflect updated platform statuses
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query getObjectInBackgroundWithId:self.task.objectId

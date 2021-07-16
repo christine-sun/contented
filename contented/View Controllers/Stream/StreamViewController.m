@@ -45,6 +45,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query orderByAscending:@"dueDate"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"archived" equalTo:@(0)];
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
