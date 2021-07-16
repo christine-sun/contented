@@ -127,7 +127,8 @@
         block:^(PFObject *task, NSError *error) {
             task[@"title"] = self.titleField.text;
             task[@"ideaDump"] = self.ideaDumpField.text;
-            task[@"image"] = self.taskImageView.file;
+            if (self.taskImageView.file != nil)
+                task[@"image"] = self.taskImageView.file;
             task[@"dueDate"] = self.datePicker.date;
             task[@"platforms"] = self.updatedPlatforms;
             if (self.updatedImage != nil)

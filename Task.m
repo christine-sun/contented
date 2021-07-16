@@ -16,6 +16,7 @@
 @dynamic type;
 @dynamic user;
 @dynamic image;
+@dynamic completed;
 
 + (nonnull NSString*) parseClassName {
     return @"Task";
@@ -37,7 +38,7 @@
     task.user = [PFUser currentUser];
     task.platforms = platforms;
     task.type = type;
-    task.archived = 0;
+    task.completed = 0;
 
     [task saveInBackgroundWithBlock:completion];
     

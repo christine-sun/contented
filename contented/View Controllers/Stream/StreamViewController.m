@@ -45,7 +45,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query orderByAscending:@"dueDate"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
-    [query whereKey:@"archived" equalTo:@(0)];
+    [query whereKey:@"completed" equalTo:@(0)];
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
@@ -64,8 +64,6 @@
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     cell.task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     return cell;
-    
-    // create an array of arrays. to populate, traverse arrayoftasks and fill by order of date.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
