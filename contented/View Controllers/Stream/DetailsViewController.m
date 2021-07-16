@@ -9,6 +9,7 @@
 #import "EditViewController.h"
 #import "PlatformButton.h"
 #import "PlatformUtilities.h"
+#import <Parse/PFImageView.h>
 
 @interface DetailsViewController ()
 
@@ -16,8 +17,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *ideaDumpLabel;
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet PFImageView *taskImageView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *testView;
 @property (strong, nonatomic) NSMutableArray *originalPlatforms;
 @property (nonatomic) int completedCount;
 @property (nonatomic) int totalToDoCount;
@@ -30,12 +33,24 @@
     [super viewDidLoad];
     [self setInfo];
     
-//    self.scrollView.userInteractionEnabled = YES;
-//    self.scrollView.scrollEnabled = YES;
+    self.scrollView.delegate = self;
+    self.scrollView.userInteractionEnabled = YES;
+    self.scrollView.scrollEnabled = YES;
+    self.taskImageView.file = self.task[@"image"];
+    [self.taskImageView loadInBackground];
+    [self.taskImageView.layer setCornerRadius:15];
     
     UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTap:)];
     doubleTapGesture.numberOfTapsRequired = 2;
     [self.scrollView addGestureRecognizer:doubleTapGesture];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.testView
+                                                     attribute:NSLayoutAttributeRight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self.scrollView
+                                                     attribute:NSLayoutAttributeRight
+                                                    multiplier:1.0
+                                                      constant:0]];
     // doubleTapGesture release]
 //    self.totalToDoCount = [PlatformUtilities getPlatformsForType:self.task.type].count;
     
@@ -49,6 +64,11 @@
 //
 //    [self.view addSubview:self.scrollView];
 //    self.view.backgroundColor = [UIColor blueColor];
+}
+
+- (void)viewDidLayoutSubviews {
+    [self.scrollView addSubview:self.testView];
+    self.scrollView.contentSize = self.testView.frame.size;
 }
 
 - (void)setInfo {
