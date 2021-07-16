@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *testView;
 @property (strong, nonatomic) NSMutableArray *originalPlatforms;
+@property (weak, nonatomic) IBOutlet UILabel *noImageLabel;
+@property (weak, nonatomic) IBOutlet UIButton *noImageAddButton;
 @property (nonatomic) int completedCount;
 @property (nonatomic) int totalToDoCount;
 
@@ -40,35 +42,19 @@
     [self.taskImageView loadInBackground];
     [self.taskImageView.layer setCornerRadius:15];
     
+    // Prompt user to set image task did not originally have one
+    if (self.task[@"image"] == nil) {
+        self.noImageLabel.text = @"It looks like you didn't put an image with this task! Feel free to";
+        [self.noImageAddButton setTitle:@"add one." forState:UIControlStateNormal];
+    } else {
+        self.noImageLabel.text = @"";
+        [self.noImageAddButton setTitle:@"" forState:UIControlStateNormal];
+    }
+    
     UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTap:)];
     doubleTapGesture.numberOfTapsRequired = 2;
     [self.scrollView addGestureRecognizer:doubleTapGesture];
     
-    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.testView
-                                                     attribute:NSLayoutAttributeRight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.scrollView
-                                                     attribute:NSLayoutAttributeRight
-                                                    multiplier:1.0
-                                                      constant:0]];
-    // doubleTapGesture release]
-//    self.totalToDoCount = [PlatformUtilities getPlatformsForType:self.task.type].count;
-    
-    //
-//    self.scrollView.backgroundColor = [UIColor systemRedColor];
-//    self.scrollView.contentSize = CGSizeMake(500, 1000);
-    //
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    [self.refreshControl addTarget:self action:@selector(setInfo) forControlEvents:UIControlEventValueChanged];
-//    [self.scrollView addSubview:self.refreshControl];
-//
-//    [self.view addSubview:self.scrollView];
-//    self.view.backgroundColor = [UIColor blueColor];
-}
-
-- (void)viewDidLayoutSubviews {
-    [self.scrollView addSubview:self.testView];
-    self.scrollView.contentSize = self.testView.frame.size;
 }
 
 - (void)setInfo {
@@ -105,6 +91,10 @@
 
 - (IBAction)onTapRefresh:(id)sender {
     [self setInfo];
+}
+
+- (IBAction)onTapNoImageAddButton:(id)sender {
+    [self onTapEdit:self.task];
 }
 
 - (void)onTapPlatformButton:(UIButton*)sender {

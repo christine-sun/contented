@@ -228,7 +228,9 @@ Remaining time:
 -Top videos commenting feature
 -Show a list of completed tasks and allow users to un-complete the task
 -Filter by platform on task stream
--Show platform button image and title, transition from black and white to color
+-Show platform button image and title, transition from black and white to color when creating
 -collection view possibly for platform buttons
 -have initial walkthrough screen on first sign up that shows importance of intention-setting and concept of pushes for platforms
 -change color of stream cell depending on type of task
+-create another tab for completed tasks
+-login screen logic more laid out --> if you didn't have an account, notif, and also sign up is separate screen. forgot password
