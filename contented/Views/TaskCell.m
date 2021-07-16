@@ -11,7 +11,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    // Attach gesture recognizer to icon image view
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapCheckButton:)];
+    [self.checkButton addGestureRecognizer:profileTapGestureRecognizer];
+    [self.checkButton setUserInteractionEnabled:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -64,6 +68,10 @@
     else if ([platform isEqualToString:@"Twitter"])
         return [UIImage imageNamed:@"twitter_icon"];
     else return nil;
+}
+
+- (void)didTapCheckButton:(UITapGestureRecognizer *)sender {
+    [self.delegate taskCell:self didTap:self.task];
 }
 
 @end

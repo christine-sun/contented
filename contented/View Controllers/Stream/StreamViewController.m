@@ -59,10 +59,45 @@
     
 }
 
+- (void)taskCell:(TaskCell *)taskCell didTap:(Task *)task {
+    // TODO: show notif like r u sure u completed all pushes? and then be like updating the backend and like WOW YAY
+    [self confirmCompletion:taskCell];
+}
+
+- (void)confirmCompletion:(TaskCell *)taskCell {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"complete task?"
+        message:@"have you completed all pushes for this task?"
+        preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    // YES - task is completed
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"you know it 😎"
+        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        // Change button image
+        //[taskCell.checkButton setImage:[UIImage systemImageNamed:@"checkmark.circle.fill"] forState:UIControlStateNormal]; - how can we make the checkbox not persist in cell after refresh?
+        // Update this task's status to completed = 1
+        PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+        [query getObjectInBackgroundWithId:taskCell.task.objectId
+            block:^(PFObject *task, NSError *error) {
+                task[@"completed"] = @(1);
+                [task saveInBackground];
+        }];
+        [self fetchTasks];
+        
+    }];
+    [alert addAction:yesAction];
+    
+    // NO - dismiss
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"oop lemme do that rn!" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:noAction];
+
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     cell.task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.delegate = self;
     return cell;
 }
 

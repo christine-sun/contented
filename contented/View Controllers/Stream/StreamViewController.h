@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface StreamViewController : UIViewController
+@interface StreamViewController : UIViewController<TaskCellDelegate>
 
 @end
 

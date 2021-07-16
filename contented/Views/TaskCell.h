@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol TaskCellDelegate;
+
 @interface TaskCell : UITableViewCell
 @property (weak, nonatomic) Task *task;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -18,7 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *imageView2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView3;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView4;
+@property (nonatomic, weak) id<TaskCellDelegate> delegate;
 
+@end
+
+@protocol TaskCellDelegate
+- (void)taskCell:(TaskCell *) taskCell didTap: (Task*) task;
 @end
 
 NS_ASSUME_NONNULL_END

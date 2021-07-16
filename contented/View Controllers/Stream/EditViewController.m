@@ -145,17 +145,17 @@
         preferredStyle:(UIAlertControllerStyleAlert)];
     
     // NO - Dismiss alert
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"no"
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"no"
         style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:okAction];
+    [alert addAction:noAction];
     
     // YES - Delete Task from backend and return to Stream
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"yes"
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"yes"
         style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [PFObject deleteAll:@[self.task]];
             [self performSegueWithIdentifier:@"returnStreamSegue" sender:nil];
         }];
-    [alert addAction:cancelAction];
+    [alert addAction:yesAction];
 
     [self presentViewController:alert animated:YES completion:nil];
 }
