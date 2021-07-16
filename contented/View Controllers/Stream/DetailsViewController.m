@@ -8,6 +8,7 @@
 #import "DetailsViewController.h"
 #import "EditViewController.h"
 #import "PlatformButton.h"
+#import "PlatformUtilities.h"
 
 @interface DetailsViewController ()
 
@@ -18,6 +19,8 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSMutableArray *originalPlatforms;
+@property (nonatomic) int completedCount;
+@property (nonatomic) int totalToDoCount;
 
 @end
 
@@ -29,6 +32,8 @@
     
     self.scrollView.userInteractionEnabled = YES;
     self.scrollView.scrollEnabled = YES;
+//    self.totalToDoCount = [PlatformUtilities getPlatformsForType:self.task.type].count;
+    
     //
 //    self.scrollView.backgroundColor = [UIColor systemRedColor];
 //    self.scrollView.contentSize = CGSizeMake(500, 1000);
@@ -56,11 +61,17 @@
     }
     
     // Display buttons in stack view for corresponding platforms
+    self.completedCount = 0;
+    self.totalToDoCount = 0;
     NSDictionary *platforms = self.task.platforms;
     [platforms enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
         // key is social media platform, obj is TRUE or FALSE
         PlatformButton *button = [[PlatformButton alloc] init];
         [button setupWithTitleAndState:key :(int)[obj integerValue]];
+        if ((int)[obj integerValue] == 1) {
+            self.completedCount++;
+        }
+        self.totalToDoCount++;
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
             [self.buttonsStack addArrangedSubview:button];
     }];
@@ -85,13 +96,16 @@
         sender.backgroundColor = [UIColor systemTealColor];
         [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [platforms setValue:@YES forKey:title];
+        self.completedCount++;
     // Platform becomes unselected - user uncompleted this push
     } else {
         sender.backgroundColor = [UIColor whiteColor];
         [sender setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
         [platforms setValue:@NO forKey:title];
+        self.completedCount--;
     }
     sender.selected = !sender.selected;
+    
     // Update this task's dictionary to reflect updated platform statuses
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query getObjectInBackgroundWithId:self.task.objectId
@@ -99,6 +113,30 @@
             task[@"platforms"] = platforms;
             [task saveInBackground];
     }];
+    
+    // If all platforms are selected, this means the task is completed!
+    // the size of the array for
+    if (self.completedCount == self.totalToDoCount)
+        [self showCompletedMessage];
+}
+
+- (void)showCompletedMessage {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"COMPLETED TASK!!🎉"
+        message:@"omg congrats on pushing this out for the world to see! you are amazing and keep up the awesome work🥳"
+        preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"YAAASSS"
+        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+            [query getObjectInBackgroundWithId:self.task.objectId
+                block:^(PFObject *task, NSError *error) {
+                    task[@"completed"] = @(1);
+                    [task saveInBackground];
+            }];
+        // in future iterations, this could navigate to a profile tab with a progress bar/level of this user showing how many tasks are completed. it might also go to the analytics tab. for now, i'm going to bring it back to the stream
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)onTapEdit:(id)sender {
