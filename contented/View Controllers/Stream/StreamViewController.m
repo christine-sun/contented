@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *groupedTasks;
 @property (nonatomic) int section;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 
 @end
 
@@ -29,6 +30,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.section = 0;
+    [self.tableView.layer setCornerRadius:15];
+    self.tableView.tableHeaderView = self.headerView;
 
     [self fetchTasks];
     
@@ -92,6 +95,7 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+
 #pragma mark - table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
@@ -133,6 +137,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self getNumOfUniqueDates];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 20;
 }
 
 - (int)getNumOfUniqueDates {
