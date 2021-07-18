@@ -234,3 +234,4 @@ Remaining time:
 -change color of stream cell depending on type of task
 -create another tab for completed tasks
 -login screen logic more laid out --> if you didn't have an account, notif, and also sign up is separate screen. forgot password
+-google calendar integration to add tasks to a contented calendar to account

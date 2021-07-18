@@ -136,9 +136,23 @@
             task[@"platforms"] = self.updatedPlatforms;
             if (self.updatedImage != nil)
                 task[@"image"] = [Task getPFFileFromImage:self.updatedImage];
-            [task saveInBackground];
-        
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded) {
+                    // Re-fetch this task
+                    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+                    [query whereKey:@"objectId" equalTo:self.task.objectId];
+                    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                        self.task = objects[0];
+                        
+                        [self.delegate didUpdate:self.task];
+                    
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }];
+                    
+                } else {
+                    // present an alert that says - there was a problem updating this task
+                }
+            }];
     }];
 }
 

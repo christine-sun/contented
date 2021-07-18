@@ -10,9 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol EditViewControllerDelegate
+
+- (void)didUpdate:(Task*) task;
+
+@end
+
 @interface EditViewController : UIViewController
 
 @property (strong, nonatomic) Task *task;
+@property (weak, nonatomic) id<EditViewControllerDelegate> delegate;
 
 @end
 

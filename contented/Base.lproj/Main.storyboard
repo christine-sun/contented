@@ -210,7 +210,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYh-bL-QYl">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="758"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the idea dump goes in here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edt-BT-pzL">
                                                 <rect key="frame" x="20" y="71" width="350" height="24"/>
@@ -474,6 +474,7 @@
                         <outlet property="taskImageView" destination="VI0-zk-bCi" id="sX5-LW-GcL"/>
                         <outlet property="titleField" destination="Xfr-NO-hLS" id="rv2-dy-fvA"/>
                         <segue destination="afg-Ck-62e" kind="presentation" identifier="returnStreamSegue" modalPresentationStyle="fullScreen" id="Smz-Mm-vrJ"/>
+                        <segue destination="9Dy-wz-Tyn" kind="presentation" identifier="doneEditingSegue" modalPresentationStyle="fullScreen" id="S19-7w-IFA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="942-9x-bHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -793,8 +794,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Smz-Mm-vrJ"/>
+        <segue reference="8ux-Qg-50b"/>
         <segue reference="ZEX-oe-bCA"/>
+        <segue reference="S19-7w-IFA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1.square" catalog="system" width="128" height="114"/>

@@ -11,7 +11,7 @@
 #import "PlatformUtilities.h"
 #import <Parse/PFImageView.h>
 
-@interface DetailsViewController ()
+@interface DetailsViewController () <EditViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ideaDumpLabel;
@@ -177,6 +177,12 @@
     }
 }
 
+- (void)didUpdate:(Task *)task {
+    // Update this task to reflect updated info
+    self.task = task;
+    [self setInfo];
+}
+
 - (IBAction)onTapEdit:(id)sender {
     [self performSegueWithIdentifier:@"editSegue" sender:self.task];
 }
@@ -190,6 +196,7 @@
     if ([segue.identifier isEqual:@"editSegue"]) {
         EditViewController *editVC = [segue destinationViewController];
         editVC.task = sender;
+        editVC.delegate = self;
     }
 }
 
