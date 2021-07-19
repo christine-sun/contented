@@ -78,7 +78,7 @@
     [platforms enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
         // key is social media platform, obj is TRUE or FALSE
         PlatformButton *button = [[PlatformButton alloc] init];
-        [button setupWithTitleAndState:key :(int)[obj integerValue]];
+        [button setup:key:(int)[obj integerValue]:[UIColor systemPurpleColor]];
         if ((int)[obj integerValue] == 1) {
             self.completedCount++;
         }

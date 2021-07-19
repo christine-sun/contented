@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PlatformButton : UIButton
 
--(void) setupWithTitleAndState: (NSString*) title: (int)state;
+-(void) setup: (NSString*) title: (int) state: (UIColor*) color;
 -(void)onTap;
 
 @end

@@ -56,7 +56,7 @@
         NSString *platformName = platforms[i];
         int state = ([self.task.platforms objectForKey:platformName] == nil) ? 0 : 1;
         NSLog(@"%d", state);
-        [button setupWithTitleAndState:platforms[i]:state];
+        [button setup:platforms[i]:state:[UIColor systemTealColor]];
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
     }

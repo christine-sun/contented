@@ -51,7 +51,8 @@
     // Display buttons in stack view for all platforms
     for (int i = 0; i < platforms.count; i++) {
         PlatformButton *button = [[PlatformButton alloc] init];
-        [button setupWithTitleAndState:platforms[i]:0];
+        [button setup:platforms[i]:0:[UIColor systemTealColor]];
+//        [button setupWithTitleAndState:platforms[i]:0];
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
     }
