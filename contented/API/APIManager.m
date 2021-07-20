@@ -52,11 +52,12 @@ NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
                             }
                             else {
                                 NSDictionary *videoDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                                NSArray *items = videoDict[@"items"];
-                                NSDictionary *middle = items[0];
-                                NSDictionary *stats = middle[@"statistics"];
-                                NSString *viewCount = stats[@"viewCount"];
-                                video.views = [viewCount integerValue];
+                                [self setVideoViews:video:videoDict];
+//                                NSArray *items = videoDict[@"items"];
+//                                NSDictionary *middle = items[0];
+//                                NSDictionary *stats = middle[@"statistics"];
+//                                NSString *viewCount = stats[@"viewCount"];
+//                                video.views = [viewCount integerValue];
                                 NSLog(@"%@ %@ %d", video.title, video.publishedAt, video.views);
                             }
                     }];
@@ -66,35 +67,17 @@ NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
                 }
             }
         }
-            
-//            for (int i = 0; i < [vids count]; i++) {
-//                // call the network request to get the number of views for this
-//                Video *video = vids[i];
-//                NSString *videoID = video.vidID;
-//
-//                NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/videos?part=statistics&id=%@&key=%@", videoID, API_KEY];
-//                NSURL *url = [NSURL URLWithString:baseString];
-//                NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-//                NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//                NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//                        if (error != nil) {
-//                            NSLog(@"%@", [error localizedDescription]);
-//                        }
-//                        else {
-//                            NSDictionary *videoDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//                            NSArray *items = videoDict[@"items"];
-//                            NSDictionary *middle = items[0];
-//                            NSDictionary *stats = middle[@"statistics"];
-//                            NSString *viewCount = stats[@"viewCount"];
-//                            video.views = [viewCount integerValue];
-//                            NSLog(@"%@ %@ %d", video.title, video.publishedAt, video.views);
-//                        }
-//                }];
-//                [task resume];
-        
     }];
     [task resume];
     return 0;
+}
+
++ (void)setVideoViews: (Video*)video: (NSDictionary*)videoDict {
+    NSArray *items = videoDict[@"items"];
+    NSDictionary *middle = items[0];
+    NSDictionary *stats = middle[@"statistics"];
+    NSString *viewCount = stats[@"viewCount"];
+    video.views = [viewCount integerValue];
 }
 
 @end
