@@ -7,11 +7,26 @@
 
 #import "APIManager.h"
 #import "Video.h"
+//
+//@interface APIManager ()
+//@property (weak, nonatomic) IBOutlet UILabel *testLabel;
+//
+//@end
 
 @implementation APIManager
 
 NSMutableArray *vids;
 NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
+UILabel *label;
+NSString *allText = @"";
+
++ (void)setLabel:(UILabel*)otherLabel {
+    label = otherLabel;
+}
+
++ (UILabel*)getLabel {
+    return label;
+}
 
 + (NSDictionary*) fetchLast20Views: (NSString*) userID {
    
@@ -39,6 +54,7 @@ NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
     return 0;
 }
 
+// Set the title and video ID of this video
 + (void)setVideoProperties: (NSDictionary*)thisVideo {
     NSDictionary *ids = thisVideo[@"id"];
     NSString *videoId = ids[@"videoId"];
@@ -62,14 +78,17 @@ NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
                 else {
                     NSDictionary *videoDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     [self setVideoViews:video:videoDict];
-                    NSLog(@"%@ %@ %lu", video.title, video.publishedAt, video.views);
+                    // here video.title, video.vidID, and video.views all have the proper values. this is the endpoint
+                    allText = [allText stringByAppendingFormat:@"TITLE: %@ VIEWS: %lu\n", video.title, video.views];
                 }
+            [self getLabel].text = allText;
         }];
         [task resume];
         [vids addObject:video];
     }
 }
 
+// Get the view count of this video and set its view property
 + (void)setVideoViews:(Video*)video: (NSDictionary*)videoDict {
     NSArray *items = videoDict[@"items"];
     NSDictionary *middle = items[0];
