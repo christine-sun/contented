@@ -18,7 +18,7 @@
 NSMutableArray *vids;
 NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
 UILabel *label;
-NSString *allText = @"";
+NSString *allText;
 
 + (void)setLabel:(UILabel*)otherLabel {
     label = otherLabel;
@@ -29,7 +29,8 @@ NSString *allText = @"";
 }
 
 + (NSDictionary*) fetchLast20Views: (NSString*) userID {
-   
+    vids = [[NSMutableArray alloc] init];
+    allText = @"";
     // Get the last 20 videos from this user
     NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/search?key=%@&channelId=%@&part=snippet,id&order=date&maxResults=20", API_KEY, userID];
     
@@ -43,7 +44,7 @@ NSString *allText = @"";
         }
         else {
             initialDictionary = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            vids = [[NSMutableArray alloc] init];
+            
             NSArray *videos = initialDictionary[@"items"];
             for (int i = 0; i < videos.count; i++) {
                 [self setVideoProperties:videos[i]];

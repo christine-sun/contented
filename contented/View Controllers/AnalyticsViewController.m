@@ -11,6 +11,7 @@
 
 @interface AnalyticsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
+@property (weak, nonatomic) IBOutlet UITextField *userIDLabel;
 
 @end
 
@@ -42,9 +43,21 @@
 //    NSString *userID = @"UCt7gY0riLR5YJLISl3RK5iw";
 //    [APIManager fetchInitDictionary : [APIManager get20VidsURL:userID]];testLast20Views
     [APIManager setLabel:self.testLabel];
-    NSString *userID = @"UCt7gY0riLR5YJLISl3RK5iw"; // soon user can input by themselves
+    
+//    NSString *userID = @"UCt7gY0riLR5YJLISl3RK5iw"; // soon user can input by themselves
+    [self updateVideoInfo];
+}
+
+- (void)updateVideoInfo {
+    NSString *userID = self.userIDLabel.text;
+    NSLog(@"%@", userID);
     [APIManager fetchLast20Views:userID];
 }
+
+- (IBAction)onTapUpdate:(id)sender {
+    [self updateVideoInfo];
+}
+
 - (IBAction)onTapSignIn:(id)sender {
     [[GIDSignIn sharedInstance] signIn];
 }
