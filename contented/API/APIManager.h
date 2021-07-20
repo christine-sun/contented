@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface APIManager : NSObject
 
-+ (NSDictionary*) fetchLast20Views;
++ (NSDictionary*) fetchLast20Views: (NSString*) userID;
 
 @end
 

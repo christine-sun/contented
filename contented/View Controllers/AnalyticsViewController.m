@@ -40,7 +40,8 @@
 //    self.service = [[GTLRYouTubeService alloc] init];
 //    NSString *userID = @"UCt7gY0riLR5YJLISl3RK5iw";
 //    [APIManager fetchInitDictionary : [APIManager get20VidsURL:userID]];testLast20Views
-    [APIManager fetchLast20Views];
+    NSString *userID = @"UCt7gY0riLR5YJLISl3RK5iw";
+    [APIManager fetchLast20Views:userID];
 }
 - (IBAction)onTapSignIn:(id)sender {
     [[GIDSignIn sharedInstance] signIn];
