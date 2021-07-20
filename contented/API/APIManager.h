@@ -10,11 +10,21 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface APIManager : NSObject
-
++ (void) testGetVideos: (NSString*) userID;
 + (NSDictionary*) fetchLast20Videos: (NSString*) userID;
 + (NSNumber*) fetchViewCount: (NSString*) videoID;
 + (NSNumber*) fetchSubCount: (NSString*) userID;
-+ (NSDictionary*) fetchInitialDictionary: (NSString*) URL;
++ (void) fetchInitialDictionary;
++ (NSDictionary*) fetchLast20Views;
++ (NSString*) get20VidsURL : (NSString*) userID;
++ (NSDictionary*) testLast20Views;
++ (void)fetchInitDictionary : (NSString*) URL : (int) state;
++ (int)fetchViewsForID: (NSString*) vidID;
++ (NSDictionary*)gotVidsDictionary:(NSNotification *)notif;
++(void)fetch20Views;
++(void)gotViewsDictionary ;
++ (void)getViews:(NSNotification *)note;
++ (NSString*) getViewsURL : (NSString*) vidID;
 
 @end
 

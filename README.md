@@ -235,3 +235,6 @@ Remaining time:
 -create another tab for completed tasks
 -login screen logic more laid out --> if you didn't have an account, notif, and also sign up is separate screen. forgot password
 -google calendar integration to add tasks to a contented calendar to account
+
+ISSUES
+- dispatch_sync issue where I wanted to set dict equal to what I got from an async call, but could not return inside of async function
