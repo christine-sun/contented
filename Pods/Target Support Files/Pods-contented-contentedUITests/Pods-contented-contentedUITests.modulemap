@@ -1,0 +1,6 @@
+module Pods_contented_contentedUITests {
+  umbrella header "Pods-contented-contentedUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

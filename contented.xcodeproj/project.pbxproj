@@ -17,6 +17,9 @@
 		5F3D0EBB26A5CBAB007BDDAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F3D0EB826A5CBAB007BDDAD /* GoogleService-Info.plist */; };
 		5F3D0F0B26A60EDC007BDDAD /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F0A26A60EDC007BDDAD /* APIManager.m */; };
 		5F3D0F0E26A70933007BDDAD /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F0D26A70933007BDDAD /* Video.m */; };
+		5F3D0F2226A788A6007BDDAD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F2126A788A6007BDDAD /* File.swift */; };
+		5F3D0F2326A788A6007BDDAD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F2126A788A6007BDDAD /* File.swift */; };
+		5F3D0F2426A788A6007BDDAD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F2126A788A6007BDDAD /* File.swift */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
@@ -71,6 +74,11 @@
 		5F3D0F0A26A60EDC007BDDAD /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		5F3D0F0C26A70933007BDDAD /* Video.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
 		5F3D0F0D26A70933007BDDAD /* Video.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
+		5F3D0F1C26A787EE007BDDAD /* libCharts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libCharts.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F3D0F1E26A788A5007BDDAD /* contented-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "contented-Bridging-Header.h"; sourceTree = "<group>"; };
+		5F3D0F1F26A788A5007BDDAD /* contentedTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "contentedTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		5F3D0F2026A788A5007BDDAD /* contentedUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "contentedUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		5F3D0F2126A788A6007BDDAD /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		5FE7ECB4269CAB130040154E /* contented.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contented.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECB7269CAB130040154E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -167,6 +175,7 @@
 		5FE7ECAB269CAB130040154E = {
 			isa = PBXGroup;
 			children = (
+				5F3D0F2126A788A6007BDDAD /* File.swift */,
 				5F3D0EB826A5CBAB007BDDAD /* GoogleService-Info.plist */,
 				5FE7ECB6269CAB130040154E /* contented */,
 				5FE7ECD2269CAB150040154E /* contentedTests */,
@@ -174,6 +183,9 @@
 				5FE7ECB5269CAB130040154E /* Products */,
 				A1B424F18DCB5F7868615975 /* Pods */,
 				6049A9445812FF427895EB5A /* Frameworks */,
+				5F3D0F1E26A788A5007BDDAD /* contented-Bridging-Header.h */,
+				5F3D0F1F26A788A5007BDDAD /* contentedTests-Bridging-Header.h */,
+				5F3D0F2026A788A5007BDDAD /* contentedUITests-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -288,6 +300,7 @@
 		6049A9445812FF427895EB5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F3D0F1C26A787EE007BDDAD /* libCharts.a */,
 				C27E15E3D007C9D2F3816017 /* libPods-contented.a */,
 				95E796C78EFA751CFA4C4176 /* libPods-contented-contentedUITests.a */,
 				B2EBB57534F42E2C2E07F60F /* libPods-contentedTests.a */,
@@ -379,13 +392,16 @@
 				TargetAttributes = {
 					5FE7ECB3269CAB130040154E = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					5FE7ECCE269CAB150040154E = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 						TestTargetID = 5FE7ECB3269CAB130040154E;
 					};
 					5FE7ECD9269CAB150040154E = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 						TestTargetID = 5FE7ECB3269CAB130040154E;
 					};
 				};
@@ -565,6 +581,7 @@
 				5FE7ED02269CDCAE0040154E /* AnalyticsViewController.m in Sources */,
 				5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */,
 				5F3D0F0B26A60EDC007BDDAD /* APIManager.m in Sources */,
+				5F3D0F2226A788A6007BDDAD /* File.swift in Sources */,
 				5FE7ECFF269CDC9F0040154E /* CreationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,6 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FE7ECD4269CAB150040154E /* contentedTests.m in Sources */,
+				5F3D0F2326A788A6007BDDAD /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FE7ECDF269CAB150040154E /* contentedUITests.m in Sources */,
+				5F3D0F2426A788A6007BDDAD /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,6 +757,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MLV6BNHZAT;
 				INFOPLIST_FILE = contented/Info.plist;
@@ -748,6 +768,9 @@
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.christinesun.contented;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "contented-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -758,6 +781,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MLV6BNHZAT;
 				INFOPLIST_FILE = contented/Info.plist;
@@ -768,6 +792,8 @@
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.christinesun.contented;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "contented-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -776,7 +802,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B878952C1A8FAFA66B0B6D85 /* Pods-contentedTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MLV6BNHZAT;
 				INFOPLIST_FILE = contentedTests/Info.plist;
@@ -788,6 +816,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.christinesun.contentedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "contentedTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/contented.app/contented";
 			};
@@ -797,7 +828,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C3E844BF73C2B7DD0AC5DA1 /* Pods-contentedTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MLV6BNHZAT;
 				INFOPLIST_FILE = contentedTests/Info.plist;
@@ -809,6 +842,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.christinesun.contentedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "contentedTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/contented.app/contented";
 			};
@@ -818,6 +853,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 56E4324586275146CCBD5E9E /* Pods-contented-contentedUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MLV6BNHZAT;
 				INFOPLIST_FILE = contentedUITests/Info.plist;
@@ -828,6 +865,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.christinesun.contentedUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "contentedUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = contented;
 			};
@@ -837,6 +877,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4E5CBA6902155E3AF0B368A /* Pods-contented-contentedUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MLV6BNHZAT;
 				INFOPLIST_FILE = contentedUITests/Info.plist;
@@ -847,6 +889,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.christinesun.contentedUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "contentedUITests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = contented;
 			};

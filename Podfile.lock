@@ -1,5 +1,8 @@
 PODS:
   - Bolts/Tasks (1.9.1)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - Firebase/Analytics (3.17.0):
     - Firebase/Core
   - Firebase/Core (3.17.0):
@@ -50,6 +53,7 @@ PODS:
     - Parse/Core
 
 DEPENDENCIES:
+  - Charts
   - Firebase/Analytics
   - Google/SignIn (~> 3.0.3)
   - GoogleAPIClientForREST/YouTube (~> 1.2.1)
@@ -59,6 +63,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Bolts
+    - Charts
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -72,6 +77,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Firebase: 4b66b5b59c43edac745b87f0c87e42cdd0279c13
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
@@ -83,6 +89,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
 
-PODFILE CHECKSUM: d717e495aa1e665b0eeb93525f1fc338a7371fe8
+PODFILE CHECKSUM: 123ab5ebf1d54bbb85fb6e7dc13d82d59dad1e10
 
 COCOAPODS: 1.10.1

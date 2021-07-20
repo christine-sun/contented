@@ -1,0 +1,6 @@
+module Pods_contented {
+  umbrella header "Pods-contented-umbrella.h"
+
+  export *
+  module * { export * }
+}

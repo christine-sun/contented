@@ -11,6 +11,7 @@ target 'contented' do
   pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
   pod 'Google/SignIn', '~> 3.0.3'
   pod 'Firebase/Analytics'
+  pod 'Charts'
 
   target 'contentedTests' do
     inherit! :search_paths

@@ -8,10 +8,13 @@
 #import "AnalyticsViewController.h"
 #import <Parse/Parse.h>
 #import "APIManager.h"
+@import Charts;
+//#import "Charts/Charts-Swift.h"
 
-@interface AnalyticsViewController ()
+@interface AnalyticsViewController () <ChartViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
 @property (weak, nonatomic) IBOutlet UITextField *userIDLabel;
+@property (strong, nonatomic) IBOutlet LineChartView *lineChartView;
 
 @end
 
@@ -40,13 +43,46 @@
 //
 //    // Initialize the service object.
 //    self.service = [[GTLRYouTubeService alloc] init];
-//    NSString *userID = @"UCt7gY0riLR5YJLISl3RK5iw";
-//    [APIManager fetchInitDictionary : [APIManager get20VidsURL:userID]];testLast20Views
+
     [APIManager setLabel:self.testLabel];
     
 //    NSString *userID = @"UCt7gY0riLR5YJLISl3RK5iw"; // soon user can input by themselves
     [self updateVideoInfo];
+    
+    
+    //chart begin
+    self.lineChartView.delegate = self;
+
+    self.lineChartView.dragEnabled = YES;
+    [self.lineChartView setScaleEnabled:YES];
+    self.lineChartView.pinchZoomEnabled = YES;
+
+    self.lineChartView.rightAxis.enabled = NO;
+    [self.lineChartView animateWithXAxisDuration:2.5];
+    [self setChartValues];
+    
 }
+
+- (void)setChartValues {
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 20; i++) {
+        [values addObject:[[ChartDataEntry alloc] initWithX:i y:(i*5)]];
+    }
+    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"test 1"];
+    set1.drawCirclesEnabled = YES;
+    [set1 setColor:UIColor.blackColor];
+    [set1 setCircleColor:UIColor.redColor];
+    set1.lineWidth = 1.0;
+    set1.circleRadius = 3.0;
+    set1.drawCircleHoleEnabled = YES;
+
+    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+    [dataSets addObject:set1];
+    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+    self.lineChartView.data = data;
+}
+
+// end attempt to add chart
 
 - (void)updateVideoInfo {
     NSString *userID = self.userIDLabel.text;
