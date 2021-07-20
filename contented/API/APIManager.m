@@ -32,7 +32,6 @@ NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
             NSArray *videos = initialDictionary[@"items"];
             for (int i = 0; i < videos.count; i++) {
                 [self setVideoProperties:videos[i]];
-                
             }
         }
     }];
@@ -63,7 +62,7 @@ NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
                 else {
                     NSDictionary *videoDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     [self setVideoViews:video:videoDict];
-                    NSLog(@"%@ %@ %d", video.title, video.publishedAt, video.views);
+                    NSLog(@"%@ %@ %lu", video.title, video.publishedAt, video.views);
                 }
         }];
         [task resume];
@@ -71,7 +70,7 @@ NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
     }
 }
 
-+ (void)setVideoViews: (Video*)video: (NSDictionary*)videoDict {
++ (void)setVideoViews:(Video*)video: (NSDictionary*)videoDict {
     NSArray *items = videoDict[@"items"];
     NSDictionary *middle = items[0];
     NSDictionary *stats = middle[@"statistics"];
