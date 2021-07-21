@@ -144,13 +144,13 @@ UILabel *ytLabel;
     double slope = numerator / denominator;
     NSLog(@"%f", slope);
     if (slope < -10) {
-        [ytLabel setText:@"negative slope"];
+        [ytLabel setText:@"Consider what types of videos did well for your channel in the past - are there ways to rekindle that creativity and inspiration?"];
     }
     else if (slope > 10) {
-        [ytLabel setText:@"positive slope"];
+        [ytLabel setText:@"Wow, you have been doing amazing! Keep on pushing out creative content 🔥"];
     }
     else {
-        [ytLabel setText:@"stagnant"];
+        [ytLabel setText:@"Your views have been consistent! Consider bringing in new ideas to your channel to reach a new audience :)"];
     }
     
     // ACCOUNT IDS YOU CAN TEST
