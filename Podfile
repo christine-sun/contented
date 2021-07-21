@@ -12,6 +12,7 @@ target 'contented' do
   pod 'Google/SignIn', '~> 3.0.3'
   pod 'Firebase/Analytics'
   pod 'Charts'
+  pod 'FBSDKLoginKit'
 
   target 'contentedTests' do
     inherit! :search_paths

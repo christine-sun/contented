@@ -752,6 +752,7 @@
                     <connections>
                         <outlet property="lineChartView" destination="mdC-Rr-4GM" id="tGG-oj-5wi"/>
                         <outlet property="userIDLabel" destination="QIV-11-BgX" id="AUN-Cc-ex8"/>
+                        <outlet property="youtubeReportLabel" destination="S84-3O-RCs" id="E51-jF-Tg5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0x-IX-voV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

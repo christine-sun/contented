@@ -8,6 +8,8 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "Task.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 @import Firebase;
 
 @interface AppDelegate ()
@@ -32,6 +34,9 @@
     // Initialize Google sign-in
     [GIDSignIn sharedInstance].clientID = @"290143082983-3hq0gs473geivjaj90tlif550lv1hv4v.apps.googleusercontent.com";
     [FIRApp configure];
+    
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                               didFinishLaunchingWithOptions:launchOptions];
     
     // Test that task model works - YES works
 //    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@(TRUE), @"youtube", @(FALSE), @"instagram", nil];
@@ -64,6 +69,16 @@
     return [[GIDSignIn sharedInstance] handleURL:url
                                sourceApplication:sourceApplication
                                       annotation:annotation];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
+{
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                 openURL:url
+                                                 options:options];
+  return YES;
 }
 
 #pragma mark - UISceneSession lifecycle

@@ -22,6 +22,7 @@ NSString *allText;
 LineChartView *lineChartView;
 NSMutableArray *titles;
 double ySum;
+UILabel *ytLabel;
 
 + (void)setLabel:(UILabel*)otherLabel {
     label = otherLabel;
@@ -30,6 +31,15 @@ double ySum;
 + (UILabel*)getLabel {
     return label;
 }
+
++ (void)setYouTubeReportLabel:(UILabel*)ytReportLabel {
+    ytLabel = ytReportLabel;
+}
+
++ (UILabel*)getYTReportLabel {
+    return ytLabel;
+}
+
 
 + (NSDictionary*) fetchLast20Views: (NSString*) userID {
     vids = [[NSMutableArray alloc] init];
@@ -133,6 +143,15 @@ double ySum;
     
     double slope = numerator / denominator;
     NSLog(@"%f", slope);
+    if (slope < -10) {
+        [ytLabel setText:@"negative slope"];
+    }
+    else if (slope > 10) {
+        [ytLabel setText:@"positive slope"];
+    }
+    else {
+        [ytLabel setText:@"stagnant"];
+    }
     
     // ACCOUNT IDS YOU CAN TEST
     // + Channel that is doing well UCy3zgWom-5AGypGX_FVTKpg

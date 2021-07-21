@@ -9,12 +9,15 @@
 #import <Parse/Parse.h>
 #import "APIManager.h"
 @import Charts;
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 //#import "Charts/Charts-Swift.h"
 
 @interface AnalyticsViewController () <ChartViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
 @property (weak, nonatomic) IBOutlet UITextField *userIDLabel;
 @property (strong, nonatomic) IBOutlet LineChartView *lineChartView;
+@property (weak, nonatomic) IBOutlet UILabel *youtubeReportLabel;
 
 @end
 
@@ -43,8 +46,22 @@
 //
 //    // Initialize the service object.
 //    self.service = [[GTLRYouTubeService alloc] init];
-
+/* Your app can only have one person logged in at a time. We represent each person logged into your app with the [FBSDKAccessToken currentAccessToken].
+ The FBSDKLoginManager sets this token for you and when it sets currentAccessToken it also automatically writes it to a keychain cache.
+ The FBSDKAccessToken contains userID which you can use to identify the user.
+ You should update your view controller to check for an existing token at load. This avoids unnecessary showing the login flow again if someone already granted permissions to your app: */
+    if ([FBSDKAccessToken currentAccessToken]) {
+       // User is logged in, do work such as go to next view controller.
+      }
+    
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+      // Optional: Place the button in the center of your view.
+      loginButton.center = self.view.center;
+      [self.view addSubview:loginButton];
+    loginButton.permissions = @[@"instagram_basic", @"pages_show_list"];
+    
     [APIManager setLabel:self.testLabel];
+    [APIManager setYouTubeReportLabel:self.youtubeReportLabel];
     
 //    NSString *userID = @"UCt7gY0riLR5YJLISl3RK5iw"; // soon user can input by themselves
     [self updateVideoInfo];
