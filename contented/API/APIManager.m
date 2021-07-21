@@ -19,6 +19,7 @@ NSMutableArray *vids;
 NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
 UILabel *label;
 NSString *allText;
+LineChartView *lineChartView;
 
 + (void)setLabel:(UILabel*)otherLabel {
     label = otherLabel;
@@ -81,6 +82,7 @@ NSString *allText;
                     [self setVideoViews:video:videoDict];
                     // here video.title, video.vidID, and video.views all have the proper values. this is the endpoint
                     allText = [allText stringByAppendingFormat:@"TITLE: %@ VIEWS: %lu\n", video.title, video.views];
+                    [self setChartValues];
                 }
             [self getLabel].text = allText;
         }];
@@ -96,6 +98,37 @@ NSString *allText;
     NSDictionary *stats = middle[@"statistics"];
     NSString *viewCount = stats[@"viewCount"];
     video.views = [viewCount integerValue];
+}
+
++ (void)setChart: (LineChartView*) otherLineChartView {
+    lineChartView = otherLineChartView;
+}
+
++ (void)setChartValues {
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    for (int i = 0; i < vids.count; i++) {
+        Video *video = vids[vids.count - 1 - i];
+        [values addObject:[[ChartDataEntry alloc] initWithX:i y:video.views]];
+    }
+    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
+    set1.drawCirclesEnabled = YES;
+    [set1 setColor:UIColor.blackColor];
+    [set1 setCircleColor:UIColor.redColor];
+    set1.lineWidth = 1.0;
+    set1.mode = LineChartModeCubicBezier;
+    set1.circleRadius = 3.0;
+    set1.drawCircleHoleEnabled = YES;
+
+    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+    [dataSets addObject:set1];
+    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+    lineChartView.data = data;
+}
+
++ (NSDate*) stringToDate:(NSString*) dateString {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    return [dateFormatter dateFromString:dateString];
 }
 
 @end

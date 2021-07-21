@@ -59,28 +59,29 @@
 
     self.lineChartView.rightAxis.enabled = NO;
     [self.lineChartView animateWithXAxisDuration:2.5];
-    [self setChartValues];
+    [APIManager setChart:self.lineChartView];
+//    [APIManager setChartValues:self.lineChartView];
     
 }
 
-- (void)setChartValues {
-    NSMutableArray *values = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 20; i++) {
-        [values addObject:[[ChartDataEntry alloc] initWithX:i y:(i*5)]];
-    }
-    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"test 1"];
-    set1.drawCirclesEnabled = YES;
-    [set1 setColor:UIColor.blackColor];
-    [set1 setCircleColor:UIColor.redColor];
-    set1.lineWidth = 1.0;
-    set1.circleRadius = 3.0;
-    set1.drawCircleHoleEnabled = YES;
-
-    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-    [dataSets addObject:set1];
-    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-    self.lineChartView.data = data;
-}
+//- (void)setChartValues {
+//    NSMutableArray *values = [[NSMutableArray alloc] init];
+//    for (int i = 0; i < 20; i++) {
+//        [values addObject:[[ChartDataEntry alloc] initWithX:i y:(i*5)]];
+//    }
+//    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"test 1"];
+//    set1.drawCirclesEnabled = YES;
+//    [set1 setColor:UIColor.blackColor];
+//    [set1 setCircleColor:UIColor.redColor];
+//    set1.lineWidth = 1.0;
+//    set1.circleRadius = 3.0;
+//    set1.drawCircleHoleEnabled = YES;
+//
+//    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+//    [dataSets addObject:set1];
+//    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+//    self.lineChartView.data = data;
+//}
 
 // end attempt to add chart
 
