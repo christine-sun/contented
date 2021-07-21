@@ -7,11 +7,11 @@
 
 #import "APIManager.h"
 #import "Video.h"
-//
-//@interface APIManager ()
-//@property (weak, nonatomic) IBOutlet UILabel *testLabel;
-//
-//@end
+
+@interface APIManager () <IChartAxisValueFormatter>
+@property (weak, nonatomic) IBOutlet UILabel *testLabel;
+
+@end
 
 @implementation APIManager
 
@@ -20,6 +20,7 @@ NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
 UILabel *label;
 NSString *allText;
 LineChartView *lineChartView;
+NSMutableArray *titles;
 
 + (void)setLabel:(UILabel*)otherLabel {
     label = otherLabel;
@@ -67,7 +68,7 @@ LineChartView *lineChartView;
         NSString *published = snippet[@"publishedAt"];
         video.title = title;
         video.vidID = videoId;
-        video.publishedAt = published;
+        video.publishedAt = [self stringToDate:published];
         
         NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/videos?part=statistics&id=%@&key=%@", videoId, API_KEY];
         NSURL *url = [NSURL URLWithString:baseString];
@@ -106,11 +107,26 @@ LineChartView *lineChartView;
 
 + (void)setChartValues {
     NSMutableArray *values = [[NSMutableArray alloc] init];
+    
+    // Sort vids such that the video dates are in ascending order
+    vids = [vids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
+        return [a.publishedAt compare:b.publishedAt];
+    }];
     for (int i = 0; i < vids.count; i++) {
-        Video *video = vids[vids.count - 1 - i];
+        Video *vid = vids[i];
+        NSLog(@"%@", vid.title);
+    }
+     
+     
+    
+    titles = [[NSMutableArray alloc] init];
+    for (int i = 0; i < vids.count; i++) {
+        Video *video = vids[i];
         [values addObject:[[ChartDataEntry alloc] initWithX:i y:video.views]];
+        [titles addObject:video.title];
     }
     LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
+    
     set1.drawCirclesEnabled = YES;
     [set1 setColor:UIColor.blackColor];
     [set1 setCircleColor:UIColor.redColor];
@@ -118,11 +134,25 @@ LineChartView *lineChartView;
     set1.mode = LineChartModeCubicBezier;
     set1.circleRadius = 3.0;
     set1.drawCircleHoleEnabled = YES;
-
+    
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:set1];
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
     lineChartView.data = data;
+    lineChartView.xAxis.valueFormatter = [[APIManager alloc] init];
+}
+
+- (NSString * _Nonnull)stringForValue:(double)value axis:(ChartAxisBase * _Nullable)axis
+{
+    NSString *xAxisStringValue = @"";
+    int myInt = (int)value;
+
+    if(titles.count > myInt) {
+        xAxisStringValue = [titles objectAtIndex:myInt];
+    }
+//    NSLog(@"TITLE: %@", xAxisStringValue);
+
+    return xAxisStringValue;
 }
 
 + (NSDate*) stringToDate:(NSString*) dateString {

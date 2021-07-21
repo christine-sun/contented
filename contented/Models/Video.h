@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *vidID;
 @property (nonatomic) NSUInteger views;
-@property (strong, nonatomic) NSString *publishedAt;
+@property (strong, nonatomic) NSDate *publishedAt;
 
 @end
 

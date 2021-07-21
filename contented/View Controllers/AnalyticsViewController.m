@@ -56,7 +56,10 @@
     self.lineChartView.dragEnabled = YES;
     [self.lineChartView setScaleEnabled:YES];
     self.lineChartView.pinchZoomEnabled = YES;
-
+    
+    self.lineChartView.xAxis.enabled = NO;
+    self.lineChartView.leftAxis.enabled = NO;
+    
     self.lineChartView.rightAxis.enabled = NO;
     [self.lineChartView animateWithXAxisDuration:2.5];
     [APIManager setChart:self.lineChartView];
