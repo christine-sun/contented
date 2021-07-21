@@ -21,6 +21,7 @@ UILabel *label;
 NSString *allText;
 LineChartView *lineChartView;
 NSMutableArray *titles;
+double ySum;
 
 + (void)setLabel:(UILabel*)otherLabel {
     label = otherLabel;
@@ -48,6 +49,7 @@ NSMutableArray *titles;
             initialDictionary = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             
             NSArray *videos = initialDictionary[@"items"];
+            ySum = 0;
             for (int i = 0; i < videos.count; i++) {
                 [self setVideoProperties:videos[i]];
             }
@@ -99,6 +101,7 @@ NSMutableArray *titles;
     NSDictionary *stats = middle[@"statistics"];
     NSString *viewCount = stats[@"viewCount"];
     video.views = [viewCount integerValue];
+    ySum += video.views;
 }
 
 + (void)setChart: (LineChartView*) otherLineChartView {
@@ -107,24 +110,35 @@ NSMutableArray *titles;
 
 + (void)setChartValues {
     NSMutableArray *values = [[NSMutableArray alloc] init];
+    double xSum = 190; // the sum of 0+1+2+3+...19
+    double xMean = 190 / 2;
+    double yMean = ySum / vids.count;
+    double numerator = 0; // find numerator in least squares equation
+    double denominator = 0; // find denominator in least squares equation
     
     // Sort vids such that the video dates are in ascending order
     vids = [vids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
         return [a.publishedAt compare:b.publishedAt];
     }];
-    for (int i = 0; i < vids.count; i++) {
-        Video *vid = vids[i];
-        NSLog(@"%@", vid.title);
-    }
-     
-     
     
     titles = [[NSMutableArray alloc] init];
     for (int i = 0; i < vids.count; i++) {
         Video *video = vids[i];
         [values addObject:[[ChartDataEntry alloc] initWithX:i y:video.views]];
+        numerator += ((i - xMean) * (video.views - yMean));
+        denominator += ((i - xMean)*(i - xMean));
+        
         [titles addObject:video.title];
     }
+    
+    double slope = numerator / denominator;
+    NSLog(@"%f", slope);
+    
+    // ACCOUNT IDS YOU CAN TEST
+    // + Channel that is doing well UCy3zgWom-5AGypGX_FVTKpg
+    // - Channel that is not doing well UCxX9wt5FWQUAAz4UrysqK9A
+    // 0 Channel that is more stagnant UC5CMtpogD_P3mOoeiDHD5eQ
+    
     LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
     
     set1.drawCirclesEnabled = YES;
@@ -150,7 +164,6 @@ NSMutableArray *titles;
     if(titles.count > myInt) {
         xAxisStringValue = [titles objectAtIndex:myInt];
     }
-//    NSLog(@"TITLE: %@", xAxisStringValue);
 
     return xAxisStringValue;
 }
