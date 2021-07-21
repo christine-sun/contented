@@ -20,6 +20,7 @@
 		5F3D0F2226A788A6007BDDAD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F2126A788A6007BDDAD /* File.swift */; };
 		5F3D0F2326A788A6007BDDAD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F2126A788A6007BDDAD /* File.swift */; };
 		5F3D0F2426A788A6007BDDAD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F2126A788A6007BDDAD /* File.swift */; };
+		5F3D0F3126A8B9F5007BDDAD /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
@@ -79,6 +80,8 @@
 		5F3D0F1F26A788A5007BDDAD /* contentedTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "contentedTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F3D0F2026A788A5007BDDAD /* contentedUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "contentedUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F3D0F2126A788A6007BDDAD /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		5F3D0F2F26A8B9F5007BDDAD /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		5FE7ECB4269CAB130040154E /* contented.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contented.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECB7269CAB130040154E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 				5FE7ECF5269CDC470040154E /* LoginViewController.m */,
 				5FE7ED00269CDCAE0040154E /* AnalyticsViewController.h */,
 				5FE7ED01269CDCAE0040154E /* AnalyticsViewController.m */,
+				5F3D0F2F26A8B9F5007BDDAD /* SettingsViewController.h */,
+				5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -571,6 +576,7 @@
 				5FE7ECF6269CDC470040154E /* LoginViewController.m in Sources */,
 				5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */,
 				5F3D0EAE26A0B2CE007BDDAD /* PlatformUtilities.m in Sources */,
+				5F3D0F3126A8B9F5007BDDAD /* SettingsViewController.m in Sources */,
 				5FE7ECCA269CAB140040154E /* main.m in Sources */,
 				5FE7ED0C269DDE6A0040154E /* Platform.m in Sources */,
 				5FE7ED06269DDC3E0040154E /* PushesViewController.m in Sources */,

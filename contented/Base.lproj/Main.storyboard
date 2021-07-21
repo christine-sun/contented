@@ -357,7 +357,7 @@
             <objects>
                 <viewController id="CaF-hu-crN" customClass="EditViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B8M-cW-AVX">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="title goes here" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xfr-NO-hLS">
@@ -759,6 +759,22 @@
             </objects>
             <point key="canvasLocation" x="5720" y="63.270142180094787"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="92J-RN-RRG">
+            <objects>
+                <viewController id="eqz-gW-XyJ" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I77-rf-BAa">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PrE-bi-zDi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pvs-Fs-muv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HKN-uw-ASK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7563" y="64"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="l1A-OA-FE6">
             <objects>
@@ -794,6 +810,7 @@
                         <segue destination="2Hj-rx-o2B" kind="relationship" relationship="viewControllers" id="ZEX-oe-bCA"/>
                         <segue destination="f4c-Uf-5FH" kind="relationship" relationship="viewControllers" id="CPq-2s-fFQ"/>
                         <segue destination="exY-4M-xnF" kind="relationship" relationship="viewControllers" id="epd-M4-kcq"/>
+                        <segue destination="aAG-mD-MdI" kind="relationship" relationship="viewControllers" id="VBH-xA-RXR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fq0-sz-m6x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -842,6 +859,25 @@
             </objects>
             <point key="canvasLocation" x="4792.3076923076924" y="63.270142180094787"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LCp-Aa-YuA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aAG-mD-MdI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="gearshape.2.fill" catalog="system" id="cRH-uO-8YR"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JsE-48-tPm">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eqz-gW-XyJ" kind="relationship" relationship="rootViewController" id="iY0-58-kkY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fEr-1a-agT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6663" y="64"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ZEX-oe-bCA"/>
@@ -856,6 +892,7 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="gearshape.2.fill" catalog="system" width="128" height="100"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="placeholder" width="360" height="360"/>
