@@ -28,8 +28,8 @@
 		5F3D0F4226A9C3C9007BDDAD /* BoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4126A9C3C9007BDDAD /* BoardViewController.m */; };
 		5F3D0F4526A9C597007BDDAD /* BoardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4426A9C597007BDDAD /* BoardTableViewCell.m */; };
 		5F3D0F4926AA0A3C007BDDAD /* IdeasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4826AA0A3C007BDDAD /* IdeasViewController.m */; };
-		5F3D0F4C26AA0BAF007BDDAD /* Idea.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4B26AA0BAF007BDDAD /* Idea.m */; };
 		5F3D0F4F26AA141C007BDDAD /* IdeaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4E26AA141C007BDDAD /* IdeaView.m */; };
+		5F3D0F5226AA1B30007BDDAD /* Idea.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F5126AA1B30007BDDAD /* Idea.m */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
@@ -104,10 +104,10 @@
 		5F3D0F4426A9C597007BDDAD /* BoardTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardTableViewCell.m; sourceTree = "<group>"; };
 		5F3D0F4726AA0A3C007BDDAD /* IdeasViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdeasViewController.h; sourceTree = "<group>"; };
 		5F3D0F4826AA0A3C007BDDAD /* IdeasViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IdeasViewController.m; sourceTree = "<group>"; };
-		5F3D0F4A26AA0BAF007BDDAD /* Idea.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Idea.h; sourceTree = "<group>"; };
-		5F3D0F4B26AA0BAF007BDDAD /* Idea.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Idea.m; sourceTree = "<group>"; };
 		5F3D0F4D26AA141C007BDDAD /* IdeaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdeaView.h; sourceTree = "<group>"; };
 		5F3D0F4E26AA141C007BDDAD /* IdeaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IdeaView.m; sourceTree = "<group>"; };
+		5F3D0F5026AA1B30007BDDAD /* Idea.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Idea.h; sourceTree = "<group>"; };
+		5F3D0F5126AA1B30007BDDAD /* Idea.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Idea.m; sourceTree = "<group>"; };
 		5FE7ECB4269CAB130040154E /* contented.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contented.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECB7269CAB130040154E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -313,8 +313,8 @@
 				5F3D0F0D26A70933007BDDAD /* Video.m */,
 				5F3D0F3A26A9BB4E007BDDAD /* Board.h */,
 				5F3D0F3B26A9BB4E007BDDAD /* Board.m */,
-				5F3D0F4A26AA0BAF007BDDAD /* Idea.h */,
-				5F3D0F4B26AA0BAF007BDDAD /* Idea.m */,
+				5F3D0F5026AA1B30007BDDAD /* Idea.h */,
+				5F3D0F5126AA1B30007BDDAD /* Idea.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -631,7 +631,6 @@
 				5F3D0EAE26A0B2CE007BDDAD /* PlatformUtilities.m in Sources */,
 				5F3D0F3126A8B9F5007BDDAD /* SettingsViewController.m in Sources */,
 				5F3D0F3F26A9BE78007BDDAD /* BoardCollectionViewCell.m in Sources */,
-				5F3D0F4C26AA0BAF007BDDAD /* Idea.m in Sources */,
 				5F3D0F4F26AA141C007BDDAD /* IdeaView.m in Sources */,
 				5F3D0F4526A9C597007BDDAD /* BoardTableViewCell.m in Sources */,
 				5FE7ECCA269CAB140040154E /* main.m in Sources */,
@@ -642,6 +641,7 @@
 				5F3D0F4226A9C3C9007BDDAD /* BoardViewController.m in Sources */,
 				5F3D0EA526A0AD21007BDDAD /* EditViewController.m in Sources */,
 				5F3D0EB126A0B865007BDDAD /* PlatformButton.m in Sources */,
+				5F3D0F5226AA1B30007BDDAD /* Idea.m in Sources */,
 				5F3D0F3C26A9BB4E007BDDAD /* Board.m in Sources */,
 				5FE7ED02269CDCAE0040154E /* AnalyticsViewController.m in Sources */,
 				5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */,

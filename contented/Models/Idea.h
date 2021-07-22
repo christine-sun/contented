@@ -5,14 +5,18 @@
 //  Created by Christine Sun on 7/22/21.
 //
 
-#import <Foundation/Foundation.h>
+#import "PFObject.h"
+#import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Idea : NSObject
+@interface Idea : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *details;
+@property (nonatomic) CGPoint location;
+
++ (void) postIdea: (NSString*) title withCompletion: (PFBooleanResultBlock _Nullable) completion;
 
 @end
 
