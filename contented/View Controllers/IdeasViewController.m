@@ -7,6 +7,7 @@
 
 #import "IdeasViewController.h"
 #import "Idea.h"
+#import "IdeaView.h"
 
 @interface IdeasViewController ()
 
@@ -25,14 +26,15 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"new idea☁️" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
     [alert addTextFieldWithConfigurationHandler:nil];
     
-    
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"cancel"
         style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:cancelAction];
     UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"add✨" style:UIAlertControllerStyleAlert handler:^(UIAlertAction * _Nonnull action) {
             Idea *idea = [[Idea alloc] init];
             idea.title = alert.textFields.firstObject.text;
-            [self.ideas addObject:idea];
+            IdeaView *ideaView = [[IdeaView alloc] init];
+            ideaView.idea = idea;
+            [self.ideas addObject:ideaView];
     }];
     [alert addAction:addAction];
     
