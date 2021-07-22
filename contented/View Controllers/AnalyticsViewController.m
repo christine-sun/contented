@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "APIManager.h"
 @import Charts;
+#import "Video.h"
 
 //#import "Charts/Charts-Swift.h"
 
@@ -16,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
 @property (weak, nonatomic) IBOutlet UITextField *userIDLabel;
 @property (strong, nonatomic) IBOutlet LineChartView *lineChartView;
-@property (weak, nonatomic) IBOutlet UILabel *youtubeReportLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ytReportLabel;
 
 @end
 
@@ -50,51 +51,55 @@
  The FBSDKAccessToken contains userID which you can use to identify the user.
  You should update your view controller to check for an existing token at load. This avoids unnecessary showing the login flow again if someone already granted permissions to your app: */
     
+    UITapGestureRecognizer *pointTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapPoint:)];
+    [self.lineChartView addGestureRecognizer:pointTapGestureRecognizer];
     
     [APIManager setLabel:self.testLabel];
-    [APIManager setYouTubeReportLabel:self.youtubeReportLabel];
+    [APIManager setYouTubeReportLabel:self.ytReportLabel];
     
-//    NSString *userID = @"UCt7gY0riLR5YJLISl3RK5iw"; // soon user can input by themselves
     [self updateVideoInfo];
-    
     
     //chart begin
     self.lineChartView.delegate = self;
-
     self.lineChartView.dragEnabled = YES;
     [self.lineChartView setScaleEnabled:YES];
     self.lineChartView.pinchZoomEnabled = YES;
-    
     self.lineChartView.xAxis.enabled = NO;
     self.lineChartView.leftAxis.enabled = NO;
-    
     self.lineChartView.rightAxis.enabled = NO;
     [self.lineChartView animateWithXAxisDuration:2.5];
     [APIManager setChart:self.lineChartView];
-//    [APIManager setChartValues:self.lineChartView];
     
 }
 
-//- (void)setChartValues {
-//    NSMutableArray *values = [[NSMutableArray alloc] init];
-//    for (int i = 0; i < 20; i++) {
-//        [values addObject:[[ChartDataEntry alloc] initWithX:i y:(i*5)]];
-//    }
-//    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"test 1"];
-//    set1.drawCirclesEnabled = YES;
-//    [set1 setColor:UIColor.blackColor];
-//    [set1 setCircleColor:UIColor.redColor];
-//    set1.lineWidth = 1.0;
-//    set1.circleRadius = 3.0;
-//    set1.drawCircleHoleEnabled = YES;
-//
-//    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-//    [dataSets addObject:set1];
-//    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-//    self.lineChartView.data = data;
-//}
-
-// end attempt to add chart
+- (void) didTapPoint:(UITapGestureRecognizer*)sender {
+    NSLog(@"Tapped on a point");
+    if(sender.state == UIPressPhaseEnded) {
+        CGPoint touchPoint = [sender locationInView:self.view];
+        ChartHighlight *highlight = [self.lineChartView getHighlightByTouchPoint:touchPoint];
+        NSLog(@"%@", highlight);
+        NSString *haystack = [NSString stringWithFormat:@"%@", highlight];
+        NSLog(@"%@", haystack);
+        // the x of highlight is the correct index
+        
+        NSString *haystackPrefix = @"Highlight, x: ";
+        NSString *haystackSuffix = @".0, y:";
+        NSRange needleRange = NSMakeRange(haystackPrefix.length,
+                                          haystack.length - haystackPrefix.length - haystackSuffix.length);
+        NSString *needle = [haystack substringWithRange:needleRange];
+        NSArray *haystackArray = [needle componentsSeparatedByString:@".0"];
+        NSString *indexString = haystackArray[0];
+        NSInteger index = [indexString integerValue];
+    
+        // TODO: NOW, index is the correct x index. Turn it into an int value, and then access the (i think its vids) which video is it? and find the youtube link using the vidoe id, and attach a webkit view
+        Video *video = [APIManager getVids][index];
+        NSLog(@"%@ %lu", video.title, (unsigned long)video.views);
+    }
+    /* // Navigate to tapped user's profile
+     - (void) didTapUserProfile:(UITapGestureRecognizer *)sender {
+         [self.delegate tweetCell:self didTap:self.tweet.user];
+     }*/
+}
 
 - (void)updateVideoInfo {
     NSString *userID = self.userIDLabel.text;

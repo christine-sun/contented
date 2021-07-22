@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (UILabel*)getYTReportLabel;
 + (UILabel*)getLabel;
 + (NSDictionary*) fetchLast20Views: (NSString*) userID;
++ (NSMutableArray*) getVids;
 + (void)setVideoViews: (Video*)video: (NSDictionary*)videoDict;
 + (void)setChart: (LineChartView*) lineChartView;
 + (void)setChartValues;

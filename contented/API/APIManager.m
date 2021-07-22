@@ -40,6 +40,10 @@ UILabel *ytLabel;
     return ytLabel;
 }
 
++ (NSMutableArray*) getVids {
+    return vids;
+}
+
 
 + (NSDictionary*) fetchLast20Views: (NSString*) userID {
     vids = [[NSMutableArray alloc] init];
@@ -142,11 +146,11 @@ UILabel *ytLabel;
     }
     
     double slope = numerator / denominator;
-    NSLog(@"%f", slope);
-    if (slope < -10) {
+    NSLog(@"slope %f", slope);
+    if (slope < -50) {
         [ytLabel setText:@"Consider what types of videos did well for your channel in the past - are there ways to rekindle that creativity and inspiration?"];
     }
-    else if (slope > 10) {
+    else if (slope > 50) {
         [ytLabel setText:@"Wow, you have been doing amazing! Keep on pushing out creative content 🔥"];
     }
     else {

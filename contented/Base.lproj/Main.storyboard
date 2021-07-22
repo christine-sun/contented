@@ -357,7 +357,7 @@
             <objects>
                 <viewController id="CaF-hu-crN" customClass="EditViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B8M-cW-AVX">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="title goes here" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xfr-NO-hLS">
@@ -752,7 +752,7 @@
                     <connections>
                         <outlet property="lineChartView" destination="mdC-Rr-4GM" id="tGG-oj-5wi"/>
                         <outlet property="userIDLabel" destination="QIV-11-BgX" id="AUN-Cc-ex8"/>
-                        <outlet property="youtubeReportLabel" destination="S84-3O-RCs" id="E51-jF-Tg5"/>
+                        <outlet property="ytReportLabel" destination="S84-3O-RCs" id="E51-jF-Tg5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0x-IX-voV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
