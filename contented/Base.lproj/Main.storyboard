@@ -753,11 +753,46 @@
                         <outlet property="lineChartView" destination="mdC-Rr-4GM" id="tGG-oj-5wi"/>
                         <outlet property="userIDLabel" destination="QIV-11-BgX" id="AUN-Cc-ex8"/>
                         <outlet property="ytReportLabel" destination="S84-3O-RCs" id="E51-jF-Tg5"/>
+                        <segue destination="wrA-48-jgm" kind="presentation" identifier="webSegue" id="t8U-wa-htm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0x-IX-voV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5720" y="63.270142180094787"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="6OA-Ph-rdq">
+            <objects>
+                <viewController id="wrA-48-jgm" customClass="WebViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sQL-Yh-qcn">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2z-dA-z1p">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0su-nu-fTo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="M2z-dA-z1p" firstAttribute="leading" secondItem="0su-nu-fTo" secondAttribute="leading" id="5Vi-J5-zrG"/>
+                            <constraint firstItem="M2z-dA-z1p" firstAttribute="trailing" secondItem="0su-nu-fTo" secondAttribute="trailing" id="EMk-ZQ-8rG"/>
+                            <constraint firstItem="M2z-dA-z1p" firstAttribute="top" secondItem="sQL-Yh-qcn" secondAttribute="top" id="Eyt-Aa-pqR"/>
+                            <constraint firstAttribute="bottom" secondItem="M2z-dA-z1p" secondAttribute="bottom" id="xNc-7k-IDC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="M2z-dA-z1p" id="TDN-vB-PdI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kYx-0Y-fFH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5720" y="780.56872037914684"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="92J-RN-RRG">

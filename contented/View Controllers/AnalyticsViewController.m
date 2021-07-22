@@ -10,6 +10,7 @@
 #import "APIManager.h"
 @import Charts;
 #import "Video.h"
+#import "WebViewController.h"
 
 //#import "Charts/Charts-Swift.h"
 
@@ -93,7 +94,8 @@
     
         // TODO: NOW, index is the correct x index. Turn it into an int value, and then access the (i think its vids) which video is it? and find the youtube link using the vidoe id, and attach a webkit view
         Video *video = [APIManager getVids][index];
-        NSLog(@"%@ %lu", video.title, (unsigned long)video.views);
+        
+        [self performSegueWithIdentifier:@"webSegue" sender:video];
     }
     /* // Navigate to tapped user's profile
      - (void) didTapUserProfile:(UITapGestureRecognizer *)sender {
@@ -192,14 +194,16 @@
     }];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqual:@"webSegue"]) {
+        WebViewController *webVC = [segue destinationViewController];
+        webVC.video = (Video*) sender;
+    }
 }
-*/
 
 @end

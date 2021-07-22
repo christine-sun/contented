@@ -21,6 +21,8 @@
 		5F3D0F2326A788A6007BDDAD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F2126A788A6007BDDAD /* File.swift */; };
 		5F3D0F2426A788A6007BDDAD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F2126A788A6007BDDAD /* File.swift */; };
 		5F3D0F3126A8B9F5007BDDAD /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */; };
+		5F3D0F3626A9AD31007BDDAD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3D0F3526A9AD31007BDDAD /* WebKit.framework */; };
+		5F3D0F3926A9ADC0007BDDAD /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
@@ -82,6 +84,9 @@
 		5F3D0F2126A788A6007BDDAD /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		5F3D0F2F26A8B9F5007BDDAD /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		5F3D0F3526A9AD31007BDDAD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		5F3D0F3726A9ADC0007BDDAD /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		5FE7ECB4269CAB130040154E /* contented.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contented.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECB7269CAB130040154E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F3D0F3626A9AD31007BDDAD /* WebKit.framework in Frameworks */,
 				6288572FF73EE8A17ECCC1F7 /* libPods-contented.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +260,8 @@
 				5FE7ED01269CDCAE0040154E /* AnalyticsViewController.m */,
 				5F3D0F2F26A8B9F5007BDDAD /* SettingsViewController.h */,
 				5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */,
+				5F3D0F3726A9ADC0007BDDAD /* WebViewController.h */,
+				5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -305,6 +313,7 @@
 		6049A9445812FF427895EB5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F3D0F3526A9AD31007BDDAD /* WebKit.framework */,
 				5F3D0F1C26A787EE007BDDAD /* libCharts.a */,
 				C27E15E3D007C9D2F3816017 /* libPods-contented.a */,
 				95E796C78EFA751CFA4C4176 /* libPods-contented-contentedUITests.a */,
@@ -570,6 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FE7ED11269E4D730040154E /* TaskCell.m in Sources */,
+				5F3D0F3926A9ADC0007BDDAD /* WebViewController.m in Sources */,
 				5FE7ECF0269CC78E0040154E /* Task.m in Sources */,
 				5F3D0E9C269F4A2B007BDDAD /* TabBarController.m in Sources */,
 				5F3D0F0E26A70933007BDDAD /* Video.m in Sources */,
