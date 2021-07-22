@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BoardTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 

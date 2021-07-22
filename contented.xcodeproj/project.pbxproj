@@ -193,6 +193,17 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		5F3D0F4626A9CEF2007BDDAD /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				5F3D0F3D26A9BE78007BDDAD /* BoardCollectionViewCell.h */,
+				5F3D0F3E26A9BE78007BDDAD /* BoardCollectionViewCell.m */,
+				5F3D0F4326A9C597007BDDAD /* BoardTableViewCell.h */,
+				5F3D0F4426A9C597007BDDAD /* BoardTableViewCell.m */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
 		5FE7ECAB269CAB130040154E = {
 			isa = PBXGroup;
 			children = (
@@ -318,14 +329,11 @@
 		5FE7ED0E269E4D560040154E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F3D0F4626A9CEF2007BDDAD /* Board */,
 				5FE7ED0F269E4D730040154E /* TaskCell.h */,
 				5FE7ED10269E4D730040154E /* TaskCell.m */,
 				5F3D0EAF26A0B865007BDDAD /* PlatformButton.h */,
 				5F3D0EB026A0B865007BDDAD /* PlatformButton.m */,
-				5F3D0F3D26A9BE78007BDDAD /* BoardCollectionViewCell.h */,
-				5F3D0F3E26A9BE78007BDDAD /* BoardCollectionViewCell.m */,
-				5F3D0F4326A9C597007BDDAD /* BoardTableViewCell.h */,
-				5F3D0F4426A9C597007BDDAD /* BoardTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";

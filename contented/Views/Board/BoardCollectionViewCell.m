@@ -70,7 +70,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BoardTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"BoardTableViewCell" forIndexPath:indexPath];
-    cell.textLabel.text = self.board.items[indexPath.row];
+    cell.titleLabel.text = self.board.items[indexPath.row];
     return cell;
 }
 

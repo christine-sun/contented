@@ -9,7 +9,7 @@
 #import "Board.h"
 #import "BoardCollectionViewCell.h"
 
-@interface BoardViewController ()
+@interface BoardViewController ()<UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray *boards;
@@ -27,6 +27,9 @@
     newBoard.title = @"To Do";
     newBoard.items = @[@"first item", @"second item"];
     [self.boards addObject:newBoard];
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
 }
 
 - (IBAction)onTapNewList:(id)sender {
@@ -40,12 +43,15 @@
         newBoard.title = newList;
         newBoard.items = [[NSMutableArray alloc] init];
         [self.boards addObject:newBoard];
-        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.boards.count-1 inSection:0]];
-        [self.collectionView insertItemsAtIndexPaths:paths];
+        
+        [self.collectionView reloadData];
+        
         
     }];
     [alert addAction:addAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
+
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.boards.count;
