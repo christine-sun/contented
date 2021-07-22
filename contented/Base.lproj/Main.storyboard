@@ -190,7 +190,7 @@
                     <navigationItem key="navigationItem" title="Stream" id="LJD-tx-Kfr">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="YED-xi-Ga9">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ash-WX-K3o">
-                                <rect key="frame" x="-23" y="-15" width="75" height="22"/>
+                                <rect key="frame" x="299" y="11" width="75" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="slider.horizontal.3" catalog="system"/>
                             </button>
@@ -933,17 +933,28 @@
             </objects>
             <point key="canvasLocation" x="4298" y="-840"/>
         </scene>
-        <!--View Controller-->
+        <!--Ideas View Controller-->
         <scene sceneID="LYL-0z-ZVl">
             <objects>
-                <viewController id="1aS-eZ-14F" sceneMemberID="viewController">
+                <viewController id="1aS-eZ-14F" customClass="IdeasViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h14-OX-dcB">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="uXT-ge-xEq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RgG-gL-2Fy"/>
+                    <navigationItem key="navigationItem" id="RgG-gL-2Fy">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="2rM-v1-1KO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jzp-jX-bhW">
+                                <rect key="frame" x="302" y="11" width="72" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="onTapAdd:" destination="1aS-eZ-14F" eventType="touchUpInside" id="beG-vo-1TO"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vI1-nq-yt0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
