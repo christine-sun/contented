@@ -940,6 +940,25 @@
                     <view key="view" contentMode="scaleToFill" id="h14-OX-dcB">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JaP-gj-wNX">
+                                <rect key="frame" x="95" y="346" width="227" height="161"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cloud.fill" catalog="system" highlightedImage="cloud" translatesAutoresizingMaskIntoConstraints="NO" id="LYn-68-mwW">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="the title of this" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ia1-8q-Eh3">
+                                        <rect key="frame" x="49" y="57" width="145" height="92"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                </subviews>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="uXT-ge-xEq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -958,7 +977,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vI1-nq-yt0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3974" y="63"/>
+            <point key="canvasLocation" x="3973.8461538461538" y="62.559241706161131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4WJ-7C-3UU">
@@ -1174,6 +1193,7 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="cloud.fill" catalog="system" width="128" height="84"/>
         <image name="gearshape.2.fill" catalog="system" width="128" height="100"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>

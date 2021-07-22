@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Idea : NSObject
 
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *details;
 
 @end
 

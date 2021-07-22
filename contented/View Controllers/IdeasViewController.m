@@ -10,6 +10,8 @@
 
 @interface IdeasViewController ()
 
+@property (strong, nonatomic) NSMutableArray *ideas;
+
 @end
 
 @implementation IdeasViewController
@@ -28,8 +30,9 @@
         style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:cancelAction];
     UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"add✨" style:UIAlertControllerStyleAlert handler:^(UIAlertAction * _Nonnull action) {
-        Idea *idea = [[Idea alloc] init];
-        idea.title = alert.textFields.firstObject.text;
+            Idea *idea = [[Idea alloc] init];
+            idea.title = alert.textFields.firstObject.text;
+            [self.ideas addObject:idea];
     }];
     [alert addAction:addAction];
     
