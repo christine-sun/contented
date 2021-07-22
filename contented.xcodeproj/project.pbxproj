@@ -24,6 +24,9 @@
 		5F3D0F3626A9AD31007BDDAD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3D0F3526A9AD31007BDDAD /* WebKit.framework */; };
 		5F3D0F3926A9ADC0007BDDAD /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */; };
 		5F3D0F3C26A9BB4E007BDDAD /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3B26A9BB4E007BDDAD /* Board.m */; };
+		5F3D0F3F26A9BE78007BDDAD /* BoardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3E26A9BE78007BDDAD /* BoardCollectionViewCell.m */; };
+		5F3D0F4226A9C3C9007BDDAD /* BoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4126A9C3C9007BDDAD /* BoardViewController.m */; };
+		5F3D0F4526A9C597007BDDAD /* BoardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4426A9C597007BDDAD /* BoardTableViewCell.m */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
@@ -90,6 +93,12 @@
 		5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		5F3D0F3A26A9BB4E007BDDAD /* Board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		5F3D0F3B26A9BB4E007BDDAD /* Board.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
+		5F3D0F3D26A9BE78007BDDAD /* BoardCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardCollectionViewCell.h; sourceTree = "<group>"; };
+		5F3D0F3E26A9BE78007BDDAD /* BoardCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardCollectionViewCell.m; sourceTree = "<group>"; };
+		5F3D0F4026A9C3C9007BDDAD /* BoardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardViewController.h; sourceTree = "<group>"; };
+		5F3D0F4126A9C3C9007BDDAD /* BoardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardViewController.m; sourceTree = "<group>"; };
+		5F3D0F4326A9C597007BDDAD /* BoardTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardTableViewCell.h; sourceTree = "<group>"; };
+		5F3D0F4426A9C597007BDDAD /* BoardTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardTableViewCell.m; sourceTree = "<group>"; };
 		5FE7ECB4269CAB130040154E /* contented.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contented.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECB7269CAB130040154E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -265,6 +274,8 @@
 				5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */,
 				5F3D0F3726A9ADC0007BDDAD /* WebViewController.h */,
 				5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */,
+				5F3D0F4026A9C3C9007BDDAD /* BoardViewController.h */,
+				5F3D0F4126A9C3C9007BDDAD /* BoardViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -311,6 +322,10 @@
 				5FE7ED10269E4D730040154E /* TaskCell.m */,
 				5F3D0EAF26A0B865007BDDAD /* PlatformButton.h */,
 				5F3D0EB026A0B865007BDDAD /* PlatformButton.m */,
+				5F3D0F3D26A9BE78007BDDAD /* BoardCollectionViewCell.h */,
+				5F3D0F3E26A9BE78007BDDAD /* BoardCollectionViewCell.m */,
+				5F3D0F4326A9C597007BDDAD /* BoardTableViewCell.h */,
+				5F3D0F4426A9C597007BDDAD /* BoardTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -592,11 +607,14 @@
 				5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */,
 				5F3D0EAE26A0B2CE007BDDAD /* PlatformUtilities.m in Sources */,
 				5F3D0F3126A8B9F5007BDDAD /* SettingsViewController.m in Sources */,
+				5F3D0F3F26A9BE78007BDDAD /* BoardCollectionViewCell.m in Sources */,
+				5F3D0F4526A9C597007BDDAD /* BoardTableViewCell.m in Sources */,
 				5FE7ECCA269CAB140040154E /* main.m in Sources */,
 				5FE7ED0C269DDE6A0040154E /* Platform.m in Sources */,
 				5FE7ED06269DDC3E0040154E /* PushesViewController.m in Sources */,
 				5FE7ECFC269CDC7B0040154E /* DetailsViewController.m in Sources */,
 				5FE7ECF9269CDC6B0040154E /* StreamViewController.m in Sources */,
+				5F3D0F4226A9C3C9007BDDAD /* BoardViewController.m in Sources */,
 				5F3D0EA526A0AD21007BDDAD /* EditViewController.m in Sources */,
 				5F3D0EB126A0B865007BDDAD /* PlatformButton.m in Sources */,
 				5F3D0F3C26A9BB4E007BDDAD /* Board.m in Sources */,
