@@ -12,6 +12,10 @@
 
 @interface SettingsViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *youtubeIDField;
+@property (weak, nonatomic) IBOutlet UILabel *statusMessageLabel;
+@property (strong, nonatomic) PFUser *user;
+
 @end
 
 @implementation SettingsViewController
@@ -19,6 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.user = [PFUser currentUser];
+    
+    [self.statusMessageLabel setTextColor:[UIColor whiteColor]];
+//    self.youtubeIDField.text = self.user.youtubeID;
+    self.youtubeIDField.text = self.user[@"youtubeID"];
     
     if ([FBSDKAccessToken currentAccessToken]) {
        // User is logged in, do work such as go to next view controller.
@@ -63,6 +72,24 @@
         self.view.window.rootViewController = loginVC;
     }];
 }
+
+- (IBAction)onTapUpdate:(id)sender {
+    // Set the user's youtubeID
+    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    PFUser *user = [PFUser currentUser];
+    user[@"youtubeID"] = self.youtubeIDField.text;
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            self.statusMessageLabel.text = @"Your YouTube ID has been updated!";
+            [self.statusMessageLabel setTextColor:[UIColor systemGreenColor]];
+        }
+        else {
+            self.statusMessageLabel.text = @"There was a problem updating your YouTube ID.";
+            [self.statusMessageLabel setTextColor:[UIColor systemRedColor]];
+        }
+    }];
+}
+
 
 // google begin
 - (IBAction)onTapSignIn:(id)sender {
