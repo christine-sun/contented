@@ -23,6 +23,7 @@
 		5F3D0F3126A8B9F5007BDDAD /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */; };
 		5F3D0F3626A9AD31007BDDAD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3D0F3526A9AD31007BDDAD /* WebKit.framework */; };
 		5F3D0F3926A9ADC0007BDDAD /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */; };
+		5F3D0F3C26A9BB4E007BDDAD /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3B26A9BB4E007BDDAD /* Board.m */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
@@ -87,6 +88,8 @@
 		5F3D0F3526A9AD31007BDDAD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5F3D0F3726A9ADC0007BDDAD /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		5F3D0F3A26A9BB4E007BDDAD /* Board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
+		5F3D0F3B26A9BB4E007BDDAD /* Board.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
 		5FE7ECB4269CAB130040154E /* contented.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contented.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECB7269CAB130040154E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 				5FE7ED0B269DDE6A0040154E /* Platform.m */,
 				5F3D0F0C26A70933007BDDAD /* Video.h */,
 				5F3D0F0D26A70933007BDDAD /* Video.m */,
+				5F3D0F3A26A9BB4E007BDDAD /* Board.h */,
+				5F3D0F3B26A9BB4E007BDDAD /* Board.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -594,6 +599,7 @@
 				5FE7ECF9269CDC6B0040154E /* StreamViewController.m in Sources */,
 				5F3D0EA526A0AD21007BDDAD /* EditViewController.m in Sources */,
 				5F3D0EB126A0B865007BDDAD /* PlatformButton.m in Sources */,
+				5F3D0F3C26A9BB4E007BDDAD /* Board.m in Sources */,
 				5FE7ED02269CDCAE0040154E /* AnalyticsViewController.m in Sources */,
 				5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */,
 				5F3D0F0B26A60EDC007BDDAD /* APIManager.m in Sources */,
