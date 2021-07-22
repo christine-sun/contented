@@ -6,10 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@import GoogleSignIn;
+#import <GTLRYouTube.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController<GIDSignInDelegate, GIDSignInUIDelegate>
+
+@property (nonatomic, strong) IBOutlet GIDSignInButton *signInButton;
+@property (nonatomic, strong) UITextView *output;
+@property (nonatomic, strong) GTLRYouTubeService *service;
 
 @end
 

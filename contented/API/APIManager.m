@@ -17,20 +17,11 @@
 
 NSMutableArray *vids;
 NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
-UILabel *label;
 NSString *allText;
 LineChartView *lineChartView;
 NSMutableArray *titles;
 double ySum;
 UILabel *ytLabel;
-
-+ (void)setLabel:(UILabel*)otherLabel {
-    label = otherLabel;
-}
-
-+ (UILabel*)getLabel {
-    return label;
-}
 
 + (void)setYouTubeReportLabel:(UILabel*)ytReportLabel {
     ytLabel = ytReportLabel;
@@ -97,11 +88,8 @@ UILabel *ytLabel;
                 else {
                     NSDictionary *videoDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     [self setVideoViews:video:videoDict];
-                    // here video.title, video.vidID, and video.views all have the proper values. this is the endpoint
-                    allText = [allText stringByAppendingFormat:@"TITLE: %@ VIEWS: %lu\n", video.title, video.views];
                     [self setChartValues];
                 }
-            [self getLabel].text = allText;
         }];
         [task resume];
         [vids addObject:video];
