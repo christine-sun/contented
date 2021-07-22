@@ -184,7 +184,7 @@ Milestone 1 - Implement account creation (sign up, log in, log out) (<1 day)
 - Parse code
 - Screen navigation
 
-Milestone 2 - Creation mode for tasks (3 days)
+Milestone 2 - Creation mode for tasks (2 days)
 - Create Task data model
 - Configure Task class on Parse
 - Create views
@@ -194,7 +194,7 @@ Milestone 2 - Creation mode for tasks (3 days)
 - Notification for setting a task
 - Connect camera?
 
-Milestone 3 - Create task stream (4 days)
+Milestone 3 - Create task stream (2 days)
 - Set up table view cells
 - Set up table view cell headers
 - Set up sections within table view and group based on date due/database
@@ -203,7 +203,7 @@ Milestone 3 - Create task stream (4 days)
 - Connect API that generates inspirational quotes
 - Handle double tap gesture for quick task completion
 
-Milestone 4 - Details View of task (3 days)
+Milestone 4 - Details View of task (2 days)
 - Build view
 - Handle updating the title/description/platforms when user chooses to edit
 - Handle completing pushes
@@ -215,16 +215,25 @@ Milestone 5 - Analytics Tab (4 days)
 - Fetch current subscriber count when first logged in
 - Display analytics with API and graph library
 
-Milestone 6 - Notification (1 day)
+Milestone 6 - Idea Board (4 days)
+- Add ability to add a new idea
+- Move idea around on board
+- Tap on idea to show option to delete it
+
+Milestone 7 - Filter Tasks (2 days)
+- Add filtering pop up options
+- Enable user to change home view to completed or specified platform
+
+Milestone 8 - Notification (1 day)
 - Send weekly notifications on Sunday evenings to be intentional for one's tasks
 
-Milestone 7 - UI (2 days)
+Milestone 9 - UI (2 days)
 - Add animations for when tasks are created and completed
 - Add phone vibration modes for when tasks are completed
 - Create a dark mode
 - Create an introduction guide for when users are new to the app
 
-Remaining time: 
+Extra features: 
 -Top videos commenting feature
 -Show a list of completed tasks and allow users to un-complete the task
 -Filter by platform on task stream

@@ -187,7 +187,15 @@
                         <viewLayoutGuide key="safeArea" id="d9z-2T-o1Y"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Stream" id="LJD-tx-Kfr"/>
+                    <navigationItem key="navigationItem" title="Stream" id="LJD-tx-Kfr">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="bjl-NB-eb7">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="J1E-l6-6Fa">
+                                <rect key="frame" x="192" y="0.0" width="182" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="line.horizontal.3.decrease.circle" catalog="system"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="Spf-Qa-4NK" id="qQs-qP-FlV"/>
                         <outlet property="headerView" destination="6yn-F4-vkE" id="9Ri-bh-RR8"/>
@@ -1141,6 +1149,7 @@
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="cloud.fill" catalog="system" width="128" height="84"/>
         <image name="gearshape.2.fill" catalog="system" width="128" height="100"/>
+        <image name="line.horizontal.3.decrease.circle" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="117"/>
