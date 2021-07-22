@@ -162,7 +162,7 @@ UILabel *ytLabel;
     // - Channel that is not doing well UCxX9wt5FWQUAAz4UrysqK9A
     // 0 Channel that is more stagnant UC5CMtpogD_P3mOoeiDHD5eQ
     
-    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
+    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values];
     
     set1.drawCirclesEnabled = YES;
     [set1 setColor:UIColor.blackColor];
