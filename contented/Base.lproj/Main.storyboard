@@ -188,11 +188,11 @@
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
                     <navigationItem key="navigationItem" title="Stream" id="LJD-tx-Kfr">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="bjl-NB-eb7">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="J1E-l6-6Fa">
-                                <rect key="frame" x="192" y="0.0" width="182" height="44"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="YED-xi-Ga9">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ash-WX-K3o">
+                                <rect key="frame" x="-23" y="-15" width="75" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="line.horizontal.3.decrease.circle" catalog="system"/>
+                                <state key="normal" image="slider.horizontal.3" catalog="system"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -933,6 +933,22 @@
             </objects>
             <point key="canvasLocation" x="4298" y="-840"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="LYL-0z-ZVl">
+            <objects>
+                <viewController id="1aS-eZ-14F" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h14-OX-dcB">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="uXT-ge-xEq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RgG-gL-2Fy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vI1-nq-yt0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3974" y="63"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="4WJ-7C-3UU">
             <objects>
@@ -994,10 +1010,10 @@
             </objects>
             <point key="canvasLocation" x="8620" y="64"/>
         </scene>
-        <!--Board View Controller-->
+        <!--View Controller-->
         <scene sceneID="Wr7-t4-MGB">
             <objects>
-                <viewController id="ppe-fu-5ZN" customClass="BoardViewController" sceneMemberID="viewController">
+                <viewController id="ppe-fu-5ZN" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Rb-EB-hAo">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1112,7 +1128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wlS-Vb-a60" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3924.6153846153843" y="63.981042654028435"/>
+            <point key="canvasLocation" x="3009" y="-840"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z4m-2C-Ghd">
@@ -1126,7 +1142,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ppe-fu-5ZN" kind="relationship" relationship="rootViewController" id="Go3-KE-h1q"/>
+                        <segue destination="1aS-eZ-14F" kind="relationship" relationship="rootViewController" id="o6c-uw-vT9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ad8-iS-wtA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1149,7 +1165,6 @@
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="cloud.fill" catalog="system" width="128" height="84"/>
         <image name="gearshape.2.fill" catalog="system" width="128" height="100"/>
-        <image name="line.horizontal.3.decrease.circle" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="117"/>
@@ -1157,6 +1172,7 @@
         <image name="placeholder" width="360" height="360"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
+        <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="youtube_icon" width="128" height="128"/>
         <systemColor name="labelColor">
