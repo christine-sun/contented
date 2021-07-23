@@ -21,8 +21,18 @@
     Idea *idea = [Idea new];
     idea.title = title;
     idea.location = CGPointMake(0, 0);
+    idea.user = [PFUser currentUser];
     
     [idea saveInBackgroundWithBlock:completion];
+    
+    // add this idea to current user's ideas
+    NSMutableArray *userIdeas = idea.user[@"ideas"];
+    if (userIdeas == nil) {
+        userIdeas = [[NSMutableArray alloc] init];
+    }
+    [userIdeas addObject:idea];
+    idea.user[@"ideas"] = userIdeas;
+    [idea.user saveInBackgroundWithBlock:nil];
 }
 
 @end
