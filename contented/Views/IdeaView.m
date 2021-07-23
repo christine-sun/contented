@@ -17,4 +17,26 @@
 }
 */
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        UIImageView *cloudView = [[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"cloud.fill"]];
+        [cloudView setTintColor:[UIColor systemTealColor]];
+        cloudView.frame = CGRectMake(0, 0, 150, 100);
+        [self addSubview:cloudView];
+        
+    }
+    return self;
+}
+
+- (void)setName:(NSString*)title {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, 100, 100)];
+    label.numberOfLines = 3;
+    label.adjustsFontSizeToFitWidth = YES;
+    label.text = title;
+    label.textColor = [UIColor whiteColor];
+    [self addSubview:label];
+}
+
 @end

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) Idea* idea;
 
+- (void)setName:(NSString*)title;
+
 @end
 
 NS_ASSUME_NONNULL_END

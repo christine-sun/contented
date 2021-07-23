@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *details;
-@property (nonatomic) CGPoint location;
+@property (nonatomic) NSString *location;
 @property (nonatomic, strong) PFUser *user;
 
 + (void) postIdea: (NSString*) title withCompletion: (PFBooleanResultBlock _Nullable) completion;

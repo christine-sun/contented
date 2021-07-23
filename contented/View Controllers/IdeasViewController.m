@@ -11,7 +11,7 @@
 
 @interface IdeasViewController ()
 
-@property (strong, nonatomic) NSMutableArray *ideas;
+@property (strong, nonatomic) NSMutableArray *ideaViews;
 
 @end
 
@@ -20,6 +20,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // Clear the VC
+    NSArray *viewsToRemove = [self.view subviews];
+    for (UIView *v in viewsToRemove) {
+        [v removeFromSuperview];
+    }
+    
+    self.ideaViews = [PFUser currentUser][@"ideas"];
+    if (self.ideaViews == nil) {
+        self.ideaViews = [[NSMutableArray alloc] init];
+    }
+    // for a test im going to put in an idea view
+    Idea *idea = [[Idea alloc] init];
+    idea.title = @"my first idea";
+    idea.location = NSStringFromCGPoint(CGPointMake(300, 300));
+    IdeaView *ideaView = [[IdeaView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    ideaView.idea = idea;
+    [self.ideaViews addObject:ideaView];
+    
+//    self.view.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height);
+    // mySmallView.frame = CGRectMake(coord1,coord2,width,height);
+    
+    // iterate through self.ideas and display the idea views on the screen
+    for (IdeaView *ideaView in self.ideaViews) {
+        ideaView.center = CGPointFromString(idea.location);
+        [self.view addSubview:ideaView];
+        [ideaView setName:ideaView.idea.title];
+    }
+    
 }
 
 - (IBAction)onTapAdd:(id)sender {
@@ -34,7 +63,7 @@
             idea.title = alert.textFields.firstObject.text;
             IdeaView *ideaView = [[IdeaView alloc] init];
             ideaView.idea = idea;
-            [self.ideas addObject:ideaView];
+            [self.ideaViews addObject:ideaView];
     }];
     [alert addAction:addAction];
     

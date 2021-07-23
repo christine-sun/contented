@@ -20,7 +20,8 @@
 + (void) postIdea: (NSString*) title withCompletion: (PFBooleanResultBlock _Nullable) completion {
     Idea *idea = [Idea new];
     idea.title = title;
-    idea.location = CGPointMake(0, 0);
+//    idea.location = CGPointMake(0, 0);
+    idea.location = NSStringFromCGPoint(CGPointMake(0, 0));
     idea.user = [PFUser currentUser];
     
     [idea saveInBackgroundWithBlock:completion];
