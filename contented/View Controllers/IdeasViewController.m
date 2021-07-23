@@ -29,39 +29,27 @@ IBOutlet IdeaView *currentView;
         [v removeFromSuperview];
     }
     
-    self.ideaViews = [PFUser currentUser][@"ideas"];
-    if (self.ideaViews == nil) {
+    // Fetch all ideas from this user
+    PFQuery *query = [PFQuery queryWithClassName:@"Idea"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    NSArray *ideas = [query findObjects];
+    if (ideas == nil) {
         self.ideaViews = [[NSMutableArray alloc] init];
     }
     
-    // ensure that self.ideaViews only has ideaView objects - (protect from possibly corrupted backend)
-    for (int i = 0; i < self.ideaViews.count; i++) {
-        if (!([self.ideaViews[i] isKindOfClass:[IdeaView class]])) {
-            [self.ideaViews removeObject:self.ideaViews[i]];
-        }
+    self.ideaViews = [[NSMutableArray alloc] init];
+    for (int i = 0; i < ideas.count; i++) {
+        IdeaView *ideaView = [[IdeaView alloc] init];
+        ideaView.idea = ideas[i];
+        [self.ideaViews addObject:ideaView];
     }
-    
-    // for a test im going to put in an idea view
-    Idea *idea = [[Idea alloc] init];
-    idea.title = @"my first idea";
-    idea.location = NSStringFromCGPoint(CGPointMake(300, 300));
-    IdeaView *ideaView = [[IdeaView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    ideaView.idea = idea;
-    [self.ideaViews addObject:ideaView];
-    // another test idea view
-    Idea *idea2 = [[Idea alloc] init];
-    idea2.title = @"my second idea";
-    idea2.location = NSStringFromCGPoint(CGPointMake(300, 300));
-    IdeaView *ideaView2 = [[IdeaView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    ideaView2.idea = idea2;
-    [self.ideaViews addObject:ideaView2];
     
     // iterate through self.ideas and display the idea views on the screen
     for (IdeaView *ideaView in self.ideaViews) {
-            ideaView.center = CGPointFromString(idea.location);
-            [self.view addSubview:ideaView];
-            [ideaView setName:ideaView.idea.title];
-            currentView = ideaView;
+        ideaView.center = CGPointFromString(ideaView.idea.location);
+        [self.view addSubview:ideaView];
+        [ideaView setName:ideaView.idea.title];
+        currentView = ideaView;
     }
     
 }
@@ -80,11 +68,12 @@ IBOutlet IdeaView *currentView;
         style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:cancelAction];
     UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"add✨" style:UIAlertControllerStyleAlert handler:^(UIAlertAction * _Nonnull action) {
-            Idea *idea = [[Idea alloc] init];
-            idea.title = alert.textFields.firstObject.text;
-            IdeaView *ideaView = [[IdeaView alloc] init];
-            ideaView.idea = idea;
-            [self.ideaViews addObject:ideaView];
+//            Idea *idea = [[Idea alloc] init];
+//            idea.title = alert.textFields.firstObject.text;
+//            IdeaView *ideaView = [[IdeaView alloc] init];
+//            ideaView.idea = idea;
+            [Idea postIdea:alert.textFields.firstObject.text withCompletion:nil];
+        
     }];
     [alert addAction:addAction];
     
