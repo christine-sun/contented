@@ -40,6 +40,7 @@ IBOutlet IdeaView *currentView;
             [self.ideaViews removeObject:self.ideaViews[i]];
         }
     }
+    
     // for a test im going to put in an idea view
     Idea *idea = [[Idea alloc] init];
     idea.title = @"my first idea";
@@ -47,6 +48,13 @@ IBOutlet IdeaView *currentView;
     IdeaView *ideaView = [[IdeaView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     ideaView.idea = idea;
     [self.ideaViews addObject:ideaView];
+    // another test idea view
+    Idea *idea2 = [[Idea alloc] init];
+    idea2.title = @"my second idea";
+    idea2.location = NSStringFromCGPoint(CGPointMake(300, 300));
+    IdeaView *ideaView2 = [[IdeaView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    ideaView2.idea = idea2;
+    [self.ideaViews addObject:ideaView2];
     
     // iterate through self.ideas and display the idea views on the screen
     for (IdeaView *ideaView in self.ideaViews) {
