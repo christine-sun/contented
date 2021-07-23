@@ -11,7 +11,7 @@
 
 @interface IdeasViewController ()
 
-@property (strong, nonatomic) NSMutableArray *ideaViews;
+@property (strong, nonatomic) NSMutableArray<IdeaView*> *ideaViews;
 
 @end
 
@@ -33,6 +33,13 @@ IBOutlet IdeaView *currentView;
     if (self.ideaViews == nil) {
         self.ideaViews = [[NSMutableArray alloc] init];
     }
+    
+    // ensure that self.ideaViews only has ideaView objects - (protect from possibly corrupted backend)
+    for (int i = 0; i < self.ideaViews.count; i++) {
+        if (!([self.ideaViews[i] isKindOfClass:[IdeaView class]])) {
+            [self.ideaViews removeObject:self.ideaViews[i]];
+        }
+    }
     // for a test im going to put in an idea view
     Idea *idea = [[Idea alloc] init];
     idea.title = @"my first idea";
@@ -41,15 +48,12 @@ IBOutlet IdeaView *currentView;
     ideaView.idea = idea;
     [self.ideaViews addObject:ideaView];
     
-//    self.view.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height);
-    // mySmallView.frame = CGRectMake(coord1,coord2,width,height);
-    
     // iterate through self.ideas and display the idea views on the screen
     for (IdeaView *ideaView in self.ideaViews) {
-        ideaView.center = CGPointFromString(idea.location);
-        [self.view addSubview:ideaView];
-        [ideaView setName:ideaView.idea.title];
-        currentView = ideaView;
+            ideaView.center = CGPointFromString(idea.location);
+            [self.view addSubview:ideaView];
+            [ideaView setName:ideaView.idea.title];
+            currentView = ideaView;
     }
     
 }
