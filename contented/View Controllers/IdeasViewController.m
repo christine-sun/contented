@@ -17,6 +17,8 @@
 
 @implementation IdeasViewController
 
+IBOutlet IdeaView *currentView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -47,8 +49,15 @@
         ideaView.center = CGPointFromString(idea.location);
         [self.view addSubview:ideaView];
         [ideaView setName:ideaView.idea.title];
+        currentView = ideaView;
     }
     
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    CGPoint touchPoint = [[touches anyObject] locationInView:self.view];
+    // myview setCenter:touchPoint
+    [currentView setCenter:touchPoint];
 }
 
 - (IBAction)onTapAdd:(id)sender {

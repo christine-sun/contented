@@ -39,4 +39,17 @@
     [self addSubview:label];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    self.startPoint = [[touches anyObject] locationInView:self];
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    CGPoint newPoint = [[touches anyObject] locationInView:self.superview];
+    newPoint.x -= self.startPoint.x;
+    newPoint.y -= self.startPoint.y;
+    CGRect frm = [self frame];
+    frm.origin = newPoint;
+    [self setFrame:frm];
+}
+
 @end
