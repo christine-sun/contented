@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IdeasViewController : UIViewController<IdeaViewDelegate>
+@interface IdeasViewController : UIViewController
 
 @end
 
