@@ -46,7 +46,7 @@ UIImageView *trashView;
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (CGRectIntersectsRect(trashView.frame, self.frame)) {
-        [self animateShake:trashView];
+        [self animateTrash];
         self.alpha = 0.7;
     } else {
         [trashView.layer removeAllAnimations];
@@ -54,10 +54,10 @@ UIImageView *trashView;
     }
 }
 
-- (void)animateShake: (UIView*) view {
-    view.transform = CGAffineTransformMakeRotation(-.1);
+- (void)animateTrash {
+    trashView.transform = CGAffineTransformMakeRotation(-.1);
     [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
-        view.transform = CGAffineTransformMakeRotation(.1);
+        trashView.transform = CGAffineTransformMakeRotation(.1);
     } completion:nil];
 }
 
@@ -66,7 +66,7 @@ UIImageView *trashView;
     
     // If new point intersects trashcan then delete on backend
     if (CGRectIntersectsRect(trashView.frame, self.frame)) {
-        NSLog(@"I dropped it on the trash");
+        [self removeFromSuperview];
     }
    
     
