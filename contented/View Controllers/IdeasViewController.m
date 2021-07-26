@@ -17,10 +17,6 @@
 
 @implementation IdeasViewController
 
-CGPoint ideaOriginalCenter;
-IdeaView *currentView;
-BOOL trashIsShowingPendingDropAppearance;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -36,7 +32,6 @@ BOOL trashIsShowingPendingDropAppearance;
     [self.view addSubview:self.trashView];
     
     [self loadIdeaViews];
-
 }
 
 - (void)loadIdeaViews {
@@ -47,33 +42,31 @@ BOOL trashIsShowingPendingDropAppearance;
     
     // Put ideas into ideaViews
     for (int i = 0; i < ideas.count; i++) {
-        IdeaView *ideaView = [[IdeaView alloc] init];
-        ideaView.idea = ideas[i];
-        [ideaView setName:ideaView.idea.title];
+        [self createIdeaView:ideas[i]];
         
-        // Set idea location to be where it was last saved
-        Idea *idea = [query getObjectWithId:ideaView.idea.objectId];
-        NSString *ideaStringLocation = idea[@"location"];
-        NSString *prefix = @"{";
-        NSString *suffix = @"}";
-        NSRange coordsRange = NSMakeRange(prefix.length, ideaStringLocation.length - prefix.length - suffix.length);
-        NSString *coords = [ideaStringLocation substringWithRange:coordsRange];
-        NSArray *coordsArray = [coords componentsSeparatedByString:@", "];
-        NSInteger x = [coordsArray[0] integerValue];
-        NSInteger y = [coordsArray[1] integerValue];
-        ideaView.frame = CGRectMake(x - 50, y - 50, 150, 100);
-        
-        
-        // test begin
-        [ideaView setTrashView:self.trashView];
-        // test end
-        
-        [ideaView enableDragging];
-        [self.view addSubview:ideaView];
-        
-        currentView = ideaView;
-        NSLog(@"%@", currentView.idea.title);
     }
+}
+
+- (void)createIdeaView:(Idea*) idea {
+    IdeaView *ideaView = [[IdeaView alloc] init];
+    ideaView.idea = idea;
+    [ideaView setName:ideaView.idea.title];
+    ideaView.frame = [self getCoords:idea];
+    [ideaView setTrashView:self.trashView];
+    [ideaView enableDragging];
+    [self.view addSubview:ideaView];
+}
+
+- (CGRect)getCoords:(Idea*) idea {
+    NSString *ideaStringLocation = idea[@"location"];
+    NSString *prefix = @"{";
+    NSString *suffix = @"}";
+    NSRange coordsRange = NSMakeRange(prefix.length, ideaStringLocation.length - prefix.length - suffix.length);
+    NSString *coords = [ideaStringLocation substringWithRange:coordsRange];
+    NSArray *coordsArray = [coords componentsSeparatedByString:@", "];
+    NSInteger x = [coordsArray[0] integerValue];
+    NSInteger y = [coordsArray[1] integerValue];
+    return CGRectMake(x - 50, y - 50, 150, 100);
 }
 
 - (IBAction)onTapAdd:(id)sender {
@@ -83,104 +76,23 @@ BOOL trashIsShowingPendingDropAppearance;
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"cancel"
         style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:cancelAction];
-    UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"add✨" style:UIAlertControllerStyleAlert handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"add✨" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        [Idea postIdea:alert.textFields.firstObject.text withCompletion:nil];
-        [self loadIdeaViews];
+        [Idea postIdea:alert.textFields.firstObject.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            // Add most recently created idea to view
+            PFQuery *query = [PFQuery queryWithClassName:@"Idea"];
+            [query whereKey:@"user" equalTo:[PFUser currentUser]];
+            [query orderByDescending:@"createdAt"];
+            query.limit = 1;
+            [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                [self createIdeaView:objects[0]];
+            }];
+        }];
+        
     }];
-    [alert addAction:addAction];
     
+    [alert addAction:addAction];
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (IBAction)labelWasDragged:(UIPanGestureRecognizer *)recognizer {
-    ideaOriginalCenter = currentView.center;
-    [self moveLabelForDrag:recognizer];
-
-    switch (recognizer.state) {
-        case UIGestureRecognizerStateChanged:
-            [self labelDragDidChange:recognizer];
-            break;
-        case UIGestureRecognizerStateEnded:
-            [self labelDragDidEnd:recognizer];
-            break;
-        case UIGestureRecognizerStateCancelled:
-            [self labelDragDidAbort:recognizer];
-            break;
-        default:
-            break;
-    }
-}
-
-- (void)moveLabelForDrag:(UIPanGestureRecognizer *)sender {
-    CGPoint translation = [sender translationInView:currentView];
-    [sender setTranslation:CGPointZero inView:currentView];
-    CGPoint center = currentView.center;
-    center.x += translation.x;
-    center.y += translation.y;
-    currentView.center = center;
-}
-
-- (void)labelDragDidChange:(UIPanGestureRecognizer *)recognizer {
-    if ([self dragIsOverTrash:recognizer]) {
-        [self updateTrashAppearanceForPendingDrop];
-    } else {
-        [self updateTrashAppearanceForNoPendingDrop];
-    }
-}
-
-- (void)labelDragDidEnd:(UIPanGestureRecognizer *)recognizer {
-    if ([self dragIsOverTrash:recognizer]) {
-        [self dropLabelInTrash];
-    } else {
-        [self abortLabelDrag];
-    }
-}
-
-- (void)labelDragDidAbort:(UIPanGestureRecognizer *)recognizer {
-    [self abortLabelDrag];
-}
-
-- (BOOL)dragIsOverTrash:(UIPanGestureRecognizer *)recognizer {
-    CGPoint pointInTrash = [recognizer locationInView:self.trashView];
-    return [self.trashView pointInside:pointInTrash withEvent:nil];
-}
-
-- (void)updateTrashAppearanceForPendingDrop {
-    if (trashIsShowingPendingDropAppearance)
-        return;
-    trashIsShowingPendingDropAppearance = YES;
-    self.trashView.transform = CGAffineTransformMakeRotation(-.1);
-    [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
-        self.trashView.transform = CGAffineTransformMakeRotation(.1);
-    } completion:nil];
-}
-
-- (void)updateTrashAppearanceForNoPendingDrop {
-    if (!trashIsShowingPendingDropAppearance)
-        return;
-    trashIsShowingPendingDropAppearance = NO;
-    [UIView animateWithDuration:0.15 animations:^{
-        self.trashView.transform = CGAffineTransformIdentity;
-    }];
-}
-
-- (void)dropLabelInTrash {
-    [self updateTrashAppearanceForNoPendingDrop];
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        currentView.center = self.trashView.center;
-        currentView.transform = CGAffineTransformMakeScale(0.1, 0.1);
-    } completion:^(BOOL finished) {
-        [currentView removeFromSuperview];
-        currentView = nil;
-    }];
-}
-
-- (void)abortLabelDrag {
-    [self updateTrashAppearanceForNoPendingDrop];
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        currentView.center = ideaOriginalCenter;
-    } completion:nil];
 }
 
 /*
