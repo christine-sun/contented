@@ -45,8 +45,19 @@ UIImageView *trashView;
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    BOOL methodB = CGRectIntersectsRect(trashView.frame, self.frame);
-    NSLog(@"here %d", methodB);
+    BOOL doesIntersectTrash = CGRectIntersectsRect(trashView.frame, self.frame);
+    if (doesIntersectTrash) {
+        [self animateTrash];
+    } else {
+        [trashView.layer removeAllAnimations];
+    }
+}
+
+- (void)animateTrash {
+    trashView.transform = CGAffineTransformMakeRotation(-.1);
+    [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
+        trashView.transform = CGAffineTransformMakeRotation(.1);
+    } completion:nil];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -58,12 +69,7 @@ UIImageView *trashView;
 //    Boolean viewsOverlap = CGRectIntersectsRect(boundsA, boundsB);
     BOOL methodB = CGRectIntersectsRect(trashView.frame, self.frame);
     NSLog(@"here %d", methodB);
-//    if (viewsOverlap) {
-//        trashView.transform = CGAffineTransformMakeRotation(-.1);
-//        [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
-//            trashView.transform = CGAffineTransformMakeRotation(.1);
-//        } completion:nil];
-//    }
+   
     
     // Update idea's location on backend
     NSString *newLocation = NSStringFromCGPoint(newPoint);
