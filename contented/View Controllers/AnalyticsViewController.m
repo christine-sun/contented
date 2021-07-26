@@ -41,6 +41,9 @@
     self.lineChartView.rightAxis.enabled = NO;
     [self.lineChartView animateWithXAxisDuration:2.5];
     [APIManager setChart:self.lineChartView];
+
+    // select time period and total number of recent videos
+
 }
 
 - (void) didTapPoint:(UITapGestureRecognizer*)sender {

@@ -108,14 +108,14 @@
         sender.selected = !sender.selected;
     }
     if(!sender.selected) {
-        sender.backgroundColor = [UIColor systemTealColor];
+        sender.backgroundColor = [UIColor systemPurpleColor];
         [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [platforms setValue:@YES forKey:title];
         self.completedCount++;
     // Platform becomes unselected - user uncompleted this push
     } else {
         sender.backgroundColor = [UIColor whiteColor];
-        [sender setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
+        [sender setTitleColor:[UIColor systemPurpleColor] forState:UIControlStateNormal];
         [platforms setValue:@NO forKey:title];
         self.completedCount--;
     }
