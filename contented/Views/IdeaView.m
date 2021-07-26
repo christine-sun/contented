@@ -67,8 +67,11 @@ UIImageView *trashView;
     // If new point intersects trashcan then delete on backend
     if (CGRectIntersectsRect(trashView.frame, self.frame)) {
         [self removeFromSuperview];
+        PFQuery *query = [PFQuery queryWithClassName:@"Idea"];
+        [query getObjectInBackgroundWithId:self.idea.objectId block:^(PFObject * _Nullable idea, NSError * _Nullable error) {
+            [idea deleteInBackground];
+        }];
     }
-   
     
     // Update idea's location on backend
     NSString *newLocation = NSStringFromCGPoint(newPoint);
