@@ -44,7 +44,19 @@
         IdeaView *ideaView = [[IdeaView alloc] init];
         ideaView.idea = ideas[i];
         [ideaView setName:ideaView.idea.title];
-        ideaView.frame = CGRectMake(100, 100, 150, 100);
+        
+        // Set idea location to be where it was last saved
+        Idea *idea = [query getObjectWithId:ideaView.idea.objectId];
+        NSString *ideaStringLocation = idea[@"location"];
+        NSString *prefix = @"{";
+        NSString *suffix = @"}";
+        NSRange coordsRange = NSMakeRange(prefix.length, ideaStringLocation.length - prefix.length - suffix.length);
+        NSString *coords = [ideaStringLocation substringWithRange:coordsRange];
+        NSArray *coordsArray = [coords componentsSeparatedByString:@", "];
+        NSInteger x = [coordsArray[0] integerValue];
+        NSInteger y = [coordsArray[1] integerValue];
+        ideaView.frame = CGRectMake(x, y, 150, 100);
+        
         [ideaView enableDragging];
         [self.view addSubview:ideaView];
     }
