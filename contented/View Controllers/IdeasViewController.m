@@ -14,8 +14,6 @@
 
 @interface IdeasViewController ()
 
-@property (strong, nonatomic) NSMutableArray<IdeaView*> *ideaViews;
-
 @end
 
 @implementation IdeasViewController
@@ -39,9 +37,6 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Idea"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     NSArray *ideas = [query findObjects];
-    if (ideas == nil) {
-        self.ideaViews = [[NSMutableArray alloc] init];
-    }
     
     // Put ideas into ideaViews
     for (int i = 0; i < ideas.count; i++) {
@@ -75,8 +70,9 @@
         style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:cancelAction];
     UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"add✨" style:UIAlertControllerStyleAlert handler:^(UIAlertAction * _Nonnull action) {
-            [Idea postIdea:alert.textFields.firstObject.text withCompletion:nil];
         
+        [Idea postIdea:alert.textFields.firstObject.text withCompletion:nil];
+        [self loadIdeaViews];
     }];
     [alert addAction:addAction];
     
