@@ -7,16 +7,18 @@
 
 #import "IdeasViewController.h"
 #import "Idea.h"
-//#import "SPUserResizableView.h"
 #import "UIView+draggable.h"
-
-//@end
 
 @interface IdeasViewController ()
 
 @end
 
 @implementation IdeasViewController
+
+CGPoint ideaOriginalCenter;
+IdeaView *currentView;
+UIImageView *trashView;
+BOOL trashIsShowingPendingDropAppearance;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,6 +29,10 @@
     for (UIView *v in viewsToRemove) {
         [v removeFromSuperview];
     }
+    
+    trashView = [[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"trash"]];
+    trashView.frame = CGRectMake(10, 100, 30, 30);
+    [self.view addSubview:trashView];
     
     [self loadIdeaViews];
 
@@ -47,7 +53,6 @@
         // Set idea location to be where it was last saved
         Idea *idea = [query getObjectWithId:ideaView.idea.objectId];
         NSString *ideaStringLocation = idea[@"location"];
-        NSLog(@"from backend it was saved at %@", ideaStringLocation);
         NSString *prefix = @"{";
         NSString *suffix = @"}";
         NSRange coordsRange = NSMakeRange(prefix.length, ideaStringLocation.length - prefix.length - suffix.length);
@@ -59,6 +64,9 @@
         
         [ideaView enableDragging];
         [self.view addSubview:ideaView];
+        
+        currentView = ideaView;
+        NSLog(@"%@", currentView.idea.title);
     }
 }
 
@@ -77,6 +85,96 @@
     [alert addAction:addAction];
     
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (IBAction)labelWasDragged:(UIPanGestureRecognizer *)recognizer {
+    ideaOriginalCenter = currentView.center;
+    [self moveLabelForDrag:recognizer];
+
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateChanged:
+            [self labelDragDidChange:recognizer];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self labelDragDidEnd:recognizer];
+            break;
+        case UIGestureRecognizerStateCancelled:
+            [self labelDragDidAbort:recognizer];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)moveLabelForDrag:(UIPanGestureRecognizer *)sender {
+    CGPoint translation = [sender translationInView:currentView];
+    [sender setTranslation:CGPointZero inView:currentView];
+    CGPoint center = currentView.center;
+    center.x += translation.x;
+    center.y += translation.y;
+    currentView.center = center;
+}
+
+- (void)labelDragDidChange:(UIPanGestureRecognizer *)recognizer {
+    if ([self dragIsOverTrash:recognizer]) {
+        [self updateTrashAppearanceForPendingDrop];
+    } else {
+        [self updateTrashAppearanceForNoPendingDrop];
+    }
+}
+
+- (void)labelDragDidEnd:(UIPanGestureRecognizer *)recognizer {
+    if ([self dragIsOverTrash:recognizer]) {
+        [self dropLabelInTrash];
+    } else {
+        [self abortLabelDrag];
+    }
+}
+
+- (void)labelDragDidAbort:(UIPanGestureRecognizer *)recognizer {
+    [self abortLabelDrag];
+}
+
+- (BOOL)dragIsOverTrash:(UIPanGestureRecognizer *)recognizer {
+    CGPoint pointInTrash = [recognizer locationInView:trashView];
+    return [trashView pointInside:pointInTrash withEvent:nil];
+}
+
+- (void)updateTrashAppearanceForPendingDrop {
+    if (trashIsShowingPendingDropAppearance)
+        return;
+    trashIsShowingPendingDropAppearance = YES;
+    trashView.transform = CGAffineTransformMakeRotation(-.1);
+    [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
+        trashView.transform = CGAffineTransformMakeRotation(.1);
+    } completion:nil];
+}
+
+- (void)updateTrashAppearanceForNoPendingDrop {
+    if (!trashIsShowingPendingDropAppearance)
+        return;
+    trashIsShowingPendingDropAppearance = NO;
+    [UIView animateWithDuration:0.15 animations:^{
+        trashView.transform = CGAffineTransformIdentity;
+    }];
+}
+
+- (void)dropLabelInTrash {
+    [self updateTrashAppearanceForNoPendingDrop];
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        currentView.center = trashView.center;
+        currentView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    } completion:^(BOOL finished) {
+        [currentView removeFromSuperview];
+        currentView = nil;
+    }];
+}
+
+- (void)abortLabelDrag {
+    [self updateTrashAppearanceForNoPendingDrop];
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        currentView.center = ideaOriginalCenter;
+    } completion:nil];
 }
 
 /*

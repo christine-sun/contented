@@ -54,6 +54,8 @@
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     CGPoint newPoint = [[touches anyObject] locationInView:self.superview];
     
+    // If new point intersects trashcan then delete on backend
+    
     // Update idea's location on backend
     NSString *newLocation = NSStringFromCGPoint(newPoint);
     PFQuery *query = [PFQuery queryWithClassName:@"Idea"];
@@ -61,6 +63,7 @@
         idea[@"location"] = newLocation;
         [idea saveInBackground];
     }];
+    
 }
 
 @end
