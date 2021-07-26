@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface IdeaView : UIView
 
 @property (strong, nonatomic) Idea* idea;
-@property (nonatomic) CGPoint startPoint;
 
 - (void)setName:(NSString*)title;
+- (void)setTrashView:trash;
 
 @end
 

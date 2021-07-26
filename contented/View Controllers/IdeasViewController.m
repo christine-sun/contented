@@ -11,13 +11,14 @@
 
 @interface IdeasViewController ()
 
+@property (strong, nonatomic) UIImageView *trashView;
+
 @end
 
 @implementation IdeasViewController
 
 CGPoint ideaOriginalCenter;
 IdeaView *currentView;
-UIImageView *trashView;
 BOOL trashIsShowingPendingDropAppearance;
 
 - (void)viewDidLoad {
@@ -30,9 +31,9 @@ BOOL trashIsShowingPendingDropAppearance;
         [v removeFromSuperview];
     }
     
-    trashView = [[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"trash"]];
-    trashView.frame = CGRectMake(10, 100, 30, 30);
-    [self.view addSubview:trashView];
+    self.trashView = [[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"trash"]];
+    self.trashView.frame = CGRectMake(10, 100, 30, 30);
+    [self.view addSubview:self.trashView];
     
     [self loadIdeaViews];
 
@@ -61,6 +62,11 @@ BOOL trashIsShowingPendingDropAppearance;
         NSInteger x = [coordsArray[0] integerValue];
         NSInteger y = [coordsArray[1] integerValue];
         ideaView.frame = CGRectMake(x - 50, y - 50, 150, 100);
+        
+        
+        // test begin
+        [ideaView setTrashView:self.trashView];
+        // test end
         
         [ideaView enableDragging];
         [self.view addSubview:ideaView];
@@ -136,17 +142,17 @@ BOOL trashIsShowingPendingDropAppearance;
 }
 
 - (BOOL)dragIsOverTrash:(UIPanGestureRecognizer *)recognizer {
-    CGPoint pointInTrash = [recognizer locationInView:trashView];
-    return [trashView pointInside:pointInTrash withEvent:nil];
+    CGPoint pointInTrash = [recognizer locationInView:self.trashView];
+    return [self.trashView pointInside:pointInTrash withEvent:nil];
 }
 
 - (void)updateTrashAppearanceForPendingDrop {
     if (trashIsShowingPendingDropAppearance)
         return;
     trashIsShowingPendingDropAppearance = YES;
-    trashView.transform = CGAffineTransformMakeRotation(-.1);
+    self.trashView.transform = CGAffineTransformMakeRotation(-.1);
     [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
-        trashView.transform = CGAffineTransformMakeRotation(.1);
+        self.trashView.transform = CGAffineTransformMakeRotation(.1);
     } completion:nil];
 }
 
@@ -155,14 +161,14 @@ BOOL trashIsShowingPendingDropAppearance;
         return;
     trashIsShowingPendingDropAppearance = NO;
     [UIView animateWithDuration:0.15 animations:^{
-        trashView.transform = CGAffineTransformIdentity;
+        self.trashView.transform = CGAffineTransformIdentity;
     }];
 }
 
 - (void)dropLabelInTrash {
     [self updateTrashAppearanceForNoPendingDrop];
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        currentView.center = trashView.center;
+        currentView.center = self.trashView.center;
         currentView.transform = CGAffineTransformMakeScale(0.1, 0.1);
     } completion:^(BOOL finished) {
         [currentView removeFromSuperview];
