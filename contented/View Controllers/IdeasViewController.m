@@ -30,6 +30,11 @@
         [v removeFromSuperview];
     }
     
+    [self loadIdeaViews];
+
+}
+
+- (void)loadIdeaViews {
     // Fetch all ideas from this user
     PFQuery *query = [PFQuery queryWithClassName:@"Idea"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
@@ -37,7 +42,6 @@
     if (ideas == nil) {
         self.ideaViews = [[NSMutableArray alloc] init];
     }
-    NSLog(@"ideas looks like this %@", ideas);
     
     // Put ideas into ideaViews
     for (int i = 0; i < ideas.count; i++) {
@@ -48,6 +52,7 @@
         // Set idea location to be where it was last saved
         Idea *idea = [query getObjectWithId:ideaView.idea.objectId];
         NSString *ideaStringLocation = idea[@"location"];
+        NSLog(@"from backend it was saved at %@", ideaStringLocation);
         NSString *prefix = @"{";
         NSString *suffix = @"}";
         NSRange coordsRange = NSMakeRange(prefix.length, ideaStringLocation.length - prefix.length - suffix.length);
@@ -55,12 +60,11 @@
         NSArray *coordsArray = [coords componentsSeparatedByString:@", "];
         NSInteger x = [coordsArray[0] integerValue];
         NSInteger y = [coordsArray[1] integerValue];
-        ideaView.frame = CGRectMake(x, y, 150, 100);
+        ideaView.frame = CGRectMake(x - 50, y - 50, 150, 100);
         
         [ideaView enableDragging];
         [self.view addSubview:ideaView];
     }
-    
 }
 
 - (IBAction)onTapAdd:(id)sender {

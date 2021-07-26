@@ -39,7 +39,6 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"began");
     self.startPoint = [[touches anyObject] locationInView:self];
 }
 
