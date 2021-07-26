@@ -64,23 +64,22 @@ UIImageView *trashView;
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     CGPoint newPoint = [[touches anyObject] locationInView:self.superview];
     
-    // If new point intersects trashcan then delete on backend
-    if (CGRectIntersectsRect(trashView.frame, self.frame)) {
-        [self removeFromSuperview];
-        PFQuery *query = [PFQuery queryWithClassName:@"Idea"];
-        [query getObjectInBackgroundWithId:self.idea.objectId block:^(PFObject * _Nullable idea, NSError * _Nullable error) {
-            [idea deleteInBackground];
-        }];
-    }
-    
-    // Update idea's location on backend
-    NSString *newLocation = NSStringFromCGPoint(newPoint);
     PFQuery *query = [PFQuery queryWithClassName:@"Idea"];
     [query getObjectInBackgroundWithId:self.idea.objectId block:^(PFObject * _Nullable idea, NSError * _Nullable error) {
-        idea[@"location"] = newLocation;
-        [idea saveInBackground];
+        // If new point intersects trashcan then delete on backend
+        if (CGRectIntersectsRect(trashView.frame, self.frame)) {
+            [self removeFromSuperview];
+            [idea deleteInBackground];
+        }
+        // Update idea's location on backend
+        else {
+            NSString *newLocation = NSStringFromCGPoint(newPoint);
+            idea[@"location"] = newLocation;
+            [idea saveInBackground];
+        }
     }];
-    
+    trashView.transform = CGAffineTransformMakeRotation(0);
+    [trashView.layer removeAllAnimations];
 }
 
 @end
