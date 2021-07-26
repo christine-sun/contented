@@ -45,18 +45,19 @@ UIImageView *trashView;
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    BOOL doesIntersectTrash = CGRectIntersectsRect(trashView.frame, self.frame);
-    if (doesIntersectTrash) {
-        [self animateTrash];
+    if (CGRectIntersectsRect(trashView.frame, self.frame)) {
+        [self animateShake:trashView];
+        self.alpha = 0.7;
     } else {
         [trashView.layer removeAllAnimations];
+        self.alpha = 1;
     }
 }
 
-- (void)animateTrash {
-    trashView.transform = CGAffineTransformMakeRotation(-.1);
+- (void)animateShake: (UIView*) view {
+    view.transform = CGAffineTransformMakeRotation(-.1);
     [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
-        trashView.transform = CGAffineTransformMakeRotation(.1);
+        view.transform = CGAffineTransformMakeRotation(.1);
     } completion:nil];
 }
 
@@ -64,11 +65,9 @@ UIImageView *trashView;
     CGPoint newPoint = [[touches anyObject] locationInView:self.superview];
     
     // If new point intersects trashcan then delete on backend
-//    CGRect boundsA = [trashView convertRect:trashView.bounds toView:nil];
-//    CGRect boundsB = [self convertRect:self.bounds toView:nil];
-//    Boolean viewsOverlap = CGRectIntersectsRect(boundsA, boundsB);
-    BOOL methodB = CGRectIntersectsRect(trashView.frame, self.frame);
-    NSLog(@"here %d", methodB);
+    if (CGRectIntersectsRect(trashView.frame, self.frame)) {
+        NSLog(@"I dropped it on the trash");
+    }
    
     
     // Update idea's location on backend
