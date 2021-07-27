@@ -23,14 +23,10 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 
-// test begin
 @property (strong, nonatomic) IBOutlet UITableView *filterTableView;
 @property (strong, nonatomic) LMDropdownView *filterView;
 @property (strong, nonatomic) NSArray *filterTypes;
 @property (assign, nonatomic) NSInteger currentFilterTypeIndex;
-
-
-// test end
 
 @end
 
@@ -232,7 +228,7 @@
         NSString *date = [self dateToString:task.dueDate];
         NSArray *firstDate = [self.groupedTasks objectAtIndex:0];
         if (firstDate.count != 0) {
-            // This is not hte first item in the array
+            // This is not the first item in the array
             Task *prevDateTask = [[self.groupedTasks objectAtIndex:index] objectAtIndex:0];
             NSString *prevDate = [self dateToString:prevDateTask.dueDate];
             if ([date isEqualToString:prevDate]) {
@@ -283,6 +279,7 @@
         [self.filterTableView deselectRowAtIndexPath:indexPath animated:NO];
         self.currentFilterTypeIndex = indexPath.row;
         [self.filterView hide];
+        [self fetchTasks];
     }
 }
 
@@ -324,9 +321,6 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
     if ([segue.identifier isEqual:@"detailsSegue"]) {
         DetailsViewController *detailsVC = [segue destinationViewController];
         detailsVC.task = (Task*)sender;
