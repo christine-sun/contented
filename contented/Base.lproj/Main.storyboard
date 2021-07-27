@@ -207,26 +207,31 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUc-FR-iYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JYK-7M-2ID">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="JYK-7M-2ID">
                     <rect key="frame" x="0.0" y="0.0" width="408" height="304"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <prototypes>
                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" rowHeight="67" id="FGa-M9-HMy" customClass="FilterCell">
-                            <rect key="frame" x="0.0" y="24.333333969116211" width="408" height="67"/>
+                            <rect key="frame" x="0.0" y="49" width="408" height="67"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FGa-M9-HMy" id="enp-1M-Lc7">
                                 <rect key="frame" x="0.0" y="0.0" width="408" height="67"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nX-VQ-448">
-                                        <rect key="frame" x="26" y="15" width="362" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nX-VQ-448">
+                                        <rect key="frame" x="20" y="16" width="368" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottomMargin" secondItem="3nX-VQ-448" secondAttribute="bottom" constant="5" id="7py-su-8XL"/>
+                                    <constraint firstItem="3nX-VQ-448" firstAttribute="top" secondItem="enp-1M-Lc7" secondAttribute="topMargin" constant="5" id="Cts-l4-8fn"/>
+                                    <constraint firstItem="3nX-VQ-448" firstAttribute="leading" secondItem="enp-1M-Lc7" secondAttribute="leadingMargin" id="EZu-Ne-XK2"/>
+                                    <constraint firstItem="3nX-VQ-448" firstAttribute="trailing" secondItem="enp-1M-Lc7" secondAttribute="trailingMargin" id="yOq-3H-4Tw"/>
+                                </constraints>
                             </tableViewCellContentView>
                             <connections>
                                 <outlet property="menuItemLabel" destination="3nX-VQ-448" id="W5h-66-CVP"/>

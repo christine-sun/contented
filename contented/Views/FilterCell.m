@@ -25,10 +25,10 @@
     [super setHighlighted:highlighted animated:animated];
     
     if (highlighted) {
-        self.menuItemLabel.backgroundColor = [UIColor systemTealColor];
+        self.backgroundColor = [UIColor systemTealColor];
     }
     else {
-        self.menuItemLabel.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor whiteColor];
     }
 }
 

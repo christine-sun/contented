@@ -152,13 +152,19 @@
 #pragma mark - section headers
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel *label = [[UILabel alloc] init];
-    Task *task = [[self.groupedTasks objectAtIndex:section] objectAtIndex:0];
-    NSDate *dueDate = task.dueDate;
-    NSDateFormatter *weekday = [[NSDateFormatter alloc] init];
-    [weekday setDateFormat: @"EEEE MM/dd"];
-    label.text = [weekday stringFromDate:dueDate];
-    return label;
+    if (tableView == self.tableView) {
+        UILabel *label = [[UILabel alloc] init];
+        Task *task = [[self.groupedTasks objectAtIndex:section] objectAtIndex:0];
+        NSDate *dueDate = task.dueDate;
+        NSDateFormatter *weekday = [[NSDateFormatter alloc] init];
+        [weekday setDateFormat: @"EEEE MM/dd"];
+        label.text = [weekday stringFromDate:dueDate];
+        return label;
+    } else {
+        UILabel *label = [[UILabel alloc] init];
+        label.text = @"Filter";
+        return label;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -172,7 +178,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 20;
+    if (tableView == self.tableView) {
+        return 20;
+    }
+    else {
+        return 75;
+    }
 }
 
 - (int)getNumOfUniqueDates {
@@ -233,6 +244,7 @@
         [self performSegueWithIdentifier:@"detailsSegue" sender:task];
     }
     else {
+        NSLog(@"%ld", (long)indexPath.row);
         [self.filterTableView deselectRowAtIndexPath:indexPath animated:NO];
         self.currentFilterTypeIndex = indexPath.row;
         [self.filterView hide];
@@ -246,8 +258,7 @@
 
     self.filterTableView.frame = CGRectMake(CGRectGetMinX(self.filterTableView.frame),
         CGRectGetMinY(self.filterTableView.frame),
-        CGRectGetWidth(self.view.bounds),
-        MIN(CGRectGetHeight(self.view.bounds) - 50, self.filterTypes.count * 50));
+        CGRectGetWidth(self.view.bounds), 600);
 }
 
 - (void)showDropDownViewFromDirection:(LMDropdownViewDirection)direction
