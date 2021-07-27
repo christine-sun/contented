@@ -11,7 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FilterCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *menuItemLabel;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
+- (void)setTitle:(NSString*)title isSelected:(BOOL)isSelected;
 
 @end
 

@@ -45,13 +45,12 @@
     self.tableView.tableHeaderView = self.headerView;
 
     [self fetchTasks];
-    // start
+    
     self.filterTypes = @[@"To Do", @"Completed", @"YouTube", @"Instagram", @"TikTok", @"Snapchat", @"Twitter"];
     self.currentFilterTypeIndex = 0;
     self.filterTableView.delegate = self;
     self.filterTableView.dataSource = self;
     self.filterView.delegate = self;
-    // end
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTasks) forControlEvents:UIControlEventValueChanged];
@@ -66,12 +65,35 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query orderByAscending:@"dueDate"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
-    [query whereKey:@"completed" equalTo:@(0)];
+    
+    if (self.currentFilterTypeIndex == 1) {
+        [query whereKey:@"completed" equalTo:@(1)];
+    } else {
+        [query whereKey:@"completed" equalTo:@(0)];
+    }
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
         if (tasks) {
-            self.arrayOfTasks = tasks;
+            
+            if (self.currentFilterTypeIndex > 1) {
+                // Only display tasks that contain this platform as a push
+                NSString *platformName = self.filterTypes[self.currentFilterTypeIndex];
+                NSMutableArray *tasksOfPlatform = [[NSMutableArray alloc] init];
+                for (int i = 0; i < tasks.count; i++) {
+                    Task *task = tasks[i];
+                    NSDictionary *platforms = task[@"platforms"];
+                    if ([platforms objectForKey:platformName] != nil) {
+                        [tasksOfPlatform addObject:task];
+                    }
+                }
+                self.arrayOfTasks = tasksOfPlatform;
+            }
+            
+            else {
+                self.arrayOfTasks = tasks;
+            }
+            
             [self.tableView reloadData];
         }
         [self.refreshControl endRefreshing];
@@ -123,13 +145,7 @@
     /* FILTER TABLE VIEW */
     else {
         FilterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FilterCell"];
-        // todo: do this in a method in the cell
-        cell.menuItemLabel.text = [self.filterTypes objectAtIndex:indexPath.row];
-        if (indexPath.row == self.currentFilterTypeIndex) {
-            cell.menuItemLabel.textColor = [UIColor systemTealColor];
-        } else {
-            cell.menuItemLabel.textColor = [UIColor blackColor];
-        }
+        [cell setTitle:[self.filterTypes objectAtIndex:indexPath.row] isSelected:(indexPath.row == self.currentFilterTypeIndex)];
         return cell;
     }
 }

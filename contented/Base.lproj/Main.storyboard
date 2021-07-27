@@ -234,7 +234,7 @@
                                 </constraints>
                             </tableViewCellContentView>
                             <connections>
-                                <outlet property="menuItemLabel" destination="3nX-VQ-448" id="W5h-66-CVP"/>
+                                <outlet property="titleLabel" destination="3nX-VQ-448" id="W5h-66-CVP"/>
                             </connections>
                         </tableViewCell>
                     </prototypes>

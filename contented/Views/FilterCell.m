@@ -20,16 +20,14 @@
     // Configure the view for the selected state
 }
 
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
-{
-    [super setHighlighted:highlighted animated:animated];
-    
-    if (highlighted) {
-        self.backgroundColor = [UIColor systemTealColor];
-    }
-    else {
-        self.backgroundColor = [UIColor whiteColor];
+- (void)setTitle:(NSString*)title isSelected:(BOOL)isSelected {
+    self.titleLabel.text = title;
+    if (isSelected) {
+        self.titleLabel.textColor = [UIColor systemTealColor];
+    } else {
+        self.titleLabel.textColor = [UIColor blackColor];
     }
 }
+
 
 @end
