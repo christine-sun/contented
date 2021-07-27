@@ -25,6 +25,10 @@
     // Do any additional setup after loading the view.
     self.user = [PFUser currentUser];
     
+    // Dismiss keyboard outside of text fields
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+    
     [self.statusMessageLabel setTextColor:[UIColor whiteColor]];
 //    self.youtubeIDField.text = self.user.youtubeID;
     self.youtubeIDField.text = self.user[@"youtubeID"];
@@ -90,6 +94,9 @@
     }];
 }
 
+-(void)dismissKeyboard {
+    [self.youtubeIDField resignFirstResponder];
+}
 
 // google begin
 - (IBAction)onTapSignIn:(id)sender {

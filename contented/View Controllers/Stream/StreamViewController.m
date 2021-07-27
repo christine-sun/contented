@@ -291,7 +291,7 @@
 
     self.filterTableView.frame = CGRectMake(CGRectGetMinX(self.filterTableView.frame),
         CGRectGetMinY(self.filterTableView.frame),
-        CGRectGetWidth(self.view.bounds), 600);
+        CGRectGetWidth(self.view.bounds), self.filterTypes.count * 83 + self.filterTableView.sectionHeaderHeight);
 }
 
 - (void)showDropDownViewFromDirection:(LMDropdownViewDirection)direction

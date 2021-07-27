@@ -23,15 +23,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    UITapGestureRecognizer *pointTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapPoint:)];
-    [self.lineChartView addGestureRecognizer:pointTapGestureRecognizer];
     
     [APIManager setYouTubeReportLabel:self.ytReportLabel];
     
     [self updateVideoInfo];
     
-    //chart begin
+    // Set up the chart
+    UITapGestureRecognizer *pointTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapPoint:)];
+    [self.lineChartView addGestureRecognizer:pointTapGestureRecognizer];
     self.lineChartView.delegate = self;
     self.lineChartView.dragEnabled = YES;
     [self.lineChartView setScaleEnabled:YES];
@@ -67,8 +66,7 @@
 }
 
 - (void)updateVideoInfo {
-    NSString *userID = self.userIDLabel.text;
-    NSLog(@"%@", userID);
+    NSString *userID = [PFUser currentUser][@"youtubeID"];
     [APIManager fetchLast20Views:userID];
 }
 
