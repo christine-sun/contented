@@ -109,54 +109,61 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
-		<key>Parse-Parse.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>16</integer>
-		</dict>
-		<key>Parse-ParseUI.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>17</integer>
-		</dict>
-		<key>Parse.xcscheme</key>
+		<key>LMDropdownView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
-		<key>Pods-contented-contentedUITests.xcscheme</key>
+		<key>Parse-Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>19</integer>
+			<integer>17</integer>
 		</dict>
-		<key>Pods-contented.xcscheme</key>
+		<key>Parse-ParseUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
-		<key>Pods-contentedTests.xcscheme</key>
+		<key>Parse.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
+		<key>Pods-contented-contentedUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>20</integer>
 		</dict>
-		<key>UIView+draggable.xcscheme</key>
+		<key>Pods-contented.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>19</integer>
+		</dict>
+		<key>Pods-contentedTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>21</integer>
+		</dict>
+		<key>UIView+draggable.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>22</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

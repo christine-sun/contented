@@ -9,6 +9,8 @@
 #import "DetailsViewController.h"
 #import "TaskCell.h"
 #import <Parse/Parse.h>
+#import "LMDropdownView.h"
+#import "FilterCell.h"
 
 @interface StreamViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -20,6 +22,15 @@
 @property (nonatomic) int section;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+
+// test begin
+@property (strong, nonatomic) IBOutlet UITableView *filterTableView;
+@property (strong, nonatomic) LMDropdownView *filterView;
+@property (strong, nonatomic) NSArray *filterTypes;
+@property (assign, nonatomic) NSInteger currentFilterTypeIndex;
+
+
+// test end
 
 @end
 
@@ -34,6 +45,11 @@
     self.tableView.tableHeaderView = self.headerView;
 
     [self fetchTasks];
+    // start
+    self.filterTypes = @[@"To Do", @"Completed", @"YouTube", @"Instagram", @"TikTok", @"Snapchat", @"Twitter"];
+    self.currentFilterTypeIndex = 0;
+    self.filterView = [LMDropdownView dropdownView];
+    // end
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTasks) forControlEvents:UIControlEventValueChanged];
@@ -98,27 +114,44 @@
 
 #pragma mark - table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
-    cell.task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.delegate = self;
-    return cell;
+    if (tableView == self.tableView) {
+        TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+        cell.task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        cell.delegate = self;
+        return cell;
+    }
+    else {
+        FilterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FilterCell"];
+        if (!cell) {
+            cell = [[FilterCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FilterCell"];
+        }
+        
+        cell.menuItemLabel.text = [self.filterTypes objectAtIndex:indexPath.row];
+        
+        return cell;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *thisDatesTasks;
-    int lastIndex = self.groupedTasks.count - 1;
-    if (section == lastIndex) {
-        thisDatesTasks = self.groupedTasks[lastIndex];
+    if (tableView == self.tableView) {
+        NSArray *thisDatesTasks;
+        int lastIndex = self.groupedTasks.count - 1;
+        if (section == lastIndex) {
+            thisDatesTasks = self.groupedTasks[lastIndex];
+        } else {
+            thisDatesTasks = self.groupedTasks[self.section];
+            self.section++;
+        }
+        
+        // Reset section count for future reuse
+        if (self.section == self.groupedTasks.count - 1) {
+            self.section = 0;
+        }
+        return thisDatesTasks.count;
     } else {
-        thisDatesTasks = self.groupedTasks[self.section];
-        self.section++;
+        return [self.filterTypes count];
     }
     
-    // Reset section count for future reuse
-    if (self.section == self.groupedTasks.count - 1) {
-        self.section = 0;
-    }
-    return thisDatesTasks.count;
 }
 
 #pragma mark - section headers
@@ -136,7 +169,12 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self getNumOfUniqueDates];
+    if (tableView == self.tableView) {
+        return [self getNumOfUniqueDates];
+    } else {
+        return 1;
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -196,8 +234,79 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Task *task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"detailsSegue" sender:task];
+    if (tableView == self.tableView) {
+        Task *task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:@"detailsSegue" sender:task];
+    } else {
+        [self.filterTableView deselectRowAtIndexPath:indexPath animated:NO];
+        self.currentFilterTypeIndex = indexPath.row;
+        [self.filterView hide];
+    }
+}
+
+#pragma mark - Dropdown View
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    self.filterTableView.frame = CGRectMake(CGRectGetMinX(self.filterTableView.frame),
+        CGRectGetMinY(self.filterTableView.frame),
+        CGRectGetWidth(self.view.bounds),
+        MIN(CGRectGetHeight(self.view.bounds) - 50, self.filterTypes.count * 50));
+}
+
+- (void)showDropDownViewFromDirection:(LMDropdownViewDirection)direction
+{
+    // Init dropdown view
+    if (!self.filterView) {
+        self.filterView = [LMDropdownView dropdownView];
+        self.filterView.delegate = self;
+        
+        // Customize Dropdown style
+        self.filterView.closedScale = 0.85;
+        self.filterView.blurRadius = 5;
+        self.filterView.blackMaskAlpha = 0.5;
+        self.filterView.animationDuration = 0.5;
+        self.filterView.animationBounceHeight = 20;
+    }
+    self.filterView.direction = direction;
+    
+    // Show/hide dropdown view
+    if ([self.filterView isOpen]) {
+        [self.filterView hide];
+    }
+    else {
+        switch (direction) {
+            case LMDropdownViewDirectionTop: {
+                self.filterView.contentBackgroundColor = [UIColor colorWithRed:40.0/255 green:196.0/255 blue:80.0/255 alpha:1];
+                
+                [self.filterView showFromNavigationController:self.navigationController
+                                                withContentView:self.filterTableView];
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
+
+- (void)dropdownViewDidHide:(LMDropdownView *)dropdownView
+{
+    NSLog(@"Dropdown view did hide");
+    
+    switch (self.currentFilterTypeIndex) {
+        case 0:
+            // do something
+            break;
+        case 1:
+            
+            break;
+        case 2:
+            
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - Navigation
@@ -212,5 +321,10 @@
         detailsVC.task = (Task*)sender;
     }
 }
+
+- (IBAction)onTapFilterButton:(id)sender {
+    [self.filterView showFromNavigationController:self.navigationController withContentView:self.filterTableView];
+}
+
 
 @end

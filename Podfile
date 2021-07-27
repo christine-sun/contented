@@ -14,6 +14,7 @@ target 'contented' do
   pod 'Charts'
   pod 'FBSDKLoginKit'
   pod 'UIView+draggable'
+  pod 'LMDropdownView'
 
   target 'contentedTests' do
     inherit! :search_paths
