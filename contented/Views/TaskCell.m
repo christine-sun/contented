@@ -24,6 +24,10 @@
     // Configure the view for the selected state
 }
 
+- (void)setCompletedMode:(BOOL)isCompleted {
+    self.isCompleted = isCompleted;
+}
+
 - (void)setTask:(Task *)task {
     _task = task;
     self.titleLabel.text = self.task.title;
@@ -41,7 +45,7 @@
         // key is social media platform, obj is TRUE or FALSE
         NSString *thisValue = obj;
         NSInteger valueInt = [thisValue integerValue];
-        if (valueInt == 0) {
+        if (valueInt == 0 || self.isCompleted) {
             UIImage *image = [self findImage:key];
             UIImageView *currentView = [imageViews objectAtIndex:index];
             [currentView setImage:image];

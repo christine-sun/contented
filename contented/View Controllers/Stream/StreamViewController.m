@@ -134,6 +134,7 @@
     /* TASKS TABLE VIEW */
     if (tableView == self.tableView) {
         TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+        [cell setIsCompleted:self.currentFilterTypeIndex == 1];
         cell.task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.delegate = self;
         return cell;
