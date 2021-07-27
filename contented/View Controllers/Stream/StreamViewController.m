@@ -50,6 +50,7 @@
     self.currentFilterTypeIndex = 0;
     self.filterTableView.delegate = self;
     self.filterTableView.dataSource = self;
+    self.filterView.delegate = self;
     // end
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -244,10 +245,11 @@
         [self performSegueWithIdentifier:@"detailsSegue" sender:task];
     }
     else {
-        NSLog(@"%ld", (long)indexPath.row);
         [self.filterTableView deselectRowAtIndexPath:indexPath animated:NO];
         self.currentFilterTypeIndex = indexPath.row;
         [self.filterView hide];
+        NSLog(@"%ld", (long)self.currentFilterTypeIndex);
+        NSLog(@"I wanna call the above");
     }
 }
 
@@ -261,6 +263,11 @@
         CGRectGetWidth(self.view.bounds), 600);
 }
 
+- (void)dropdownViewWillHide:(LMDropdownView *)dropdownView
+{
+    NSLog(@"Dropdown view will hide");
+}
+
 - (void)showDropDownViewFromDirection:(LMDropdownViewDirection)direction
 {
     // Init dropdown view
@@ -269,9 +276,7 @@
         self.filterView.delegate = self;
 
         // Customize Dropdown style
-        self.filterView.closedScale = 0.85;
         self.filterView.blurRadius = 5;
-        self.filterView.blackMaskAlpha = 0.5;
         self.filterView.animationDuration = 0.5;
         self.filterView.animationBounceHeight = 20;
     }
@@ -284,8 +289,7 @@
     else {
         switch (direction) {
             case LMDropdownViewDirectionTop: {
-                self.filterView.contentBackgroundColor = [UIColor colorWithRed:40.0/255 green:196.0/255 blue:80.0/255 alpha:1];
-
+                self.filterView.contentBackgroundColor = [UIColor systemGreenColor];
                 [self.filterView showFromNavigationController:self.navigationController
                                                 withContentView:self.filterTableView];
                 break;
@@ -330,7 +334,7 @@
 
 - (IBAction)onTapFilterButton:(id)sender {
     LMDropdownView *dropdownView = [LMDropdownView dropdownView];
-    [dropdownView showFromNavigationController:self.navigationController withContentView:self.filterTableView];
+    [self showDropDownViewFromDirection:LMDropdownViewDirectionTop];
 }
 
 
