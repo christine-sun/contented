@@ -12,7 +12,7 @@
 #import "LMDropdownView.h"
 #import "FilterCell.h"
 
-@interface StreamViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface StreamViewController () <UITableViewDelegate, UITableViewDataSource, LMDropdownViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *arrayOfTasks;
@@ -48,7 +48,8 @@
     // start
     self.filterTypes = @[@"To Do", @"Completed", @"YouTube", @"Instagram", @"TikTok", @"Snapchat", @"Twitter"];
     self.currentFilterTypeIndex = 0;
-    self.filterView = [LMDropdownView dropdownView];
+    self.filterTableView.delegate = self;
+    self.filterTableView.dataSource = self;
     // end
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -79,7 +80,6 @@
 }
 
 - (void)taskCell:(TaskCell *)taskCell didTap:(Task *)task {
-    // TODO: show notif like r u sure u completed all pushes? and then be like updating the backend and like WOW YAY
     [self confirmCompletion:taskCell];
 }
 
@@ -91,8 +91,6 @@
     // YES - task is completed
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"you know it 😎"
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        // Change button image
-        //[taskCell.checkButton setImage:[UIImage systemImageNamed:@"checkmark.circle.fill"] forState:UIControlStateNormal]; - how can we make the checkbox not persist in cell after refresh?
         // Update this task's status to completed = 1
         PFQuery *query = [PFQuery queryWithClassName:@"Task"];
         [query getObjectInBackgroundWithId:taskCell.task.objectId
@@ -122,12 +120,7 @@
     }
     else {
         FilterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FilterCell"];
-        if (!cell) {
-            cell = [[FilterCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FilterCell"];
-        }
-        
         cell.menuItemLabel.text = [self.filterTypes objectAtIndex:indexPath.row];
-        
         return cell;
     }
 }
@@ -148,7 +141,9 @@
             self.section = 0;
         }
         return thisDatesTasks.count;
-    } else {
+        
+    }
+    else {
         return [self.filterTypes count];
     }
     
@@ -158,8 +153,6 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *label = [[UILabel alloc] init];
-    //label.text = [NSString stringWithFormat:@"section %ld",(long)section];;
-    // label.backgroundColor make it a transparent white
     Task *task = [[self.groupedTasks objectAtIndex:section] objectAtIndex:0];
     NSDate *dueDate = task.dueDate;
     NSDateFormatter *weekday = [[NSDateFormatter alloc] init];
@@ -171,7 +164,8 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (tableView == self.tableView) {
         return [self getNumOfUniqueDates];
-    } else {
+    }
+    else {
         return 1;
     }
     
@@ -237,7 +231,8 @@
     if (tableView == self.tableView) {
         Task *task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         [self performSegueWithIdentifier:@"detailsSegue" sender:task];
-    } else {
+    }
+    else {
         [self.filterTableView deselectRowAtIndexPath:indexPath animated:NO];
         self.currentFilterTypeIndex = indexPath.row;
         [self.filterView hide];
@@ -248,7 +243,7 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
+
     self.filterTableView.frame = CGRectMake(CGRectGetMinX(self.filterTableView.frame),
         CGRectGetMinY(self.filterTableView.frame),
         CGRectGetWidth(self.view.bounds),
@@ -261,7 +256,7 @@
     if (!self.filterView) {
         self.filterView = [LMDropdownView dropdownView];
         self.filterView.delegate = self;
-        
+
         // Customize Dropdown style
         self.filterView.closedScale = 0.85;
         self.filterView.blurRadius = 5;
@@ -270,7 +265,7 @@
         self.filterView.animationBounceHeight = 20;
     }
     self.filterView.direction = direction;
-    
+
     // Show/hide dropdown view
     if ([self.filterView isOpen]) {
         [self.filterView hide];
@@ -279,7 +274,7 @@
         switch (direction) {
             case LMDropdownViewDirectionTop: {
                 self.filterView.contentBackgroundColor = [UIColor colorWithRed:40.0/255 green:196.0/255 blue:80.0/255 alpha:1];
-                
+
                 [self.filterView showFromNavigationController:self.navigationController
                                                 withContentView:self.filterTableView];
                 break;
@@ -323,7 +318,8 @@
 }
 
 - (IBAction)onTapFilterButton:(id)sender {
-    [self.filterView showFromNavigationController:self.navigationController withContentView:self.filterTableView];
+    LMDropdownView *dropdownView = [LMDropdownView dropdownView];
+    [dropdownView showFromNavigationController:self.navigationController withContentView:self.filterTableView];
 }
 
 
