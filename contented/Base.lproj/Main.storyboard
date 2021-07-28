@@ -880,13 +880,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="30W-st-4HF">
-                                <rect key="frame" x="141" y="118" width="110" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="30W-st-4HF">
+                                <rect key="frame" x="140" y="118" width="110" height="106.66666666666667"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="DHD-e6-4zJ"/>
+                                    <constraint firstAttribute="width" constant="110" id="bLN-l6-aFu"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PrE-bi-zDi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="30W-st-4HF" firstAttribute="top" secondItem="PrE-bi-zDi" secondAttribute="top" constant="28" id="AF3-lc-kZz"/>
+                            <constraint firstItem="PrE-bi-zDi" firstAttribute="trailing" secondItem="30W-st-4HF" secondAttribute="trailing" constant="140" id="FyN-58-ICX"/>
+                            <constraint firstItem="30W-st-4HF" firstAttribute="leading" secondItem="PrE-bi-zDi" secondAttribute="leading" constant="140" id="oqj-6M-0gH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pvs-Fs-muv"/>
                     <connections>

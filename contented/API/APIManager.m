@@ -198,9 +198,8 @@ UILabel *ytLabel;
         }
         else {
             initialDictionary = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            
             NSArray *videos = initialDictionary[@"items"];
-            NSString *profilePicLink = videos[0][@"snippet"][@"thumbnails"][@"default"][@"url"];
+            NSString *profilePicLink = videos[0][@"snippet"][@"thumbnails"][@"medium"][@"url"];
             NSURL *profilePicURL = [NSURL URLWithString:profilePicLink];
             NSData *data = [NSData dataWithContentsOfURL:profilePicURL];
             UIImage *img = [[UIImage alloc] initWithData:data];

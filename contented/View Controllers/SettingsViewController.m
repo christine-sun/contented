@@ -42,6 +42,8 @@
     NSString *userID = self.user[@"youtubeID"];
     
     //
+    CGFloat profilePicDimension = 110;
+    [self.profileImageView.layer setCornerRadius:profilePicDimension / 2];
     [APIManager setProfileImage:userID forImageView:self.profileImageView];
     //
     
@@ -94,11 +96,13 @@
 - (IBAction)onTapUpdate:(id)sender {
     // Set the user's youtubeID
     PFUser *user = [PFUser currentUser];
-    user[@"youtubeID"] = self.youtubeIDField.text;
+    __block NSString *userID = self.youtubeIDField.text;
+    user[@"youtubeID"] = userID;
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             self.statusMessageLabel.text = @"Your YouTube ID has been updated!";
             [self.statusMessageLabel setTextColor:[UIColor systemGreenColor]];
+            [APIManager setProfileImage:userID forImageView:self.profileImageView];
         }
         else {
             self.statusMessageLabel.text = @"There was a problem updating your YouTube ID.";
