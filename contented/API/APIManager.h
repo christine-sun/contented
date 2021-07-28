@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSDictionary*) fetchLast20Views: (NSString*) userID;
 + (NSMutableArray*) getVids;
 + (void)setVideoViews: (Video*)video: (NSDictionary*)videoDict;
++ (void)setRecommendationLabel:(UILabel*)recommendationLabel;
 + (void)setChart: (LineChartView*) lineChartView;
 + (void)setChartValues;
 + (NSDate*) stringToDate:(NSString*) dateString;

@@ -13,9 +13,9 @@
 #import "WebViewController.h"
 
 @interface AnalyticsViewController () <ChartViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *userIDLabel;
 @property (strong, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *ytReportLabel;
+@property (weak, nonatomic) IBOutlet UILabel *recommendationLabel;
 
 @end
 
@@ -25,7 +25,7 @@
     [super viewDidLoad];
     
     [APIManager setYouTubeReportLabel:self.ytReportLabel];
-    
+    [APIManager setRecommendationLabel:self.recommendationLabel];
     [self updateVideoInfo];
     
     // Set up the chart

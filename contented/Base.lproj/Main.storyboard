@@ -762,6 +762,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yx-ed-QA1">
+                                <rect key="frame" x="29" y="565" width="330" height="185"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mh7-eL-4ab"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -779,6 +786,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="lineChartView" destination="mdC-Rr-4GM" id="tGG-oj-5wi"/>
+                        <outlet property="recommendationLabel" destination="0yx-ed-QA1" id="ciu-Mo-iwh"/>
                         <outlet property="ytReportLabel" destination="S84-3O-RCs" id="E51-jF-Tg5"/>
                         <segue destination="wrA-48-jgm" kind="presentation" identifier="webSegue" id="t8U-wa-htm"/>
                     </connections>

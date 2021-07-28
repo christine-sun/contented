@@ -20,6 +20,9 @@ LineChartView *lineChartView;
 NSMutableArray *titles;
 double ySum;
 UILabel *ytLabel;
+CGFloat maxViews;
+NSString *maxViewTitle = @"";
+UILabel *recLabel;
 
 + (void)setYouTubeReportLabel:(UILabel*)ytReportLabel {
     ytLabel = ytReportLabel;
@@ -27,6 +30,10 @@ UILabel *ytLabel;
 
 + (NSMutableArray*) getVids {
     return vids;
+}
+
++ (void)setRecommendationLabel:(UILabel*)recommendationLabel {
+    recLabel = recommendationLabel;
 }
 
 
@@ -48,6 +55,7 @@ UILabel *ytLabel;
             
             NSArray *videos = initialDictionary[@"items"];
             ySum = 0;
+            maxViews = LONG_MIN;
             for (int i = 0; i < videos.count; i++) {
                 [self setVideoProperties:videos[i]];
             }
@@ -82,6 +90,7 @@ UILabel *ytLabel;
                     NSDictionary *videoDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     [self setVideoViews:video:videoDict];
                     [self setChartValues];
+                    recLabel.text = [NSString stringWithFormat:@"Your best performing video in this time period was %@🔥\nLet's think together... 🤔\n 😲 What was special about this video?\n ☁️ What are some other videos you can make that follow the captivating themes of this one?", maxViewTitle];
                 }
         }];
         [task resume];
@@ -97,6 +106,10 @@ UILabel *ytLabel;
     NSString *viewCount = stats[@"viewCount"];
     video.views = [viewCount integerValue];
     ySum += video.views;
+    if (video.views > maxViews) {
+        maxViews = video.views;
+        maxViewTitle = video.title;
+    }
 }
 
 + (void)setChart: (LineChartView*) otherLineChartView {
