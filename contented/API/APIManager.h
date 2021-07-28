@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setChart: (LineChartView*) lineChartView;
 + (void)setChartValues;
 + (NSDate*) stringToDate:(NSString*) dateString;
++ (void) setProfileImage: (NSString*) userID forImageView: (UIImageView*) imageView;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -185,4 +185,29 @@ UILabel *ytLabel;
     return [dateFormatter dateFromString:dateString];
 }
 
++ (void) setProfileImage: (NSString*) userID forImageView: (UIImageView*) imageView {
+//https://www.googleapis.com/youtube/v3/channels?part=snippet&id=UCt7gY0riLR5YJLISl3RK5iw&fields=items%2Fsnippet%2Fthumbnails&key=AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8
+    NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/channels?part=snippet&id=%@&fields=items%%2Fsnippet%%2Fthumbnails&key=%@", userID, API_KEY];
+    __block NSDictionary *initialDictionary = [[NSDictionary alloc] init];
+    NSURL *url = [NSURL URLWithString:baseString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+        }
+        else {
+            initialDictionary = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            
+            NSArray *videos = initialDictionary[@"items"];
+            NSString *profilePicLink = videos[0][@"snippet"][@"thumbnails"][@"default"][@"url"];
+            NSURL *profilePicURL = [NSURL URLWithString:profilePicLink];
+            NSData *data = [NSData dataWithContentsOfURL:profilePicURL];
+            UIImage *img = [[UIImage alloc] initWithData:data];
+            [imageView setImage:img];
+        }
+    }];
+    [task resume];
+}
+
 @end

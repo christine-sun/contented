@@ -9,6 +9,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
+#import "APIManager.h"
 
 @interface SettingsViewController ()
 
@@ -16,7 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *statusMessageLabel;
 @property (strong, nonatomic) PFUser *user;
 @property (weak, nonatomic) IBOutlet UILabel *completedTasksLabel;
-@property (weak, nonatomic) IBOutlet UITextView *usernameTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @end
 
@@ -30,15 +32,20 @@
     // Dismiss keyboard outside of text fields
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
-    self.usernameTextView.text = self.user[@"username"];
-    self.usernameTextView.editable = NO;
-    self.usernameTextView.selectable = NO;
+    
+    self.usernameLabel.text = self.user[@"username"];
+  
     [self.statusMessageLabel setTextColor:[UIColor whiteColor]];
     
     NSString *completedTasks = [NSString stringWithFormat:@"%d %@", [self getTotalTasksCompleted], @"tasks completed"];
     self.completedTasksLabel.text = completedTasks;
+    NSString *userID = self.user[@"youtubeID"];
     
-    self.youtubeIDField.text = self.user[@"youtubeID"];
+    //
+    [APIManager setProfileImage:userID forImageView:self.profileImageView];
+    //
+    
+    self.youtubeIDField.text = userID;
     
     if ([FBSDKAccessToken currentAccessToken]) {
        // User is logged in, do work such as go to next view controller.
@@ -86,7 +93,6 @@
 
 - (IBAction)onTapUpdate:(id)sender {
     // Set the user's youtubeID
-    PFQuery *query = [PFQuery queryWithClassName:@"User"];
     PFUser *user = [PFUser currentUser];
     user[@"youtubeID"] = self.youtubeIDField.text;
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
