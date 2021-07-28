@@ -9,7 +9,6 @@
 #import "Video.h"
 
 @interface APIManager () <IChartAxisValueFormatter>
-@property (weak, nonatomic) IBOutlet UILabel *testLabel;
 
 @end
 
@@ -17,7 +16,6 @@
 
 NSMutableArray *vids;
 NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
-NSString *allText;
 LineChartView *lineChartView;
 NSMutableArray *titles;
 double ySum;
@@ -27,10 +25,6 @@ UILabel *ytLabel;
     ytLabel = ytReportLabel;
 }
 
-+ (UILabel*)getYTReportLabel {
-    return ytLabel;
-}
-
 + (NSMutableArray*) getVids {
     return vids;
 }
@@ -38,7 +32,6 @@ UILabel *ytLabel;
 
 + (NSDictionary*) fetchLast20Views: (NSString*) userID {
     vids = [[NSMutableArray alloc] init];
-    allText = @"";
     // Get the last 20 videos from this user
     NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/search?key=%@&channelId=%@&part=snippet,id&order=date&maxResults=20", API_KEY, userID];
     
@@ -113,7 +106,7 @@ UILabel *ytLabel;
 + (void)setChartValues {
     NSMutableArray *values = [[NSMutableArray alloc] init];
     double xSum = 190; // the sum of 0+1+2+3+...19
-    double xMean = 190 / 2;
+    double xMean = 190 / 20;
     double yMean = ySum / vids.count;
     double numerator = 0; // find numerator in least squares equation
     double denominator = 0; // find denominator in least squares equation
@@ -186,7 +179,6 @@ UILabel *ytLabel;
 }
 
 + (void) setProfileImage: (NSString*) userID forImageView: (UIImageView*) imageView {
-//https://www.googleapis.com/youtube/v3/channels?part=snippet&id=UCt7gY0riLR5YJLISl3RK5iw&fields=items%2Fsnippet%2Fthumbnails&key=AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8
     NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/channels?part=snippet&id=%@&fields=items%%2Fsnippet%%2Fthumbnails&key=%@", userID, API_KEY];
     __block NSDictionary *initialDictionary = [[NSDictionary alloc] init];
     NSURL *url = [NSURL URLWithString:baseString];
