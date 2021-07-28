@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *youtubeIDField;
 @property (weak, nonatomic) IBOutlet UILabel *statusMessageLabel;
 @property (strong, nonatomic) PFUser *user;
+@property (weak, nonatomic) IBOutlet UITextView *usernameTextView;
 
 @end
 
@@ -28,7 +29,9 @@
     // Dismiss keyboard outside of text fields
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
-    
+    self.usernameTextView.text = self.user[@"username"];
+    self.usernameTextView.editable = NO;
+    self.usernameTextView.selectable = NO;
     [self.statusMessageLabel setTextColor:[UIColor whiteColor]];
 //    self.youtubeIDField.text = self.user.youtubeID;
     self.youtubeIDField.text = self.user[@"youtubeID"];
@@ -92,6 +95,9 @@
             [self.statusMessageLabel setTextColor:[UIColor systemRedColor]];
         }
     }];
+}
+
+- (IBAction)onTapEdit:(id)sender {
 }
 
 -(void)dismissKeyboard {
