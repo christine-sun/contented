@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *youtubeIDField;
 @property (weak, nonatomic) IBOutlet UILabel *statusMessageLabel;
 @property (strong, nonatomic) PFUser *user;
+@property (weak, nonatomic) IBOutlet UILabel *completedTasksLabel;
 @property (weak, nonatomic) IBOutlet UITextView *usernameTextView;
 
 @end
@@ -33,7 +34,10 @@
     self.usernameTextView.editable = NO;
     self.usernameTextView.selectable = NO;
     [self.statusMessageLabel setTextColor:[UIColor whiteColor]];
-//    self.youtubeIDField.text = self.user.youtubeID;
+    
+    NSString *completedTasks = [NSString stringWithFormat:@"%d %@", [self getTotalTasksCompleted], @"tasks completed"];
+    self.completedTasksLabel.text = completedTasks;
+    
     self.youtubeIDField.text = self.user[@"youtubeID"];
     
     if ([FBSDKAccessToken currentAccessToken]) {
@@ -97,10 +101,15 @@
     }];
 }
 
-- (IBAction)onTapEdit:(id)sender {
+- (int) getTotalTasksCompleted {
+    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"completed" equalTo:@(1)];
+    NSArray *completed = [query findObjects];
+    return (int)completed.count;
 }
 
--(void)dismissKeyboard {
+- (void)dismissKeyboard {
     [self.youtubeIDField resignFirstResponder];
 }
 

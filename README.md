@@ -224,9 +224,6 @@ Milestone 7 - Filter Tasks (2 days)
 - Add filtering pop up options
 - Enable user to change home view to completed or specified platform
 
-Milestone 8 - Notification (1 day)
-- Send weekly notifications on Sunday evenings to be intentional for one's tasks
-
 Milestone 9 - UI (2 days)
 - Add animations for when tasks are created and completed
 - Add phone vibration modes for when tasks are completed
@@ -244,10 +241,13 @@ Extra features:
 -create another tab for completed tasks
 -login screen logic more laid out --> if you didn't have an account, notif, and also sign up is separate screen. forgot password
 -google calendar integration to add tasks to a contented calendar to account
--categories in idea board like comedy "the __ dance challenge" and art "trying to draw __ in 60 seconds"
 
 ISSUES
 - dispatch_sync issue where I wanted to set dict equal to what I got from an async call, but could not return inside of async function
+
+note:
+sending notifications requires paid developer acc 
+guide: https://www.raywenderlich.com/11395893-push-notifications-tutorial-getting-started
 
 creds
 https://github.com/lminhtm/LMDropdownView
