@@ -12,10 +12,12 @@
 #import "Video.h"
 #import "WebViewController.h"
 
-@interface AnalyticsViewController () <ChartViewDelegate>
+@interface AnalyticsViewController () <ChartViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *ytReportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *recommendationLabel;
+@property (weak, nonatomic) IBOutlet UIPickerView *videoCountPicker;
+@property (strong, nonatomic) NSArray *videoCountPickerData;
 
 @end
 
@@ -26,7 +28,13 @@
     
     [APIManager setYouTubeReportLabel:self.ytReportLabel];
     [APIManager setRecommendationLabel:self.recommendationLabel];
-    [self updateVideoInfo];
+    NSString *userID = [PFUser currentUser][@"youtubeID"];
+    [APIManager fetchLast20Views:userID];
+    
+    // Set up video count picker
+    self.videoCountPicker.delegate = self;
+    self.videoCountPicker.dataSource = self;
+    self.videoCountPickerData = @[@"20", @"15", @"10", @"5"];
     
     // Set up the chart
     UITapGestureRecognizer *pointTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapPoint:)];
@@ -65,21 +73,18 @@
     }
 }
 
-- (void)updateVideoInfo {
-    NSString *userID = [PFUser currentUser][@"youtubeID"];
-    [APIManager fetchLast20Views:userID];
+#pragma mark - Video Count Picker
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
 }
 
-- (IBAction)onTapUpdate:(id)sender {
-    [self updateVideoInfo];
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.videoCountPickerData.count;
 }
 
-- (IBAction)onTapLogOut:(id)sender {
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        self.view.window.rootViewController = loginVC;
-    }];
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return self.videoCountPickerData[row];
 }
 
 #pragma mark - Navigation
