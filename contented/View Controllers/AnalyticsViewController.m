@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *videoCountPicker;
 @property (strong, nonatomic) NSArray *videoCountPickerData;
 @property (strong, nonatomic) NSString *userID;
+@property (weak, nonatomic) IBOutlet UIDatePicker *startDatePicker;
+@property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
 
 @end
 
@@ -36,6 +38,7 @@
     [APIManager setRecommendationLabel:self.recommendationLabel];
     self.userID = [PFUser currentUser][@"youtubeID"];
     [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[0]];
+    [APIManager setDatePickers:self.startDatePicker end:self.endDatePicker];
     
     // Set up the chart
     UITapGestureRecognizer *pointTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapPoint:)];

@@ -763,7 +763,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yx-ed-QA1">
-                                <rect key="frame" x="29" y="565" width="330" height="185"/>
+                                <rect key="frame" x="16" y="565" width="358" height="185"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -780,6 +780,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="X92-PL-XDo">
+                                <rect key="frame" x="295" y="98" width="88" height="51"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="3Hh-oa-D0Q">
+                                <rect key="frame" x="199" y="98" width="88" height="51"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mh7-eL-4ab"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -796,8 +804,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="endDatePicker" destination="X92-PL-XDo" id="LYG-Or-MWg"/>
                         <outlet property="lineChartView" destination="mdC-Rr-4GM" id="tGG-oj-5wi"/>
                         <outlet property="recommendationLabel" destination="0yx-ed-QA1" id="ciu-Mo-iwh"/>
+                        <outlet property="startDatePicker" destination="3Hh-oa-D0Q" id="hP6-RQ-iNo"/>
                         <outlet property="videoCountPicker" destination="siB-Ho-MKk" id="GVy-ma-LqW"/>
                         <outlet property="ytReportLabel" destination="S84-3O-RCs" id="E51-jF-Tg5"/>
                         <segue destination="wrA-48-jgm" kind="presentation" identifier="webSegue" id="t8U-wa-htm"/>

@@ -23,6 +23,8 @@ UILabel *ytLabel;
 CGFloat maxViews;
 NSString *maxViewTitle = @"";
 UILabel *recLabel;
+UIDatePicker *startDatePicker;
+UIDatePicker *endDatePicker;
 
 + (void)setYouTubeReportLabel:(UILabel*)ytReportLabel {
     ytLabel = ytReportLabel;
@@ -36,6 +38,10 @@ UILabel *recLabel;
     recLabel = recommendationLabel;
 }
 
++ (void)setDatePickers:(UIDatePicker*)start end:(UIDatePicker*)end {
+    startDatePicker = start;
+    endDatePicker = end;
+}
 
 + (NSDictionary*) fetchRecentViews: (NSString*) userID withVideoCount: (NSString*) vidCount {
     vids = [[NSMutableArray alloc] init];
@@ -90,6 +96,10 @@ UILabel *recLabel;
                     NSDictionary *videoDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     [self setVideoViews:video:videoDict];
                     [self setChartValues];
+                    Video *firstVideo = vids[0];
+                    startDatePicker.date = firstVideo.publishedAt;
+                    Video *lastVideo = vids[vids.count - 1];
+                    endDatePicker.date = lastVideo.publishedAt;
                     recLabel.text = [NSString stringWithFormat:@"Your best performing video in this time period was %@🔥\nLet's think together... 🤔\n 😲 What was special about this video?\n ☁️ What are some other videos you can make that follow the captivating themes of this one?", maxViewTitle];
                 }
         }];

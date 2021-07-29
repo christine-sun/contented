@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)setYouTubeReportLabel:(UILabel*)ytReportLabel;
 + (NSDictionary*) fetchRecentViews: (NSString*) userID withVideoCount: (NSString*) vidCount;
++ (void)setDatePickers:(UIDatePicker*)start end:(UIDatePicker*)end;
 + (NSMutableArray*) getVids;
 + (void)setVideoViews: (Video*)video: (NSDictionary*)videoDict;
 + (void)setRecommendationLabel:(UILabel*)recommendationLabel;
