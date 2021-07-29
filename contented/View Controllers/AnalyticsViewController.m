@@ -94,6 +94,14 @@
 
 }
 
+- (IBAction)onChangeStartDate:(id)sender {
+    NSLog(@"changed the start date");
+}
+
+- (IBAction)onChangeEndDate:(id)sender {
+    NSLog(@"changed the end date");
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

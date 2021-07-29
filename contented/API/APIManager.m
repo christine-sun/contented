@@ -106,7 +106,12 @@ UIDatePicker *endDatePicker;
                 }
         }];
         [task resume];
+
         [vids addObject:video];
+        
+        // if ([video.publishedAt compare:startDatePicker.date] >= 0 && [video.publishedAt compare:endDatePicker.date] <= 0) {
+       //  [vids addObject:video]
+    
     }
 }
 
