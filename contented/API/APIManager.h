@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface APIManager : NSObject
 
 + (void)setYouTubeReportLabel:(UILabel*)ytReportLabel;
-+ (NSDictionary*) fetchLast20Views: (NSString*) userID;
++ (NSDictionary*) fetchRecentViews: (NSString*) userID withVideoCount: (NSString*) vidCount;
 + (NSMutableArray*) getVids;
 + (void)setVideoViews: (Video*)video: (NSDictionary*)videoDict;
 + (void)setRecommendationLabel:(UILabel*)recommendationLabel;

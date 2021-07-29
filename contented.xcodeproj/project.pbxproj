@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0CA7C1D718E51002B071823E /* libPods-contentedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2EBB57534F42E2C2E07F60F /* libPods-contentedTests.a */; };
-		5F0F56B926AB33BC009271ED /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0F56B826AB33BC009271ED /* SPUserResizableView.m */; };
 		5F0F56BF26B05B62009271ED /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0F56BE26B05B62009271ED /* FilterCell.m */; };
 		5F3D0E9C269F4A2B007BDDAD /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E9B269F4A2B007BDDAD /* TabBarController.m */; };
 		5F3D0EA526A0AD21007BDDAD /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0EA426A0AD21007BDDAD /* EditViewController.m */; };
@@ -26,9 +25,6 @@
 		5F3D0F3626A9AD31007BDDAD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3D0F3526A9AD31007BDDAD /* WebKit.framework */; };
 		5F3D0F3926A9ADC0007BDDAD /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */; };
 		5F3D0F3C26A9BB4E007BDDAD /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3B26A9BB4E007BDDAD /* Board.m */; };
-		5F3D0F3F26A9BE78007BDDAD /* BoardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F3E26A9BE78007BDDAD /* BoardCollectionViewCell.m */; };
-		5F3D0F4226A9C3C9007BDDAD /* BoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4126A9C3C9007BDDAD /* BoardViewController.m */; };
-		5F3D0F4526A9C597007BDDAD /* BoardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4426A9C597007BDDAD /* BoardTableViewCell.m */; };
 		5F3D0F4926AA0A3C007BDDAD /* IdeasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4826AA0A3C007BDDAD /* IdeasViewController.m */; };
 		5F3D0F4F26AA141C007BDDAD /* IdeaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F4E26AA141C007BDDAD /* IdeaView.m */; };
 		5F3D0F5226AA1B30007BDDAD /* Idea.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F5126AA1B30007BDDAD /* Idea.m */; };
@@ -73,8 +69,6 @@
 /* Begin PBXFileReference section */
 		4C3E844BF73C2B7DD0AC5DA1 /* Pods-contentedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contentedTests.release.xcconfig"; path = "Target Support Files/Pods-contentedTests/Pods-contentedTests.release.xcconfig"; sourceTree = "<group>"; };
 		56E4324586275146CCBD5E9E /* Pods-contented-contentedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contented-contentedUITests.debug.xcconfig"; path = "Target Support Files/Pods-contented-contentedUITests/Pods-contented-contentedUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		5F0F56B726AB33BC009271ED /* SPUserResizableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
-		5F0F56B826AB33BC009271ED /* SPUserResizableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
 		5F0F56BD26B05B62009271ED /* FilterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
 		5F0F56BE26B05B62009271ED /* FilterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
 		5F3D0E9A269F4A2B007BDDAD /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
@@ -102,12 +96,6 @@
 		5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		5F3D0F3A26A9BB4E007BDDAD /* Board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		5F3D0F3B26A9BB4E007BDDAD /* Board.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
-		5F3D0F3D26A9BE78007BDDAD /* BoardCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardCollectionViewCell.h; sourceTree = "<group>"; };
-		5F3D0F3E26A9BE78007BDDAD /* BoardCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardCollectionViewCell.m; sourceTree = "<group>"; };
-		5F3D0F4026A9C3C9007BDDAD /* BoardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardViewController.h; sourceTree = "<group>"; };
-		5F3D0F4126A9C3C9007BDDAD /* BoardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardViewController.m; sourceTree = "<group>"; };
-		5F3D0F4326A9C597007BDDAD /* BoardTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardTableViewCell.h; sourceTree = "<group>"; };
-		5F3D0F4426A9C597007BDDAD /* BoardTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardTableViewCell.m; sourceTree = "<group>"; };
 		5F3D0F4726AA0A3C007BDDAD /* IdeasViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdeasViewController.h; sourceTree = "<group>"; };
 		5F3D0F4826AA0A3C007BDDAD /* IdeasViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IdeasViewController.m; sourceTree = "<group>"; };
 		5F3D0F4D26AA141C007BDDAD /* IdeaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdeaView.h; sourceTree = "<group>"; };
@@ -208,17 +196,6 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		5F3D0F4626A9CEF2007BDDAD /* Board */ = {
-			isa = PBXGroup;
-			children = (
-				5F3D0F3D26A9BE78007BDDAD /* BoardCollectionViewCell.h */,
-				5F3D0F3E26A9BE78007BDDAD /* BoardCollectionViewCell.m */,
-				5F3D0F4326A9C597007BDDAD /* BoardTableViewCell.h */,
-				5F3D0F4426A9C597007BDDAD /* BoardTableViewCell.m */,
-			);
-			path = Board;
-			sourceTree = "<group>";
-		};
 		5FE7ECAB269CAB130040154E = {
 			isa = PBXGroup;
 			children = (
@@ -300,8 +277,6 @@
 				5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */,
 				5F3D0F3726A9ADC0007BDDAD /* WebViewController.h */,
 				5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */,
-				5F3D0F4026A9C3C9007BDDAD /* BoardViewController.h */,
-				5F3D0F4126A9C3C9007BDDAD /* BoardViewController.m */,
 				5F3D0F4726AA0A3C007BDDAD /* IdeasViewController.h */,
 				5F3D0F4826AA0A3C007BDDAD /* IdeasViewController.m */,
 			);
@@ -348,15 +323,12 @@
 		5FE7ED0E269E4D560040154E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5F3D0F4626A9CEF2007BDDAD /* Board */,
 				5FE7ED0F269E4D730040154E /* TaskCell.h */,
 				5FE7ED10269E4D730040154E /* TaskCell.m */,
 				5F3D0EAF26A0B865007BDDAD /* PlatformButton.h */,
 				5F3D0EB026A0B865007BDDAD /* PlatformButton.m */,
 				5F3D0F4D26AA141C007BDDAD /* IdeaView.h */,
 				5F3D0F4E26AA141C007BDDAD /* IdeaView.m */,
-				5F0F56B726AB33BC009271ED /* SPUserResizableView.h */,
-				5F0F56B826AB33BC009271ED /* SPUserResizableView.m */,
 				5F0F56BD26B05B62009271ED /* FilterCell.h */,
 				5F0F56BE26B05B62009271ED /* FilterCell.m */,
 			);
@@ -641,16 +613,12 @@
 				5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */,
 				5F3D0EAE26A0B2CE007BDDAD /* PlatformUtilities.m in Sources */,
 				5F3D0F3126A8B9F5007BDDAD /* SettingsViewController.m in Sources */,
-				5F3D0F3F26A9BE78007BDDAD /* BoardCollectionViewCell.m in Sources */,
 				5F3D0F4F26AA141C007BDDAD /* IdeaView.m in Sources */,
-				5F3D0F4526A9C597007BDDAD /* BoardTableViewCell.m in Sources */,
 				5FE7ECCA269CAB140040154E /* main.m in Sources */,
 				5FE7ED0C269DDE6A0040154E /* Platform.m in Sources */,
 				5FE7ED06269DDC3E0040154E /* PushesViewController.m in Sources */,
 				5FE7ECFC269CDC7B0040154E /* DetailsViewController.m in Sources */,
 				5FE7ECF9269CDC6B0040154E /* StreamViewController.m in Sources */,
-				5F0F56B926AB33BC009271ED /* SPUserResizableView.m in Sources */,
-				5F3D0F4226A9C3C9007BDDAD /* BoardViewController.m in Sources */,
 				5F3D0EA526A0AD21007BDDAD /* EditViewController.m in Sources */,
 				5F3D0EB126A0B865007BDDAD /* PlatformButton.m in Sources */,
 				5F3D0F5226AA1B30007BDDAD /* Idea.m in Sources */,

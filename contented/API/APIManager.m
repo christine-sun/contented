@@ -37,10 +37,10 @@ UILabel *recLabel;
 }
 
 
-+ (NSDictionary*) fetchLast20Views: (NSString*) userID {
++ (NSDictionary*) fetchRecentViews: (NSString*) userID withVideoCount: (NSString*) vidCount {
     vids = [[NSMutableArray alloc] init];
     // Get the last 20 videos from this user
-    NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/search?key=%@&channelId=%@&part=snippet,id&order=date&maxResults=20", API_KEY, userID];
+    NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/search?key=%@&channelId=%@&part=snippet,id&order=date&maxResults=%@", API_KEY, userID, vidCount];
     
     __block NSDictionary *initialDictionary = [[NSDictionary alloc] init];
     NSURL *url = [NSURL URLWithString:baseString];
@@ -119,7 +119,7 @@ UILabel *recLabel;
 + (void)setChartValues {
     NSMutableArray *values = [[NSMutableArray alloc] init];
     double xSum = 190; // the sum of 0+1+2+3+...19
-    double xMean = 190 / 20;
+    double xMean = 190 / vids.count;
     double yMean = ySum / vids.count;
     double numerator = 0; // find numerator in least squares equation
     double denominator = 0; // find denominator in least squares equation

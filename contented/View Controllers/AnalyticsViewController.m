@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *recommendationLabel;
 @property (weak, nonatomic) IBOutlet UIPickerView *videoCountPicker;
 @property (strong, nonatomic) NSArray *videoCountPickerData;
+@property (strong, nonatomic) NSString *userID;
 
 @end
 
@@ -26,15 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [APIManager setYouTubeReportLabel:self.ytReportLabel];
-    [APIManager setRecommendationLabel:self.recommendationLabel];
-    NSString *userID = [PFUser currentUser][@"youtubeID"];
-    [APIManager fetchLast20Views:userID];
-    
     // Set up video count picker
     self.videoCountPicker.delegate = self;
     self.videoCountPicker.dataSource = self;
     self.videoCountPickerData = @[@"20", @"15", @"10", @"5"];
+    
+    [APIManager setYouTubeReportLabel:self.ytReportLabel];
+    [APIManager setRecommendationLabel:self.recommendationLabel];
+    self.userID = [PFUser currentUser][@"youtubeID"];
+    [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[0]];
     
     // Set up the chart
     UITapGestureRecognizer *pointTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapPoint:)];
@@ -48,8 +49,6 @@
     self.lineChartView.rightAxis.enabled = NO;
     [self.lineChartView animateWithXAxisDuration:2.5];
     [APIManager setChart:self.lineChartView];
-
-    // select time period and total number of recent videos
 
 }
 
@@ -85,6 +84,11 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return self.videoCountPickerData[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[row]];
+
 }
 
 #pragma mark - Navigation
