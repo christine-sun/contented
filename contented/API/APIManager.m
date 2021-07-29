@@ -98,8 +98,10 @@ UIDatePicker *endDatePicker;
                     [self setChartValues];
                     Video *firstVideo = vids[0];
                     startDatePicker.date = firstVideo.publishedAt;
+                    startDatePicker.minimumDate = startDatePicker.date;
                     Video *lastVideo = vids[vids.count - 1];
                     endDatePicker.date = lastVideo.publishedAt;
+                    endDatePicker.maximumDate = endDatePicker.date;
                     recLabel.text = [NSString stringWithFormat:@"Your best performing video in this time period was %@🔥\nLet's think together... 🤔\n 😲 What was special about this video?\n ☁️ What are some other videos you can make that follow the captivating themes of this one?", maxViewTitle];
                 }
         }];
