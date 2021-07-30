@@ -34,6 +34,10 @@ UIDatePicker *endDatePicker;
     return vids;
 }
 
++ (void) setVids: (NSMutableArray*) videos {
+    vids = videos;
+}
+
 + (void)setRecommendationLabel:(UILabel*)recommendationLabel {
     recLabel = recommendationLabel;
 }
@@ -102,15 +106,11 @@ UIDatePicker *endDatePicker;
                     Video *lastVideo = vids[vids.count - 1];
                     endDatePicker.date = lastVideo.publishedAt;
                     endDatePicker.maximumDate = endDatePicker.date;
-                    recLabel.text = [NSString stringWithFormat:@"Your best performing video in this time period was %@🔥\nLet's think together... 🤔\n 😲 What was special about this video?\n ☁️ What are some other videos you can make that follow the captivating themes of this one?", maxViewTitle];
                 }
         }];
         [task resume];
 
         [vids addObject:video];
-        
-        // if ([video.publishedAt compare:startDatePicker.date] >= 0 && [video.publishedAt compare:endDatePicker.date] <= 0) {
-       //  [vids addObject:video]
     
     }
 }
@@ -134,9 +134,13 @@ UIDatePicker *endDatePicker;
 }
 
 + (void)setChartValues {
+    [self setMaxViewedVideo];
     NSMutableArray *values = [[NSMutableArray alloc] init];
-    double xSum = 190; // the sum of 0+1+2+3+...19
-    double xMean = 190 / vids.count;
+    double xSum = 0;
+    for (int i = 0; i < vids.count; i++) {
+        xSum += i;
+    }
+    double xMean = xSum / vids.count;
     double yMean = ySum / vids.count;
     double numerator = 0; // find numerator in least squares equation
     double denominator = 0; // find denominator in least squares equation
@@ -188,6 +192,19 @@ UIDatePicker *endDatePicker;
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
     lineChartView.data = data;
     lineChartView.xAxis.valueFormatter = [[APIManager alloc] init];
+    
+    recLabel.text = [NSString stringWithFormat:@"Your best performing video in this time period was %@🔥\nLet's think together... 🤔\n 😲 What was special about this video?\n ☁️ What are some other videos you can make that follow the captivating themes of this one?", maxViewTitle];
+}
+
++ (void)setMaxViewedVideo {
+    maxViews = LONG_MIN;
+    maxViewTitle = @"";
+    for (Video *video in vids) {
+        if (video.views > maxViews) {
+            maxViews = video.views;
+            maxViewTitle = video.title;
+        }
+    }
 }
 
 - (NSString * _Nonnull)stringForValue:(double)value axis:(ChartAxisBase * _Nullable)axis

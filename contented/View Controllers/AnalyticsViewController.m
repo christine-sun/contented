@@ -71,6 +71,7 @@
     
         // Send tapped point's video information to web view
         Video *video = [APIManager getVids][index];
+        NSLog(@"%@", video.title);
         [self performSegueWithIdentifier:@"webSegue" sender:video];
     }
 }
@@ -91,15 +92,29 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[row]];
-
 }
 
+#pragma mark - Video Date Range Pickers
+
 - (IBAction)onChangeStartDate:(id)sender {
-    NSLog(@"changed the start date");
+    [self updateVids];
 }
 
 - (IBAction)onChangeEndDate:(id)sender {
-    NSLog(@"changed the end date");
+    [self updateVids];
+}
+
+- (void)updateVids {
+    NSMutableArray *vids = [NSMutableArray arrayWithArray:[APIManager getVids]];
+    NSMutableArray *modifiedVids = [NSMutableArray arrayWithArray:vids];
+    for (Video* video in vids) {
+        NSLog(@"%@ | %@", vids, video);
+        if (([video.publishedAt compare:self.startDatePicker.date] < 0) || ([video.publishedAt compare:self.endDatePicker.date] > 0)) {
+            [modifiedVids removeObject:video];
+        }
+    }
+    [APIManager setVids:modifiedVids];
+    [APIManager setChartValues];
 }
 
 #pragma mark - Navigation
