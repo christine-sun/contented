@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Video.h"
+#import "AnalyticsViewController.h"
 @class UILabel;
 @import Charts;
 #import <UIKit/UIKit.h>
@@ -16,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface APIManager : NSObject
 
 + (void)setYouTubeReportLabel:(UILabel*)ytReportLabel;
++ (void)setAnalyticsVC:(AnalyticsViewController*)analyticsViewController;
 + (NSMutableArray*) getVids;
 + (void) setVids: (NSMutableArray*) videos;
 + (double) getYSum;

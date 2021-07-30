@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) postIdea: (NSString*) title withCompletion: (PFBooleanResultBlock _Nullable) completion;
 
+// put getCoords here
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -57,6 +57,9 @@
 }
 
 - (CGRect)getCoords:(Idea*) idea {
+    CGFloat offset = 50;
+    CGFloat width = 150;
+    CGFloat height = 100;
     NSString *ideaStringLocation = idea[@"location"];
     NSString *prefix = @"{";
     NSString *suffix = @"}";
@@ -65,7 +68,7 @@
     NSArray *coordsArray = [coords componentsSeparatedByString:@", "];
     NSInteger x = [coordsArray[0] integerValue];
     NSInteger y = [coordsArray[1] integerValue];
-    return CGRectMake(x - 50, y - 50, 150, 100);
+    return CGRectMake(x - offset, y - offset, width, height);
 }
 
 - (IBAction)onTapAdd:(id)sender {

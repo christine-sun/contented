@@ -16,13 +16,17 @@
 @property (strong, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *ytReportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *recommendationLabel;
+@property (strong, nonatomic) NSMutableArray *originalValues;
+@property (strong, nonatomic) NSMutableArray *originalVids;
+@property (strong, nonatomic) NSString *userID;
+
 @property (weak, nonatomic) IBOutlet UIPickerView *videoCountPicker;
 @property (strong, nonatomic) NSArray *videoCountPickerData;
 @property (weak, nonatomic) IBOutlet UILabel *videoCountLabel;
-@property (strong, nonatomic) NSMutableArray *originalVids;
-@property (strong, nonatomic) NSString *userID;
+
 @property (weak, nonatomic) IBOutlet UIDatePicker *startDatePicker;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
+
 @property (weak, nonatomic) IBOutlet UIPickerView *queryPickerView;
 @property (strong, nonatomic) NSArray *queryPickerData;
 
@@ -47,6 +51,7 @@
     [self styleQueryByVideoCount];
     
     [APIManager setYouTubeReportLabel:self.ytReportLabel];
+    [APIManager setAnalyticsVC:self];
     [APIManager setRecommendationLabel:self.recommendationLabel];
     self.userID = [PFUser currentUser][@"youtubeID"];
     [APIManager setDatePickers:self.startDatePicker end:self.endDatePicker];
@@ -63,6 +68,22 @@
     self.lineChartView.leftAxis.enabled = NO;
     self.lineChartView.rightAxis.enabled = NO;
     [APIManager setChart:self.lineChartView];
+}
+
+- (void) setOriginalVideos:(NSMutableArray *)originalVids {
+    if (self.originalVids == nil) {
+        self.originalVids = originalVids;
+    }
+}
+
+- (void) setOriginalVals:(NSMutableArray *)originalValues {
+    if (self.originalValues == nil) {
+        self.originalValues = originalValues;
+    }
+}
+
+- (void) setChart: (NSMutableArray*) values {
+    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
 }
 
 - (void) didTapPoint:(UITapGestureRecognizer*)sender {
@@ -114,11 +135,15 @@
         if ([self.queryPickerData[row] isEqualToString:@"video count"]) {
             [self styleQueryByVideoCount];
             [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[row]];
+            // present the last 20 videos
         }
         // Show start and end date pickers and hide video count picker
         else {
             [self styleQueryByDate];
         }
+    } else if (pickerView == self.videoCountPicker) {
+        // fetch the x most recent views
+        NSLog(@"i changed the selection to %@", self.videoCountPickerData[row]);
     }
 }
 
@@ -138,12 +163,11 @@
     self.videoCountPicker.alpha = 0;
     self.videoCountPicker.userInteractionEnabled = NO;
     
-    NSArray *vids = [APIManager getVids];
     self.startDatePicker.alpha = 1;
     self.startDatePicker.userInteractionEnabled = YES;
-    Video *firstVid = vids[0];
+    Video *firstVid = self.originalVids[0];
     self.startDatePicker.date = firstVid.publishedAt;
-    Video *lastVid = vids[vids.count - 1];
+    Video *lastVid = self.originalVids[self.originalVids.count-1];
     self.endDatePicker.alpha = 1;
     self.endDatePicker.userInteractionEnabled = YES;
     self.endDatePicker.date = lastVid.publishedAt;
