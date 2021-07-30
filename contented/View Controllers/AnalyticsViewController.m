@@ -84,6 +84,20 @@
 
 - (void) setChart: (NSMutableArray*) values {
     LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
+    
+    set1.drawCirclesEnabled = YES;
+    [set1 setColor:UIColor.blackColor];
+    [set1 setCircleColor:UIColor.redColor];
+    set1.lineWidth = 1.0;
+    set1.mode = LineChartModeCubicBezier;
+    set1.circleRadius = 3.0;
+    set1.drawCircleHoleEnabled = YES;
+    
+    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+    [dataSets addObject:set1];
+    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+    self.lineChartView.data = data;
+    
 }
 
 - (void) didTapPoint:(UITapGestureRecognizer*)sender {

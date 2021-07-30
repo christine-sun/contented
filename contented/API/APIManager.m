@@ -127,23 +127,10 @@ AnalyticsViewController *analyticsVC;
                     endDatePicker.date = lastVideo.publishedAt;
                     endDatePicker.maximumDate = endDatePicker.date;
                 }
-                // Save array of videos to User
-//                if (vids.count == totalVidsCount) {
-//                    Video *firstVid = vids[0];
-//                    // Ensure all views have been set
-//                    if ([self allViewsHaveBeenSet]) {
-//                        PFUser *currentUser = [PFUser currentUser];
-//                        NSMutableArray *originalVids = [[NSMutableArray alloc] init];
-//                        for (Video *video in vids) {
-//                            [originalVids addObject:[self vidToDict:video]];
-//                        }
-//                        currentUser[@"videos"] = originalVids;
-//                        [currentUser saveInBackground];
-//                    }
-//                }
-            if (vids.count == totalVidsCount && [self allViewsHaveBeenSet]) {
-                [analyticsVC setOriginalVideos:vids];
-            }
+                // Save array of videos in the analytics VC
+                if (vids.count == totalVidsCount && [self allViewsHaveBeenSet]) {
+                    [analyticsVC setOriginalVideos:vids];
+                }
         }];
         [task resume];
 
@@ -233,21 +220,22 @@ AnalyticsViewController *analyticsVC;
     // - Channel that is not doing well UCxX9wt5FWQUAAz4UrysqK9A
     // 0 Channel that is more stagnant UC5CMtpogD_P3mOoeiDHD5eQ
     
-    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
-    
-    set1.drawCirclesEnabled = YES;
-    [set1 setColor:UIColor.blackColor];
-    [set1 setCircleColor:UIColor.redColor];
-    set1.lineWidth = 1.0;
-    set1.mode = LineChartModeCubicBezier;
-    set1.circleRadius = 3.0;
-    set1.drawCircleHoleEnabled = YES;
-    
-    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-    [dataSets addObject:set1];
-    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-    lineChartView.data = data;
-    lineChartView.xAxis.valueFormatter = [[APIManager alloc] init];
+    [analyticsVC setChart:values];
+//    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
+//
+//    set1.drawCirclesEnabled = YES;
+//    [set1 setColor:UIColor.blackColor];
+//    [set1 setCircleColor:UIColor.redColor];
+//    set1.lineWidth = 1.0;
+//    set1.mode = LineChartModeCubicBezier;
+//    set1.circleRadius = 3.0;
+//    set1.drawCircleHoleEnabled = YES;
+//
+//    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+//    [dataSets addObject:set1];
+//    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+//    lineChartView.data = data;
+//    lineChartView.xAxis.valueFormatter = [[APIManager alloc] init];
     
     recLabel.text = [NSString stringWithFormat:@"Your best performing video in this time period was %@🔥\nLet's think together... 🤔\n 😲 What was special about this video?\n ☁️ What are some other videos you can make that follow the captivating themes of this one?", maxViewTitle];
 }

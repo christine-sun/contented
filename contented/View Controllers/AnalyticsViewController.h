@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) setOriginalVideos:(NSMutableArray *)originalVids;
 - (void) setOriginalVals:(NSMutableArray *)originalValues;
+- (void) setChart: (NSMutableArray*) values;
 
 @end
 
