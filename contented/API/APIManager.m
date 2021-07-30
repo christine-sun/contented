@@ -15,7 +15,8 @@
 @implementation APIManager
 
 NSMutableArray *vids;
-NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
+//NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
+NSString *API_KEY = @"AIzaSyBCt43tUqtpzLpgnAQ6u2Q9ft35_hcwx24";
 LineChartView *lineChartView;
 NSMutableArray *titles;
 double ySum;
@@ -108,12 +109,12 @@ UIDatePicker *endDatePicker;
                     NSDictionary *videoDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     [self setVideoViews:video:videoDict];
                     [self setChartValues];
+                    
                     Video *firstVideo = vids[0];
-//                    NSLog(@" first video is %@ date is %@", firstVideo.title, firstVideo.publishedAt);
                     startDatePicker.date = firstVideo.publishedAt;
                     startDatePicker.minimumDate = startDatePicker.date;
+                    
                     Video *lastVideo = vids[vids.count - 1];
-//                    NSLog(@" last video is %@ date is %@", lastVideo.title, lastVideo.publishedAt);
                     endDatePicker.date = lastVideo.publishedAt;
                     endDatePicker.maximumDate = endDatePicker.date;
                 }

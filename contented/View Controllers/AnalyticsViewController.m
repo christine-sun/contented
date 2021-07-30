@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *videoCountPicker;
 @property (strong, nonatomic) NSArray *videoCountPickerData;
 @property (weak, nonatomic) IBOutlet UILabel *videoCountLabel;
-
+@property (strong, nonatomic) NSMutableArray *originalVids;
 @property (strong, nonatomic) NSString *userID;
 @property (weak, nonatomic) IBOutlet UIDatePicker *startDatePicker;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
@@ -49,8 +49,8 @@
     [APIManager setYouTubeReportLabel:self.ytReportLabel];
     [APIManager setRecommendationLabel:self.recommendationLabel];
     self.userID = [PFUser currentUser][@"youtubeID"];
-    [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[0]];
     [APIManager setDatePickers:self.startDatePicker end:self.endDatePicker];
+    [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[0]];
     
     // Set up the chart
     UITapGestureRecognizer *pointTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapPoint:)];
@@ -120,7 +120,6 @@
             [self styleQueryByDate];
         }
     }
-    
 }
 
 - (void)styleQueryByVideoCount {
@@ -161,12 +160,12 @@
 }
 
 - (void)updateVids {
-    NSMutableArray *vids = [NSMutableArray arrayWithArray:[APIManager getVids]];
-    NSLog(@"!! this is what vids looks like %@", vids);
-    NSMutableArray *modifiedVids = [NSMutableArray arrayWithArray:vids];
+    if (self.originalVids == nil) {
+        self.originalVids = [NSMutableArray arrayWithArray:[APIManager getVids]];
+    }
+    NSMutableArray *modifiedVids = [NSMutableArray arrayWithArray:self.originalVids];
     double ySum = [APIManager getYSum];
-    for (Video* video in vids) {
-        NSLog(@"%@ | %@", vids, video);
+    for (Video* video in self.originalVids) {
         if (([video.publishedAt compare:self.startDatePicker.date] < 0) || ([video.publishedAt compare:self.endDatePicker.date] > 0)) {
             [modifiedVids removeObject:video];
             ySum -= video.views;
@@ -174,7 +173,6 @@
     }
     [APIManager setYSum:ySum];
     [APIManager setVids:modifiedVids];
-    NSLog(@"!! this is what modified vids looks like %@", modifiedVids);
     [APIManager setChartValues];
 }
 
