@@ -38,6 +38,14 @@ UIDatePicker *endDatePicker;
     vids = videos;
 }
 
++ (double) getYSum {
+    return ySum;
+}
+
++ (void) setYSum: (double)newYSum {
+    ySum = newYSum;
+}
+
 + (void)setRecommendationLabel:(UILabel*)recommendationLabel {
     recLabel = recommendationLabel;
 }

@@ -16,16 +16,19 @@ NS_ASSUME_NONNULL_BEGIN
 @interface APIManager : NSObject
 
 + (void)setYouTubeReportLabel:(UILabel*)ytReportLabel;
-+ (NSDictionary*) fetchRecentViews: (NSString*) userID withVideoCount: (NSString*) vidCount;
-+ (void)setDatePickers:(UIDatePicker*)start end:(UIDatePicker*)end;
-+ (void) setVids: (NSMutableArray*) videos;
 + (NSMutableArray*) getVids;
-+ (void)setVideoViews: (Video*)video: (NSDictionary*)videoDict;
++ (void) setVids: (NSMutableArray*) videos;
++ (double) getYSum;
++ (void) setYSum: (double)newYSum;
 + (void)setRecommendationLabel:(UILabel*)recommendationLabel;
++ (void)setDatePickers:(UIDatePicker*)start end:(UIDatePicker*)end;
++ (NSDictionary*) fetchRecentViews: (NSString*) userID withVideoCount: (NSString*) vidCount;
++ (void)setVideoViews: (Video*)video: (NSDictionary*)videoDict;
 + (void)setChart: (LineChartView*) lineChartView;
 + (void)setChartValues;
 + (NSDate*) stringToDate:(NSString*) dateString;
 + (void) setProfileImage: (NSString*) userID forImageView: (UIImageView*) imageView;
+
 @end
 
 NS_ASSUME_NONNULL_END

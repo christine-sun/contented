@@ -126,6 +126,7 @@
     self.videoCountLabel.alpha = 1;
     self.videoCountPicker.alpha = 1;
     self.videoCountPicker.userInteractionEnabled = YES;
+    
     self.startDatePicker.alpha = 0;
     self.startDatePicker.userInteractionEnabled = NO;
     self.endDatePicker.alpha = 0;
@@ -136,6 +137,7 @@
     self.videoCountLabel.alpha = 0;
     self.videoCountPicker.alpha = 0;
     self.videoCountPicker.userInteractionEnabled = NO;
+    
     self.startDatePicker.alpha = 1;
     self.startDatePicker.userInteractionEnabled = YES;
     self.endDatePicker.alpha = 1;
@@ -155,12 +157,15 @@
 - (void)updateVids {
     NSMutableArray *vids = [NSMutableArray arrayWithArray:[APIManager getVids]];
     NSMutableArray *modifiedVids = [NSMutableArray arrayWithArray:vids];
+    double ySum = [APIManager getYSum];
     for (Video* video in vids) {
         NSLog(@"%@ | %@", vids, video);
         if (([video.publishedAt compare:self.startDatePicker.date] < 0) || ([video.publishedAt compare:self.endDatePicker.date] > 0)) {
             [modifiedVids removeObject:video];
+            ySum -= video.views;
         }
     }
+    [APIManager setYSum:ySum];
     [APIManager setVids:modifiedVids];
     [APIManager setChartValues];
 }
