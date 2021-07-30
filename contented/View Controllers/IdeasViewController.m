@@ -43,7 +43,6 @@
     // Put ideas into ideaViews
     for (int i = 0; i < ideas.count; i++) {
         [self createIdeaView:ideas[i]];
-        
     }
 }
 

@@ -7,6 +7,7 @@
 
 #import "APIManager.h"
 #import "Video.h"
+#import <Parse/Parse.h>
 
 @interface APIManager () <IChartAxisValueFormatter>
 
@@ -24,6 +25,7 @@ UILabel *ytLabel;
 CGFloat maxViews;
 NSString *maxViewTitle = @"";
 UILabel *recLabel;
+int totalVidsCount;
 UIDatePicker *startDatePicker;
 UIDatePicker *endDatePicker;
 
@@ -57,6 +59,7 @@ UIDatePicker *endDatePicker;
 }
 
 + (NSDictionary*) fetchRecentViews: (NSString*) userID withVideoCount: (NSString*) vidCount {
+        
     vids = [[NSMutableArray alloc] init];
     // Get the last 20 videos from this user
     NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/search?key=%@&channelId=%@&part=snippet,id&order=date&maxResults=%@", API_KEY, userID, vidCount];
@@ -73,6 +76,7 @@ UIDatePicker *endDatePicker;
             initialDictionary = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             
             NSArray *videos = initialDictionary[@"items"];
+            totalVidsCount = videos.count;
             ySum = 0;
             maxViews = LONG_MIN;
             for (int i = 0; i < videos.count; i++) {
@@ -118,12 +122,36 @@ UIDatePicker *endDatePicker;
                     endDatePicker.date = lastVideo.publishedAt;
                     endDatePicker.maximumDate = endDatePicker.date;
                 }
+                // Save array of videos to User, make sure this is AFTER views have been set
+                if (vids.count == totalVidsCount) {
+                    Video *firstVid = vids[0];
+                    if (firstVid.views > 0) {
+                        PFUser *currentUser = [PFUser currentUser];
+                        NSMutableArray *originalVids = [[NSMutableArray alloc] init];
+                        for (Video *video in vids) {
+                            if (video.views > 0)
+                            [originalVids addObject:[self vidToDict:video]];
+                        }
+                        currentUser[@"videos"] = originalVids;
+                        [currentUser saveInBackground];
+                    }
+                }
         }];
         [task resume];
 
         [vids addObject:video];
     
     }
+}
+
+// Create a dictionary representation of a video object to save to backend/JSON
++ (NSMutableDictionary*)vidToDict:(Video*)video{
+    NSMutableDictionary *videoDict = [[NSMutableDictionary alloc] init];
+    [videoDict setValue:video.title forKey:@"title"];
+    [videoDict setValue:video.vidID forKey:@"vidID"];
+    [videoDict setValue:[NSNumber numberWithInteger:video.views] forKey:@"views"];
+    [videoDict setValue:video.publishedAt forKey:@"publishedAt"];
+    return videoDict;
 }
 
 // Get the view count of this video and set its view property
