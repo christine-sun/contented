@@ -109,9 +109,11 @@ UIDatePicker *endDatePicker;
                     [self setVideoViews:video:videoDict];
                     [self setChartValues];
                     Video *firstVideo = vids[0];
+//                    NSLog(@" first video is %@ date is %@", firstVideo.title, firstVideo.publishedAt);
                     startDatePicker.date = firstVideo.publishedAt;
                     startDatePicker.minimumDate = startDatePicker.date;
                     Video *lastVideo = vids[vids.count - 1];
+//                    NSLog(@" last video is %@ date is %@", lastVideo.title, lastVideo.publishedAt);
                     endDatePicker.date = lastVideo.publishedAt;
                     endDatePicker.maximumDate = endDatePicker.date;
                 }

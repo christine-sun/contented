@@ -113,13 +113,14 @@
         // Show video count picker and hide start and end date pickers
         if ([self.queryPickerData[row] isEqualToString:@"video count"]) {
             [self styleQueryByVideoCount];
+            [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[row]];
         }
         // Show start and end date pickers and hide video count picker
         else {
             [self styleQueryByDate];
         }
     }
-    [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[row]];
+    
 }
 
 - (void)styleQueryByVideoCount {
@@ -138,10 +139,15 @@
     self.videoCountPicker.alpha = 0;
     self.videoCountPicker.userInteractionEnabled = NO;
     
+    NSArray *vids = [APIManager getVids];
     self.startDatePicker.alpha = 1;
     self.startDatePicker.userInteractionEnabled = YES;
+    Video *firstVid = vids[0];
+    self.startDatePicker.date = firstVid.publishedAt;
+    Video *lastVid = vids[vids.count - 1];
     self.endDatePicker.alpha = 1;
     self.endDatePicker.userInteractionEnabled = YES;
+    self.endDatePicker.date = lastVid.publishedAt;
 }
 
 #pragma mark - Video Date Range Pickers
@@ -156,6 +162,7 @@
 
 - (void)updateVids {
     NSMutableArray *vids = [NSMutableArray arrayWithArray:[APIManager getVids]];
+    NSLog(@"!! this is what vids looks like %@", vids);
     NSMutableArray *modifiedVids = [NSMutableArray arrayWithArray:vids];
     double ySum = [APIManager getYSum];
     for (Video* video in vids) {
@@ -167,6 +174,7 @@
     }
     [APIManager setYSum:ySum];
     [APIManager setVids:modifiedVids];
+    NSLog(@"!! this is what modified vids looks like %@", modifiedVids);
     [APIManager setChartValues];
 }
 
