@@ -122,14 +122,14 @@ UIDatePicker *endDatePicker;
                     endDatePicker.date = lastVideo.publishedAt;
                     endDatePicker.maximumDate = endDatePicker.date;
                 }
-                // Save array of videos to User, make sure this is AFTER views have been set
+                // Save array of videos to User
                 if (vids.count == totalVidsCount) {
                     Video *firstVid = vids[0];
-                    if (firstVid.views > 0) {
+                    // Ensure all views have been set
+                    if ([self allViewsHaveBeenSet]) {
                         PFUser *currentUser = [PFUser currentUser];
                         NSMutableArray *originalVids = [[NSMutableArray alloc] init];
                         for (Video *video in vids) {
-                            if (video.views > 0)
                             [originalVids addObject:[self vidToDict:video]];
                         }
                         currentUser[@"videos"] = originalVids;
@@ -142,6 +142,13 @@ UIDatePicker *endDatePicker;
         [vids addObject:video];
     
     }
+}
+
++ (BOOL)allViewsHaveBeenSet {
+    for (Video* video in vids) {
+        if (video.views == 0) return false;
+    }
+    return true;
 }
 
 // Create a dictionary representation of a video object to save to backend/JSON
