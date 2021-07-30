@@ -18,9 +18,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *recommendationLabel;
 @property (weak, nonatomic) IBOutlet UIPickerView *videoCountPicker;
 @property (strong, nonatomic) NSArray *videoCountPickerData;
+@property (weak, nonatomic) IBOutlet UILabel *videoCountLabel;
+
 @property (strong, nonatomic) NSString *userID;
 @property (weak, nonatomic) IBOutlet UIDatePicker *startDatePicker;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
+@property (weak, nonatomic) IBOutlet UIPickerView *queryPickerView;
+@property (strong, nonatomic) NSArray *queryPickerData;
 
 @end
 
@@ -33,6 +37,14 @@
     self.videoCountPicker.delegate = self;
     self.videoCountPicker.dataSource = self;
     self.videoCountPickerData = @[@"20", @"15", @"10", @"5"];
+    
+    // Set up query picker
+    self.queryPickerView.delegate = self;
+    self.queryPickerView.dataSource = self;
+    self.queryPickerData = @[@"video count", @"date range"];
+    
+    // Hide date pickers initially because default is video count
+    [self styleQueryByVideoCount];
     
     [APIManager setYouTubeReportLabel:self.ytReportLabel];
     [APIManager setRecommendationLabel:self.recommendationLabel];
@@ -50,9 +62,7 @@
     self.lineChartView.xAxis.enabled = NO;
     self.lineChartView.leftAxis.enabled = NO;
     self.lineChartView.rightAxis.enabled = NO;
-    [self.lineChartView animateWithXAxisDuration:2.5];
     [APIManager setChart:self.lineChartView];
-
 }
 
 - (void) didTapPoint:(UITapGestureRecognizer*)sender {
@@ -76,22 +86,60 @@
     }
 }
 
-#pragma mark - Video Count Picker
+#pragma mark - Picker Views
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.videoCountPickerData.count;
+    if (pickerView == self.videoCountPicker) {
+        return self.videoCountPickerData.count;
+    } else {
+        return self.queryPickerData.count;
+    }
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.videoCountPickerData[row];
+    if (pickerView == self.videoCountPicker) {
+        return self.videoCountPickerData[row];
+    } else {
+        return self.queryPickerData[row];
+    }
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (pickerView == self.queryPickerView) {
+        // Show video count picker and hide start and end date pickers
+        if ([self.queryPickerData[row] isEqualToString:@"video count"]) {
+            [self styleQueryByVideoCount];
+        }
+        // Show start and end date pickers and hide video count picker
+        else {
+            [self styleQueryByDate];
+        }
+    }
     [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[row]];
+}
+
+- (void)styleQueryByVideoCount {
+    self.videoCountLabel.alpha = 1;
+    self.videoCountPicker.alpha = 1;
+    self.videoCountPicker.userInteractionEnabled = YES;
+    self.startDatePicker.alpha = 0;
+    self.startDatePicker.userInteractionEnabled = NO;
+    self.endDatePicker.alpha = 0;
+    self.endDatePicker.userInteractionEnabled = NO;
+}
+
+- (void)styleQueryByDate {
+    self.videoCountLabel.alpha = 0;
+    self.videoCountPicker.alpha = 0;
+    self.videoCountPicker.userInteractionEnabled = NO;
+    self.startDatePicker.alpha = 1;
+    self.startDatePicker.userInteractionEnabled = YES;
+    self.endDatePicker.alpha = 1;
+    self.endDatePicker.userInteractionEnabled = YES;
 }
 
 #pragma mark - Video Date Range Pickers
