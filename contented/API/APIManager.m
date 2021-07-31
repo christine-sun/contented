@@ -116,7 +116,7 @@ AnalyticsViewController *analyticsVC;
                 else {
                     NSDictionary *videoDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     [self setVideoViews:video:videoDict];
-                    [self setChartValues];
+                    [analyticsVC setChart:vids];
                     
                     Video *firstVideo = vids[0];
                     startDatePicker.date = firstVideo.publishedAt;
@@ -172,59 +172,6 @@ AnalyticsViewController *analyticsVC;
 + (void)setChart: (LineChartView*) otherLineChartView {
     lineChartView = otherLineChartView;
 }
-
-+ (void)setChartValues {
-//    [self setMaxViewedVideo];
-//    NSMutableArray *values = [[NSMutableArray alloc] init];
-//    double xSum = 0;
-//    for (int i = 0; i < vids.count; i++) {
-//        xSum += i;
-//    }
-//    double xMean = xSum / vids.count;
-//    double yMean = ySum / vids.count;
-//    double numerator = 0; // find numerator in least squares equation
-//    double denominator = 0; // find denominator in least squares equation
-    
-//    // Sort vids such that the video dates are in ascending order
-//    vids = [vids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
-//        return [a.publishedAt compare:b.publishedAt];
-//    }];
-    
-//    for (int i = 0; i < vids.count; i++) {
-//        Video *video = vids[i];
-//        [values addObject:[[ChartDataEntry alloc] initWithX:i y:video.views]];
-//        numerator += ((i - xMean) * (video.views - yMean));
-//        denominator += ((i - xMean)*(i - xMean));
-//    }
- 
-//    [analyticsVC setOriginalVals:vids];
-    
-//    double slope = numerator / denominator;
-//    if (slope < -50) {
-//        [ytLabel setText:@"Consider what types of videos did well for your channel in the past - are there ways to rekindle that creativity and inspiration?"];
-//    }
-//    else if (slope > 50) {
-//        [ytLabel setText:@"Wow, you have been doing amazing! Keep on pushing out creative content 🔥"];
-//    }
-//    else {
-//        [ytLabel setText:@"Your views have been consistent! Consider bringing in new ideas to your channel to reach a new audience :)"];
-//    }
-    
-    [analyticsVC setChart:vids];
-    
-//    recLabel.text = [NSString stringWithFormat:@"Your best performing video in this time period was %@🔥\nLet's think together... 🤔\n 😲 What was special about this video?\n ☁️ What are some other videos you can make that follow the captivating themes of this one?", maxViewTitle];
-}
-
-//+ (void)setMaxViewedVideo {
-//    maxViews = LONG_MIN;
-//    maxViewTitle = @"";
-//    for (Video *video in vids) {
-//        if (video.views > maxViews) {
-//            maxViews = video.views;
-//            maxViewTitle = video.title;
-//        }
-//    }
-//}
 
 + (NSDate*) stringToDate:(NSString*) dateString {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

@@ -162,7 +162,6 @@
     
         // Send tapped point's video information to web view
         Video *video = [APIManager getVids][index];
-        NSLog(@"%@", video.title);
         [self performSegueWithIdentifier:@"webSegue" sender:video];
     }
 }
@@ -204,7 +203,11 @@
     } else if (pickerView == self.videoCountPicker) {
         // fetch the x most recent views
         NSMutableArray *subset = [self getSubsetOfOriginalVids:self.videoCountPickerData[row]];
-        
+        for (int i = 0; i < subset.count; i++) {
+            Video *video = subset[i];
+            NSLog(@"%d is %@", i, video.title);
+        }
+        [self setChart:subset];
     }
 }
 
@@ -212,9 +215,16 @@
     NSInteger videoCount = [vidCount integerValue];
     NSMutableArray *subset = [[NSMutableArray alloc] init];
     NSInteger totalVids = self.originalVids.count;
+    self.originalVids = [self.originalVids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
+        return [a.publishedAt compare:b.publishedAt];
+    }];
+    
     for (int i = totalVids - videoCount; i < totalVids; i++) {
+        Video *vid = self.originalVids[i];
+        NSLog(@"%d is %@", i, vid.title);
         [subset addObject:self.originalVids[i]];
     }
+    
     return subset;
 }
 
