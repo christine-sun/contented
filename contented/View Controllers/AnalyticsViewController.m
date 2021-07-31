@@ -89,12 +89,11 @@
     CGFloat maxViews = LONG_MIN;
     NSString *maxViewTitle = @"";
     double xSum = 0;
-    NSInteger totalVids = self.originalVids.count;
-    for (int i = 0; i < totalVids; i++) {
+    for (int i = 0; i < vids.count; i++) {
         xSum += i;
     }
-    double xMean = xSum / totalVids;
-    double yMean = [APIManager getYSum] / totalVids;
+    double xMean = xSum / vids.count;
+    double yMean = [APIManager getYSum] / vids.count;
     double numerator = 0; // find numerator in least squares equation
     double denominator = 0; // find denominator in least squares equation
     
@@ -132,6 +131,7 @@
     
     // Display message about performance based on slope
     double slope = numerator / denominator;
+    NSLog(@"xMean is %f, yMean is %f, the slope is %f", xMean, yMean, slope);
     if (slope < -50) {
         [self.ytReportLabel setText:@"Consider what types of videos did well for your channel in the past - are there ways to rekindle that creativity and inspiration?"];
     }
@@ -203,17 +203,15 @@
     } else if (pickerView == self.videoCountPicker) {
         // fetch the x most recent views
         NSMutableArray *subset = [self getSubsetOfOriginalVids:self.videoCountPickerData[row]];
-        for (int i = 0; i < subset.count; i++) {
-            Video *video = subset[i];
-            NSLog(@"%d is %@", i, video.title);
-        }
         [self setChart:subset];
+        
     }
 }
 
 - (NSMutableArray*) getSubsetOfOriginalVids:(NSString*) vidCount {
     NSInteger videoCount = [vidCount integerValue];
     NSMutableArray *subset = [[NSMutableArray alloc] init];
+    double removedYSum = 0;
     NSInteger totalVids = self.originalVids.count;
     self.originalVids = [self.originalVids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
         return [a.publishedAt compare:b.publishedAt];
@@ -221,9 +219,15 @@
     
     for (int i = totalVids - videoCount; i < totalVids; i++) {
         Video *vid = self.originalVids[i];
-        NSLog(@"%d is %@", i, vid.title);
         [subset addObject:self.originalVids[i]];
     }
+    
+    for (int i = 0; i < totalVids - videoCount; i++) {
+        Video *vid = self.originalVids[i];
+        removedYSum += vid.views;
+    }
+    
+    [APIManager setYSum:[APIManager getYSum] - removedYSum];
     
     return subset;
 }
