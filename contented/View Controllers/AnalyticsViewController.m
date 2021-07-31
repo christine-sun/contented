@@ -76,13 +76,45 @@
     }
 }
 
-- (void) setOriginalVals:(NSMutableArray *)originalValues {
-    if (self.originalValues == nil) {
-        self.originalValues = originalValues;
-    }
-}
+//- (void) setOriginalVals:(NSMutableArray *)originalValues {
+//    if (self.originalValues == nil) {
+//        self.originalValues = originalValues;
+//    }
+//}
 
-- (void) setChart: (NSMutableArray*) values {
+#pragma mark - Line Chart View
+
+- (void) setChart: (NSMutableArray*) vids {
+    
+    CGFloat maxViews = LONG_MIN;
+    NSString *maxViewTitle = @"";
+    double xSum = 0;
+    NSInteger totalVids = self.originalVids.count;
+    for (int i = 0; i < totalVids; i++) {
+        xSum += i;
+    }
+    double xMean = xSum / totalVids;
+    double yMean = [APIManager getYSum] / totalVids;
+    double numerator = 0; // find numerator in least squares equation
+    double denominator = 0; // find denominator in least squares equation
+    
+    // Sort vids such that the video dates are in ascending order
+    vids = [vids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
+        return [a.publishedAt compare:b.publishedAt];
+    }];
+    
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    for (int i = 0; i < vids.count; i++) {
+        Video *video = vids[i];
+        if (video.views > maxViews) {
+            maxViews = video.views;
+            maxViewTitle = video.title;
+        }
+        [values addObject:[[ChartDataEntry alloc] initWithX:i y:video.views]];
+        numerator += ((i - xMean) * (video.views - yMean));
+        denominator += ((i - xMean)*(i - xMean));
+    }
+    
     LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
     
     set1.drawCirclesEnabled = YES;
@@ -97,6 +129,20 @@
     [dataSets addObject:set1];
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
     self.lineChartView.data = data;
+    
+    // Display message about performance based on slope
+    double slope = numerator / denominator;
+    if (slope < -50) {
+        [self.ytReportLabel setText:@"Consider what types of videos did well for your channel in the past - are there ways to rekindle that creativity and inspiration?"];
+    }
+    else if (slope > 50) {
+        [self.ytReportLabel setText:@"Wow, you have been doing amazing! Keep on pushing out creative content 🔥"];
+    }
+    else {
+        [self.ytReportLabel setText:@"Your views have been consistent! Consider bringing in new ideas to your channel to reach a new audience :)"];
+    }
+    
+    self.recommendationLabel.text = [NSString stringWithFormat:@"Your best performing video in this time period was %@🔥\nLet's think together... 🤔\n 😲 What was special about this video?\n ☁️ What are some other videos you can make that follow the captivating themes of this one?", maxViewTitle];
     
 }
 
@@ -157,8 +203,19 @@
         }
     } else if (pickerView == self.videoCountPicker) {
         // fetch the x most recent views
-        NSLog(@"i changed the selection to %@", self.videoCountPickerData[row]);
+        NSMutableArray *subset = [self getSubsetOfOriginalVids:self.videoCountPickerData[row]];
+        
     }
+}
+
+- (NSMutableArray*) getSubsetOfOriginalVids:(NSString*) vidCount {
+    NSInteger videoCount = [vidCount integerValue];
+    NSMutableArray *subset = [[NSMutableArray alloc] init];
+    NSInteger totalVids = self.originalVids.count;
+    for (int i = totalVids - videoCount; i < totalVids; i++) {
+        [subset addObject:self.originalVids[i]];
+    }
+    return subset;
 }
 
 - (void)styleQueryByVideoCount {

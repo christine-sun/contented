@@ -19,7 +19,6 @@ NSMutableArray *vids;
 //NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
 NSString *API_KEY = @"AIzaSyBCt43tUqtpzLpgnAQ6u2Q9ft35_hcwx24";
 LineChartView *lineChartView;
-NSMutableArray *titles;
 double ySum;
 UILabel *ytLabel;
 CGFloat maxViews;
@@ -175,93 +174,57 @@ AnalyticsViewController *analyticsVC;
 }
 
 + (void)setChartValues {
-    [self setMaxViewedVideo];
-    NSMutableArray *values = [[NSMutableArray alloc] init];
-    double xSum = 0;
-    for (int i = 0; i < vids.count; i++) {
-        xSum += i;
-    }
-    double xMean = xSum / vids.count;
-    double yMean = ySum / vids.count;
-    double numerator = 0; // find numerator in least squares equation
-    double denominator = 0; // find denominator in least squares equation
+//    [self setMaxViewedVideo];
+//    NSMutableArray *values = [[NSMutableArray alloc] init];
+//    double xSum = 0;
+//    for (int i = 0; i < vids.count; i++) {
+//        xSum += i;
+//    }
+//    double xMean = xSum / vids.count;
+//    double yMean = ySum / vids.count;
+//    double numerator = 0; // find numerator in least squares equation
+//    double denominator = 0; // find denominator in least squares equation
     
-    // Sort vids such that the video dates are in ascending order
-    vids = [vids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
-        return [a.publishedAt compare:b.publishedAt];
-    }];
+//    // Sort vids such that the video dates are in ascending order
+//    vids = [vids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
+//        return [a.publishedAt compare:b.publishedAt];
+//    }];
     
-    titles = [[NSMutableArray alloc] init];
-    for (int i = 0; i < vids.count; i++) {
-        Video *video = vids[i];
-        [values addObject:[[ChartDataEntry alloc] initWithX:i y:video.views]];
-        numerator += ((i - xMean) * (video.views - yMean));
-        denominator += ((i - xMean)*(i - xMean));
-        
-        [titles addObject:video.title];
-    }
-
-    [analyticsVC setOriginalVals:values];
+//    for (int i = 0; i < vids.count; i++) {
+//        Video *video = vids[i];
+//        [values addObject:[[ChartDataEntry alloc] initWithX:i y:video.views]];
+//        numerator += ((i - xMean) * (video.views - yMean));
+//        denominator += ((i - xMean)*(i - xMean));
+//    }
+ 
+//    [analyticsVC setOriginalVals:vids];
     
-    double slope = numerator / denominator;
-    NSLog(@"slope %f", slope);
-    if (slope < -50) {
-        [ytLabel setText:@"Consider what types of videos did well for your channel in the past - are there ways to rekindle that creativity and inspiration?"];
-    }
-    else if (slope > 50) {
-        [ytLabel setText:@"Wow, you have been doing amazing! Keep on pushing out creative content 🔥"];
-    }
-    else {
-        [ytLabel setText:@"Your views have been consistent! Consider bringing in new ideas to your channel to reach a new audience :)"];
-    }
+//    double slope = numerator / denominator;
+//    if (slope < -50) {
+//        [ytLabel setText:@"Consider what types of videos did well for your channel in the past - are there ways to rekindle that creativity and inspiration?"];
+//    }
+//    else if (slope > 50) {
+//        [ytLabel setText:@"Wow, you have been doing amazing! Keep on pushing out creative content 🔥"];
+//    }
+//    else {
+//        [ytLabel setText:@"Your views have been consistent! Consider bringing in new ideas to your channel to reach a new audience :)"];
+//    }
     
-    // ACCOUNT IDS YOU CAN TEST
-    // + Channel that is doing well UCy3zgWom-5AGypGX_FVTKpg
-    // - Channel that is not doing well UCxX9wt5FWQUAAz4UrysqK9A
-    // 0 Channel that is more stagnant UC5CMtpogD_P3mOoeiDHD5eQ
+    [analyticsVC setChart:vids];
     
-    [analyticsVC setChart:values];
-//    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
-//
-//    set1.drawCirclesEnabled = YES;
-//    [set1 setColor:UIColor.blackColor];
-//    [set1 setCircleColor:UIColor.redColor];
-//    set1.lineWidth = 1.0;
-//    set1.mode = LineChartModeCubicBezier;
-//    set1.circleRadius = 3.0;
-//    set1.drawCircleHoleEnabled = YES;
-//
-//    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-//    [dataSets addObject:set1];
-//    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-//    lineChartView.data = data;
-//    lineChartView.xAxis.valueFormatter = [[APIManager alloc] init];
-    
-    recLabel.text = [NSString stringWithFormat:@"Your best performing video in this time period was %@🔥\nLet's think together... 🤔\n 😲 What was special about this video?\n ☁️ What are some other videos you can make that follow the captivating themes of this one?", maxViewTitle];
+//    recLabel.text = [NSString stringWithFormat:@"Your best performing video in this time period was %@🔥\nLet's think together... 🤔\n 😲 What was special about this video?\n ☁️ What are some other videos you can make that follow the captivating themes of this one?", maxViewTitle];
 }
 
-+ (void)setMaxViewedVideo {
-    maxViews = LONG_MIN;
-    maxViewTitle = @"";
-    for (Video *video in vids) {
-        if (video.views > maxViews) {
-            maxViews = video.views;
-            maxViewTitle = video.title;
-        }
-    }
-}
-
-- (NSString * _Nonnull)stringForValue:(double)value axis:(ChartAxisBase * _Nullable)axis
-{
-    NSString *xAxisStringValue = @"";
-    int myInt = (int)value;
-
-    if(titles.count > myInt) {
-        xAxisStringValue = [titles objectAtIndex:myInt];
-    }
-
-    return xAxisStringValue;
-}
+//+ (void)setMaxViewedVideo {
+//    maxViews = LONG_MIN;
+//    maxViewTitle = @"";
+//    for (Video *video in vids) {
+//        if (video.views > maxViews) {
+//            maxViews = video.views;
+//            maxViewTitle = video.title;
+//        }
+//    }
+//}
 
 + (NSDate*) stringToDate:(NSString*) dateString {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
