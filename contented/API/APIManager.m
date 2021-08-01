@@ -118,13 +118,13 @@ AnalyticsViewController *analyticsVC;
                     [self setVideoViews:video:videoDict];
                     [analyticsVC setChart:vids];
                     
-                    Video *firstVideo = vids[0];
-                    startDatePicker.date = firstVideo.publishedAt;
-                    startDatePicker.minimumDate = startDatePicker.date;
-                    
-                    Video *lastVideo = vids[vids.count - 1];
-                    endDatePicker.date = lastVideo.publishedAt;
-                    endDatePicker.maximumDate = endDatePicker.date;
+//                    Video *firstVideo = vids[0];
+//                    startDatePicker.date = firstVideo.publishedAt;
+//                    startDatePicker.minimumDate = startDatePicker.date;
+//
+//                    Video *lastVideo = vids[vids.count - 1];
+//                    endDatePicker.date = lastVideo.publishedAt;
+//                    endDatePicker.maximumDate = endDatePicker.date;
                 }
                 // Save array of videos in the analytics VC
                 if (vids.count == totalVidsCount && [self allViewsHaveBeenSet]) {

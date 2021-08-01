@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *recommendationLabel;
 @property (strong, nonatomic) NSMutableArray *originalValues;
 @property (strong, nonatomic) NSMutableArray *originalVids;
+@property (strong, nonatomic) NSMutableArray *modifiedQueryVids;
 @property (strong, nonatomic) NSString *userID;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *videoCountPicker;
@@ -160,8 +161,20 @@
         NSString *indexString = haystackArray[0];
         NSInteger index = [indexString integerValue];
     
+        self.originalVids = [self.originalVids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
+            return [a.publishedAt compare:b.publishedAt];
+        }];
+        self.modifiedQueryVids = [self.modifiedQueryVids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
+            return [a.publishedAt compare:b.publishedAt];
+        }];
+        
         // Send tapped point's video information to web view
-        Video *video = [APIManager getVids][index];
+        __block Video *video;
+        if (self.modifiedQueryVids == nil) {
+            video = self.originalVids[index];
+        } else {
+            video = self.modifiedQueryVids[index];
+        }
         [self performSegueWithIdentifier:@"webSegue" sender:video];
     }
 }
@@ -189,11 +202,13 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
     if (pickerView == self.queryPickerView) {
         // Show video count picker and hide start and end date pickers
         if ([self.queryPickerData[row] isEqualToString:@"video count"]) {
             [self styleQueryByVideoCount];
-            [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[row]];
+            [self setChart:self.originalVids];
+//            [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[row]];
             // present the last 20 videos
         }
         // Show start and end date pickers and hide video count picker
@@ -202,8 +217,8 @@
         }
     } else if (pickerView == self.videoCountPicker) {
         // fetch the x most recent views
-        NSMutableArray *subset = [self getSubsetOfOriginalVids:self.videoCountPickerData[row]];
-        [self setChart:subset];
+        self.modifiedQueryVids = [self getSubsetOfOriginalVids:self.videoCountPickerData[row]];
+        [self setChart:self.modifiedQueryVids];
         
     }
 }
@@ -218,7 +233,7 @@
     }];
     
     for (int i = totalVids - videoCount; i < totalVids; i++) {
-        Video *vid = self.originalVids[i];
+//        Video *vid = self.originalVids[i];
         [subset addObject:self.originalVids[i]];
     }
     
@@ -244,6 +259,11 @@
 }
 
 - (void)styleQueryByDate {
+    
+    self.originalVids = [self.originalVids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
+        return [a.publishedAt compare:b.publishedAt];
+    }];
+    
     self.videoCountLabel.alpha = 0;
     self.videoCountPicker.alpha = 0;
     self.videoCountPicker.userInteractionEnabled = NO;
@@ -251,11 +271,14 @@
     self.startDatePicker.alpha = 1;
     self.startDatePicker.userInteractionEnabled = YES;
     Video *firstVid = self.originalVids[0];
+    NSLog(@"the first video is %@", firstVid.publishedAt);
     self.startDatePicker.date = firstVid.publishedAt;
+    self.startDatePicker.minimumDate = self.startDatePicker.date;
     Video *lastVid = self.originalVids[self.originalVids.count-1];
     self.endDatePicker.alpha = 1;
     self.endDatePicker.userInteractionEnabled = YES;
     self.endDatePicker.date = lastVid.publishedAt;
+    self.endDatePicker.maximumDate = self.endDatePicker.date;
 }
 
 #pragma mark - Video Date Range Pickers
@@ -269,20 +292,17 @@
 }
 
 - (void)updateVids {
-    if (self.originalVids == nil) {
-        self.originalVids = [NSMutableArray arrayWithArray:[APIManager getVids]];
-    }
-    NSMutableArray *modifiedVids = [NSMutableArray arrayWithArray:self.originalVids];
+    self.modifiedQueryVids = [NSMutableArray arrayWithArray:self.originalVids];
     double ySum = [APIManager getYSum];
     for (Video* video in self.originalVids) {
+        // If the video does not fall in the date range then remove it from modifiedVids
         if (([video.publishedAt compare:self.startDatePicker.date] < 0) || ([video.publishedAt compare:self.endDatePicker.date] > 0)) {
-            [modifiedVids removeObject:video];
+            [self.modifiedQueryVids removeObject:video];
             ySum -= video.views;
         }
     }
     [APIManager setYSum:ySum];
-    [APIManager setVids:modifiedVids];
-    [APIManager setChartValues];
+    [self setChart:self.modifiedQueryVids];
 }
 
 #pragma mark - Navigation
