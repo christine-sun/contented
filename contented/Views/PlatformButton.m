@@ -28,6 +28,7 @@
     if (state == 0) {
         // Colored title white background
         [self setTitleColor:color forState:UIControlStateNormal];
+        self.backgroundColor = [UIColor whiteColor];
     } else {
         // White title colored background
         self.backgroundColor = color;

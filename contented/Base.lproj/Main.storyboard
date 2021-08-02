@@ -533,8 +533,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gk-QE-XdS">
+                                <rect key="frame" x="-30" y="32" width="462" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7R6-g5-9t1">
-                                <rect key="frame" x="35" y="102" width="319" height="74"/>
+                                <rect key="frame" x="35" y="91" width="319" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
@@ -607,6 +612,7 @@
                     <navigationItem key="navigationItem" id="d1F-K6-QZd"/>
                     <connections>
                         <outlet property="buttonsStack" destination="hPG-xZ-nri" id="v5v-dj-zaA"/>
+                        <outlet property="colorView" destination="1gk-QE-XdS" id="xyG-Mg-bqL"/>
                         <outlet property="dateLabel" destination="A9Q-0y-FOZ" id="ZIF-z1-LgL"/>
                         <outlet property="ideaDumpLabel" destination="7cp-97-QMN" id="4cF-TG-M7d"/>
                         <outlet property="postButton" destination="rfZ-sS-OeK" id="Xm3-AG-PNy"/>
@@ -617,7 +623,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVE-JP-V89" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5802" y="801"/>
+            <point key="canvasLocation" x="5800" y="800.47393364928905"/>
         </scene>
         <!--Creation View Controller-->
         <scene sceneID="Myd-16-Agz">
@@ -734,7 +740,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh8-Ga-0gl">
                                 <rect key="frame" x="150" y="573" width="96" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.31262959740000001" green="0.78606630580000003" blue="0.77631137959999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.52976136875790691" green="0.92087947961055872" blue="0.76178910884853668" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="SHORT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

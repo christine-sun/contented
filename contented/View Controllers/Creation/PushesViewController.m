@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *taskImageView;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
+@property (weak, nonatomic) IBOutlet UIView *colorView;
 
 @end
 
@@ -56,6 +57,21 @@
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
     }
+    
+    if ([self.type isEqualToString:@"post"]) {
+        self.colorView.backgroundColor = [UIColor colorWithRed:255.0f/255.0f
+            green:153.0f/255.0f
+            blue:204.0f/255.0f
+            alpha:1.0f];
+    } else if ([self.type isEqualToString:@"short"]) {
+        self.colorView.backgroundColor = [UIColor colorWithRed:102.0f/255.0f
+            green:255.0f/255.0f
+            blue:204.0f/255.0f
+            alpha:1.0f];
+    } else {
+        self.colorView.backgroundColor = [UIColor redColor];
+    }
+    
 }
 
 // Configure platform button style and selected state
