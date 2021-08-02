@@ -58,6 +58,7 @@
         [self.buttonsStack addArrangedSubview:button];
     }
     
+    // Customize color type based on platform type
     if ([self.type isEqualToString:@"post"]) {
         self.colorView.backgroundColor = [UIColor colorWithRed:255.0f/255.0f
             green:153.0f/255.0f
@@ -70,9 +71,13 @@
             alpha:1.0f];
     } else {
         self.colorView.backgroundColor = [UIColor colorWithRed:255.0f/255.0f
-                                                         green:92.0f/255.0f
-                                                         blue:92.0f/255.0f
-                                                         alpha:1.0f];
+            green:92.0f/255.0f
+            blue:92.0f/255.0f
+            alpha:1.0f];
+    }
+    
+    if (self.taskImage == nil) {
+        [self.taskImageView setImage:[UIImage imageNamed:@"placeholder"]];
     }
     
 }
