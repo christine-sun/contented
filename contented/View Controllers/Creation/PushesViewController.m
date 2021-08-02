@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
 @property (weak, nonatomic) IBOutlet UIView *colorView;
+@property (strong, nonatomic) UIColor *color;
 
 @end
 
@@ -60,21 +61,25 @@
     
     // Customize color type based on platform type
     if ([self.type isEqualToString:@"post"]) {
-        self.colorView.backgroundColor = [UIColor colorWithRed:255.0f/255.0f
+        self.color = [UIColor colorWithRed:255.0f/255.0f
             green:153.0f/255.0f
             blue:204.0f/255.0f
             alpha:1.0f];
     } else if ([self.type isEqualToString:@"short"]) {
-        self.colorView.backgroundColor = [UIColor colorWithRed:102.0f/255.0f
+        self.color = [UIColor colorWithRed:102.0f/255.0f
             green:255.0f/255.0f
             blue:204.0f/255.0f
             alpha:1.0f];
     } else {
-        self.colorView.backgroundColor = [UIColor colorWithRed:255.0f/255.0f
+        self.color = [UIColor colorWithRed:255.0f/255.0f
             green:92.0f/255.0f
             blue:92.0f/255.0f
             alpha:1.0f];
     }
+    
+    self.colorView.backgroundColor = self.color;
+    self.postButton.layer.backgroundColor = self.color.CGColor;
+    [self.postButton.layer setCornerRadius:10];
     
     if (self.taskImage == nil) {
         [self.taskImageView setImage:[UIImage imageNamed:@"placeholder"]];

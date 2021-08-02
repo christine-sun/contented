@@ -553,13 +553,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pushes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBR-aR-iVm">
-                                <rect key="frame" x="35" y="275" width="320" height="43"/>
+                                <rect key="frame" x="35" y="287" width="320" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the description but its truncated to only fit two lines" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cp-97-QMN">
-                                <rect key="frame" x="113" y="176" width="255" height="40.666666666666657"/>
+                                <rect key="frame" x="113" y="188" width="255" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -568,7 +568,7 @@
                                 <rect key="frame" x="35" y="316" width="320" height="232"/>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appicon" translatesAutoresizingMaskIntoConstraints="NO" id="Zlq-un-yQq">
-                                <rect key="frame" x="30" y="176" width="75" height="76"/>
+                                <rect key="frame" x="30" y="188" width="75" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="kgL-t4-OnR"/>
                                     <constraint firstAttribute="height" constant="76" id="lxC-va-e7p"/>
@@ -582,22 +582,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfZ-sS-OeK">
-                                <rect key="frame" x="275" y="556" width="79" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Let's go!"/>
+                                <rect key="frame" x="218" y="556" width="136" height="52"/>
+                                <color key="backgroundColor" red="0.52976136880000002" green="0.92087947960000005" blue="0.76178910879999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="136" id="05E-IQ-cFy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <state key="normal" title="Let's go!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="onPost:" destination="7mu-3U-HxL" eventType="touchUpInside" id="vmc-1a-24z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VwX-LV-4zv">
-                                <rect key="frame" x="111" y="237" width="30" height="30"/>
+                                <rect key="frame" x="111" y="249" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="onTapEdit:" destination="7mu-3U-HxL" eventType="touchUpInside" id="4D5-5E-7Er"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="release on date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9Q-0y-FOZ">
-                                <rect key="frame" x="113" y="218" width="241" height="16"/>
+                                <rect key="frame" x="113" y="230" width="241" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -606,8 +612,8 @@
                         <viewLayoutGuide key="safeArea" id="mw7-SM-DAo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bBR-aR-iVm" firstAttribute="top" secondItem="VwX-LV-4zv" secondAttribute="bottom" constant="8" symbolic="YES" id="16J-Fr-Q2E"/>
-                            <constraint firstItem="hPG-xZ-nri" firstAttribute="top" secondItem="bBR-aR-iVm" secondAttribute="bottom" constant="31" id="7Pa-n1-K21"/>
+                            <constraint firstItem="bBR-aR-iVm" firstAttribute="top" secondItem="VwX-LV-4zv" secondAttribute="bottom" constant="8" id="16J-Fr-Q2E"/>
+                            <constraint firstItem="hPG-xZ-nri" firstAttribute="top" secondItem="bBR-aR-iVm" secondAttribute="bottom" constant="-14" id="7Pa-n1-K21"/>
                             <constraint firstItem="1gk-QE-XdS" firstAttribute="leading" secondItem="mw7-SM-DAo" secondAttribute="leading" id="KbK-lu-1yJ"/>
                             <constraint firstItem="rfZ-sS-OeK" firstAttribute="top" secondItem="hPG-xZ-nri" secondAttribute="bottom" constant="8" symbolic="YES" id="LI5-fv-ZuI"/>
                             <constraint firstItem="mw7-SM-DAo" firstAttribute="trailing" secondItem="hPG-xZ-nri" secondAttribute="trailing" constant="35" id="OEB-kO-ubQ"/>
@@ -626,7 +632,7 @@
                             <constraint firstItem="bBR-aR-iVm" firstAttribute="leading" secondItem="mw7-SM-DAo" secondAttribute="leading" constant="35" id="rOd-SU-ZeG"/>
                             <constraint firstItem="mw7-SM-DAo" firstAttribute="trailing" secondItem="bBR-aR-iVm" secondAttribute="trailing" constant="35" id="sdV-7T-r3b"/>
                             <constraint firstItem="VwX-LV-4zv" firstAttribute="leading" secondItem="7cp-97-QMN" secondAttribute="leading" constant="-2" id="xdP-1r-LiT"/>
-                            <constraint firstItem="Zlq-un-yQq" firstAttribute="top" secondItem="1gk-QE-XdS" secondAttribute="bottom" constant="16" id="zJm-Pj-pjH"/>
+                            <constraint firstItem="Zlq-un-yQq" firstAttribute="top" secondItem="1gk-QE-XdS" secondAttribute="bottom" constant="28" id="zJm-Pj-pjH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d1F-K6-QZd"/>
