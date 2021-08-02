@@ -30,35 +30,9 @@
     }];
 
     [Parse initializeWithConfiguration:config];
-    
-    // Initialize Google sign-in
-    [GIDSignIn sharedInstance].clientID = @"290143082983-3hq0gs473geivjaj90tlif550lv1hv4v.apps.googleusercontent.com";
-    [FIRApp configure];
-    
-    [[FBSDKApplicationDelegate sharedInstance] application:application
-                               didFinishLaunchingWithOptions:launchOptions];
-    
-    // Test that task model works - YES works
-//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@(TRUE), @"youtube", @(FALSE), @"instagram", nil];
-//    [Task postTask:@"test title" withDescription:@"I am testing to see if the task model works" withImage:nil withPlatforms:dict ofType:@"long" withCompletion:nil];
-    
-//    // Add columns to user model - come back after implementing log in
-//    PFUser *user = [PFUser currentUser];
-//    user[@"initialSubs"] = @135;
-//    user[@"youtubeID"] = @"UClskd48fj49ljfHA";
-//
-//    NSMutableArray *tasks = [NSMutableArray arrayWithObjects:@"Task1", @"Task2", @"Task3", nil];
-//    user[@"tasks"] = tasks;
-//    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//      if (succeeded) {
-//             NSLog(@"Object saved!");
-//      } else {
-//          NSLog(@"Error: %@", error.description);
-//      }
-//    }];
 
-    
-    
+    UITabBar.appearance.tintColor = [UIColor systemTealColor];
+
     return YES;
 }
 
