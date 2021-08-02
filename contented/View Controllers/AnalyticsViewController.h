@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AnalyticsViewController : UIViewController
 
 - (void) setOriginalVideos:(NSMutableArray *)originalVids;
-//- (void) setOriginalVals:(NSMutableArray *)originalValues;
 - (void) setChart: (NSMutableArray*) values;
 
 @end

@@ -9,10 +9,11 @@
 #import <Parse/Parse.h>
 #import "APIManager.h"
 @import Charts;
+@import BubbleTransition;
 #import "Video.h"
 #import "WebViewController.h"
 
-@interface AnalyticsViewController () <ChartViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface AnalyticsViewController () <ChartViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIViewControllerTransitioningDelegate>
 @property (strong, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *ytReportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *recommendationLabel;
@@ -30,6 +31,8 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *queryPickerView;
 @property (strong, nonatomic) NSArray *queryPickerData;
+
+//@property (strong, nonatomic) BubbleTransition *transition;
 
 @end
 
@@ -69,6 +72,9 @@
     self.lineChartView.leftAxis.enabled = NO;
     self.lineChartView.rightAxis.enabled = NO;
     [APIManager setChart:self.lineChartView];
+    
+//    self.transition = [[BubbleTransition alloc] init];
+    
 }
 
 - (void) setOriginalVideos:(NSMutableArray *)originalVids {
@@ -314,7 +320,24 @@
     if ([segue.identifier isEqual:@"webSegue"]) {
         WebViewController *webVC = [segue destinationViewController];
         webVC.video = (Video*) sender;
+//        webVC.transitioningDelegate = self;
+//        webVC.modalPresentationStyle = UIModalPresentationCustom;
     }
 }
+//
+//- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+//    self.transition.transitionMode = BubbleTransitionModePresent;
+//    self.transition.startingPoint = self.view.center;
+//    self.transition.bubbleColor = [UIColor redColor];
+//    return self.transition;
+//}
+//
+//- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+//    self.transition.transitionMode = BubbleTransitionModeDismiss;
+//    self.transition.startingPoint = self.view.center;
+//    self.transition.bubbleColor = [UIColor redColor];
+//    return self.transition;
+//}
+
 
 @end

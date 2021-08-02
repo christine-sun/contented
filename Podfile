@@ -15,6 +15,9 @@ target 'contented' do
   pod 'FBSDKLoginKit'
   pod 'UIView+draggable'
   pod 'LMDropdownView'
+  pod 'BubbleTransition', '~> 3.2.0'
+  pod "RMPZoomTransitionAnimator"
+
 
   target 'contentedTests' do
     inherit! :search_paths

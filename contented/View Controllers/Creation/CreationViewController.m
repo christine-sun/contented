@@ -13,10 +13,15 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *ideaDumpField;
+@property (weak, nonatomic) IBOutlet UILabel *releaseOnLabel;
 @property (strong, nonatomic) UIImage *taskImage;
 @property (weak, nonatomic) IBOutlet UIImageView *taskImageView;
 @property (strong, nonatomic) UIImagePickerController *imagePickerVC;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
+@property (weak, nonatomic) IBOutlet UIButton *postButton;
+@property (weak, nonatomic) IBOutlet UIButton *shortButton;
+@property (weak, nonatomic) IBOutlet UIButton *longButton;
 
 @end
 
@@ -26,11 +31,14 @@
     [super viewDidLoad];
     
     // Style text fields
-    self.titleField.layer.borderWidth = 0.5;
     [self.titleField.layer setCornerRadius:10];
-    self.ideaDumpField.layer.borderWidth = 0.5;
     [self.ideaDumpField.layer setCornerRadius:10];
+    self.releaseOnLabel.layer.masksToBounds = YES;
+    [self.releaseOnLabel.layer setCornerRadius:10];
     [self.taskImageView.layer setCornerRadius:10];
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
+    self.titleField.leftView = paddingView;
+    self.titleField.leftViewMode = UITextFieldViewModeAlways;
     
     // Dismiss keyboard outside of text fields
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
@@ -45,9 +53,15 @@
     self.ideaDumpField.delegate = self;
     self.ideaDumpField.text = @"toss your idea dump here! let those creative juices flow🎨";
     self.ideaDumpField.textColor = [UIColor lightGrayColor];
+    self.ideaDumpField.font = [UIFont systemFontOfSize:20];
     self.datePicker.minimumDate = [NSDate date];
     self.datePicker.date = [NSDate date];
     [self.taskImageView setImage:[UIImage imageNamed:@"placeholder"]];
+    
+    // Style the platform type buttons
+    [self.postButton.layer setCornerRadius:10];
+    [self.shortButton.layer setCornerRadius:10];
+    [self.longButton.layer setCornerRadius:10];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
