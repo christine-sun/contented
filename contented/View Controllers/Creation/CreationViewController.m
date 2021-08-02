@@ -125,16 +125,35 @@
     return newImage;
 }
 
+- (BOOL)checkValidEntries {
+    if ([self.titleField.text isEqualToString:@""]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"title required"
+            message:@"make sure you have a title for your task😊"
+            preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"okay!"
+            style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        return NO;
+    } else return YES;
+}
+
 - (IBAction)onTapLong:(id)sender {
-    [self performSegueWithIdentifier:@"pushesSegue" sender:@"long"];
+    if ([self checkValidEntries]) {
+        [self performSegueWithIdentifier:@"pushesSegue" sender:@"long"];
+    }
 }
 
 - (IBAction)onTapShort:(id)sender {
-    [self performSegueWithIdentifier:@"pushesSegue" sender:@"short"];
+    if ([self checkValidEntries]) {
+        [self performSegueWithIdentifier:@"pushesSegue" sender:@"short"];
+    }
 }
 
 - (IBAction)onTapPost:(id)sender {
-    [self performSegueWithIdentifier:@"pushesSegue" sender:@"post"];
+    if ([self checkValidEntries]) {
+        [self performSegueWithIdentifier:@"pushesSegue" sender:@"post"];
+    }
 }
 
 - (void)didEdit:(NSString *)taskTitle :(NSString *)taskIdeas :(UIImage *)taskImage {

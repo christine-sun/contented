@@ -69,7 +69,10 @@
             blue:204.0f/255.0f
             alpha:1.0f];
     } else {
-        self.colorView.backgroundColor = [UIColor redColor];
+        self.colorView.backgroundColor = [UIColor colorWithRed:255.0f/255.0f
+                                                         green:92.0f/255.0f
+                                                         blue:92.0f/255.0f
+                                                         alpha:1.0f];
     }
     
 }
