@@ -582,12 +582,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfZ-sS-OeK">
-                                <rect key="frame" x="218" y="556" width="136" height="52"/>
+                                <rect key="frame" x="218" y="567" width="136" height="52"/>
                                 <color key="backgroundColor" red="0.52976136880000002" green="0.92087947960000005" blue="0.76178910879999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="05E-IQ-cFy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <state key="normal" title="Let's go!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -613,9 +613,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bBR-aR-iVm" firstAttribute="top" secondItem="VwX-LV-4zv" secondAttribute="bottom" constant="8" id="16J-Fr-Q2E"/>
-                            <constraint firstItem="hPG-xZ-nri" firstAttribute="top" secondItem="bBR-aR-iVm" secondAttribute="bottom" constant="-14" id="7Pa-n1-K21"/>
+                            <constraint firstItem="hPG-xZ-nri" firstAttribute="top" secondItem="bBR-aR-iVm" secondAttribute="bottom" constant="8" id="7Pa-n1-K21"/>
                             <constraint firstItem="1gk-QE-XdS" firstAttribute="leading" secondItem="mw7-SM-DAo" secondAttribute="leading" id="KbK-lu-1yJ"/>
-                            <constraint firstItem="rfZ-sS-OeK" firstAttribute="top" secondItem="hPG-xZ-nri" secondAttribute="bottom" constant="8" symbolic="YES" id="LI5-fv-ZuI"/>
+                            <constraint firstItem="rfZ-sS-OeK" firstAttribute="top" secondItem="hPG-xZ-nri" secondAttribute="bottom" constant="16" id="LI5-fv-ZuI"/>
                             <constraint firstItem="mw7-SM-DAo" firstAttribute="trailing" secondItem="hPG-xZ-nri" secondAttribute="trailing" constant="35" id="OEB-kO-ubQ"/>
                             <constraint firstItem="mw7-SM-DAo" firstAttribute="trailing" secondItem="A9Q-0y-FOZ" secondAttribute="trailing" constant="36" id="SXS-iX-X0L"/>
                             <constraint firstItem="A9Q-0y-FOZ" firstAttribute="top" secondItem="7cp-97-QMN" secondAttribute="bottom" constant="1.3300000000000001" id="Uzy-n8-eOv"/>

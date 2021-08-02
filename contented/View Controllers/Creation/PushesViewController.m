@@ -82,7 +82,7 @@
     [self.postButton.layer setCornerRadius:10];
     
     if (self.taskImage == nil) {
-        [self.taskImageView setImage:[UIImage imageNamed:@"placeholder"]];
+        [self.taskImageView setImage:[UIImage imageNamed:@"appicon"]];
     }
     
 }
