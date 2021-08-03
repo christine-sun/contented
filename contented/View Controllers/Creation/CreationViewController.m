@@ -85,9 +85,16 @@
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    if (textView.textColor == [UIColor lightGrayColor]) {
+    if (textView.textColor == [UIColor systemGray3Color]) {
         textView.text = nil;
         textView.textColor = [UIColor blackColor];
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = @"toss your idea dump here! let those creative juices flow🎨";
+        textView.textColor = [UIColor systemGray3Color];
     }
 }
 

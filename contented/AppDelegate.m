@@ -32,6 +32,7 @@
     [Parse initializeWithConfiguration:config];
 
     UITabBar.appearance.tintColor = [UIColor systemTealColor];
+    UINavigationBar.appearance.tintColor = [UIColor systemTealColor];
 
     return YES;
 }

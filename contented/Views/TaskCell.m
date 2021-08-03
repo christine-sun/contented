@@ -16,6 +16,14 @@
     UITapGestureRecognizer *checkButtonTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapCheckButton:)];
     [self.checkButton addGestureRecognizer:checkButtonTapGesture];
     [self.checkButton setUserInteractionEnabled:YES];
+    
+//    self.backgroundView.layer.shadowOffset = CGSizeMake(0, 0);
+//    self.backgroundView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    self.backgroundView.layer.shadowRadius = 5;
+//
+//    self.backgroundView.layer.shadowOpacity = 0.40;
+//    self.backgroundView.layer.masksToBounds = false;
+//    self.backgroundView.clipsToBounds = false;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
