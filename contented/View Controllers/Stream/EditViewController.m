@@ -10,11 +10,13 @@
 #import "PlatformUtilities.h"
 #import "PlatformButton.h"
 #import "Task.h"
+#import "ColorUtilities.h"
 
 @interface EditViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *ideaDumpField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UILabel *releaseOnLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *taskImageView;
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
 @property (strong, nonatomic) UIImagePickerController *imagePickerVC;
@@ -29,7 +31,8 @@
     [super viewDidLoad];
     self.titleField.text = self.task.title;
     self.ideaDumpField.text = self.task.ideaDump;
-//    self.ideaDumpField.layer.borderWidth = 0.5;
+    self.releaseOnLabel.layer.masksToBounds = YES;
+    [self.releaseOnLabel.layer setCornerRadius:10];
     [self.ideaDumpField.layer setCornerRadius:10];
     self.datePicker.date = self.task.dueDate;
     self.taskImageView.file = self.task[@"image"];
@@ -37,7 +40,7 @@
     [self.taskImageView.layer setCornerRadius:15];
     self.updatedPlatforms = self.task.platforms;
     
-    
+    self.view.backgroundColor = [ColorUtilities getColorFor:@"blue"];
     self.updatedImage = nil;
     self.imagePickerVC = [UIImagePickerController new];
     self.imagePickerVC.delegate = self;
@@ -55,8 +58,12 @@
         PlatformButton *button = [[PlatformButton alloc] init];
         NSString *platformName = platforms[i];
         int state = ([self.task.platforms objectForKey:platformName] == nil) ? 0 : 1;
-        NSLog(@"%d", state);
-        [button setup:platforms[i]:state:[UIColor systemTealColor]];
+        [button setup:platforms[i]:state:[UIColor whiteColor]];
+        if (state == 0) {
+            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        } else {
+            [button setTitleColor:[ColorUtilities getColorFor:@"blue"] forState:UIControlStateNormal];
+        }
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
     }
@@ -72,15 +79,15 @@
     
     // Platform was not initially selected - add this to list of platforms
     if ([self.updatedPlatforms objectForKey:title] == nil) {
-        sender.backgroundColor = [UIColor systemTealColor];
-        [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        sender.backgroundColor = [UIColor whiteColor];
+        [sender setTitleColor:[ColorUtilities getColorFor:@"blue"] forState:UIControlStateNormal];
         
         [self.updatedPlatforms setValue:@NO forKey:title];
         
     // Platform was initially selected - remove from list of platforms
     } else {
-        sender.backgroundColor = [UIColor whiteColor];
-        [sender setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
+        sender.backgroundColor = [UIColor clearColor];
+        [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
         [self.updatedPlatforms removeObjectForKey:title];
     }
