@@ -116,8 +116,8 @@
         self.completedCount++;
     // Platform becomes unselected - user uncompleted this push
     } else {
-        sender.backgroundColor = [UIColor whiteColor];
-        [sender setTitleColor:[UIColor systemPurpleColor] forState:UIControlStateNormal];
+        sender.backgroundColor = [UIColor clearColor];
+        [sender setTitleColor:[ColorUtilities getColorFor:@"purple"] forState:UIControlStateNormal];
         [platforms setValue:@NO forKey:title];
         self.completedCount--;
     }

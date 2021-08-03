@@ -23,12 +23,10 @@
     [self.heightAnchor constraintEqualToConstant:60].active = YES;
     [self.layer setCornerRadius:10];
     self.layer.borderWidth = 2.0f;
-//    self.layer.borderColor = [UIColor systemTealColor].CGColor;
     self.layer.borderColor = color.CGColor;
     if (state == 0) {
         // Colored title white background
         [self setTitleColor:color forState:UIControlStateNormal];
-        self.backgroundColor = [UIColor whiteColor];
     } else {
         // White title colored background
         self.backgroundColor = color;
