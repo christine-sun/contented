@@ -45,7 +45,7 @@
         view.frame = CGRectMake(view.frame.size.width * i, 0, view.frame.size.width, view.frame.size.height);
     }
     self.scrollView.delegate = self;
-    // sscrollview edge to view
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width,self.scrollView.frame.size.height);
     
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 90, self.scrollView.frame.size.width, 20)];
     self.pageControl.numberOfPages = self.viewArray.count;
