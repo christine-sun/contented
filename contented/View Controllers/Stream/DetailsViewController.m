@@ -55,8 +55,8 @@
     UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTap:)];
     doubleTapGesture.numberOfTapsRequired = 2;
     [self.scrollView addGestureRecognizer:doubleTapGesture];
-    self.testView.backgroundColor = [ColorUtilities getColorFor:self.task.type];
-    self.testView.backgroundColor = [self.testView.backgroundColor colorWithAlphaComponent:0.5];
+//    self.testView.backgroundColor = [ColorUtilities getColorFor:self.task.type];
+//    self.testView.backgroundColor = [self.testView.backgroundColor colorWithAlphaComponent:0.5];
     
 }
 
