@@ -22,10 +22,11 @@
 
 - (void)setTitle:(NSString*)title isSelected:(BOOL)isSelected {
     self.titleLabel.text = title;
+    [self.titleLabel setFont:[UIFont fontWithName:@"Arial Rounded MT Bold" size:25]];
     if (isSelected) {
         self.titleLabel.textColor = [UIColor systemTealColor];
     } else {
-        self.titleLabel.textColor = [UIColor blackColor];
+        self.titleLabel.textColor = [UIColor systemGray2Color];
     }
 }
 

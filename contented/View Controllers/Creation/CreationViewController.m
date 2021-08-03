@@ -53,7 +53,7 @@
     self.titleField.text = @"";
     self.ideaDumpField.delegate = self;
     self.ideaDumpField.text = @"toss your idea dump here! let those creative juices flow🎨";
-    self.ideaDumpField.textColor = [UIColor lightGrayColor];
+    self.ideaDumpField.textColor = [UIColor systemGray3Color];
     self.ideaDumpField.font = [UIFont systemFontOfSize:20];
     self.datePicker.minimumDate = [NSDate date];
     self.datePicker.date = [NSDate date];

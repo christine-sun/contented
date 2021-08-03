@@ -23,6 +23,7 @@
 @property (nonatomic) int section;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 
 @property (strong, nonatomic) IBOutlet UITableView *filterTableView;
 @property (strong, nonatomic) LMDropdownView *filterView;
@@ -52,6 +53,17 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTasks) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    self.headerLabel.text = [NSString stringWithFormat:@"hey, %@!👋",currentUser.username];
+    
+    self.headerView.alpha = 0;
+    self.tableView.alpha = 0;
+    self.headerView.layer.anchorPoint = CGPointMake(0, 0.5);
+    [UIView animateWithDuration:0.8 animations:^{
+        self.headerView.alpha = 1;
+        self.tableView.alpha = 1;
+    }];
 }
 
 - (void)fetchTasks {
@@ -178,18 +190,18 @@
 
 //This function is where all the magic happens
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    // Define the initial state (Before the animation)
-    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
-    cell.layer.shadowOffset = CGSizeMake(10, 10);
-    cell.alpha = 0;
-    cell.layer.anchorPoint = CGPointMake(0, 0.5);
-    
-    [UIView animateWithDuration:0.8 animations:^{
-            cell.layer.transform = CATransform3DIdentity;
-            cell.alpha = 1;
-            cell.layer.shadowOffset = CGSizeMake(0, 0);
-    }];
+    if (tableView == self.tableView) {
+        // Define the initial state (Before the animation)
+        cell.layer.shadowColor = [[UIColor blackColor]CGColor];
+        cell.layer.shadowOffset = CGSizeMake(10, 10);
+        cell.alpha = 0;
+        cell.layer.anchorPoint = CGPointMake(0, 0.5);
+        
+        [UIView animateWithDuration:0.8 animations:^{
+                cell.alpha = 1;
+                cell.layer.shadowOffset = CGSizeMake(0, 0);
+        }];
+    }
 }
 
 #pragma mark - section headers
@@ -203,12 +215,15 @@
         NSDateFormatter *weekday = [[NSDateFormatter alloc] init];
         [weekday setDateFormat: @"EEEE MM/dd"];
         label.text = [weekday stringFromDate:dueDate];
+        [label setFont:[UIFont fontWithName:@"Avenir" size:17]];
+
         return label;
     }
     /* FILTER TABLE VIEW */
     else {
         UILabel *label = [[UILabel alloc] init];
         label.text = @"Filter";
+        [label setFont:[UIFont fontWithName:@"Arial Rounded MT Bold" size:30]];
         return label;
     }
 }
