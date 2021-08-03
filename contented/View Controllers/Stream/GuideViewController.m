@@ -10,7 +10,7 @@
 @interface GuideViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) NSMutableArray *viewArray;
 
 @end
@@ -22,20 +22,20 @@
     // Do any additional setup after loading the view.
     UIView *view0 = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     view0.backgroundColor = [UIColor systemPurpleColor];
-    NSLog(@"is this even valid %@", view0);
     
-    UIView *view1 = [[UIView alloc] init];
+    UIView *view1 = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     view1.backgroundColor = [UIColor systemRedColor];
     
-    UIView *view2 = [[UIView alloc] init];
+    UIView *view2 = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     view2.backgroundColor = [UIColor systemTealColor];
+    
+    self.viewArray = [[NSMutableArray alloc] init];
     [self.viewArray addObject:view0];
     [self.viewArray addObject:view1];
     [self.viewArray addObject:view2];
     
-//    self.scrollView.backgroundColor = [UIColor yellowColor];
-    
     self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
     [self.scrollView isPagingEnabled];
     self.scrollView.contentSize = CGSizeMake(view0.frame.size.width * self.viewArray.count, view0.frame.size.height);
     
@@ -47,12 +47,19 @@
     self.scrollView.delegate = self;
     // sscrollview edge to view
     
-    self.pageControl.numberOfPages = 3;
-    NSLog(@"!!! %lu", (unsigned long)self.viewArray.count);
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 90, self.scrollView.frame.size.width, 20)];
+    self.pageControl.numberOfPages = self.viewArray.count;
+    [self.pageControl addTarget:self action:@selector(pageControlTapHandler:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSInteger pageNumber = roundf(self.scrollView.contentOffset.x / (self.scrollView.frame.size.width));
+    self.pageControl.currentPage = pageNumber;
+}
+
+- (void)pageControlTapHandler: (UIPageControl*) sender {
+    CGFloat x = self.pageControl.currentPage * self.scrollView.frame.size.width;
+    [self.scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
 }
 /*
 #pragma mark - Navigation
