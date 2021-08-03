@@ -10,6 +10,7 @@
 #import "PlatformButton.h"
 #import "PlatformUtilities.h"
 #import <Parse/PFImageView.h>
+#import "ColorUtilities.h"
 
 @interface DetailsViewController () <EditViewControllerDelegate>
 
@@ -63,8 +64,7 @@
     NSDate *dueDate = self.task.dueDate;
     NSDateFormatter *weekday = [[NSDateFormatter alloc] init];
     [weekday setDateFormat: @"EEEE MM/dd"];
-    NSString *preText = @"Release on ";
-    self.dateLabel.text = [preText stringByAppendingString:[weekday stringFromDate:dueDate]];
+    self.dateLabel.text = [NSString stringWithFormat:@"Release on %@ ✨",[weekday stringFromDate:dueDate]];
     
     // Reset the buttonsStack
     for (UIView* view in self.buttonsStack.arrangedSubviews) {
@@ -78,7 +78,7 @@
     [platforms enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
         // key is social media platform, obj is TRUE or FALSE
         PlatformButton *button = [[PlatformButton alloc] init];
-        [button setup:key:(int)[obj integerValue]:[UIColor systemPurpleColor]];
+        [button setup:key:(int)[obj integerValue]:[ColorUtilities getColorFor:@"purple"]];
         if ((int)[obj integerValue] == 1) {
             self.completedCount++;
         }
