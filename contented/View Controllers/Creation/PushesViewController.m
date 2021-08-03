@@ -151,7 +151,7 @@
     // Go to creation if user wants to add another task
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok!"
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
+            self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];
             [self.navigationController popToRootViewControllerAnimated:NO];
         }];
     [alert addAction:okAction];
