@@ -12,6 +12,7 @@
 #import "PlatformUtilities.h"
 #import <QuartzCore/QuartzCore.h>
 #import "PlatformButton.h"
+#import "ColorUtilities.h"
 
 @interface PushesViewController ()
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;
@@ -54,32 +55,23 @@
     for (int i = 0; i < platforms.count; i++) {
         PlatformButton *button = [[PlatformButton alloc] init];
         [button setup:platforms[i]:0:[UIColor systemTealColor]];
-//        [button setupWithTitleAndState:platforms[i]:0];
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
     }
     
     // Customize color type based on platform type
-    if ([self.type isEqualToString:@"post"]) {
-        self.color = [UIColor colorWithRed:255.0f/255.0f
-            green:153.0f/255.0f
-            blue:204.0f/255.0f
-            alpha:1.0f];
-    } else if ([self.type isEqualToString:@"short"]) {
-        self.color = [UIColor colorWithRed:102.0f/255.0f
-            green:255.0f/255.0f
-            blue:204.0f/255.0f
-            alpha:1.0f];
-    } else {
-        self.color = [UIColor colorWithRed:255.0f/255.0f
-            green:92.0f/255.0f
-            blue:92.0f/255.0f
-            alpha:1.0f];
-    }
-    
+    self.color = [ColorUtilities getColorFor:self.type];
     self.colorView.backgroundColor = self.color;
     self.postButton.layer.backgroundColor = self.color.CGColor;
     [self.postButton.layer setCornerRadius:10];
+    self.postButton.titleLabel.layer.shadowOpacity = 0.5;
+    self.postButton.titleLabel.layer.shadowRadius = 2;
+    self.postButton.titleLabel.layer.shadowOffset = CGSizeMake(0, 0);
+    self.postButton.titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.postButton.layer.shadowOpacity = 0.5;
+    self.postButton.layer.shadowRadius = 2;
+    self.postButton.layer.shadowOffset = CGSizeMake(0, 0);
+    self.postButton.layer.shadowColor = [UIColor blackColor].CGColor;
     
     if (self.taskImage == nil) {
         [self.taskImageView setImage:[UIImage imageNamed:@"appicon"]];

@@ -49,6 +49,13 @@
     self.imagePickerVC.delegate = self;
     self.imagePickerVC.allowsEditing = YES;
     
+    // test shadow
+    self.titleField.layer.masksToBounds = NO;
+    self.titleField.layer.shadowOpacity = 0.5;
+    self.titleField.layer.shadowRadius = 2;
+    self.titleField.layer.shadowOffset = CGSizeMake(0, 0);
+    self.titleField.layer.shadowColor = [UIColor blackColor].CGColor;
+    
     // Default values
     self.titleField.text = @"";
     self.ideaDumpField.delegate = self;
@@ -60,9 +67,19 @@
     [self.taskImageView setImage:[UIImage imageNamed:@"placeholder"]];
     
     // Style the platform type buttons
-    [self.postButton.layer setCornerRadius:10];
-    [self.shortButton.layer setCornerRadius:10];
-    [self.longButton.layer setCornerRadius:10];
+    [self styleButton:self.postButton:@"post"];
+    [self styleButton:self.shortButton:@"short"];
+    [self styleButton:self.longButton:@"long"];
+}
+
+- (void)styleButton:(UIButton*)button:(NSString*)type {
+    [button.layer setCornerRadius:10];
+    button.backgroundColor = [ColorUtilities getColorFor:type];
+    button.titleLabel.layer.masksToBounds = NO;
+    button.titleLabel.layer.shadowOpacity = 0.5;
+    button.titleLabel.layer.shadowRadius = 2;
+    button.titleLabel.layer.shadowOffset = CGSizeMake(0, 0);
+    button.titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

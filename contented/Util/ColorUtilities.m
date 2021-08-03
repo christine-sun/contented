@@ -6,15 +6,14 @@
 //
 
 #import "ColorUtilities.h"
-#import <UIKit/UIKit.h>
 
 @implementation ColorUtilities
 
 + (UIColor *) getColorFor:(NSString*) type {
     if ([type isEqualToString:@"long"]) {
-        return [UIColor colorWithRed:232.0f/255.0f
-                               green:135.0f/255.0f
-                               blue:148.0f/255.0f
+        return [UIColor colorWithRed:255.0f/255.0f
+                               green:153.0f/255.0f
+                               blue:153.0f/255.0f
                                alpha:1.0f];
     } else if ([type isEqualToString:@"short"]) {
         return [UIColor colorWithRed:124.0f/255.0f

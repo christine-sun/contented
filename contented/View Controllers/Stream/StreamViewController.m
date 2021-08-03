@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "LMDropdownView.h"
 #import "FilterCell.h"
+#import "ColorUtilities.h"
 
 @interface StreamViewController () <UITableViewDelegate, UITableViewDataSource, LMDropdownViewDelegate>
 
@@ -147,13 +148,7 @@
 //        cell.contentView.backgroundColor = [UIColor whiteColor];
 //        cell.contentView.layer.cornerRadius = 8;
 //        cell.contentView.layer.masksToBounds = YES;
-        if ([cell.task.type isEqualToString:@"long"]) {
-            cell.contentView.backgroundColor = [UIColor redColor];
-        } else if ([cell.task.type isEqualToString:@"short"]) {
-            cell.contentView.backgroundColor = [UIColor greenColor];
-        } else {
-            cell.contentView.backgroundColor = [UIColor systemPinkColor];
-        }
+        cell.contentView.backgroundColor = [ColorUtilities getColorFor:cell.task.type];
         
         return cell;
     }
