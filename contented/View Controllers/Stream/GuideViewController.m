@@ -52,6 +52,11 @@
     [self.pageControl addTarget:self action:@selector(pageControlTapHandler:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSInteger pageNumber = roundf(self.scrollView.contentOffset.x / (self.scrollView.frame.size.width));
+    self.pageControl.currentPage = pageNumber;
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSInteger pageNumber = roundf(self.scrollView.contentOffset.x / (self.scrollView.frame.size.width));
     self.pageControl.currentPage = pageNumber;
