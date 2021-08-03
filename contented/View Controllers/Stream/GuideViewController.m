@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) NSMutableArray *viewArray;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 @end
 
@@ -38,6 +39,7 @@
     self.scrollView.showsVerticalScrollIndicator = NO;
     [self.scrollView isPagingEnabled];
     self.scrollView.contentSize = CGSizeMake(view0.frame.size.width * self.viewArray.count, view0.frame.size.height);
+    self.doneButton.alpha = 0;
     
     for (int i = 0; i < self.viewArray.count; i++) {
         UIView *view = self.viewArray[i];
@@ -55,6 +57,11 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger pageNumber = roundf(self.scrollView.contentOffset.x / (self.scrollView.frame.size.width));
     self.pageControl.currentPage = pageNumber;
+    if (pageNumber == self.viewArray.count - 1) {
+        [UIView animateWithDuration:0.8 animations:^{
+            self.doneButton.alpha = 1;
+        }];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

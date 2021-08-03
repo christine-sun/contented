@@ -81,6 +81,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOU-2g-YcI">
+                                <rect key="frame" x="175" y="697" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Got it!"/>
+                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7DR-IO-Oop">
                                 <rect key="frame" x="0.0" y="170" width="390" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -98,6 +103,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="doneButton" destination="WOU-2g-YcI" id="hcd-Xd-zom"/>
                         <outlet property="pageControl" destination="PBY-KM-BPp" id="Y6z-GT-pD1"/>
                         <outlet property="scrollView" destination="7DR-IO-Oop" id="58v-nk-Dah"/>
                     </connections>
