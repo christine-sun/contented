@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ColorUtilities : NSObject
 
 + (UIColor *) getColorFor:(NSString*) type;
++ (void) addShadow:(UIView*)view;
 
 @end
 

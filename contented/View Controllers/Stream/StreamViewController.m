@@ -137,18 +137,8 @@
         [cell setIsCompleted:self.currentFilterTypeIndex == 1];
         cell.task = [[self.groupedTasks objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.delegate = self;
-        
-//        // add shadow on cell
-//        cell.backgroundColor = [UIColor clearColor];
-//        cell.layer.masksToBounds = NO;
-//        cell.layer.shadowOpacity = 0.23;
-//        cell.layer.shadowRadius = 4;
-//        cell.layer.shadowOffset = CGSizeMake(0, 0);
-//        cell.layer.shadowColor = [UIColor blackColor].CGColor;
-//        cell.contentView.backgroundColor = [UIColor whiteColor];
-//        cell.contentView.layer.cornerRadius = 8;
-//        cell.contentView.layer.masksToBounds = YES;
-        cell.contentView.backgroundColor = [ColorUtilities getColorFor:cell.task.type];
+        cell.contentView.backgroundColor =  [ColorUtilities getColorFor:cell.task.type];
+        cell.contentView.backgroundColor = [cell.contentView.backgroundColor colorWithAlphaComponent:0.5];
         
         return cell;
     }

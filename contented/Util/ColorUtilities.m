@@ -35,4 +35,12 @@
     }
 }
 
++ (void) addShadow:(UIView*)view {
+    view.layer.masksToBounds = NO;
+    view.layer.shadowOpacity = 0.5;
+    view.layer.shadowRadius = 2;
+    view.layer.shadowOffset = CGSizeMake(0, 0);
+    view.layer.shadowColor = [UIColor blackColor].CGColor;
+}
+
 @end
