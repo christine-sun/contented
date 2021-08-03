@@ -40,7 +40,7 @@
     [self.taskImageView.layer setCornerRadius:15];
     self.updatedPlatforms = self.task.platforms;
     
-    self.view.backgroundColor = [ColorUtilities getColorFor:@"blue"];
+//    self.view.backgroundColor = [ColorUtilities getColorFor:@"blue"];
     self.updatedImage = nil;
     self.imagePickerVC = [UIImagePickerController new];
     self.imagePickerVC.delegate = self;
