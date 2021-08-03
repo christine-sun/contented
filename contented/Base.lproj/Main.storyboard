@@ -66,6 +66,30 @@
             </objects>
             <point key="canvasLocation" x="92.753623188405811" y="63.616071428571423"/>
         </scene>
+        <!--Guide View Controller-->
+        <scene sceneID="DSc-95-bx9">
+            <objects>
+                <viewController id="L2B-02-clF" customClass="GuideViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v6A-QE-gHb">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How can I best use contented?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyt-z0-VyW">
+                                <rect key="frame" x="78" y="121" width="231" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BOM-Et-nWo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Twd-sq-1uT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2000" y="-625.5924170616114"/>
+        </scene>
         <!--Stream View Controller-->
         <scene sceneID="yzI-CB-hCw">
             <objects>
@@ -204,9 +228,9 @@
                                 <rect key="frame" x="299" y="11" width="75" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemTealColor"/>
-                                <state key="normal" image="slider.horizontal.3" catalog="system"/>
+                                <state key="normal" image="questionmark.circle" catalog="system"/>
                                 <connections>
-                                    <action selector="onTapFilterButton:" destination="LfZ-HV-Dcs" eventType="touchUpInside" id="Amj-8F-Mol"/>
+                                    <action selector="onTapGuideButton:" destination="LfZ-HV-Dcs" eventType="touchUpInside" id="m4p-aW-Hat"/>
                                 </connections>
                             </button>
                             <color key="tintColor" systemColor="systemTealColor"/>
@@ -219,6 +243,7 @@
                         <outlet property="headerView" destination="6yn-F4-vkE" id="9Ri-bh-RR8"/>
                         <outlet property="tableView" destination="KuB-cw-2rj" id="7Ql-yN-Zlq"/>
                         <segue destination="9Dy-wz-Tyn" kind="show" identifier="detailsSegue" id="4hj-LO-Wpx"/>
+                        <segue destination="L2B-02-clF" kind="presentation" identifier="guideSegue" id="Iq8-ub-PkH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUc-FR-iYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -262,14 +287,14 @@
             <objects>
                 <viewController id="9Dy-wz-Tyn" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gjz-wq-rLF">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNV-Vi-6jR">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="807"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYh-bL-QYl">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="827"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the idea dump goes in here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edt-BT-pzL">
                                                 <rect key="frame" x="20" y="69.666666666666671" width="350" height="27.333333333333329"/>
@@ -1231,7 +1256,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ZEX-oe-bCA"/>
-        <segue reference="S19-7w-IFA"/>
+        <segue reference="4hj-LO-Wpx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1.square" catalog="system" width="128" height="114"/>
@@ -1249,6 +1274,7 @@
         <image name="placeholder" width="360" height="360"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="sparkles" catalog="system" width="112" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>

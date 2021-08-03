@@ -367,5 +367,8 @@
     [self showDropDownViewFromDirection:LMDropdownViewDirectionTop];
 }
 
+- (IBAction)onTapGuideButton:(id)sender {
+    [self performSegueWithIdentifier:@"guideSegue" sender:nil];
+}
 
 @end
