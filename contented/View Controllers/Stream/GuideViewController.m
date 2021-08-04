@@ -54,10 +54,7 @@
     }
     self.scrollView.delegate = self;
     self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width,self.scrollView.frame.size.height);
-    
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 90, self.scrollView.frame.size.width, 20)];
     self.pageControl.numberOfPages = self.viewArray.count;
-    [self.pageControl addTarget:self action:@selector(pageControlTapHandler:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setUpView: (NSString*) title withTitleFrame: (CGRect) titleFrame withImage: (NSString*) imageName withImageFrame: (CGRect) imageFrame withDescription: (NSString*) description {
@@ -86,7 +83,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger pageNumber = roundf(self.scrollView.contentOffset.x / (self.scrollView.frame.size.width));
     self.pageControl.currentPage = pageNumber;
-//    NSLog(@"%ld !! %ld", (long)self.pageControl.currentPage, (long)pageNumber);
+    
+    NSLog(@"%ld !! %ld", (long)self.pageControl.currentPage, (long)pageNumber);
     if (pageNumber == self.viewArray.count - 1) {
         [UIView animateWithDuration:0.8 animations:^{
             self.doneButton.alpha = 1;
@@ -97,11 +95,6 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSInteger pageNumber = roundf(self.scrollView.contentOffset.x / (self.scrollView.frame.size.width));
     self.pageControl.currentPage = pageNumber;
-}
-
-- (void)pageControlTapHandler: (UIPageControl*) sender {
-    CGFloat x = self.pageControl.currentPage * self.scrollView.frame.size.width;
-    [self.scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
 }
 
 - (IBAction)onTapDone:(id)sender {
