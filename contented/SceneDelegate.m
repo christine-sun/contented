@@ -7,7 +7,7 @@
 
 #import "SceneDelegate.h"
 #import <Parse/Parse.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
+//#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 //@import FacebookCore;
 
@@ -40,10 +40,10 @@
 - (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts
 {
   UIOpenURLContext *context = URLContexts.allObjects.firstObject;
-  [FBSDKApplicationDelegate.sharedInstance application:UIApplication.sharedApplication
-                                               openURL:context.URL
-                                     sourceApplication:context.options.sourceApplication
-                                            annotation:context.options.annotation];
+//  [FBSDKApplicationDelegate.sharedInstance application:UIApplication.sharedApplication
+//                                               openURL:context.URL
+//                                     sourceApplication:context.options.sourceApplication
+//                                            annotation:context.options.annotation];
 }
 
 - (void)sceneDidDisconnect:(UIScene *)scene {

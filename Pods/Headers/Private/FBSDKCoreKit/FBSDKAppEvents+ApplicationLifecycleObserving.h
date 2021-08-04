@@ -1,1 +1,0 @@
-../../../FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKAppEvents+ApplicationLifecycleObserving.h

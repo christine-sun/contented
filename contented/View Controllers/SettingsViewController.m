@@ -6,8 +6,8 @@
 //
 
 #import "SettingsViewController.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+//#import <FBSDKCoreKit/FBSDKCoreKit.h>
+//#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
 #import "APIManager.h"
 

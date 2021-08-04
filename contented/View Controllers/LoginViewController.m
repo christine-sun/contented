@@ -8,12 +8,14 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "ColorUtilities.h"
+//#import <Shimmer/Shimmer.h>
 
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIImageView *titleView;
 
 @end
 
@@ -24,11 +26,19 @@
     // Do any additional setup after loading the view.
 
     [self.loginButton setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
-    [self.loginButton.layer setCornerRadius:15];
+    [self.loginButton.layer setCornerRadius:20];
     self.loginButton.backgroundColor = [ColorUtilities getColorFor:@"light blue"];
     
     [self styleShadow:self.usernameField];
+    CGRect frameRect = self.usernameField.frame;
+    frameRect.size.height = 50;
+    self.usernameField.frame = frameRect;
+    
     [self styleShadow:self.passwordField];
+    frameRect = self.passwordField.frame;
+    frameRect.size.height = 50;
+    self.passwordField.frame = frameRect;
+    
     [self styleShadow:self.loginButton];
     
     // Dismiss keyboard outside of text fields

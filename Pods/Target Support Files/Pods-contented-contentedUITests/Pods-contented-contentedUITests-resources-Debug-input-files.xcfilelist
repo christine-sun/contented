@@ -1,5 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-contented-contentedUITests/Pods-contented-contentedUITests-resources.sh
-${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit/FacebookSDKStrings.bundle
 ${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/Parse/ParseUI.bundle
