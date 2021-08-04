@@ -232,6 +232,7 @@
                         <outlet property="passwordField" destination="Czv-7n-TNw" id="P1E-Pn-If1"/>
                         <outlet property="signUpButton" destination="cYT-Eb-LjP" id="5hs-lu-s3O"/>
                         <outlet property="usernameField" destination="mYh-3V-bGX" id="V0V-9y-NrC"/>
+                        <segue destination="L2B-02-clF" kind="presentation" identifier="guideSegue" modalPresentationStyle="fullScreen" id="Kdv-ed-Eof"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivX-3j-Ey6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -243,7 +244,7 @@
             <objects>
                 <viewController id="L2B-02-clF" customClass="GuideViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v6A-QE-gHb">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7DR-IO-Oop">
@@ -284,6 +285,7 @@
                         <outlet property="doneButton" destination="WOU-2g-YcI" id="hcd-Xd-zom"/>
                         <outlet property="pageControl" destination="PBY-KM-BPp" id="Y6z-GT-pD1"/>
                         <outlet property="scrollView" destination="7DR-IO-Oop" id="58v-nk-Dah"/>
+                        <segue destination="afg-Ck-62e" kind="presentation" identifier="newUserSegue" modalPresentationStyle="fullScreen" id="0fa-Cs-LyP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Twd-sq-1uT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1455,8 +1457,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="0fa-Cs-LyP"/>
         <segue reference="DU9-Co-n6T"/>
         <segue reference="S19-7w-IFA"/>
+        <segue reference="Kdv-ed-Eof"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1.square" catalog="system" width="128" height="114"/>

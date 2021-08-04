@@ -12,6 +12,7 @@
 #import "LMDropdownView.h"
 #import "FilterCell.h"
 #import "ColorUtilities.h"
+#import "GuideViewController.h"
 
 @interface StreamViewController () <UITableViewDelegate, UITableViewDataSource, LMDropdownViewDelegate>
 
@@ -359,6 +360,9 @@
     if ([segue.identifier isEqual:@"detailsSegue"]) {
         DetailsViewController *detailsVC = [segue destinationViewController];
         detailsVC.task = (Task*)sender;
+    } else if ([segue.identifier isEqual:@"guideSegue"]) {
+        GuideViewController *guideVC = [segue destinationViewController];
+        guideVC.state = 0;
     }
 }
 

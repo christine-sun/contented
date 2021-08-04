@@ -8,6 +8,7 @@
 #import "SignUpViewController.h"
 #import "ColorUtilities.h"
 #import <Parse/Parse.h>
+#import "GuideViewController.h"
 
 @interface SignUpViewController ()
 
@@ -79,10 +80,10 @@
         newUser.password = self.passwordField.text;
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                     if (succeeded) {
-                        [self performSegueWithIdentifier:@"loginSegue" sender:nil];
-                        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                        UIViewController *rootVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-                        self.view.window.rootViewController = rootVC;
+                        [self performSegueWithIdentifier:@"guideSegue" sender:nil];
+//                        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//                        UIViewController *rootVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+//                        self.view.window.rootViewController = rootVC;
                     }
         }];
     }
@@ -96,14 +97,16 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqual:@"guideSegue"]) {
+        GuideViewController *guideVC = [segue destinationViewController];
+        guideVC.state = 1;
+    }
 }
-*/
 
 @end

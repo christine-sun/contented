@@ -105,9 +105,14 @@
 }
 
 - (IBAction)onTapDone:(id)sender {
-    // segue to stream VC
-    // if it's being presented modally, then dismiss the modal popover. else, just modally present fully the stream vc
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.state == 0) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    // Came from just signing up -> modally present the stream VC
+    else if (self.state == 1) {
+        // newUserSegue
+        [self performSegueWithIdentifier:@"newUserSegue" sender:nil];
+    }
 }
 
 /*
