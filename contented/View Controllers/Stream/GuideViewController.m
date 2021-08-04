@@ -84,7 +84,6 @@
     NSInteger pageNumber = roundf(self.scrollView.contentOffset.x / (self.scrollView.frame.size.width));
     self.pageControl.currentPage = pageNumber;
     
-    NSLog(@"%ld !! %ld", (long)self.pageControl.currentPage, (long)pageNumber);
     if (pageNumber == self.viewArray.count - 1) {
         [UIView animateWithDuration:0.8 animations:^{
             self.doneButton.alpha = 1;
