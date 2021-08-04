@@ -107,15 +107,24 @@
             
             [self.tableView reloadData];
             
-            if (tasks.count > 1) {
+            UIButton *button;
+            if (tasks.count > 0) {
                 self.subtextLabel.text = @"you're doing gr8 - let's see what's coming up and get this bread 😎";
+                button.alpha = 0;
+                [button setUserInteractionEnabled:NO];
             } else {
                 self.subtextLabel.text = @"It looks like you don't have any active tasks! Let's create one together! 😄";
-                UIButton *button = [[UIButton alloc] init];
-                button.backgroundColor = [UIColor blackColor];
-                button.titleLabel.text = @"Create Task";
+                button = [[UIButton alloc] init];
+                button.backgroundColor = [UIColor systemTealColor];
+                [button setTitle: @"Create Task" forState: UIControlStateNormal];
+                button.titleLabel.textColor = [UIColor whiteColor];
+                button.titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
+                [button setFrame:CGRectMake(self.view.center.x - 75, self.view.center.y, 150, 50)];
+                [button addTarget:self
+                             action:@selector(goToCreate)
+                   forControlEvents:UIControlEventTouchUpInside];
+                [button.layer setCornerRadius:15];
                 
-                [button setFrame:CGRectMake(self.view.center.x, self.view.center.y, 50, 25)];
                 [self.view addSubview:button];
             }
         }
@@ -123,6 +132,10 @@
         [self.activityIndicator stopAnimating];
     }];
     
+}
+
+- (void)goToCreate {
+    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];
 }
 
 - (void)taskCell:(TaskCell *)taskCell didTap:(Task *)task {
