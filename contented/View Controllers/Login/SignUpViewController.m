@@ -7,6 +7,7 @@
 
 #import "SignUpViewController.h"
 #import "ColorUtilities.h"
+#import <Parse/Parse.h>
 
 @interface SignUpViewController ()
 
@@ -62,6 +63,7 @@
 }
 
 - (IBAction)onTapSignUp:(id)sender {
+    // Ensure password and confirm password match
     if (![self.passwordField.text isEqualToString:self.confirmPasswordField.text]) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"passwords don't match"
             message:@"the password and confirmation password must match"
@@ -70,6 +72,19 @@
             style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        PFUser *newUser = [PFUser user];
+        newUser.username = self.usernameField.text;
+        newUser.email = self.emailField.text;
+        newUser.password = self.passwordField.text;
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (succeeded) {
+                        [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+                        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                        UIViewController *rootVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+                        self.view.window.rootViewController = rootVC;
+                    }
+        }];
     }
 }
 
