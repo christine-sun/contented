@@ -143,7 +143,7 @@
     // in future iterations, this could navigate to a profile tab with a progress bar/level of this user showing how many tasks are completed. it might also go to the analytics tab. for now, i'm going to bring it back to the stream
     [self.navigationController popToRootViewControllerAnimated:NO];
     
-    [ConfettiUtilities startEmitterForView:self.view.window.rootViewController.view];
+    [ConfettiUtilities startConfettiForView:self.view.window.rootViewController.view];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"COMPLETED TASK!!🎉"
         message:@"omg congrats on pushing this out for the world to see! you are amazing and keep up the awesome work🥳"
         preferredStyle:(UIAlertControllerStyleAlert)];
@@ -155,7 +155,7 @@
                     task[@"completed"] = @(1);
                     [task saveInBackground];
             }];
-            [ConfettiUtilities stopEmitter];
+            [ConfettiUtilities stopConfetti];
         }];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];

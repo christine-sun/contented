@@ -66,7 +66,6 @@
         self.headerView.alpha = 1;
         self.tableView.alpha = 1;
     }];
-    
 }
 
 - (void)fetchTasks {

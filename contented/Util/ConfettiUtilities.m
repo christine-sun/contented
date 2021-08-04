@@ -13,7 +13,7 @@ CAEmitterLayer *emitterLayer;
 UIView *emitterView;
 UIView* mainView;
 
-+ (void) startEmitterForView: (UIView*)view {
++ (void) startConfettiForView: (UIView*)view {
     mainView = view;
     emitterView = [[UIView alloc] init];
     emitterLayer = [[CAEmitterLayer alloc] init];
@@ -60,7 +60,7 @@ UIView* mainView;
     return cells;
 }
 
-+ (void)stopEmitter {
++ (void)stopConfetti {
     emitterLayer.birthRate = 0;
     [emitterView setUserInteractionEnabled:NO];
 }

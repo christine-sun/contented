@@ -12,8 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface StreamViewController : UIViewController<TaskCellDelegate>
 
-- (void)startConfetti;
-
 @end
 
 NS_ASSUME_NONNULL_END
