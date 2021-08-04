@@ -66,10 +66,10 @@
 - (IBAction)onTapSignUp:(id)sender {
     // Ensure password and confirm password match
     if (![self.passwordField.text isEqualToString:self.confirmPasswordField.text]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"passwords don't match"
-            message:@"the password and confirmation password must match"
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Signing Up"
+            message:@"The password and confirmation password must match"
             preferredStyle:(UIAlertControllerStyleAlert)];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"okay!"
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok"
             style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:nil];
@@ -81,9 +81,14 @@
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                     if (succeeded) {
                         [self performSegueWithIdentifier:@"guideSegue" sender:nil];
-//                        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//                        UIViewController *rootVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-//                        self.view.window.rootViewController = rootVC;
+                    } else {
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Signing Up"
+                            message:error.localizedDescription
+                            preferredStyle:(UIAlertControllerStyleAlert)];
+                        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok"
+                            style:UIAlertActionStyleDefault handler:nil];
+                        [alert addAction:okAction];
+                        [self presentViewController:alert animated:YES completion:nil];
                     }
         }];
     }
