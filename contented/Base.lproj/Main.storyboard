@@ -443,6 +443,7 @@
                         <outlet property="filterTableView" destination="JYK-7M-2ID" id="RFD-8N-W5V"/>
                         <outlet property="headerLabel" destination="9qG-hn-OPc" id="Txh-wy-MYH"/>
                         <outlet property="headerView" destination="6yn-F4-vkE" id="9Ri-bh-RR8"/>
+                        <outlet property="subtextLabel" destination="ejH-dg-cfv" id="dAu-t4-SB6"/>
                         <outlet property="tableView" destination="KuB-cw-2rj" id="7Ql-yN-Zlq"/>
                         <segue destination="9Dy-wz-Tyn" kind="show" identifier="detailsSegue" id="4hj-LO-Wpx"/>
                         <segue destination="L2B-02-clF" kind="presentation" identifier="guideSegue" id="Iq8-ub-PkH"/>

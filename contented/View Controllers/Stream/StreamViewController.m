@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UILabel *headerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtextLabel;
 
 @property (strong, nonatomic) IBOutlet UITableView *filterTableView;
 @property (strong, nonatomic) LMDropdownView *filterView;
@@ -105,6 +106,18 @@
             }
             
             [self.tableView reloadData];
+            
+            if (tasks.count > 1) {
+                self.subtextLabel.text = @"you're doing gr8 - let's see what's coming up and get this bread 😎";
+            } else {
+                self.subtextLabel.text = @"It looks like you don't have any active tasks! Let's create one together! 😄";
+                UIButton *button = [[UIButton alloc] init];
+                button.backgroundColor = [UIColor blackColor];
+                button.titleLabel.text = @"Create Task";
+                
+                [button setFrame:CGRectMake(self.view.center.x, self.view.center.y, 50, 25)];
+                [self.view addSubview:button];
+            }
         }
         [self.refreshControl endRefreshing];
         [self.activityIndicator stopAnimating];
