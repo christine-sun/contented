@@ -206,6 +206,17 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		5F4029FA26BAE1D60042A616 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				5FE7ED00269CDCAE0040154E /* AnalyticsViewController.h */,
+				5FE7ED01269CDCAE0040154E /* AnalyticsViewController.m */,
+				5F3D0F3726A9ADC0007BDDAD /* WebViewController.h */,
+				5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		5FE7ECAB269CAB130040154E = {
 			isa = PBXGroup;
 			children = (
@@ -279,14 +290,11 @@
 			children = (
 				5F3D0E99269F28AE007BDDAD /* Stream */,
 				5FE7ED03269DD6440040154E /* Creation */,
+				5F4029FA26BAE1D60042A616 /* Analytics */,
 				5FE7ECF4269CDC470040154E /* LoginViewController.h */,
 				5FE7ECF5269CDC470040154E /* LoginViewController.m */,
-				5FE7ED00269CDCAE0040154E /* AnalyticsViewController.h */,
-				5FE7ED01269CDCAE0040154E /* AnalyticsViewController.m */,
 				5F3D0F2F26A8B9F5007BDDAD /* SettingsViewController.h */,
 				5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */,
-				5F3D0F3726A9ADC0007BDDAD /* WebViewController.h */,
-				5F3D0F3826A9ADC0007BDDAD /* WebViewController.m */,
 				5F3D0F4726AA0A3C007BDDAD /* IdeasViewController.h */,
 				5F3D0F4826AA0A3C007BDDAD /* IdeasViewController.m */,
 			);

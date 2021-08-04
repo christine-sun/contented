@@ -53,7 +53,11 @@
     ideaView.frame = [self getCoords:idea];
     [ideaView setTrashView:self.trashView];
     [ideaView enableDragging];
+    ideaView.alpha = 0;
     [self.view addSubview:ideaView];
+    [UIView animateWithDuration:0.8 animations:^{
+        ideaView.alpha = 1;
+    }];
 }
 
 - (CGRect)getCoords:(Idea*) idea {
