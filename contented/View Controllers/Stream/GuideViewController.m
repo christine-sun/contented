@@ -86,7 +86,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger pageNumber = roundf(self.scrollView.contentOffset.x / (self.scrollView.frame.size.width));
     self.pageControl.currentPage = pageNumber;
-    NSLog(@"%ld !! %ld", (long)self.pageControl.currentPage, (long)pageNumber);
+//    NSLog(@"%ld !! %ld", (long)self.pageControl.currentPage, (long)pageNumber);
     if (pageNumber == self.viewArray.count - 1) {
         [UIView animateWithDuration:0.8 animations:^{
             self.doneButton.alpha = 1;
@@ -107,6 +107,7 @@
 - (IBAction)onTapDone:(id)sender {
     // segue to stream VC
     // if it's being presented modally, then dismiss the modal popover. else, just modally present fully the stream vc
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
