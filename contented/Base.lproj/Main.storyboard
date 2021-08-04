@@ -218,6 +218,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onTapLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TtT-ti-wbu"/>
+                                    <action selector="onTapSignUp:" destination="wDO-SX-3fN" eventType="touchUpInside" id="X3q-Pp-KWp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -639,7 +640,7 @@
             <objects>
                 <viewController id="CaF-hu-crN" customClass="EditViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B8M-cW-AVX">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="title goes here" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xfr-NO-hLS">

@@ -61,6 +61,18 @@
     [self.confirmPasswordField resignFirstResponder];
 }
 
+- (IBAction)onTapSignUp:(id)sender {
+    if (![self.passwordField.text isEqualToString:self.confirmPasswordField.text]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"passwords don't match"
+            message:@"the password and confirmation password must match"
+            preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"okay!"
+            style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
 - (IBAction)onTapDown:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
