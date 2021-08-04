@@ -67,7 +67,6 @@
         self.tableView.alpha = 1;
     }];
     
-    [ConfettiUtilities startEmitterForView:self.view];
 }
 
 - (void)fetchTasks {

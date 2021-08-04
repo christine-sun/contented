@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) startEmitterForView: (UIView*)view;
 + (NSMutableArray<CAEmitterCell*>*)getEmitterCells;
++ (void)stopEmitter;
 
 @end
 

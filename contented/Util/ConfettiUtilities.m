@@ -9,9 +9,14 @@
 
 @implementation ConfettiUtilities
 
+CAEmitterLayer *emitterLayer;
+UIView *emitterView;
+UIView* mainView;
+
 + (void) startEmitterForView: (UIView*)view {
-    UIView *emitterView = [[UIView alloc] init];
-    CAEmitterLayer *emitterLayer = [[CAEmitterLayer alloc] init];
+    mainView = view;
+    emitterView = [[UIView alloc] init];
+    emitterLayer = [[CAEmitterLayer alloc] init];
     
     emitterLayer.emitterPosition = CGPointMake(view.frame.size.width / 2, -40);
     emitterLayer.emitterSize = CGSizeMake(view.frame.size.width, 1);
@@ -53,6 +58,11 @@
     }
     
     return cells;
+}
+
++ (void)stopEmitter {
+    emitterLayer.birthRate = 0;
+    [emitterView setUserInteractionEnabled:NO];
 }
 
 @end
