@@ -23,16 +23,22 @@
     // Do any additional setup after loading the view.
     self.viewArray = [[NSMutableArray alloc] init];
     
-    [self setUpView:@"Intention Setting" withImage:@"intentionsetting"
+    [self setUpView:@"Intention Setting"
+        withTitleFrame:CGRectMake(120, 200, 500, 100)
+        withImage:@"intentionsetting"
         withImageFrame:CGRectMake(0, 0, 400, 250)
         withDescription:@"Research has shown that being intentional about the upcoming week leads to clearer direction and getting more done. Create your tasks for the upcoming week at an established time each week (we recommend Sunday evening!)"];
     
-    [self setUpView:@"Platform Pushes" withImage:@"pushes"
-        withImageFrame:CGRectMake(70, 40, 230, 180)
+    [self setUpView:@"Platform Pushes"
+        withTitleFrame:CGRectMake(120, 200, 500, 100)
+        withImage:@"pushes"
+        withImageFrame:CGRectMake(85, 40, 230, 180)
         withDescription:@"Most creators make content for one platform. Use contented's pushes to remember to distribute it across as many mediums as applicable for a greater chance the content will pick up on one of the platforms!"];
     
-    [self setUpView:@"Idea Dumps" withImage:@"thinking"
-        withImageFrame:CGRectMake(70, 40, 230, 180)
+    [self setUpView:@"Idea Dumps"
+        withTitleFrame:CGRectMake(140, 200, 500, 100)
+        withImage:@"thinking"
+        withImageFrame:CGRectMake(85, 40, 230, 200)
         withDescription:@"contented is your place to let your spontaneous ideas live. Catch your thoughts in each task's idea dump section or, if you just want the idea to float around for a bit, pin it on the idea board!"];
     
     self.scrollView.showsHorizontalScrollIndicator = NO;
@@ -54,18 +60,15 @@
     [self.pageControl addTarget:self action:@selector(pageControlTapHandler:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)setUpView: (NSString*) title withImage: (NSString*) imageName withImageFrame: (CGRect) imageFrame withDescription: (NSString*) description {
+- (void)setUpView: (NSString*) title withTitleFrame: (CGRect) titleFrame withImage: (NSString*) imageName withImageFrame: (CGRect) imageFrame withDescription: (NSString*) description {
     UIView *view = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     UIImage *image = [UIImage imageNamed:imageName];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageFrame];
     [imageView setImage:image];
     [view addSubview:imageView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 200, 500, 100)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:titleFrame];
     titleLabel.text = title;
-//    [titleLabel setCenter:self.view.center];
-//    titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//    titleLabel.center.x = self.view.center.x
     [titleLabel setFont:[UIFont fontWithName:@"Arial Rounded MT Bold" size:20]];
     [view addSubview:titleLabel];
     
@@ -83,6 +86,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger pageNumber = roundf(self.scrollView.contentOffset.x / (self.scrollView.frame.size.width));
     self.pageControl.currentPage = pageNumber;
+    NSLog(@"%ld !! %ld", (long)self.pageControl.currentPage, (long)pageNumber);
     if (pageNumber == self.viewArray.count - 1) {
         [UIView animateWithDuration:0.8 animations:^{
             self.doneButton.alpha = 1;
