@@ -100,19 +100,19 @@
                         <outlet property="titleView" destination="Uj5-5L-gpt" id="4JX-J5-9cX"/>
                         <outlet property="usernameField" destination="G2Y-9l-M5D" id="Wyv-IM-q2I"/>
                         <segue destination="2Hj-rx-o2B" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="DU9-Co-n6T"/>
-                        <segue destination="wDO-SX-3fN" kind="show" identifier="signUpSegue" id="gIP-Wt-1Bq"/>
+                        <segue destination="wDO-SX-3fN" kind="presentation" identifier="signUpSegue" modalPresentationStyle="fullScreen" id="gIP-Wt-1Bq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92.307692307692307" y="63.270142180094787"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="jvJ-HG-5tN">
             <objects>
-                <viewController id="wDO-SX-3fN" sceneMemberID="viewController">
+                <viewController id="wDO-SX-3fN" customClass="SignUpViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a1n-Zu-eJd">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="waves2" translatesAutoresizingMaskIntoConstraints="NO" id="O8V-Al-IAo">
@@ -126,13 +126,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYi-M9-vla">
-                                <rect key="frame" x="16" y="70" width="32" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="arrow.left" catalog="system"/>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYh-3V-bGX">
                                 <rect key="frame" x="51" y="303" width="289" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -206,6 +199,7 @@
                                     <color key="titleColor" systemColor="systemTealColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="onTapSignIn:" destination="wDO-SX-3fN" eventType="touchUpInside" id="fH1-bC-CB2"/>
                                     <action selector="onTapSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s3Z-qb-dZ9"/>
                                 </connections>
                             </button>
@@ -216,6 +210,16 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYi-M9-vla">
+                                <rect key="frame" x="178" y="41" width="32" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="arrow.down" catalog="system"/>
+                                <connections>
+                                    <action selector="onTapDown:" destination="wDO-SX-3fN" eventType="touchUpInside" id="qgc-Gf-VJS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NeU-eW-dkB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -628,7 +632,7 @@
             <objects>
                 <viewController id="CaF-hu-crN" customClass="EditViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B8M-cW-AVX">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="title goes here" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xfr-NO-hLS">
@@ -1452,7 +1456,7 @@
         <image name="3.square" catalog="system" width="128" height="114"/>
         <image name="4.square" catalog="system" width="128" height="114"/>
         <image name="appicon" width="1000" height="1000"/>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="arrow.down" catalog="system" width="120" height="128"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>

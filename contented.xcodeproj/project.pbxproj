@@ -30,6 +30,7 @@
 		5F3D0F5226AA1B30007BDDAD /* Idea.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0F5126AA1B30007BDDAD /* Idea.m */; };
 		5F4029F626B989130042A616 /* ColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4029F526B989130042A616 /* ColorUtilities.m */; };
 		5F4029F926B9B6AB0042A616 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4029F826B9B6AB0042A616 /* GuideViewController.m */; };
+		5F4029FE26BB01860042A616 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4029FD26BB01860042A616 /* SignUpViewController.m */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
@@ -108,6 +109,8 @@
 		5F4029F526B989130042A616 /* ColorUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorUtilities.m; sourceTree = "<group>"; };
 		5F4029F726B9B6AB0042A616 /* GuideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		5F4029F826B9B6AB0042A616 /* GuideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		5F4029FC26BB01860042A616 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		5F4029FD26BB01860042A616 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		5FE7ECB4269CAB130040154E /* contented.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contented.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECB7269CAB130040154E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -217,6 +220,35 @@
 			path = Analytics;
 			sourceTree = "<group>";
 		};
+		5F4029FB26BB01760042A616 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5FE7ECF4269CDC470040154E /* LoginViewController.h */,
+				5FE7ECF5269CDC470040154E /* LoginViewController.m */,
+				5F4029FC26BB01860042A616 /* SignUpViewController.h */,
+				5F4029FD26BB01860042A616 /* SignUpViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5F4029FF26BB01CF0042A616 /* Ideas */ = {
+			isa = PBXGroup;
+			children = (
+				5F3D0F4726AA0A3C007BDDAD /* IdeasViewController.h */,
+				5F3D0F4826AA0A3C007BDDAD /* IdeasViewController.m */,
+			);
+			path = Ideas;
+			sourceTree = "<group>";
+		};
+		5F402A0026BB01E70042A616 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5F3D0F2F26A8B9F5007BDDAD /* SettingsViewController.h */,
+				5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		5FE7ECAB269CAB130040154E = {
 			isa = PBXGroup;
 			children = (
@@ -288,15 +320,12 @@
 		5FE7ECEC269CC7370040154E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5F4029FB26BB01760042A616 /* Login */,
 				5F3D0E99269F28AE007BDDAD /* Stream */,
+				5F4029FF26BB01CF0042A616 /* Ideas */,
 				5FE7ED03269DD6440040154E /* Creation */,
 				5F4029FA26BAE1D60042A616 /* Analytics */,
-				5FE7ECF4269CDC470040154E /* LoginViewController.h */,
-				5FE7ECF5269CDC470040154E /* LoginViewController.m */,
-				5F3D0F2F26A8B9F5007BDDAD /* SettingsViewController.h */,
-				5F3D0F3026A8B9F5007BDDAD /* SettingsViewController.m */,
-				5F3D0F4726AA0A3C007BDDAD /* IdeasViewController.h */,
-				5F3D0F4826AA0A3C007BDDAD /* IdeasViewController.m */,
+				5F402A0026BB01E70042A616 /* Settings */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -640,6 +669,7 @@
 				5FE7ECF9269CDC6B0040154E /* StreamViewController.m in Sources */,
 				5F3D0EA526A0AD21007BDDAD /* EditViewController.m in Sources */,
 				5F3D0EB126A0B865007BDDAD /* PlatformButton.m in Sources */,
+				5F4029FE26BB01860042A616 /* SignUpViewController.m in Sources */,
 				5F3D0F5226AA1B30007BDDAD /* Idea.m in Sources */,
 				5F4029F626B989130042A616 /* ColorUtilities.m in Sources */,
 				5F3D0F3C26A9BB4E007BDDAD /* Board.m in Sources */,

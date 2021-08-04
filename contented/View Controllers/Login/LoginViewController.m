@@ -58,14 +58,15 @@
 }
 
 - (IBAction)onTapSignUp:(id)sender {
-    PFUser *newUser = [PFUser user];
-    newUser.username = self.usernameField.text;
-    newUser.password = self.passwordField.text;
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError* error) {
-        if (succeeded) {
-            [self configureRoot];
-        }
-    }];
+//    PFUser *newUser = [PFUser user];
+//    newUser.username = self.usernameField.text;
+//    newUser.password = self.passwordField.text;
+//    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError* error) {
+//        if (succeeded) {
+//            [self configureRoot];
+//        }
+//    }];
+    [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
 }
 
 - (IBAction)onTapLogin:(id)sender {
