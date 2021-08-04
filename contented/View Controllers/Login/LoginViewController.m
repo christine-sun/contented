@@ -28,18 +28,13 @@
     [self.loginButton setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
     [self.loginButton.layer setCornerRadius:20];
     self.loginButton.backgroundColor = [ColorUtilities getColorFor:@"light blue"];
+    [self styleShadow:self.loginButton];
     
     [self styleShadow:self.usernameField];
-    CGRect frameRect = self.usernameField.frame;
-    frameRect.size.height = 50;
-    self.usernameField.frame = frameRect;
+    [self increaseHeight:self.usernameField];
     
     [self styleShadow:self.passwordField];
-    frameRect = self.passwordField.frame;
-    frameRect.size.height = 50;
-    self.passwordField.frame = frameRect;
-    
-    [self styleShadow:self.loginButton];
+    [self increaseHeight:self.passwordField];
     
     // Dismiss keyboard outside of text fields
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
@@ -50,6 +45,12 @@
     [ColorUtilities addShadow:view];
     view.layer.shadowOpacity = 0.1;
     view.layer.shadowRadius = 4;
+}
+
+- (void)increaseHeight: (UITextField*)field {
+    CGRect frameRect = field.frame;
+    frameRect.size.height = 50;
+    field.frame = frameRect;
 }
 
 -(void)dismissKeyboard {
