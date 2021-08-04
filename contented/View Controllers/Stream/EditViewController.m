@@ -158,6 +158,13 @@
                     
                 } else {
                     // present an alert that says - there was a problem updating this task
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Updating Task"
+                        message:error.localizedDescription
+                        preferredStyle:(UIAlertControllerStyleAlert)];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok"
+                        style:UIAlertActionStyleDefault handler:nil];
+                    [alert addAction:okAction];
+                    [self presentViewController:alert animated:YES completion:nil];
                 }
             }];
     }];
