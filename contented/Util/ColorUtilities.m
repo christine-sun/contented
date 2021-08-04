@@ -27,7 +27,13 @@
                                alpha:1.0f];
     } else if ([type isEqualToString:@"blue"]) {
         return [UIColor systemTealColor];
-    } else {
+    } else if ([type isEqualToString:@"light blue"]){
+        return [UIColor colorWithRed:145.0f/255.0f
+                               green:217.0f/255.0f
+                               blue:255.0f/255.0f
+                               alpha:1.0f];
+    }
+    else {
         return [UIColor colorWithRed:187.0f/255.0f
                                green:153.0f/255.0f
                                blue:255.0f/255.0f

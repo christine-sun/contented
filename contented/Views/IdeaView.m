@@ -29,10 +29,19 @@ UIImageView *trashView;
     if (self) {
         UIImageView *cloudView = [[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"cloud.fill"]];
         [cloudView setTintColor:[UIColor systemTealColor]];
+//        [cloudView setTintColor:[self getRandomColor]];
         cloudView.frame = CGRectMake(0, 0, 150, 100);
         [self addSubview:cloudView];
     }
     return self;
+}
+
+- (UIColor*) getRandomColor {
+    CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
+    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+//    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
+    UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:1 alpha:1];
+    return color;
 }
 
 - (void)setName:(NSString*)title {
