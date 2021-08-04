@@ -21,42 +21,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIView *view0 = [self setUpView:@"Intention Setting" withImage:@"intentionsetting" withDescription:@"Research has shown that being intentional about the upcoming week leads to clearer direction and getting more done. Create your tasks for the upcoming week at an established time each week (we recommend Sunday evening!)"];
-//    UIView *view0 = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//    UIImage *intentionSetting = [UIImage imageNamed:@"intentionsetting"];
-//    UIImageView *imageView0 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 400, 250)];
-//    [imageView0 setImage:intentionSetting];
-//    [view0 addSubview:imageView0];
-//
-//    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(110, 200, 500, 100)];
-//    title.text = @"Intention Setting";
-//    [title setFont:[UIFont fontWithName:@"Arial Rounded MT Bold" size:20]];
-//    [view0 addSubview:title];
-//
-//    UILabel *description = [[UILabel alloc] initWithFrame:CGRectMake(25, 240, view0.frame.size.width - 50, 200)];
-//    description.numberOfLines = 0;
-//    description.textAlignment = NSTextAlignmentCenter;
-//    description.text = @"Research has shown that being intentional about the upcoming week leads to clearer direction and getting more done. Create your tasks for the upcoming week at an established time each week (we recommend Sunday evening!)";
-//    [description setFont:[UIFont fontWithName:@"Avenir" size:18]];
-//    [view0 addSubview:description];
-    
-    
-    //
-    UIView *view1 = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    view1.backgroundColor = [UIColor systemRedColor];
-    
-    UIView *view2 = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    view2.backgroundColor = [UIColor systemTealColor];
-    
     self.viewArray = [[NSMutableArray alloc] init];
-    [self.viewArray addObject:view0];
-    [self.viewArray addObject:view1];
-    [self.viewArray addObject:view2];
+    
+    [self setUpView:@"Intention Setting" withImage:@"intentionsetting"
+        withImageFrame:CGRectMake(0, 0, 400, 250)
+        withDescription:@"Research has shown that being intentional about the upcoming week leads to clearer direction and getting more done. Create your tasks for the upcoming week at an established time each week (we recommend Sunday evening!)"];
+    
+    [self setUpView:@"Platform Pushes" withImage:@"pushes"
+        withImageFrame:CGRectMake(70, 40, 230, 180)
+        withDescription:@"Most creators make content for one platform. Use contented's pushes to remember to distribute it across as many mediums as applicable for a greater chance the content will pick up on one of the platforms!"];
+    
+    [self setUpView:@"Idea Dumps" withImage:@"thinking"
+        withImageFrame:CGRectMake(70, 40, 230, 180)
+        withDescription:@"contented is your place to let your spontaneous ideas live. Catch your thoughts in each task's idea dump section or, if you just want the idea to float around for a bit, pin it on the idea board!"];
     
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     [self.scrollView isPagingEnabled];
-    self.scrollView.contentSize = CGSizeMake(view0.frame.size.width * self.viewArray.count, view0.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * self.viewArray.count, self.view.frame.size.height);
     self.doneButton.alpha = 0;
     
     for (int i = 0; i < self.viewArray.count; i++) {
@@ -72,15 +54,18 @@
     [self.pageControl addTarget:self action:@selector(pageControlTapHandler:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (UIView*)setUpView: (NSString*) title withImage: (NSString*) imageName withDescription: (NSString*) description {
+- (void)setUpView: (NSString*) title withImage: (NSString*) imageName withImageFrame: (CGRect) imageFrame withDescription: (NSString*) description {
     UIView *view = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     UIImage *image = [UIImage imageNamed:imageName];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 400, 250)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageFrame];
     [imageView setImage:image];
     [view addSubview:imageView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 200, 500, 100)];
     titleLabel.text = title;
+//    [titleLabel setCenter:self.view.center];
+//    titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//    titleLabel.center.x = self.view.center.x
     [titleLabel setFont:[UIFont fontWithName:@"Arial Rounded MT Bold" size:20]];
     [view addSubview:titleLabel];
     
@@ -91,7 +76,7 @@
     [subtext setFont:[UIFont fontWithName:@"Avenir" size:18]];
     [view addSubview:subtext];
     
-    return view;
+    [self.viewArray addObject:view];
     
 }
 
