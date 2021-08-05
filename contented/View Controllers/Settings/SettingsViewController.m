@@ -50,11 +50,27 @@
 }
 
 - (IBAction)onTapLogOut:(id)sender {
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        self.view.window.rootViewController = loginVC;
-    }];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to log out?"
+        message:nil
+        preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"yes"
+        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                UIViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+                self.view.window.rootViewController = loginVC;
+            }];
+        }];
+    [alert addAction:yesAction];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"no"
+        style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:noAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
 }
 
 - (IBAction)onTapUpdate:(id)sender {
