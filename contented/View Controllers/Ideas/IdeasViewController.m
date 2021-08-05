@@ -8,6 +8,7 @@
 #import "IdeasViewController.h"
 #import "Idea.h"
 #import "UIView+draggable.h"
+#import "DesignUtilities.h"
 
 @interface IdeasViewController ()
 
@@ -53,11 +54,8 @@
     ideaView.frame = [self getCoords:idea];
     [ideaView setTrashView:self.trashView];
     [ideaView enableDragging];
-    ideaView.alpha = 0;
     [self.view addSubview:ideaView];
-    [UIView animateWithDuration:0.8 animations:^{
-        ideaView.alpha = 1;
-    }];
+    [DesignUtilities fadeIn:ideaView withDuration:0.8];
 }
 
 - (CGRect)getCoords:(Idea*) idea {

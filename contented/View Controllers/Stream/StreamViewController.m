@@ -215,7 +215,6 @@
     
 }
 
-//This function is where all the magic happens
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == self.tableView) {
         // Define the initial state (Before the animation)

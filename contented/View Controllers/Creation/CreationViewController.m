@@ -15,8 +15,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *ideaDumpField;
 @property (weak, nonatomic) IBOutlet UILabel *releaseOnLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *calendarImageView;
 @property (strong, nonatomic) UIImage *taskImage;
 @property (weak, nonatomic) IBOutlet UIImageView *taskImageView;
+@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *photoAlbumButton;
 @property (strong, nonatomic) UIImagePickerController *imagePickerVC;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
@@ -45,6 +48,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
     
+    // Set up image picker
     self.imagePickerVC = [UIImagePickerController new];
     self.imagePickerVC.delegate = self;
     self.imagePickerVC.allowsEditing = YES;
@@ -63,6 +67,21 @@
     [self styleButton:self.postButton:@"post"];
     [self styleButton:self.shortButton:@"short"];
     [self styleButton:self.longButton:@"long"];
+    
+    // Fade in views in order of appearance
+    NSTimeInterval baseTime = 0.2;
+    [DesignUtilities fadeIn:self.titleField withDuration:baseTime];
+    [DesignUtilities fadeIn:self.releaseOnLabel withDuration:baseTime * 2];
+    [DesignUtilities fadeIn:self.datePicker withDuration:baseTime * 2];
+    [DesignUtilities fadeIn:self.calendarImageView withDuration:baseTime * 2];
+    [DesignUtilities fadeIn:self.ideaDumpField withDuration:baseTime * 3];
+    [DesignUtilities fadeIn:self.taskImageView
+        withDuration:baseTime * 4];
+    [DesignUtilities fadeIn:self.cameraButton withDuration:baseTime * 4];
+    [DesignUtilities fadeIn:self.photoAlbumButton withDuration:baseTime * 4];
+    [DesignUtilities fadeIn:self.postButton withDuration:baseTime * 5];
+    [DesignUtilities fadeIn:self.shortButton withDuration:baseTime * 5];
+    [DesignUtilities fadeIn:self.longButton withDuration:baseTime * 5];
 }
 
 - (void)styleButton:(UIButton*)button:(NSString*)type {

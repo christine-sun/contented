@@ -1045,9 +1045,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="k7W-B5-e0g"/>
                     <connections>
+                        <outlet property="calendarImageView" destination="ehD-Vh-iPf" id="a4I-nL-iLq"/>
+                        <outlet property="cameraButton" destination="BiH-KV-rLT" id="FVq-lx-E28"/>
                         <outlet property="datePicker" destination="kmj-2c-GnJ" id="Wnx-zP-KjN"/>
                         <outlet property="ideaDumpField" destination="0XW-rM-D3n" id="Bka-2G-FrJ"/>
                         <outlet property="longButton" destination="iHh-xK-xQr" id="oNg-Sc-ZN2"/>
+                        <outlet property="photoAlbumButton" destination="Z21-sP-sTe" id="dra-kl-yLg"/>
                         <outlet property="postButton" destination="XdH-5o-Yuj" id="K4I-yO-dim"/>
                         <outlet property="releaseOnLabel" destination="CjD-KA-vht" id="NsB-n0-K51"/>
                         <outlet property="shortButton" destination="uh8-Ga-0gl" id="syY-kK-6og"/>
