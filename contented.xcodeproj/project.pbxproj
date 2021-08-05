@@ -32,6 +32,7 @@
 		5F4029F926B9B6AB0042A616 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4029F826B9B6AB0042A616 /* GuideViewController.m */; };
 		5F4029FE26BB01860042A616 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4029FD26BB01860042A616 /* SignUpViewController.m */; };
 		5F402A0326BB3EE70042A616 /* ConfettiUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F402A0226BB3EE70042A616 /* ConfettiUtilities.m */; };
+		5F402A0526BC4A7D0042A616 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F402A0426BC4A7D0042A616 /* Keys.plist */; };
 		5FE7ECB9269CAB130040154E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECB8269CAB130040154E /* AppDelegate.m */; };
 		5FE7ECBC269CAB130040154E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7ECBB269CAB130040154E /* SceneDelegate.m */; };
 		5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE7ECC0269CAB130040154E /* Main.storyboard */; };
@@ -114,6 +115,7 @@
 		5F4029FD26BB01860042A616 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		5F402A0126BB3EE70042A616 /* ConfettiUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfettiUtilities.h; sourceTree = "<group>"; };
 		5F402A0226BB3EE70042A616 /* ConfettiUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfettiUtilities.m; sourceTree = "<group>"; };
+		5F402A0426BC4A7D0042A616 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		5FE7ECB4269CAB130040154E /* contented.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contented.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE7ECB7269CAB130040154E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE7ECB8269CAB130040154E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				5FE7ECC9269CAB140040154E /* main.m */,
 				5F3D0E9A269F4A2B007BDDAD /* TabBarController.h */,
 				5F3D0E9B269F4A2B007BDDAD /* TabBarController.m */,
+				5F402A0426BC4A7D0042A616 /* Keys.plist */,
 			);
 			path = contented;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				5F3D0EB926A5CBAB007BDDAD /* GoogleService-Info.plist in Resources */,
 				5FE7ECC4269CAB140040154E /* Assets.xcassets in Resources */,
 				5FE7ECC2269CAB130040154E /* Main.storyboard in Resources */,
+				5F402A0526BC4A7D0042A616 /* Keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

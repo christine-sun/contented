@@ -16,8 +16,7 @@
 @implementation APIManager
 
 NSMutableArray *vids;
-NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
-//NSString *API_KEY = @"AIzaSyBCt43tUqtpzLpgnAQ6u2Q9ft35_hcwx24"; //backup
+NSString* API_KEY;
 LineChartView *lineChartView;
 double ySum;
 UILabel *ytLabel;
@@ -28,6 +27,13 @@ int totalVidsCount;
 UIDatePicker *startDatePicker;
 UIDatePicker *endDatePicker;
 AnalyticsViewController *analyticsVC;
+
++ (void)initialize {
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
+         
+    API_KEY = [dict objectForKey: @"youtube_key"];
+}
 
 + (void)setYouTubeReportLabel:(UILabel*)ytReportLabel {
     ytLabel = ytReportLabel;
