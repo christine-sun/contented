@@ -16,8 +16,8 @@
 @implementation APIManager
 
 NSMutableArray *vids;
-//NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
-NSString *API_KEY = @"AIzaSyBCt43tUqtpzLpgnAQ6u2Q9ft35_hcwx24";
+NSString* API_KEY = @"AIzaSyDqMCcWcGl3kQdFPI-CskwwFcm0N4CsU-8"; // should hide
+//NSString *API_KEY = @"AIzaSyBCt43tUqtpzLpgnAQ6u2Q9ft35_hcwx24"; //backup
 LineChartView *lineChartView;
 double ySum;
 UILabel *ytLabel;
@@ -62,10 +62,16 @@ AnalyticsViewController *analyticsVC;
     endDatePicker = end;
 }
 
++ (BOOL)isValidYouTubeID:(NSString*)userID {
+    // i AM HERE
+    return YES;
+}
+
 + (NSDictionary*) fetchRecentViews: (NSString*) userID withVideoCount: (NSString*) vidCount {
         
     vids = [[NSMutableArray alloc] init];
     // Get the last 20 videos from this user
+    
     NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/search?key=%@&channelId=%@&part=snippet,id&order=date&maxResults=%@", API_KEY, userID, vidCount];
     
     __block NSDictionary *initialDictionary = [[NSDictionary alloc] init];
@@ -74,6 +80,7 @@ AnalyticsViewController *analyticsVC;
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
+            // the id is invalid
             NSLog(@"%@", [error localizedDescription]);
         }
         else {
@@ -117,14 +124,6 @@ AnalyticsViewController *analyticsVC;
                     NSDictionary *videoDict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     [self setVideoViews:video:videoDict];
                     [analyticsVC setChart:vids];
-                    
-//                    Video *firstVideo = vids[0];
-//                    startDatePicker.date = firstVideo.publishedAt;
-//                    startDatePicker.minimumDate = startDatePicker.date;
-//
-//                    Video *lastVideo = vids[vids.count - 1];
-//                    endDatePicker.date = lastVideo.publishedAt;
-//                    endDatePicker.maximumDate = endDatePicker.date;
                 }
                 // Save array of videos in the analytics VC
                 if (vids.count == totalVidsCount && [self allViewsHaveBeenSet]) {

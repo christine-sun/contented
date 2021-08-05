@@ -69,6 +69,14 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (user) {
             [self configureRoot];
+        } else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Logging In"
+                message:error.localizedDescription
+                preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok"
+                style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:nil];
         }
     }];
 }

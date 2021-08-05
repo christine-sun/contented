@@ -32,8 +32,6 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *queryPickerView;
 @property (strong, nonatomic) NSArray *queryPickerData;
 
-//@property (strong, nonatomic) BubbleTransition *transition;
-
 @end
 
 @implementation AnalyticsViewController
@@ -72,9 +70,7 @@
     self.lineChartView.leftAxis.enabled = NO;
     self.lineChartView.rightAxis.enabled = NO;
     [APIManager setChart:self.lineChartView];
-    
-//    self.transition = [[BubbleTransition alloc] init];
-    
+        
 }
 
 - (void) setOriginalVideos:(NSMutableArray *)originalVids {
@@ -82,12 +78,6 @@
         self.originalVids = originalVids;
     }
 }
-
-//- (void) setOriginalVals:(NSMutableArray *)originalValues {
-//    if (self.originalValues == nil) {
-//        self.originalValues = originalValues;
-//    }
-//}
 
 #pragma mark - Line Chart View
 
@@ -214,7 +204,6 @@
         if ([self.queryPickerData[row] isEqualToString:@"video count"]) {
             [self styleQueryByVideoCount];
             [self setChart:self.originalVids];
-//            [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[row]];
             // present the last 20 videos
         }
         // Show start and end date pickers and hide video count picker
@@ -239,7 +228,6 @@
     }];
     
     for (int i = totalVids - videoCount; i < totalVids; i++) {
-//        Video *vid = self.originalVids[i];
         [subset addObject:self.originalVids[i]];
     }
     
@@ -320,24 +308,7 @@
     if ([segue.identifier isEqual:@"webSegue"]) {
         WebViewController *webVC = [segue destinationViewController];
         webVC.video = (Video*) sender;
-//        webVC.transitioningDelegate = self;
-//        webVC.modalPresentationStyle = UIModalPresentationCustom;
     }
 }
-//
-//- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-//    self.transition.transitionMode = BubbleTransitionModePresent;
-//    self.transition.startingPoint = self.view.center;
-//    self.transition.bubbleColor = [UIColor redColor];
-//    return self.transition;
-//}
-//
-//- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-//    self.transition.transitionMode = BubbleTransitionModeDismiss;
-//    self.transition.startingPoint = self.view.center;
-//    self.transition.bubbleColor = [UIColor redColor];
-//    return self.transition;
-//}
-
 
 @end
