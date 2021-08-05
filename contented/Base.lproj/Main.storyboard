@@ -1262,11 +1262,19 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cN-Pd-liJ">
-                                <rect key="frame" x="168" y="407" width="55" height="30"/>
+                                <rect key="frame" x="168" y="435" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
                                     <action selector="onTapLogOut:" destination="eqz-gW-XyJ" eventType="touchUpInside" id="AvG-U7-Ewb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD8-O7-qwT">
+                                <rect key="frame" x="16" y="374" width="210" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="How can I find my YouTube ID?"/>
+                                <connections>
+                                    <action selector="onTapFindIDButton:" destination="eqz-gW-XyJ" eventType="touchUpInside" id="Sqy-Qd-vSl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1285,6 +1293,7 @@
                         <outlet property="statusMessageLabel" destination="Uzr-le-VgE" id="gJB-gT-PzM"/>
                         <outlet property="usernameLabel" destination="3I4-h6-1C6" id="n6R-j1-QAM"/>
                         <outlet property="youtubeIDField" destination="kYu-oe-daS" id="b3t-gc-jKa"/>
+                        <segue destination="wrA-48-jgm" kind="presentation" identifier="webSegue" id="cXl-a6-rCO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKN-uw-ASK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1460,6 +1469,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="0fa-Cs-LyP"/>
         <segue reference="DU9-Co-n6T"/>
+        <segue reference="cXl-a6-rCO"/>
         <segue reference="4hj-LO-Wpx"/>
         <segue reference="Iq8-ub-PkH"/>
     </inferredMetricsTieBreakers>

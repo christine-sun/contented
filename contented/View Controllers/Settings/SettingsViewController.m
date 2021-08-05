@@ -6,10 +6,9 @@
 //
 
 #import "SettingsViewController.h"
-//#import <FBSDKCoreKit/FBSDKCoreKit.h>
-//#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
 #import "APIManager.h"
+#import "WebViewController.h"
 
 @interface SettingsViewController ()
 
@@ -79,18 +78,24 @@
     return (int)completed.count;
 }
 
+- (IBAction)onTapFindIDButton:(id)sender {
+    [self performSegueWithIdentifier:@"webSegue" sender:nil];
+}
+
 - (void)dismissKeyboard {
     [self.youtubeIDField resignFirstResponder];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqual:@"webSegue"]) {
+        WebViewController *webVC = [segue destinationViewController];
+        webVC.video = nil;
+    }
 }
-*/
 
 @end

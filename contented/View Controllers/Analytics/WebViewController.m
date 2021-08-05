@@ -16,8 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *videoURL;
     // Do any additional setup after loading the view.
-    NSString *videoURL = [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", self.video.vidID];
+    if (self.video == nil) {
+        videoURL = @"https://support.google.com/youtube/answer/3250431?hl=en";
+    } else {
+        videoURL = [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", self.video.vidID];
+    }
     NSURL *url = [NSURL URLWithString:videoURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     [self.webView loadRequest:request];
