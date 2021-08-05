@@ -8,9 +8,6 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "Task.h"
-//#import <FBSDKCoreKit/FBSDKCoreKit.h>
-
-//@import Firebase;
 
 @interface AppDelegate ()
 
@@ -50,9 +47,6 @@
             openURL:(NSURL *)url
             options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
 {
-//  [[FBSDKApplicationDelegate sharedInstance] application:application
-//                                                 openURL:url
-//                                                 options:options];
   return YES;
 }
 

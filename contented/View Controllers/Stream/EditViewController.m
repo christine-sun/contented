@@ -131,43 +131,55 @@
 }
 
 - (IBAction)onTapUpdate:(id)sender {
-    // Update this task's dictionary to reflect updated platform statuses
-    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
-    [query getObjectInBackgroundWithId:self.task.objectId
-        block:^(PFObject *task, NSError *error) {
-            task[@"title"] = self.titleField.text;
-            task[@"ideaDump"] = self.ideaDumpField.text;
-            if (self.taskImageView.file != nil)
-                task[@"image"] = self.taskImageView.file;
-            task[@"dueDate"] = self.datePicker.date;
-            task[@"platforms"] = self.updatedPlatforms;
-            if (self.updatedImage != nil)
-                task[@"image"] = [Task getPFFileFromImage:self.updatedImage];
-            [task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                if (succeeded) {
-                    // Re-fetch this task
-                    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
-                    [query whereKey:@"objectId" equalTo:self.task.objectId];
-                    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-                        self.task = objects[0];
+    
+    if (self.updatedPlatforms.count == 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"did you mean to delete this task?"
+            message:@"can't have 0 platforms for a task"
+            preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"I see"
+            style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else {
+        // Update this task's dictionary to reflect updated platform statuses
+        PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+        [query getObjectInBackgroundWithId:self.task.objectId
+            block:^(PFObject *task, NSError *error) {
+                task[@"title"] = self.titleField.text;
+                task[@"ideaDump"] = self.ideaDumpField.text;
+                if (self.taskImageView.file != nil)
+                    task[@"image"] = self.taskImageView.file;
+                task[@"dueDate"] = self.datePicker.date;
+                task[@"platforms"] = self.updatedPlatforms;
+                if (self.updatedImage != nil)
+                    task[@"image"] = [Task getPFFileFromImage:self.updatedImage];
+                [task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (succeeded) {
+                        // Re-fetch this task
+                        PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+                        [query whereKey:@"objectId" equalTo:self.task.objectId];
+                        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                            self.task = objects[0];
+                            
+                            [self.delegate didUpdate:self.task];
                         
-                        [self.delegate didUpdate:self.task];
-                    
-                        [self dismissViewControllerAnimated:YES completion:nil];
-                    }];
-                    
-                } else {
-                    // present an alert that says - there was a problem updating this task
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Updating Task"
-                        message:error.localizedDescription
-                        preferredStyle:(UIAlertControllerStyleAlert)];
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok"
-                        style:UIAlertActionStyleDefault handler:nil];
-                    [alert addAction:okAction];
-                    [self presentViewController:alert animated:YES completion:nil];
-                }
-            }];
-    }];
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                        }];
+                        
+                    } else {
+                        // present an alert that says - there was a problem updating this task
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Updating Task"
+                            message:error.localizedDescription
+                            preferredStyle:(UIAlertControllerStyleAlert)];
+                        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"ok"
+                            style:UIAlertActionStyleDefault handler:nil];
+                        [alert addAction:okAction];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    }
+                }];
+        }];
+    }
 }
 
 - (IBAction)onTapDelete:(id)sender {
