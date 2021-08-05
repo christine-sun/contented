@@ -136,6 +136,7 @@
     LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithEntries:values label:@"Views"];
     
     set1.drawCirclesEnabled = YES;
+    [set1 setValueFont:[UIFont fontWithName:@"Avenir" size:8]];
     [set1 setColor:UIColor.blackColor];
     [set1 setCircleColor:UIColor.redColor];
     set1.lineWidth = 1.0;
