@@ -50,6 +50,7 @@ UIImageView *trashView;
     label.adjustsFontSizeToFitWidth = YES;
     label.text = title;
     label.textColor = [UIColor whiteColor];
+    [label setFont:[UIFont fontWithName:@"Avenir" size:17]];
     [self addSubview:label];
 }
 

@@ -19,7 +19,7 @@
 
 -(void) setup: (NSString*) title: (int) state: (UIColor*) color {
     [self setTitle:title forState:UIControlStateNormal];
-    self.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    [self.titleLabel setFont:[UIFont fontWithName:@"Arial Rounded MT Bold" size:20]];
     [self.heightAnchor constraintEqualToConstant:60].active = YES;
     [self.layer setCornerRadius:10];
     self.layer.borderWidth = 2.0f;

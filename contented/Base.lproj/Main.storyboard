@@ -798,7 +798,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7R6-g5-9t1">
                                         <rect key="frame" x="36" y="96" width="319" height="52"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="36"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -812,20 +812,20 @@
                                     <constraint firstItem="7R6-g5-9t1" firstAttribute="top" secondItem="1gk-QE-XdS" secondAttribute="top" constant="96" id="hQF-e5-hIt"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pushes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBR-aR-iVm">
-                                <rect key="frame" x="35" y="287" width="320" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="pushes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBR-aR-iVm">
+                                <rect key="frame" x="35" y="284" width="320" height="41.666666666666686"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the description but its truncated to only fit two lines" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cp-97-QMN">
-                                <rect key="frame" x="113" y="188" width="255" height="40.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="113" y="188" width="255" height="46.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hPG-xZ-nri">
-                                <rect key="frame" x="35" y="316" width="320" height="232"/>
+                                <rect key="frame" x="35" y="339" width="320" height="232"/>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appicon" translatesAutoresizingMaskIntoConstraints="NO" id="Zlq-un-yQq">
                                 <rect key="frame" x="30" y="188" width="75" height="76"/>
@@ -838,16 +838,31 @@
                                 <rect key="frame" x="244" y="96" width="130" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VwX-LV-4zv">
+                                <rect key="frame" x="111" y="255" width="30" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <color key="tintColor" systemColor="systemTealColor"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="onTapEdit:" destination="7mu-3U-HxL" eventType="touchUpInside" id="4D5-5E-7Er"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="release on date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9Q-0y-FOZ">
+                                <rect key="frame" x="113" y="236" width="241" height="18"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfZ-sS-OeK">
-                                <rect key="frame" x="218" y="567" width="136" height="52"/>
+                                <rect key="frame" x="219" y="589" width="136" height="52"/>
                                 <color key="backgroundColor" red="0.52976136880000002" green="0.92087947960000005" blue="0.76178910879999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="05E-IQ-cFy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
                                 <state key="normal" title="Let's go!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -855,37 +870,24 @@
                                     <action selector="onPost:" destination="7mu-3U-HxL" eventType="touchUpInside" id="vmc-1a-24z"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VwX-LV-4zv">
-                                <rect key="frame" x="111" y="249" width="30" height="30"/>
-                                <state key="normal" title="Edit"/>
-                                <connections>
-                                    <action selector="onTapEdit:" destination="7mu-3U-HxL" eventType="touchUpInside" id="4D5-5E-7Er"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="release on date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9Q-0y-FOZ">
-                                <rect key="frame" x="113" y="230" width="241" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mw7-SM-DAo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bBR-aR-iVm" firstAttribute="top" secondItem="VwX-LV-4zv" secondAttribute="bottom" constant="8" id="16J-Fr-Q2E"/>
-                            <constraint firstItem="hPG-xZ-nri" firstAttribute="top" secondItem="bBR-aR-iVm" secondAttribute="bottom" constant="8" id="7Pa-n1-K21"/>
+                            <constraint firstItem="hPG-xZ-nri" firstAttribute="top" secondItem="bBR-aR-iVm" secondAttribute="bottom" constant="13.333333333333314" id="7Pa-n1-K21"/>
                             <constraint firstItem="1gk-QE-XdS" firstAttribute="leading" secondItem="mw7-SM-DAo" secondAttribute="leading" id="KbK-lu-1yJ"/>
-                            <constraint firstItem="rfZ-sS-OeK" firstAttribute="top" secondItem="hPG-xZ-nri" secondAttribute="bottom" constant="16" id="LI5-fv-ZuI"/>
+                            <constraint firstItem="rfZ-sS-OeK" firstAttribute="top" secondItem="hPG-xZ-nri" secondAttribute="bottom" constant="18" id="LI5-fv-ZuI"/>
                             <constraint firstItem="mw7-SM-DAo" firstAttribute="trailing" secondItem="hPG-xZ-nri" secondAttribute="trailing" constant="35" id="OEB-kO-ubQ"/>
                             <constraint firstItem="mw7-SM-DAo" firstAttribute="trailing" secondItem="A9Q-0y-FOZ" secondAttribute="trailing" constant="36" id="SXS-iX-X0L"/>
                             <constraint firstItem="A9Q-0y-FOZ" firstAttribute="top" secondItem="7cp-97-QMN" secondAttribute="bottom" constant="1.3300000000000001" id="Uzy-n8-eOv"/>
                             <constraint firstItem="mw7-SM-DAo" firstAttribute="trailing" secondItem="7cp-97-QMN" secondAttribute="trailing" constant="22" id="WST-Xy-inH"/>
                             <constraint firstItem="Zlq-un-yQq" firstAttribute="leading" secondItem="mw7-SM-DAo" secondAttribute="leading" constant="30" id="WiW-Wv-zlq"/>
                             <constraint firstItem="1gk-QE-XdS" firstAttribute="top" secondItem="F20-Ef-1fC" secondAttribute="top" id="X18-8Q-hXc"/>
-                            <constraint firstItem="VwX-LV-4zv" firstAttribute="top" secondItem="A9Q-0y-FOZ" secondAttribute="bottom" constant="3" id="bNn-FT-JVf"/>
+                            <constraint firstItem="VwX-LV-4zv" firstAttribute="top" secondItem="A9Q-0y-FOZ" secondAttribute="bottom" constant="1" id="bNn-FT-JVf"/>
                             <constraint firstItem="1gk-QE-XdS" firstAttribute="trailing" secondItem="mw7-SM-DAo" secondAttribute="trailing" id="cCc-4n-roa"/>
                             <constraint firstItem="A9Q-0y-FOZ" firstAttribute="leading" secondItem="7cp-97-QMN" secondAttribute="leading" id="dFG-cD-2Sb"/>
-                            <constraint firstItem="mw7-SM-DAo" firstAttribute="trailing" secondItem="rfZ-sS-OeK" secondAttribute="trailing" constant="36" id="f27-6u-65t"/>
+                            <constraint firstItem="mw7-SM-DAo" firstAttribute="trailing" secondItem="rfZ-sS-OeK" secondAttribute="trailing" constant="35" id="f27-6u-65t"/>
                             <constraint firstItem="7cp-97-QMN" firstAttribute="leading" secondItem="Zlq-un-yQq" secondAttribute="trailing" constant="8" id="hks-eD-4aS"/>
                             <constraint firstItem="7cp-97-QMN" firstAttribute="top" secondItem="Zlq-un-yQq" secondAttribute="top" id="lOa-oG-Lon"/>
                             <constraint firstItem="hPG-xZ-nri" firstAttribute="leading" secondItem="mw7-SM-DAo" secondAttribute="leading" constant="35" id="pNx-Go-81p"/>
@@ -926,7 +928,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yay a new project!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF3-hi-dOp">
                                         <rect key="frame" x="63" y="44" width="266" height="49"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="34"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -938,11 +940,11 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="             release on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjD-KA-vht">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="            release on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjD-KA-vht">
                                 <rect key="frame" x="39" y="253" width="311" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <color key="textColor" systemColor="systemGray3Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -956,7 +958,7 @@
                                 <rect key="frame" x="39" y="188" width="311" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="titleField:" destination="knh-ej-1eE" eventType="editingDidEnd" id="Psu-uM-5JP"/>
@@ -967,14 +969,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="systemGray3Color"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdH-5o-Yuj">
                                 <rect key="frame" x="39" y="573" width="96" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.91980725526809692" green="0.63595255074414225" blue="0.78265144519025032" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
                                 <state key="normal" title="POST">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -986,7 +988,7 @@
                                 <rect key="frame" x="254" y="573" width="96" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92133218050003052" green="0.42387712358791491" blue="0.35939463836172592" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
                                 <state key="normal" title="LONG">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -995,8 +997,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiH-KV-rLT">
-                                <rect key="frame" x="199" y="485" width="54" height="30"/>
+                                <rect key="frame" x="201" y="485" width="53" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Camera">
                                     <color key="titleColor" systemColor="systemTealColor"/>
                                 </state>
@@ -1005,8 +1008,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z21-sP-sTe">
-                                <rect key="frame" x="199" y="508" width="88" height="30"/>
+                                <rect key="frame" x="200" y="508" width="89" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Photo Album">
                                     <color key="titleColor" systemColor="systemTealColor"/>
                                 </state>
@@ -1023,7 +1027,7 @@
                                 <rect key="frame" x="146" y="573" width="96" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.52976136875790691" green="0.92087947961055872" blue="0.76178910884853668" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
                                 <state key="normal" title="SHORT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1352,7 +1356,7 @@
             </objects>
             <point key="canvasLocation" x="4298" y="-840"/>
         </scene>
-        <!--✨ Idea Board ✨-->
+        <!--✨ idea board ✨-->
         <scene sceneID="LYL-0z-ZVl">
             <objects>
                 <viewController id="1aS-eZ-14F" customClass="IdeasViewController" sceneMemberID="viewController">
@@ -1368,7 +1372,7 @@
                         <viewLayoutGuide key="safeArea" id="uXT-ge-xEq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="✨ Idea Board ✨" id="RgG-gL-2Fy">
+                    <navigationItem key="navigationItem" title="✨ idea board ✨" id="RgG-gL-2Fy">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="2rM-v1-1KO">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jzp-jX-bhW">
                                 <rect key="frame" x="302" y="11" width="72" height="22"/>
