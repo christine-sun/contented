@@ -1,5 +1,5 @@
 //
-//  ColorUtilities.h
+//  DesignUtilities.h
 //  contented
 //
 //  Created by Christine Sun on 8/3/21.
@@ -10,10 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ColorUtilities : NSObject
+@interface DesignUtilities : NSObject
 
 + (UIColor *) getColorFor:(NSString*) type;
 + (void) addShadow:(UIView*)view;
++ (void) fadeIn:(UIView*)view withDuration: (NSTimeInterval) time;
 
 @end
 

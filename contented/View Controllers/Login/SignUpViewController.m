@@ -6,7 +6,7 @@
 //
 
 #import "SignUpViewController.h"
-#import "ColorUtilities.h"
+#import "DesignUtilities.h"
 #import <Parse/Parse.h>
 #import "GuideViewController.h"
 
@@ -27,7 +27,7 @@
     // Do any additional setup after loading the view.
     [self.signUpButton setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
     [self.signUpButton.layer setCornerRadius:20];
-    self.signUpButton.backgroundColor = [ColorUtilities getColorFor:@"light blue"];
+    self.signUpButton.backgroundColor = [DesignUtilities getColorFor:@"light blue"];
     [self styleShadow:self.signUpButton];
     
     [self styleShadow:self.usernameField];
@@ -45,7 +45,7 @@
 }
 
 - (void)styleShadow: (UIView*) view {
-    [ColorUtilities addShadow:view];
+    [DesignUtilities addShadow:view];
     view.layer.shadowOpacity = 0.1;
     view.layer.shadowRadius = 4;
 }

@@ -12,7 +12,7 @@
 #import "PlatformUtilities.h"
 #import <QuartzCore/QuartzCore.h>
 #import "PlatformButton.h"
-#import "ColorUtilities.h"
+#import "DesignUtilities.h"
 #import "ConfettiUtilities.h"
 
 @interface PushesViewController ()
@@ -61,7 +61,7 @@
     }
     
     // Customize color type based on platform type
-    self.color = [ColorUtilities getColorFor:self.type];
+    self.color = [DesignUtilities getColorFor:self.type];
     self.colorView.backgroundColor = self.color;
     self.postButton.layer.backgroundColor = self.color.CGColor;
     [self.postButton.layer setCornerRadius:10];

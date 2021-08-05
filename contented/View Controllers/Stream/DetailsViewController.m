@@ -10,7 +10,7 @@
 #import "PlatformButton.h"
 #import "PlatformUtilities.h"
 #import <Parse/PFImageView.h>
-#import "ColorUtilities.h"
+#import "DesignUtilities.h"
 #import "ConfettiUtilities.h"
 #import "StreamViewController.h"
 
@@ -82,7 +82,7 @@
     [platforms enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
         // key is social media platform, obj is TRUE or FALSE
         PlatformButton *button = [[PlatformButton alloc] init];
-        [button setup:key:(int)[obj integerValue]:[ColorUtilities getColorFor:@"purple"]];
+        [button setup:key:(int)[obj integerValue]:[DesignUtilities getColorFor:@"purple"]];
         if ((int)[obj integerValue] == 1) {
             self.completedCount++;
         }
@@ -119,7 +119,7 @@
     // Platform becomes unselected - user uncompleted this push
     } else {
         sender.backgroundColor = [UIColor clearColor];
-        [sender setTitleColor:[ColorUtilities getColorFor:@"purple"] forState:UIControlStateNormal];
+        [sender setTitleColor:[DesignUtilities getColorFor:@"purple"] forState:UIControlStateNormal];
         [platforms setValue:@NO forKey:title];
         self.completedCount--;
     }

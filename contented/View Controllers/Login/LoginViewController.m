@@ -7,7 +7,7 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
-#import "ColorUtilities.h"
+#import "DesignUtilities.h"
 
 @interface LoginViewController ()
 
@@ -26,7 +26,7 @@
 
     [self.loginButton setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
     [self.loginButton.layer setCornerRadius:20];
-    self.loginButton.backgroundColor = [ColorUtilities getColorFor:@"light blue"];
+    self.loginButton.backgroundColor = [DesignUtilities getColorFor:@"light blue"];
     [self styleShadow:self.loginButton];
     
     [self styleShadow:self.usernameField];
@@ -41,7 +41,7 @@
 }
 
 - (void)styleShadow: (UIView*) view {
-    [ColorUtilities addShadow:view];
+    [DesignUtilities addShadow:view];
     view.layer.shadowOpacity = 0.1;
     view.layer.shadowRadius = 4;
 }

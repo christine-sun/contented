@@ -10,7 +10,7 @@
 #import "PlatformUtilities.h"
 #import "PlatformButton.h"
 #import "Task.h"
-#import "ColorUtilities.h"
+#import "DesignUtilities.h"
 
 @interface EditViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
@@ -62,7 +62,7 @@
         if (state == 0) {
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         } else {
-            [button setTitleColor:[ColorUtilities getColorFor:@"blue"] forState:UIControlStateNormal];
+            [button setTitleColor:[DesignUtilities getColorFor:@"blue"] forState:UIControlStateNormal];
         }
         [button addTarget:self action: @selector(onTapPlatformButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonsStack addArrangedSubview:button];
@@ -80,7 +80,7 @@
     // Platform was not initially selected - add this to list of platforms
     if ([self.updatedPlatforms objectForKey:title] == nil) {
         sender.backgroundColor = [UIColor whiteColor];
-        [sender setTitleColor:[ColorUtilities getColorFor:@"blue"] forState:UIControlStateNormal];
+        [sender setTitleColor:[DesignUtilities getColorFor:@"blue"] forState:UIControlStateNormal];
         
         [self.updatedPlatforms setValue:@NO forKey:title];
         

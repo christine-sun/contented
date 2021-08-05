@@ -1,13 +1,13 @@
 //
-//  ColorUtilities.m
+//  DesignUtilities.m
 //  contented
 //
 //  Created by Christine Sun on 8/3/21.
 //
 
-#import "ColorUtilities.h"
+#import "DesignUtilities.h"
 
-@implementation ColorUtilities
+@implementation DesignUtilities
 
 + (UIColor *) getColorFor:(NSString*) type {
     if ([type isEqualToString:@"long"]) {
@@ -47,6 +47,14 @@
     view.layer.shadowRadius = 2;
     view.layer.shadowOffset = CGSizeMake(0, 0);
     view.layer.shadowColor = [UIColor blackColor].CGColor;
+}
+
++ (void) fadeIn:(UIView*)view withDuration: (NSTimeInterval) time {
+    view.alpha = 0;
+    [UIView animateWithDuration:time animations:^{
+        view.alpha = 1;
+    }];
+    
 }
 
 @end

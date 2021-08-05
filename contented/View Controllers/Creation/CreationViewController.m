@@ -8,7 +8,7 @@
 #import "CreationViewController.h"
 #import "PushesViewController.h"
 #import "Task.h"
-#import "ColorUtilities.h"
+#import "DesignUtilities.h"
 
 @interface CreationViewController () <UITextViewDelegate>
 
@@ -67,8 +67,8 @@
 
 - (void)styleButton:(UIButton*)button:(NSString*)type {
     [button.layer setCornerRadius:10];
-    button.backgroundColor = [ColorUtilities getColorFor:type];
-    [ColorUtilities addShadow:button.titleLabel];
+    button.backgroundColor = [DesignUtilities getColorFor:type];
+    [DesignUtilities addShadow:button.titleLabel];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
