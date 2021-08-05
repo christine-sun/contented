@@ -1041,7 +1041,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WNP-Em-0Ea"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
                     <navigationItem key="navigationItem" id="k7W-B5-e0g"/>
                     <connections>
@@ -1225,22 +1225,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10 tasks completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5C3-Tk-Q9m">
-                                <rect key="frame" x="16" y="318" width="360" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 tasks completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5C3-Tk-Q9m">
+                                <rect key="frame" x="16" y="318" width="358" height="25"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="UCt7gY0riLR5YJLISl3RK5iw" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYu-oe-daS">
-                                <rect key="frame" x="121" y="411" width="196" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="UCt7gY0riLR5YJLISl3RK5iw" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYu-oe-daS">
+                                <rect key="frame" x="120.66666666666669" y="411" width="199" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="199" id="ux2-Rv-Dq0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Jh-4s-epD">
-                                <rect key="frame" x="323" y="413" width="53" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Jh-4s-epD">
+                                <rect key="frame" x="325.66666666666669" y="413" width="53" height="30"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
                                 <color key="tintColor" systemColor="systemTealColor"/>
                                 <state key="normal" title="Update"/>
@@ -1249,23 +1249,20 @@
                                     <action selector="onTapUpdate:" destination="eqz-gW-XyJ" eventType="touchUpInside" id="r1s-Df-Pfz"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YouTube ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhx-JO-sUv">
-                                <rect key="frame" x="16" y="418" width="99" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YouTube ID:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhx-JO-sUv">
+                                <rect key="frame" x="16.000000000000007" y="418" width="98.666666666666686" height="20"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your YouTube ID has been updated!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzr-le-VgE">
-                                <rect key="frame" x="73" y="383" width="241" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your YouTube ID has been updated!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzr-le-VgE">
+                                <rect key="frame" x="16" y="383" width="358" height="21"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <color key="textColor" systemColor="systemGreenColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I4-h6-1C6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I4-h6-1C6">
                                 <rect key="frame" x="16" y="285" width="358" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1278,19 +1275,8 @@
                                     <constraint firstAttribute="width" constant="110" id="bLN-l6-aFu"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cN-Pd-liJ">
-                                <rect key="frame" x="171" y="710" width="56" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <color key="tintColor" systemColor="systemTealColor"/>
-                                <state key="normal" title="Log Out"/>
-                                <connections>
-                                    <action selector="onTapLogOut:" destination="eqz-gW-XyJ" eventType="touchUpInside" id="AvG-U7-Ewb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD8-O7-qwT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD8-O7-qwT">
                                 <rect key="frame" x="16" y="444" width="167" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                 <color key="tintColor" systemColor="systemTealColor"/>
                                 <state key="normal" title="How can I find my YouTube ID?"/>
@@ -1298,13 +1284,43 @@
                                     <action selector="onTapFindIDButton:" destination="eqz-gW-XyJ" eventType="touchUpInside" id="Sqy-Qd-vSl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cN-Pd-liJ">
+                                <rect key="frame" x="147" y="710" width="96" height="33"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <color key="tintColor" systemColor="systemTealColor"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="onTapLogOut:" destination="eqz-gW-XyJ" eventType="touchUpInside" id="AvG-U7-Ewb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PrE-bi-zDi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="PrE-bi-zDi" firstAttribute="trailing" secondItem="3I4-h6-1C6" secondAttribute="trailing" constant="16" id="1G9-gI-cu9"/>
+                            <constraint firstItem="2cN-Pd-liJ" firstAttribute="leading" secondItem="PrE-bi-zDi" secondAttribute="leading" constant="147" id="1dr-O0-mfu"/>
+                            <constraint firstItem="kYu-oe-daS" firstAttribute="leading" secondItem="Nhx-JO-sUv" secondAttribute="trailing" constant="6" id="5t3-da-pAH"/>
+                            <constraint firstItem="5C3-Tk-Q9m" firstAttribute="top" secondItem="3I4-h6-1C6" secondAttribute="bottom" constant="5" id="8F2-Ym-zhb"/>
+                            <constraint firstItem="5C3-Tk-Q9m" firstAttribute="leading" secondItem="PrE-bi-zDi" secondAttribute="leading" constant="16" id="919-4J-Waj"/>
                             <constraint firstItem="30W-st-4HF" firstAttribute="top" secondItem="PrE-bi-zDi" secondAttribute="top" constant="68.000000000000114" id="AF3-lc-kZz"/>
+                            <constraint firstItem="Nhx-JO-sUv" firstAttribute="top" secondItem="Uzr-le-VgE" secondAttribute="bottom" constant="14" id="CO0-yV-8RP"/>
+                            <constraint firstItem="3I4-h6-1C6" firstAttribute="leading" secondItem="PrE-bi-zDi" secondAttribute="leading" constant="16" id="FTM-Io-q3x"/>
                             <constraint firstItem="PrE-bi-zDi" firstAttribute="trailing" secondItem="30W-st-4HF" secondAttribute="trailing" constant="140" id="FyN-58-ICX"/>
+                            <constraint firstItem="3I4-h6-1C6" firstAttribute="top" secondItem="30W-st-4HF" secondAttribute="bottom" constant="19" id="P85-FK-ArI"/>
+                            <constraint firstItem="2Jh-4s-epD" firstAttribute="centerY" secondItem="Nhx-JO-sUv" secondAttribute="centerY" id="QjJ-DL-VBl"/>
+                            <constraint firstItem="PrE-bi-zDi" firstAttribute="trailing" secondItem="2cN-Pd-liJ" secondAttribute="trailing" constant="147" id="Vg2-MR-XrZ"/>
+                            <constraint firstItem="cD8-O7-qwT" firstAttribute="top" secondItem="Nhx-JO-sUv" secondAttribute="bottom" constant="6" id="ZVJ-dM-2cV"/>
+                            <constraint firstItem="kYu-oe-daS" firstAttribute="centerY" secondItem="Nhx-JO-sUv" secondAttribute="centerY" id="dL8-ZA-hvn"/>
+                            <constraint firstItem="Uzr-le-VgE" firstAttribute="leading" secondItem="PrE-bi-zDi" secondAttribute="leading" constant="16" id="dTK-4q-sCM"/>
+                            <constraint firstItem="Nhx-JO-sUv" firstAttribute="leading" secondItem="PrE-bi-zDi" secondAttribute="leading" constant="16" id="fbP-hL-XaI"/>
+                            <constraint firstItem="PrE-bi-zDi" firstAttribute="trailing" secondItem="2Jh-4s-epD" secondAttribute="trailing" constant="11.33" id="feO-Ro-iOJ"/>
+                            <constraint firstItem="cD8-O7-qwT" firstAttribute="leading" secondItem="PrE-bi-zDi" secondAttribute="leading" constant="16" id="g5u-dn-cEp"/>
+                            <constraint firstItem="PrE-bi-zDi" firstAttribute="trailing" secondItem="5C3-Tk-Q9m" secondAttribute="trailing" constant="16" id="hE4-yw-Jgk"/>
+                            <constraint firstItem="Uzr-le-VgE" firstAttribute="top" secondItem="5C3-Tk-Q9m" secondAttribute="bottom" constant="40" id="mRu-qZ-wdA"/>
+                            <constraint firstItem="PrE-bi-zDi" firstAttribute="bottom" secondItem="2cN-Pd-liJ" secondAttribute="bottom" constant="18" id="nYz-6q-jyq"/>
                             <constraint firstItem="30W-st-4HF" firstAttribute="leading" secondItem="PrE-bi-zDi" secondAttribute="leading" constant="140" id="oqj-6M-0gH"/>
+                            <constraint firstItem="PrE-bi-zDi" firstAttribute="trailing" secondItem="Uzr-le-VgE" secondAttribute="trailing" constant="16" id="pLb-bC-3fr"/>
+                            <constraint firstItem="2Jh-4s-epD" firstAttribute="leading" secondItem="kYu-oe-daS" secondAttribute="trailing" constant="6" id="s2i-le-QRb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pvs-Fs-muv"/>
@@ -1528,9 +1544,6 @@
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
