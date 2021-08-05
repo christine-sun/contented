@@ -162,11 +162,7 @@ AnalyticsViewController *analyticsVC;
 
 // Get the view count of this video and set its view property
 + (void)setVideoViews:(Video*)video: (NSDictionary*)videoDict {
-    NSArray *items = videoDict[@"items"];
-    NSDictionary *middle = items[0];
-    NSDictionary *stats = middle[@"statistics"];
-    NSString *viewCount = stats[@"viewCount"];
-    video.views = [viewCount integerValue];
+    video.views = [video getViews:videoDict];
     ySum += video.views;
     if (video.views > maxViews) {
         maxViews = video.views;

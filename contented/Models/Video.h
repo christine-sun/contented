@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSUInteger views;
 @property (strong, nonatomic) NSDate *publishedAt;
 
+- (int)getViews:(NSDictionary*) videoDict;
+
 @end
 
 NS_ASSUME_NONNULL_END
