@@ -9,11 +9,11 @@
 #import <Parse/Parse.h>
 #import "APIManager.h"
 @import Charts;
-@import BubbleTransition;
 #import "Video.h"
 #import "WebViewController.h"
+#import "DesignUtilities.h"
 
-@interface AnalyticsViewController () <ChartViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIViewControllerTransitioningDelegate>
+@interface AnalyticsViewController () <ChartViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *ytReportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *recommendationLabel;
@@ -93,7 +93,8 @@
     self.lineChartView.leftAxis.enabled = NO;
     self.lineChartView.rightAxis.enabled = NO;
     [APIManager setChart:self.lineChartView];
-        
+    [DesignUtilities fadeIn:self.lineChartView withDuration:2];
+    [DesignUtilities fadeIn:self.recommendationLabel withDuration:2.5];
 }
 
 - (void) setOriginalVideos:(NSMutableArray *)originalVids {
