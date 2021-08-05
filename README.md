@@ -10,7 +10,7 @@
 
 ## Overview
 ### Description
-contented is a content creation management application that incorporates intention-setting and other follower-boosting methods to motivate and support creators 
+contented is a content creation management application that incorporates intention-setting, platform pushes, and other features to motivate and support creators 
 
 ### App Evaluation
 - **Category:** Productivity
@@ -132,7 +132,7 @@ Task
 | dueDate | DateTime | the due date for the task |
 | platforms | Dictionary | Key is the platform String. Value is Boolean. If it's not in the dictionary at all, it was not assigned for this task |
 | type | String | the type of the task, whether it's story, short, or long |
-| status | Boolean | determine whether task is completed or not. After user edits the task, check whether all channels have been marked as completed. If true, then this status is true. Or create a method like "getStatus" that will check through the Dictionary so we do not have to keep status in sync with Dictionary |
+| completed | Boolean | determine whether task is completed or not. |
 |User|Object|the user that created these tasks |
 | image | Image | an image the user wants to associate with the task |
 
@@ -140,20 +140,20 @@ User
 | Property | Type  | Description  |  
 |---|---|---|
 | objectId  | String  | unique id for the task (default field) |
-etc for other channels| | |
-| Tasks | Array| this user's tasks
 | username |String||
 | password |String||
 |profile picture|image|
 | platforms | Array | the array of social media platforms |
 
-Platform
+Idea
 | Property | Type  | Description  |  
 |---|---|---|
-| initialFollowing | Number | following when user first connects to app |
-| userID | String | the ID to identify the user |
-| name | String | name of user on platform |
-| type | String | type of social media platform |
+| objectId  | String  | unique id for the task (default field) |
+etc for other channels| | |
+| title | String | this idea's title
+| location |String| where the idea is saved on the idea board |
+| User |Object| the user that created this idea|
+
 
 ### Networking
 **List of network requests by screen**
@@ -226,8 +226,6 @@ Milestone 7 - Filter Tasks (2 days)
 
 Milestone 9 - UI (2 days)
 - Add animations for when tasks are created and completed
-- Add phone vibration modes for when tasks are completed
-- Create a dark mode
 - Create an introduction guide for when users are new to the app
 
 Extra features: 

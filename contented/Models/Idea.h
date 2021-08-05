@@ -18,8 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *user;
 
 + (void) postIdea: (NSString*) title withCompletion: (PFBooleanResultBlock _Nullable) completion;
-
-// put getCoords here
+- (CGRect) getCoords;
 
 @end
 

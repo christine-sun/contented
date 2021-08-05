@@ -21,40 +21,25 @@
 + (void) postIdea: (NSString*) title withCompletion: (PFBooleanResultBlock _Nullable) completion {
     Idea *idea = [Idea new];
     idea.title = title;
-//    idea.location = CGPointMake(0, 0);
     idea.location = NSStringFromCGPoint(CGPointMake(150, 150));
     idea.user = [PFUser currentUser];
     
     [idea saveInBackgroundWithBlock:completion];
-    
-    // add this idea to current user's ideas
-//    NSMutableArray *userIdeas = idea.user[@"ideas"];
-    PFUser *currentUser = [PFUser currentUser];
-    NSMutableArray *userIdeas = currentUser[@"ideas"];
-    if (userIdeas == nil) {
-        userIdeas = [[NSMutableArray alloc] init];
-    }
-    NSLog(@"this users array looks like %@", userIdeas);
-    
-    // create an Idea View
-//    IdeaView *ideaView = [[IdeaView alloc] init];
-//    ideaView.idea = idea;
-//    [userIdeas addObject:ideaView];
-//
-//    PFQuery *query = [PFQuery queryWithClassName:@"User"];
-//    NSLog(@"%@", currentUser.objectId);
-//    PFObject *test = [query getObjectWithId:currentUser.objectId];
-//    NSLog(@"test %@", test);
-//    [query getObjectInBackgroundWithId:currentUser.objectId block:^(PFObject *user, NSError *error) {
-//        user[@"ideas"] = userIdeas;
-//        if (error) NSLog(@"WAAAA");
-//        [user saveInBackground];
-//    }];
-//    idea.user[@"ideas"] = userIdeas;
-//    [idea.user saveInBackgroundWithBlock:nil];
-//    currentUser[@"ideas"] = userIdeas;
-//    [currentUser saveInBackgroundWithBlock:nil];
-    
+}
+
+- (CGRect) getCoords {
+    CGFloat offset = 50;
+    CGFloat width = 150;
+    CGFloat height = 100;
+    NSString *ideaStringLocation = self[@"location"];
+    NSString *prefix = @"{";
+    NSString *suffix = @"}";
+    NSRange coordsRange = NSMakeRange(prefix.length, ideaStringLocation.length - prefix.length - suffix.length);
+    NSString *coords = [ideaStringLocation substringWithRange:coordsRange];
+    NSArray *coordsArray = [coords componentsSeparatedByString:@", "];
+    NSInteger x = [coordsArray[0] integerValue];
+    NSInteger y = [coordsArray[1] integerValue];
+    return CGRectMake(x - offset, y - offset, width, height);
 }
 
 @end

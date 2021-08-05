@@ -51,26 +51,11 @@
     IdeaView *ideaView = [[IdeaView alloc] init];
     ideaView.idea = idea;
     [ideaView setName:ideaView.idea.title];
-    ideaView.frame = [self getCoords:idea];
+    ideaView.frame = [idea getCoords];
     [ideaView setTrashView:self.trashView];
     [ideaView enableDragging];
     [self.view addSubview:ideaView];
     [DesignUtilities fadeIn:ideaView withDuration:0.8];
-}
-
-- (CGRect)getCoords:(Idea*) idea {
-    CGFloat offset = 50;
-    CGFloat width = 150;
-    CGFloat height = 100;
-    NSString *ideaStringLocation = idea[@"location"];
-    NSString *prefix = @"{";
-    NSString *suffix = @"}";
-    NSRange coordsRange = NSMakeRange(prefix.length, ideaStringLocation.length - prefix.length - suffix.length);
-    NSString *coords = [ideaStringLocation substringWithRange:coordsRange];
-    NSArray *coordsArray = [coords componentsSeparatedByString:@", "];
-    NSInteger x = [coordsArray[0] integerValue];
-    NSInteger y = [coordsArray[1] integerValue];
-    return CGRectMake(x - offset, y - offset, width, height);
 }
 
 - (IBAction)onTapAdd:(id)sender {
