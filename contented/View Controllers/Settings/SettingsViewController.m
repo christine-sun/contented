@@ -38,6 +38,11 @@
     self.completedTasksLabel.text = completedTasks;
     NSString *userID = self.user[@"youtubeID"];
     self.youtubeIDField.text = userID;
+    if ([userID isEqualToString:@""]) {
+        [self.youtubeIDField setBorderStyle:UITextBorderStyleRoundedRect];
+    } else {
+        [self.youtubeIDField setBorderStyle:UITextBorderStyleNone];
+    }
     
     CGFloat profilePicDimension = 110;
     [self.profileImageView.layer setCornerRadius:profilePicDimension / 2];

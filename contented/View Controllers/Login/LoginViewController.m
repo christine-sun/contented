@@ -8,7 +8,6 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "ColorUtilities.h"
-//#import <Shimmer/Shimmer.h>
 
 @interface LoginViewController ()
 

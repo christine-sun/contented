@@ -55,9 +55,31 @@
     [APIManager setYouTubeReportLabel:self.ytReportLabel];
     [APIManager setAnalyticsVC:self];
     [APIManager setRecommendationLabel:self.recommendationLabel];
-    self.userID = [PFUser currentUser][@"youtubeID"];
     [APIManager setDatePickers:self.startDatePicker end:self.endDatePicker];
-    [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[0]];
+    
+    self.userID = [PFUser currentUser][@"youtubeID"];
+    if ([self.userID isEqualToString:@""]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid ID"
+            message:@"It looks like you haven't set your YouTube ID yet!"
+            preferredStyle:(UIAlertControllerStyleAlert)];
+        // Go to profile if user wants to set ID
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Set ID"
+            style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:4];
+                [self.navigationController popToRootViewControllerAnimated:NO];
+            }];
+        [alert addAction:okAction];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"later"
+            style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popToRootViewControllerAnimated:NO];
+            }];
+        [alert addAction:cancelAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [APIManager fetchRecentViews:self.userID withVideoCount:self.videoCountPickerData[0]];
+    }
     
     // Set up the chart
     UITapGestureRecognizer *pointTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapPoint:)];
@@ -82,7 +104,6 @@
 #pragma mark - Line Chart View
 
 - (void) setChart: (NSMutableArray*) vids {
-    
     CGFloat maxViews = LONG_MIN;
     NSString *maxViewTitle = @"";
     double xSum = 0;

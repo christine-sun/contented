@@ -70,8 +70,8 @@ AnalyticsViewController *analyticsVC;
 + (NSDictionary*) fetchRecentViews: (NSString*) userID withVideoCount: (NSString*) vidCount {
         
     vids = [[NSMutableArray alloc] init];
-    // Get the last 20 videos from this user
     
+    // Get the last 20 videos from this user
     NSString *baseString = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/search?key=%@&channelId=%@&part=snippet,id&order=date&maxResults=%@", API_KEY, userID, vidCount];
     
     __block NSDictionary *initialDictionary = [[NSDictionary alloc] init];
