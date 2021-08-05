@@ -29,7 +29,6 @@ UIImageView *trashView;
     if (self) {
         UIImageView *cloudView = [[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"cloud.fill"]];
         [cloudView setTintColor:[UIColor systemTealColor]];
-//        [cloudView setTintColor:[self getRandomColor]];
         cloudView.frame = CGRectMake(0, 0, 150, 100);
         [self addSubview:cloudView];
     }

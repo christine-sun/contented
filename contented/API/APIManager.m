@@ -195,7 +195,13 @@ AnalyticsViewController *analyticsVC;
             NSURL *profilePicURL = [NSURL URLWithString:profilePicLink];
             NSData *data = [NSData dataWithContentsOfURL:profilePicURL];
             UIImage *img = [[UIImage alloc] initWithData:data];
-            [imageView setImage:img];
+            
+            if ([userID isEqualToString:@""]) {
+                [imageView setImage:[UIImage systemImageNamed:@"person.fill"]];
+                [imageView.layer setCornerRadius:0];
+            } else {
+                [imageView setImage:img];
+            }
         }
     }];
     [task resume];
