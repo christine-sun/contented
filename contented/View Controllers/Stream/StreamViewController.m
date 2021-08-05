@@ -113,19 +113,23 @@
                 button.alpha = 0;
                 [button setUserInteractionEnabled:NO];
             } else {
-                self.subtextLabel.text = @"It looks like you don't have any active tasks! Let's create one together! 😄";
-                button = [[UIButton alloc] init];
-                button.backgroundColor = [UIColor systemTealColor];
-                [button setTitle: @"Create Task" forState: UIControlStateNormal];
-                button.titleLabel.textColor = [UIColor whiteColor];
-                button.titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
-                [button setFrame:CGRectMake(self.view.center.x - 75, self.view.center.y, 150, 50)];
-                [button addTarget:self
-                             action:@selector(goToCreate)
-                   forControlEvents:UIControlEventTouchUpInside];
-                [button.layer setCornerRadius:15];
-                
-                [self.view addSubview:button];
+                if (self.currentFilterTypeIndex == 1) {
+                    self.subtextLabel.text = @"you haven't completed any tasks yet";
+                } else {
+                    self.subtextLabel.text = @"it looks like you don't have any active tasks! let's create one together! 😄";
+                    button = [[UIButton alloc] init];
+                    button.backgroundColor = [UIColor systemTealColor];
+                    [button setTitle: @"Create Task" forState: UIControlStateNormal];
+                    button.titleLabel.textColor = [UIColor whiteColor];
+                    button.titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
+                    [button setFrame:CGRectMake(self.view.center.x - 75, self.view.center.y, 150, 50)];
+                    [button addTarget:self
+                                 action:@selector(goToCreate)
+                       forControlEvents:UIControlEventTouchUpInside];
+                    [button.layer setCornerRadius:15];
+                    
+                    [self.view addSubview:button];
+                }
             }
         }
         [self.refreshControl endRefreshing];

@@ -28,6 +28,7 @@
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *startDatePicker;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
+@property (weak, nonatomic) IBOutlet UILabel *dateRangeLabel;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *queryPickerView;
 @property (strong, nonatomic) NSArray *queryPickerData;
@@ -267,6 +268,7 @@
     self.videoCountPicker.alpha = 1;
     self.videoCountPicker.userInteractionEnabled = YES;
     
+    self.dateRangeLabel.alpha = 0;
     self.startDatePicker.alpha = 0;
     self.startDatePicker.userInteractionEnabled = NO;
     self.endDatePicker.alpha = 0;
@@ -283,6 +285,7 @@
     self.videoCountPicker.alpha = 0;
     self.videoCountPicker.userInteractionEnabled = NO;
     
+    self.dateRangeLabel.alpha = 1;
     self.startDatePicker.alpha = 1;
     self.startDatePicker.userInteractionEnabled = YES;
     Video *firstVid = self.originalVids[0];

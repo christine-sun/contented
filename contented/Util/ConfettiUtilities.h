@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ConfettiUtilities : NSObject
 
-+ (void) startConfettiForView: (UIView*)view;
++ (void) startConfettiForView: (UIView*)view forState: (NSString*) theState;
 + (NSMutableArray<CAEmitterCell*>*)getEmitterCells;
 + (void)stopConfetti;
 

@@ -13,6 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "PlatformButton.h"
 #import "ColorUtilities.h"
+#import "ConfettiUtilities.h"
 
 @interface PushesViewController ()
 @property (weak, nonatomic) IBOutlet UIStackView *buttonsStack;

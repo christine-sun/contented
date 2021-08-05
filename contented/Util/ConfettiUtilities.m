@@ -12,11 +12,13 @@
 CAEmitterLayer *emitterLayer;
 UIView *emitterView;
 UIView* mainView;
+NSString* state;
 
-+ (void) startConfettiForView: (UIView*)view {
++ (void) startConfettiForView: (UIView*)view forState: (NSString*) theState {
     mainView = view;
     emitterView = [[UIView alloc] init];
     emitterLayer = [[CAEmitterLayer alloc] init];
+    state = theState;
     
     emitterLayer.emitterPosition = CGPointMake(view.frame.size.width / 2, -40);
     emitterLayer.emitterSize = CGSizeMake(view.frame.size.width, 1);
@@ -52,8 +54,12 @@ UIView* mainView;
         cell.alphaRange = 0.3;
         cell.yAcceleration = arc4random_uniform(10) + 10;
         
-        NSString *confetti = [NSString stringWithFormat:@"confetti%d", i];
-        cell.contents = (id)[[UIImage imageNamed:confetti] CGImage];
+        if ([state isEqualToString:@"completed"]) {
+            NSString *confetti = [NSString stringWithFormat:@"confetti%d", i];
+            cell.contents = (id)[[UIImage imageNamed:confetti] CGImage];
+        } else if ([state isEqualToString:@"started"]) {
+            cell.contents = (id)[[UIImage imageNamed:@"letsgo"] CGImage];
+        }
         [cells addObject:cell];
     }
     
