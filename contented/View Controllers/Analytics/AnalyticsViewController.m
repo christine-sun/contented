@@ -152,7 +152,6 @@
     
     // Display message about performance based on slope
     double slope = numerator / denominator;
-    NSLog(@"xMean is %f, yMean is %f, the slope is %f", xMean, yMean, slope);
     if (slope < -50) {
         [self.ytReportLabel setText:@"Consider what types of videos did well for your channel in the past - are there ways to rekindle that creativity and inspiration?"];
     }
@@ -227,13 +226,12 @@
         // Show video count picker and hide start and end date pickers
         if ([self.queryPickerData[row] isEqualToString:@"video count"]) {
             [self styleQueryByVideoCount];
-            [self setChart:self.originalVids];
-            // present the last 20 videos
         }
         // Show start and end date pickers and hide video count picker
         else {
             [self styleQueryByDate];
         }
+        [self setChart:self.originalVids];
     } else if (pickerView == self.videoCountPicker) {
         // fetch the x most recent views
         self.modifiedQueryVids = [self getSubsetOfOriginalVids:self.videoCountPickerData[row]];
@@ -250,6 +248,10 @@
     self.originalVids = [self.originalVids sortedArrayUsingComparator:^NSComparisonResult(Video *a, Video *b) {
         return [a.publishedAt compare:b.publishedAt];
     }];
+    
+    if (videoCount > 15) {
+        return self.originalVids;
+    }
     
     for (int i = totalVids - videoCount; i < totalVids; i++) {
         [subset addObject:self.originalVids[i]];
@@ -291,7 +293,6 @@
     self.startDatePicker.alpha = 1;
     self.startDatePicker.userInteractionEnabled = YES;
     Video *firstVid = self.originalVids[0];
-    NSLog(@"the first video is %@", firstVid.publishedAt);
     self.startDatePicker.date = firstVid.publishedAt;
     self.startDatePicker.minimumDate = self.startDatePicker.date;
     Video *lastVid = self.originalVids[self.originalVids.count-1];

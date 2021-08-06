@@ -203,6 +203,7 @@ AnalyticsViewController *analyticsVC;
                 [imageView.layer setCornerRadius:0];
             } else {
                 [imageView setImage:img];
+                [imageView.layer setCornerRadius:110 / 2];
             }
         }
     }];
