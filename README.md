@@ -249,5 +249,10 @@ note:
 sending notifications requires paid developer acc 
 guide: https://www.raywenderlich.com/11395893-push-notifications-tutorial-getting-started
 
-creds
+Credits
+- Filtering Dropdown View
 https://github.com/lminhtm/LMDropdownView
+- Charts library
+https://github.com/danielgindi/Charts
+- Draggable View
+https://github.com/andreamazz/UIView-draggable
