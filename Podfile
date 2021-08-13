@@ -13,9 +13,6 @@ target 'contented' do
   pod 'Charts'
   pod 'UIView+draggable'
   pod 'LMDropdownView'
-  pod 'BubbleTransition', '~> 3.2.0'
-  pod "RMPZoomTransitionAnimator"
-  pod "Shimmer"
 
   target 'contentedTests' do
     inherit! :search_paths

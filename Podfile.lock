@@ -1,6 +1,5 @@
 PODS:
   - Bolts/Tasks (1.9.1)
-  - BubbleTransition (3.2.0)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
@@ -26,16 +25,16 @@ PODS:
     - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
     - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
     - GTMSessionFetcher/Core (~> 1.1)
-  - GoogleToolboxForMac/DebugUtils (2.3.1):
-    - GoogleToolboxForMac/Defines (= 2.3.1)
-  - GoogleToolboxForMac/Defines (2.3.1)
-  - "GoogleToolboxForMac/NSData+zlib (2.3.1)":
-    - GoogleToolboxForMac/Defines (= 2.3.1)
-  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.3.1)":
-    - GoogleToolboxForMac/DebugUtils (= 2.3.1)
-    - GoogleToolboxForMac/Defines (= 2.3.1)
-    - "GoogleToolboxForMac/NSString+URLArguments (= 2.3.1)"
-  - "GoogleToolboxForMac/NSString+URLArguments (2.3.1)"
+  - GoogleToolboxForMac/DebugUtils (2.3.2):
+    - GoogleToolboxForMac/Defines (= 2.3.2)
+  - GoogleToolboxForMac/Defines (2.3.2)
+  - "GoogleToolboxForMac/NSData+zlib (2.3.2)":
+    - GoogleToolboxForMac/Defines (= 2.3.2)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.3.2)":
+    - GoogleToolboxForMac/DebugUtils (= 2.3.2)
+    - GoogleToolboxForMac/Defines (= 2.3.2)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.3.2)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.3.2)"
   - GTMSessionFetcher (1.6.1):
     - GTMSessionFetcher/Full (= 1.6.1)
   - GTMSessionFetcher/Core (1.6.1)
@@ -48,26 +47,20 @@ PODS:
     - Bolts/Tasks (= 1.9.1)
   - Parse/UI (1.19.2):
     - Parse/Core
-  - RMPZoomTransitionAnimator (1.0.3)
-  - Shimmer (1.0.2)
   - "UIView+draggable (1.1.0)"
 
 DEPENDENCIES:
-  - BubbleTransition (~> 3.2.0)
   - Charts
   - Google/SignIn (~> 3.0.3)
   - GoogleAPIClientForREST/YouTube (~> 1.2.1)
   - LMDropdownView
   - Parse
   - Parse/UI
-  - RMPZoomTransitionAnimator
-  - Shimmer
   - "UIView+draggable"
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - Bolts
-    - BubbleTransition
     - Charts
     - FirebaseAnalytics
     - FirebaseCore
@@ -79,13 +72,10 @@ SPEC REPOS:
     - GTMSessionFetcher
     - LMDropdownView
     - Parse
-    - RMPZoomTransitionAnimator
-    - Shimmer
     - "UIView+draggable"
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
-  BubbleTransition: 2f112cc19772d9ab199bc850de92f5eb34744bce
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
@@ -93,14 +83,12 @@ SPEC CHECKSUMS:
   Google: cd92fab98f800f509da88c1e0c570275713bc9d5
   GoogleAPIClientForREST: a8b95a252014ce2e618df6b75dc72eca2c00b4af
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
-  GoogleToolboxForMac: 471e0c05d39506e50e6398f46fa9a12ae0efeff9
+  GoogleToolboxForMac: 8bef7c7c5cf7291c687cf5354f39f9db6399ad34
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
   LMDropdownView: afec7753d96d62977126b3df8592d41cc2acfc3c
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
-  RMPZoomTransitionAnimator: 33ded739d91052810c05c8e553663cc9ec79275b
-  Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   "UIView+draggable": ddfbeb6bdfdeba63d9ccf32dc9be2b66cc589717
 
-PODFILE CHECKSUM: 71b606ac38c6bde319d807742323e8897c448025
+PODFILE CHECKSUM: 88aaad6555c255db30114ba90741282f10441cf9
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.2
