@@ -268,9 +268,9 @@
 }
 
 - (void)styleQueryByVideoCount {
-    self.videoCountLabel.alpha = 1;
-    self.videoCountPicker.alpha = 1;
-    self.videoCountPicker.userInteractionEnabled = YES;
+//    self.videoCountLabel.alpha = 1;
+//    self.videoCountPicker.alpha = 1;
+//    self.videoCountPicker.userInteractionEnabled = YES;
     
     self.dateRangeLabel.alpha = 0;
     self.startDatePicker.alpha = 0;
